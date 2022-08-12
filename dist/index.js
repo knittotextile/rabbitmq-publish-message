@@ -1,23 +1,13727 @@
-var ps=Object.create;var qn=Object.defineProperty;var vs=Object.getOwnPropertyDescriptor;var gs=Object.getOwnPropertyNames;var ms=Object.getPrototypeOf,ws=Object.prototype.hasOwnProperty;var w=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports);var ys=(t,e,n,r)=>{if(e&&typeof e=="object"||typeof e=="function")for(let i of gs(e))!ws.call(t,i)&&i!==n&&qn(t,i,{get:()=>e[i],enumerable:!(r=vs(e,i))||r.enumerable});return t};var Ln=(t,e,n)=>(n=t!=null?ps(ms(t)):{},ys(e||!t||!t.__esModule?qn(n,"default",{value:t,enumerable:!0}):n,t));var Et=w(Pe=>{"use strict";Object.defineProperty(Pe,"__esModule",{value:!0});Pe.toCommandProperties=Pe.toCommandValue=void 0;function Es(t){return t==null?"":typeof t=="string"||t instanceof String?t:JSON.stringify(t)}Pe.toCommandValue=Es;function Is(t){return Object.keys(t).length?{title:t.title,file:t.file,line:t.startLine,endLine:t.endLine,col:t.startColumn,endColumn:t.endColumn}:{}}Pe.toCommandProperties=Is});var Fn=w(se=>{"use strict";var Bs=se&&se.__createBinding||(Object.create?function(t,e,n,r){r===void 0&&(r=n),Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[n]}})}:function(t,e,n,r){r===void 0&&(r=n),t[r]=e[n]}),bs=se&&se.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),xs=se&&se.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var n in t)n!=="default"&&Object.hasOwnProperty.call(t,n)&&Bs(e,t,n);return bs(e,t),e};Object.defineProperty(se,"__esModule",{value:!0});se.issue=se.issueCommand=void 0;var Us=xs(require("os")),Nn=Et();function Dn(t,e,n){let r=new mr(t,e,n);process.stdout.write(r.toString()+Us.EOL)}se.issueCommand=Dn;function _s(t,e=""){Dn(t,{},e)}se.issue=_s;var An="::",mr=class{constructor(e,n,r){e||(e="missing.command"),this.command=e,this.properties=n,this.message=r}toString(){let e=An+this.command;if(this.properties&&Object.keys(this.properties).length>0){e+=" ";let n=!0;for(let r in this.properties)if(this.properties.hasOwnProperty(r)){let i=this.properties[r];i&&(n?n=!1:e+=",",e+=`${r}=${Cs(i)}`)}}return e+=`${An}${ks(this.message)}`,e}};function ks(t){return Nn.toCommandValue(t).replace(/%/g,"%25").replace(/\r/g,"%0D").replace(/\n/g,"%0A")}function Cs(t){return Nn.toCommandValue(t).replace(/%/g,"%25").replace(/\r/g,"%0D").replace(/\n/g,"%0A").replace(/:/g,"%3A").replace(/,/g,"%2C")}});var zn=w(ve=>{"use strict";var Os=ve&&ve.__createBinding||(Object.create?function(t,e,n,r){r===void 0&&(r=n),Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[n]}})}:function(t,e,n,r){r===void 0&&(r=n),t[r]=e[n]}),Ts=ve&&ve.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),jn=ve&&ve.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var n in t)n!=="default"&&Object.hasOwnProperty.call(t,n)&&Os(e,t,n);return Ts(e,t),e};Object.defineProperty(ve,"__esModule",{value:!0});ve.issueCommand=void 0;var Pn=jn(require("fs")),Ss=jn(require("os")),Rs=Et();function Ms(t,e){let n=process.env[`GITHUB_${t}`];if(!n)throw new Error(`Unable to find environment variable for file command ${t}`);if(!Pn.existsSync(n))throw new Error(`Missing file at path: ${n}`);Pn.appendFileSync(n,`${Rs.toCommandValue(e)}${Ss.EOL}`,{encoding:"utf8"})}ve.issueCommand=Ms});var yr=w(wr=>{"use strict";Object.defineProperty(wr,"__esModule",{value:!0});wr.default=As;var qs=Ls(require("crypto"));function Ls(t){return t&&t.__esModule?t:{default:t}}var Bt=new Uint8Array(256),It=Bt.length;function As(){return It>Bt.length-16&&(qs.default.randomFillSync(Bt),It=0),Bt.slice(It,It+=16)}});var Qn=w(bt=>{"use strict";Object.defineProperty(bt,"__esModule",{value:!0});bt.default=void 0;var Ns=/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;bt.default=Ns});var nt=w(xt=>{"use strict";Object.defineProperty(xt,"__esModule",{value:!0});xt.default=void 0;var Ds=Fs(Qn());function Fs(t){return t&&t.__esModule?t:{default:t}}function Ps(t){return typeof t=="string"&&Ds.default.test(t)}var js=Ps;xt.default=js});var it=w(Ut=>{"use strict";Object.defineProperty(Ut,"__esModule",{value:!0});Ut.default=void 0;var zs=Qs(nt());function Qs(t){return t&&t.__esModule?t:{default:t}}var V=[];for(let t=0;t<256;++t)V.push((t+256).toString(16).substr(1));function Hs(t,e=0){let n=(V[t[e+0]]+V[t[e+1]]+V[t[e+2]]+V[t[e+3]]+"-"+V[t[e+4]]+V[t[e+5]]+"-"+V[t[e+6]]+V[t[e+7]]+"-"+V[t[e+8]]+V[t[e+9]]+"-"+V[t[e+10]]+V[t[e+11]]+V[t[e+12]]+V[t[e+13]]+V[t[e+14]]+V[t[e+15]]).toLowerCase();if(!(0,zs.default)(n))throw TypeError("Stringified UUID is invalid");return n}var Ks=Hs;Ut.default=Ks});var $n=w(_t=>{"use strict";Object.defineProperty(_t,"__esModule",{value:!0});_t.default=void 0;var $s=Kn(yr()),Ws=Kn(it());function Kn(t){return t&&t.__esModule?t:{default:t}}var Hn,Er,Ir=0,Br=0;function Gs(t,e,n){let r=e&&n||0,i=e||new Array(16);t=t||{};let o=t.node||Hn,a=t.clockseq!==void 0?t.clockseq:Er;if(o==null||a==null){let p=t.random||(t.rng||$s.default)();o==null&&(o=Hn=[p[0]|1,p[1],p[2],p[3],p[4],p[5]]),a==null&&(a=Er=(p[6]<<8|p[7])&16383)}let s=t.msecs!==void 0?t.msecs:Date.now(),c=t.nsecs!==void 0?t.nsecs:Br+1,f=s-Ir+(c-Br)/1e4;if(f<0&&t.clockseq===void 0&&(a=a+1&16383),(f<0||s>Ir)&&t.nsecs===void 0&&(c=0),c>=1e4)throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");Ir=s,Br=c,Er=a,s+=122192928e5;let d=((s&268435455)*1e4+c)%4294967296;i[r++]=d>>>24&255,i[r++]=d>>>16&255,i[r++]=d>>>8&255,i[r++]=d&255;let l=s/4294967296*1e4&268435455;i[r++]=l>>>8&255,i[r++]=l&255,i[r++]=l>>>24&15|16,i[r++]=l>>>16&255,i[r++]=a>>>8|128,i[r++]=a&255;for(let p=0;p<6;++p)i[r+p]=o[p];return e||(0,Ws.default)(i)}var Vs=Gs;_t.default=Vs});var br=w(kt=>{"use strict";Object.defineProperty(kt,"__esModule",{value:!0});kt.default=void 0;var Js=Ys(nt());function Ys(t){return t&&t.__esModule?t:{default:t}}function Zs(t){if(!(0,Js.default)(t))throw TypeError("Invalid UUID");let e,n=new Uint8Array(16);return n[0]=(e=parseInt(t.slice(0,8),16))>>>24,n[1]=e>>>16&255,n[2]=e>>>8&255,n[3]=e&255,n[4]=(e=parseInt(t.slice(9,13),16))>>>8,n[5]=e&255,n[6]=(e=parseInt(t.slice(14,18),16))>>>8,n[7]=e&255,n[8]=(e=parseInt(t.slice(19,23),16))>>>8,n[9]=e&255,n[10]=(e=parseInt(t.slice(24,36),16))/1099511627776&255,n[11]=e/4294967296&255,n[12]=e>>>24&255,n[13]=e>>>16&255,n[14]=e>>>8&255,n[15]=e&255,n}var Xs=Zs;kt.default=Xs});var xr=w(Me=>{"use strict";Object.defineProperty(Me,"__esModule",{value:!0});Me.default=nu;Me.URL=Me.DNS=void 0;var eu=Wn(it()),tu=Wn(br());function Wn(t){return t&&t.__esModule?t:{default:t}}function ru(t){t=unescape(encodeURIComponent(t));let e=[];for(let n=0;n<t.length;++n)e.push(t.charCodeAt(n));return e}var Gn="6ba7b810-9dad-11d1-80b4-00c04fd430c8";Me.DNS=Gn;var Vn="6ba7b811-9dad-11d1-80b4-00c04fd430c8";Me.URL=Vn;function nu(t,e,n){function r(i,o,a,s){if(typeof i=="string"&&(i=ru(i)),typeof o=="string"&&(o=(0,tu.default)(o)),o.length!==16)throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");let c=new Uint8Array(16+i.length);if(c.set(o),c.set(i,o.length),c=n(c),c[6]=c[6]&15|e,c[8]=c[8]&63|128,a){s=s||0;for(let f=0;f<16;++f)a[s+f]=c[f];return a}return(0,eu.default)(c)}try{r.name=t}catch{}return r.DNS=Gn,r.URL=Vn,r}});var Jn=w(Ct=>{"use strict";Object.defineProperty(Ct,"__esModule",{value:!0});Ct.default=void 0;var iu=ou(require("crypto"));function ou(t){return t&&t.__esModule?t:{default:t}}function au(t){return Array.isArray(t)?t=Buffer.from(t):typeof t=="string"&&(t=Buffer.from(t,"utf8")),iu.default.createHash("md5").update(t).digest()}var su=au;Ct.default=su});var Zn=w(Ot=>{"use strict";Object.defineProperty(Ot,"__esModule",{value:!0});Ot.default=void 0;var uu=Yn(xr()),cu=Yn(Jn());function Yn(t){return t&&t.__esModule?t:{default:t}}var lu=(0,uu.default)("v3",48,cu.default),fu=lu;Ot.default=fu});var ei=w(Tt=>{"use strict";Object.defineProperty(Tt,"__esModule",{value:!0});Tt.default=void 0;var du=Xn(yr()),hu=Xn(it());function Xn(t){return t&&t.__esModule?t:{default:t}}function pu(t,e,n){t=t||{};let r=t.random||(t.rng||du.default)();if(r[6]=r[6]&15|64,r[8]=r[8]&63|128,e){n=n||0;for(let i=0;i<16;++i)e[n+i]=r[i];return e}return(0,hu.default)(r)}var vu=pu;Tt.default=vu});var ti=w(St=>{"use strict";Object.defineProperty(St,"__esModule",{value:!0});St.default=void 0;var gu=mu(require("crypto"));function mu(t){return t&&t.__esModule?t:{default:t}}function wu(t){return Array.isArray(t)?t=Buffer.from(t):typeof t=="string"&&(t=Buffer.from(t,"utf8")),gu.default.createHash("sha1").update(t).digest()}var yu=wu;St.default=yu});var ni=w(Rt=>{"use strict";Object.defineProperty(Rt,"__esModule",{value:!0});Rt.default=void 0;var Eu=ri(xr()),Iu=ri(ti());function ri(t){return t&&t.__esModule?t:{default:t}}var Bu=(0,Eu.default)("v5",80,Iu.default),bu=Bu;Rt.default=bu});var ii=w(Mt=>{"use strict";Object.defineProperty(Mt,"__esModule",{value:!0});Mt.default=void 0;var xu="00000000-0000-0000-0000-000000000000";Mt.default=xu});var oi=w(qt=>{"use strict";Object.defineProperty(qt,"__esModule",{value:!0});qt.default=void 0;var Uu=_u(nt());function _u(t){return t&&t.__esModule?t:{default:t}}function ku(t){if(!(0,Uu.default)(t))throw TypeError("Invalid UUID");return parseInt(t.substr(14,1),16)}var Cu=ku;qt.default=Cu});var ai=w(he=>{"use strict";Object.defineProperty(he,"__esModule",{value:!0});Object.defineProperty(he,"v1",{enumerable:!0,get:function(){return Ou.default}});Object.defineProperty(he,"v3",{enumerable:!0,get:function(){return Tu.default}});Object.defineProperty(he,"v4",{enumerable:!0,get:function(){return Su.default}});Object.defineProperty(he,"v5",{enumerable:!0,get:function(){return Ru.default}});Object.defineProperty(he,"NIL",{enumerable:!0,get:function(){return Mu.default}});Object.defineProperty(he,"version",{enumerable:!0,get:function(){return qu.default}});Object.defineProperty(he,"validate",{enumerable:!0,get:function(){return Lu.default}});Object.defineProperty(he,"stringify",{enumerable:!0,get:function(){return Au.default}});Object.defineProperty(he,"parse",{enumerable:!0,get:function(){return Nu.default}});var Ou=be($n()),Tu=be(Zn()),Su=be(ei()),Ru=be(ni()),Mu=be(ii()),qu=be(oi()),Lu=be(nt()),Au=be(it()),Nu=be(br());function be(t){return t&&t.__esModule?t:{default:t}}});var ui=w(je=>{"use strict";Object.defineProperty(je,"__esModule",{value:!0});je.checkBypass=je.getProxyUrl=void 0;function Du(t){let e=t.protocol==="https:";if(si(t))return;let n=(()=>e?process.env.https_proxy||process.env.HTTPS_PROXY:process.env.http_proxy||process.env.HTTP_PROXY)();if(n)return new URL(n)}je.getProxyUrl=Du;function si(t){if(!t.hostname)return!1;let e=process.env.no_proxy||process.env.NO_PROXY||"";if(!e)return!1;let n;t.port?n=Number(t.port):t.protocol==="http:"?n=80:t.protocol==="https:"&&(n=443);let r=[t.hostname.toUpperCase()];typeof n=="number"&&r.push(`${r[0]}:${n}`);for(let i of e.split(",").map(o=>o.trim().toUpperCase()).filter(o=>o))if(r.some(o=>o===i))return!0;return!1}je.checkBypass=si});var di=w(ze=>{"use strict";var Cg=require("net"),Fu=require("tls"),Ur=require("http"),ci=require("https"),Pu=require("events"),Og=require("assert"),ju=require("util");ze.httpOverHttp=zu;ze.httpsOverHttp=Qu;ze.httpOverHttps=Hu;ze.httpsOverHttps=Ku;function zu(t){var e=new xe(t);return e.request=Ur.request,e}function Qu(t){var e=new xe(t);return e.request=Ur.request,e.createSocket=li,e.defaultPort=443,e}function Hu(t){var e=new xe(t);return e.request=ci.request,e}function Ku(t){var e=new xe(t);return e.request=ci.request,e.createSocket=li,e.defaultPort=443,e}function xe(t){var e=this;e.options=t||{},e.proxyOptions=e.options.proxy||{},e.maxSockets=e.options.maxSockets||Ur.Agent.defaultMaxSockets,e.requests=[],e.sockets=[],e.on("free",function(r,i,o,a){for(var s=fi(i,o,a),c=0,f=e.requests.length;c<f;++c){var d=e.requests[c];if(d.host===s.host&&d.port===s.port){e.requests.splice(c,1),d.request.onSocket(r);return}}r.destroy(),e.removeSocket(r)})}ju.inherits(xe,Pu.EventEmitter);xe.prototype.addRequest=function(e,n,r,i){var o=this,a=_r({request:e},o.options,fi(n,r,i));if(o.sockets.length>=this.maxSockets){o.requests.push(a);return}o.createSocket(a,function(s){s.on("free",c),s.on("close",f),s.on("agentRemove",f),e.onSocket(s);function c(){o.emit("free",s,a)}function f(d){o.removeSocket(s),s.removeListener("free",c),s.removeListener("close",f),s.removeListener("agentRemove",f)}})};xe.prototype.createSocket=function(e,n){var r=this,i={};r.sockets.push(i);var o=_r({},r.proxyOptions,{method:"CONNECT",path:e.host+":"+e.port,agent:!1,headers:{host:e.host+":"+e.port}});e.localAddress&&(o.localAddress=e.localAddress),o.proxyAuth&&(o.headers=o.headers||{},o.headers["Proxy-Authorization"]="Basic "+new Buffer(o.proxyAuth).toString("base64")),_e("making CONNECT request");var a=r.request(o);a.useChunkedEncodingByDefault=!1,a.once("response",s),a.once("upgrade",c),a.once("connect",f),a.once("error",d),a.end();function s(l){l.upgrade=!0}function c(l,p,k){process.nextTick(function(){f(l,p,k)})}function f(l,p,k){if(a.removeAllListeners(),p.removeAllListeners(),l.statusCode!==200){_e("tunneling socket could not be established, statusCode=%d",l.statusCode),p.destroy();var C=new Error("tunneling socket could not be established, statusCode="+l.statusCode);C.code="ECONNRESET",e.request.emit("error",C),r.removeSocket(i);return}if(k.length>0){_e("got illegal response body from proxy"),p.destroy();var C=new Error("got illegal response body from proxy");C.code="ECONNRESET",e.request.emit("error",C),r.removeSocket(i);return}return _e("tunneling connection has established"),r.sockets[r.sockets.indexOf(i)]=p,n(p)}function d(l){a.removeAllListeners(),_e(`tunneling socket could not be established, cause=%s
-`,l.message,l.stack);var p=new Error("tunneling socket could not be established, cause="+l.message);p.code="ECONNRESET",e.request.emit("error",p),r.removeSocket(i)}};xe.prototype.removeSocket=function(e){var n=this.sockets.indexOf(e);if(n!==-1){this.sockets.splice(n,1);var r=this.requests.shift();r&&this.createSocket(r,function(i){r.request.onSocket(i)})}};function li(t,e){var n=this;xe.prototype.createSocket.call(n,t,function(r){var i=t.request.getHeader("host"),o=_r({},n.options,{socket:r,servername:i?i.replace(/:.*$/,""):t.host}),a=Fu.connect(0,o);n.sockets[n.sockets.indexOf(r)]=a,e(a)})}function fi(t,e,n){return typeof t=="string"?{host:t,port:e,localAddress:n}:t}function _r(t){for(var e=1,n=arguments.length;e<n;++e){var r=arguments[e];if(typeof r=="object")for(var i=Object.keys(r),o=0,a=i.length;o<a;++o){var s=i[o];r[s]!==void 0&&(t[s]=r[s])}}return t}var _e;process.env.NODE_DEBUG&&/\btunnel\b/.test(process.env.NODE_DEBUG)?_e=function(){var t=Array.prototype.slice.call(arguments);typeof t[0]=="string"?t[0]="TUNNEL: "+t[0]:t.unshift("TUNNEL:"),console.error.apply(console,t)}:_e=function(){};ze.debug=_e});var pi=w((Sg,hi)=>{hi.exports=di()});var gi=w(M=>{"use strict";var $u=M&&M.__createBinding||(Object.create?function(t,e,n,r){r===void 0&&(r=n),Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[n]}})}:function(t,e,n,r){r===void 0&&(r=n),t[r]=e[n]}),Wu=M&&M.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),Ft=M&&M.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var n in t)n!=="default"&&Object.hasOwnProperty.call(t,n)&&$u(e,t,n);return Wu(e,t),e},$=M&&M.__awaiter||function(t,e,n,r){function i(o){return o instanceof n?o:new n(function(a){a(o)})}return new(n||(n=Promise))(function(o,a){function s(d){try{f(r.next(d))}catch(l){a(l)}}function c(d){try{f(r.throw(d))}catch(l){a(l)}}function f(d){d.done?o(d.value):i(d.value).then(s,c)}f((r=r.apply(t,e||[])).next())})};Object.defineProperty(M,"__esModule",{value:!0});M.HttpClient=M.isHttps=M.HttpClientResponse=M.HttpClientError=M.getProxyUrl=M.MediaTypes=M.Headers=M.HttpCodes=void 0;var Lt=Ft(require("http")),kr=Ft(require("https")),vi=Ft(ui()),At=Ft(pi()),pe;(function(t){t[t.OK=200]="OK",t[t.MultipleChoices=300]="MultipleChoices",t[t.MovedPermanently=301]="MovedPermanently",t[t.ResourceMoved=302]="ResourceMoved",t[t.SeeOther=303]="SeeOther",t[t.NotModified=304]="NotModified",t[t.UseProxy=305]="UseProxy",t[t.SwitchProxy=306]="SwitchProxy",t[t.TemporaryRedirect=307]="TemporaryRedirect",t[t.PermanentRedirect=308]="PermanentRedirect",t[t.BadRequest=400]="BadRequest",t[t.Unauthorized=401]="Unauthorized",t[t.PaymentRequired=402]="PaymentRequired",t[t.Forbidden=403]="Forbidden",t[t.NotFound=404]="NotFound",t[t.MethodNotAllowed=405]="MethodNotAllowed",t[t.NotAcceptable=406]="NotAcceptable",t[t.ProxyAuthenticationRequired=407]="ProxyAuthenticationRequired",t[t.RequestTimeout=408]="RequestTimeout",t[t.Conflict=409]="Conflict",t[t.Gone=410]="Gone",t[t.TooManyRequests=429]="TooManyRequests",t[t.InternalServerError=500]="InternalServerError",t[t.NotImplemented=501]="NotImplemented",t[t.BadGateway=502]="BadGateway",t[t.ServiceUnavailable=503]="ServiceUnavailable",t[t.GatewayTimeout=504]="GatewayTimeout"})(pe=M.HttpCodes||(M.HttpCodes={}));var X;(function(t){t.Accept="accept",t.ContentType="content-type"})(X=M.Headers||(M.Headers={}));var ke;(function(t){t.ApplicationJson="application/json"})(ke=M.MediaTypes||(M.MediaTypes={}));function Gu(t){let e=vi.getProxyUrl(new URL(t));return e?e.href:""}M.getProxyUrl=Gu;var Vu=[pe.MovedPermanently,pe.ResourceMoved,pe.SeeOther,pe.TemporaryRedirect,pe.PermanentRedirect],Ju=[pe.BadGateway,pe.ServiceUnavailable,pe.GatewayTimeout],Yu=["OPTIONS","GET","DELETE","HEAD"],Zu=10,Xu=5,Qe=class extends Error{constructor(e,n){super(e),this.name="HttpClientError",this.statusCode=n,Object.setPrototypeOf(this,Qe.prototype)}};M.HttpClientError=Qe;var Dt=class{constructor(e){this.message=e}readBody(){return $(this,void 0,void 0,function*(){return new Promise(e=>$(this,void 0,void 0,function*(){let n=Buffer.alloc(0);this.message.on("data",r=>{n=Buffer.concat([n,r])}),this.message.on("end",()=>{e(n.toString())})}))})}};M.HttpClientResponse=Dt;function ec(t){return new URL(t).protocol==="https:"}M.isHttps=ec;var Cr=class{constructor(e,n,r){this._ignoreSslError=!1,this._allowRedirects=!0,this._allowRedirectDowngrade=!1,this._maxRedirects=50,this._allowRetries=!1,this._maxRetries=1,this._keepAlive=!1,this._disposed=!1,this.userAgent=e,this.handlers=n||[],this.requestOptions=r,r&&(r.ignoreSslError!=null&&(this._ignoreSslError=r.ignoreSslError),this._socketTimeout=r.socketTimeout,r.allowRedirects!=null&&(this._allowRedirects=r.allowRedirects),r.allowRedirectDowngrade!=null&&(this._allowRedirectDowngrade=r.allowRedirectDowngrade),r.maxRedirects!=null&&(this._maxRedirects=Math.max(r.maxRedirects,0)),r.keepAlive!=null&&(this._keepAlive=r.keepAlive),r.allowRetries!=null&&(this._allowRetries=r.allowRetries),r.maxRetries!=null&&(this._maxRetries=r.maxRetries))}options(e,n){return $(this,void 0,void 0,function*(){return this.request("OPTIONS",e,null,n||{})})}get(e,n){return $(this,void 0,void 0,function*(){return this.request("GET",e,null,n||{})})}del(e,n){return $(this,void 0,void 0,function*(){return this.request("DELETE",e,null,n||{})})}post(e,n,r){return $(this,void 0,void 0,function*(){return this.request("POST",e,n,r||{})})}patch(e,n,r){return $(this,void 0,void 0,function*(){return this.request("PATCH",e,n,r||{})})}put(e,n,r){return $(this,void 0,void 0,function*(){return this.request("PUT",e,n,r||{})})}head(e,n){return $(this,void 0,void 0,function*(){return this.request("HEAD",e,null,n||{})})}sendStream(e,n,r,i){return $(this,void 0,void 0,function*(){return this.request(e,n,r,i)})}getJson(e,n={}){return $(this,void 0,void 0,function*(){n[X.Accept]=this._getExistingOrDefaultHeader(n,X.Accept,ke.ApplicationJson);let r=yield this.get(e,n);return this._processResponse(r,this.requestOptions)})}postJson(e,n,r={}){return $(this,void 0,void 0,function*(){let i=JSON.stringify(n,null,2);r[X.Accept]=this._getExistingOrDefaultHeader(r,X.Accept,ke.ApplicationJson),r[X.ContentType]=this._getExistingOrDefaultHeader(r,X.ContentType,ke.ApplicationJson);let o=yield this.post(e,i,r);return this._processResponse(o,this.requestOptions)})}putJson(e,n,r={}){return $(this,void 0,void 0,function*(){let i=JSON.stringify(n,null,2);r[X.Accept]=this._getExistingOrDefaultHeader(r,X.Accept,ke.ApplicationJson),r[X.ContentType]=this._getExistingOrDefaultHeader(r,X.ContentType,ke.ApplicationJson);let o=yield this.put(e,i,r);return this._processResponse(o,this.requestOptions)})}patchJson(e,n,r={}){return $(this,void 0,void 0,function*(){let i=JSON.stringify(n,null,2);r[X.Accept]=this._getExistingOrDefaultHeader(r,X.Accept,ke.ApplicationJson),r[X.ContentType]=this._getExistingOrDefaultHeader(r,X.ContentType,ke.ApplicationJson);let o=yield this.patch(e,i,r);return this._processResponse(o,this.requestOptions)})}request(e,n,r,i){return $(this,void 0,void 0,function*(){if(this._disposed)throw new Error("Client has already been disposed.");let o=new URL(n),a=this._prepareRequest(e,o,i),s=this._allowRetries&&Yu.includes(e)?this._maxRetries+1:1,c=0,f;do{if(f=yield this.requestRaw(a,r),f&&f.message&&f.message.statusCode===pe.Unauthorized){let l;for(let p of this.handlers)if(p.canHandleAuthentication(f)){l=p;break}return l?l.handleAuthentication(this,a,r):f}let d=this._maxRedirects;for(;f.message.statusCode&&Vu.includes(f.message.statusCode)&&this._allowRedirects&&d>0;){let l=f.message.headers.location;if(!l)break;let p=new URL(l);if(o.protocol==="https:"&&o.protocol!==p.protocol&&!this._allowRedirectDowngrade)throw new Error("Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.");if(yield f.readBody(),p.hostname!==o.hostname)for(let k in i)k.toLowerCase()==="authorization"&&delete i[k];a=this._prepareRequest(e,p,i),f=yield this.requestRaw(a,r),d--}if(!f.message.statusCode||!Ju.includes(f.message.statusCode))return f;c+=1,c<s&&(yield f.readBody(),yield this._performExponentialBackoff(c))}while(c<s);return f})}dispose(){this._agent&&this._agent.destroy(),this._disposed=!0}requestRaw(e,n){return $(this,void 0,void 0,function*(){return new Promise((r,i)=>{function o(a,s){a?i(a):s?r(s):i(new Error("Unknown error"))}this.requestRawWithCallback(e,n,o)})})}requestRawWithCallback(e,n,r){typeof n=="string"&&(e.options.headers||(e.options.headers={}),e.options.headers["Content-Length"]=Buffer.byteLength(n,"utf8"));let i=!1;function o(c,f){i||(i=!0,r(c,f))}let a=e.httpModule.request(e.options,c=>{let f=new Dt(c);o(void 0,f)}),s;a.on("socket",c=>{s=c}),a.setTimeout(this._socketTimeout||3*6e4,()=>{s&&s.end(),o(new Error(`Request timeout: ${e.options.path}`))}),a.on("error",function(c){o(c)}),n&&typeof n=="string"&&a.write(n,"utf8"),n&&typeof n!="string"?(n.on("close",function(){a.end()}),n.pipe(a)):a.end()}getAgent(e){let n=new URL(e);return this._getAgent(n)}_prepareRequest(e,n,r){let i={};i.parsedUrl=n;let o=i.parsedUrl.protocol==="https:";i.httpModule=o?kr:Lt;let a=o?443:80;if(i.options={},i.options.host=i.parsedUrl.hostname,i.options.port=i.parsedUrl.port?parseInt(i.parsedUrl.port):a,i.options.path=(i.parsedUrl.pathname||"")+(i.parsedUrl.search||""),i.options.method=e,i.options.headers=this._mergeHeaders(r),this.userAgent!=null&&(i.options.headers["user-agent"]=this.userAgent),i.options.agent=this._getAgent(i.parsedUrl),this.handlers)for(let s of this.handlers)s.prepareRequest(i.options);return i}_mergeHeaders(e){return this.requestOptions&&this.requestOptions.headers?Object.assign({},Nt(this.requestOptions.headers),Nt(e||{})):Nt(e||{})}_getExistingOrDefaultHeader(e,n,r){let i;return this.requestOptions&&this.requestOptions.headers&&(i=Nt(this.requestOptions.headers)[n]),e[n]||i||r}_getAgent(e){let n,r=vi.getProxyUrl(e),i=r&&r.hostname;if(this._keepAlive&&i&&(n=this._proxyAgent),this._keepAlive&&!i&&(n=this._agent),n)return n;let o=e.protocol==="https:",a=100;if(this.requestOptions&&(a=this.requestOptions.maxSockets||Lt.globalAgent.maxSockets),r&&r.hostname){let s={maxSockets:a,keepAlive:this._keepAlive,proxy:Object.assign(Object.assign({},(r.username||r.password)&&{proxyAuth:`${r.username}:${r.password}`}),{host:r.hostname,port:r.port})},c,f=r.protocol==="https:";o?c=f?At.httpsOverHttps:At.httpsOverHttp:c=f?At.httpOverHttps:At.httpOverHttp,n=c(s),this._proxyAgent=n}if(this._keepAlive&&!n){let s={keepAlive:this._keepAlive,maxSockets:a};n=o?new kr.Agent(s):new Lt.Agent(s),this._agent=n}return n||(n=o?kr.globalAgent:Lt.globalAgent),o&&this._ignoreSslError&&(n.options=Object.assign(n.options||{},{rejectUnauthorized:!1})),n}_performExponentialBackoff(e){return $(this,void 0,void 0,function*(){e=Math.min(Zu,e);let n=Xu*Math.pow(2,e);return new Promise(r=>setTimeout(()=>r(),n))})}_processResponse(e,n){return $(this,void 0,void 0,function*(){return new Promise((r,i)=>$(this,void 0,void 0,function*(){let o=e.message.statusCode||0,a={statusCode:o,result:null,headers:{}};o===pe.NotFound&&r(a);function s(d,l){if(typeof l=="string"){let p=new Date(l);if(!isNaN(p.valueOf()))return p}return l}let c,f;try{f=yield e.readBody(),f&&f.length>0&&(n&&n.deserializeDates?c=JSON.parse(f,s):c=JSON.parse(f),a.result=c),a.headers=e.message.headers}catch{}if(o>299){let d;c&&c.message?d=c.message:f&&f.length>0?d=f:d=`Failed request: (${o})`;let l=new Qe(d,o);l.result=a.result,i(l)}else r(a)}))})}};M.HttpClient=Cr;var Nt=t=>Object.keys(t).reduce((e,n)=>(e[n.toLowerCase()]=t[n],e),{})});var mi=w(ge=>{"use strict";var Rr=ge&&ge.__awaiter||function(t,e,n,r){function i(o){return o instanceof n?o:new n(function(a){a(o)})}return new(n||(n=Promise))(function(o,a){function s(d){try{f(r.next(d))}catch(l){a(l)}}function c(d){try{f(r.throw(d))}catch(l){a(l)}}function f(d){d.done?o(d.value):i(d.value).then(s,c)}f((r=r.apply(t,e||[])).next())})};Object.defineProperty(ge,"__esModule",{value:!0});ge.PersonalAccessTokenCredentialHandler=ge.BearerCredentialHandler=ge.BasicCredentialHandler=void 0;var Or=class{constructor(e,n){this.username=e,this.password=n}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Basic ${Buffer.from(`${this.username}:${this.password}`).toString("base64")}`}canHandleAuthentication(){return!1}handleAuthentication(){return Rr(this,void 0,void 0,function*(){throw new Error("not implemented")})}};ge.BasicCredentialHandler=Or;var Tr=class{constructor(e){this.token=e}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Bearer ${this.token}`}canHandleAuthentication(){return!1}handleAuthentication(){return Rr(this,void 0,void 0,function*(){throw new Error("not implemented")})}};ge.BearerCredentialHandler=Tr;var Sr=class{constructor(e){this.token=e}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Basic ${Buffer.from(`PAT:${this.token}`).toString("base64")}`}canHandleAuthentication(){return!1}handleAuthentication(){return Rr(this,void 0,void 0,function*(){throw new Error("not implemented")})}};ge.PersonalAccessTokenCredentialHandler=Sr});var Ei=w(He=>{"use strict";var wi=He&&He.__awaiter||function(t,e,n,r){function i(o){return o instanceof n?o:new n(function(a){a(o)})}return new(n||(n=Promise))(function(o,a){function s(d){try{f(r.next(d))}catch(l){a(l)}}function c(d){try{f(r.throw(d))}catch(l){a(l)}}function f(d){d.done?o(d.value):i(d.value).then(s,c)}f((r=r.apply(t,e||[])).next())})};Object.defineProperty(He,"__esModule",{value:!0});He.OidcClient=void 0;var tc=gi(),rc=mi(),yi=Mr(),Ce=class{static createHttpClient(e=!0,n=10){let r={allowRetries:e,maxRetries:n};return new tc.HttpClient("actions/oidc-client",[new rc.BearerCredentialHandler(Ce.getRequestToken())],r)}static getRequestToken(){let e=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;if(!e)throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable");return e}static getIDTokenUrl(){let e=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;if(!e)throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable");return e}static getCall(e){var n;return wi(this,void 0,void 0,function*(){let o=(n=(yield Ce.createHttpClient().getJson(e).catch(a=>{throw new Error(`Failed to get ID Token. 
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/utils.js
+var require_utils = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/utils.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.toCommandProperties = exports.toCommandValue = void 0;
+    function toCommandValue(input) {
+      if (input === null || input === void 0) {
+        return "";
+      } else if (typeof input === "string" || input instanceof String) {
+        return input;
+      }
+      return JSON.stringify(input);
+    }
+    exports.toCommandValue = toCommandValue;
+    function toCommandProperties(annotationProperties) {
+      if (!Object.keys(annotationProperties).length) {
+        return {};
+      }
+      return {
+        title: annotationProperties.title,
+        file: annotationProperties.file,
+        line: annotationProperties.startLine,
+        endLine: annotationProperties.endLine,
+        col: annotationProperties.startColumn,
+        endColumn: annotationProperties.endColumn
+      };
+    }
+    exports.toCommandProperties = toCommandProperties;
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/command.js
+var require_command = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/command.js"(exports) {
+    "use strict";
+    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports && exports.__importStar || function(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod)
+          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
+            __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.issue = exports.issueCommand = void 0;
+    var os = __importStar(require("os"));
+    var utils_1 = require_utils();
+    function issueCommand(command, properties, message) {
+      const cmd = new Command(command, properties, message);
+      process.stdout.write(cmd.toString() + os.EOL);
+    }
+    exports.issueCommand = issueCommand;
+    function issue(name, message = "") {
+      issueCommand(name, {}, message);
+    }
+    exports.issue = issue;
+    var CMD_STRING = "::";
+    var Command = class {
+      constructor(command, properties, message) {
+        if (!command) {
+          command = "missing.command";
+        }
+        this.command = command;
+        this.properties = properties;
+        this.message = message;
+      }
+      toString() {
+        let cmdStr = CMD_STRING + this.command;
+        if (this.properties && Object.keys(this.properties).length > 0) {
+          cmdStr += " ";
+          let first = true;
+          for (const key in this.properties) {
+            if (this.properties.hasOwnProperty(key)) {
+              const val = this.properties[key];
+              if (val) {
+                if (first) {
+                  first = false;
+                } else {
+                  cmdStr += ",";
+                }
+                cmdStr += `${key}=${escapeProperty(val)}`;
+              }
+            }
+          }
+        }
+        cmdStr += `${CMD_STRING}${escapeData(this.message)}`;
+        return cmdStr;
+      }
+    };
+    function escapeData(s) {
+      return utils_1.toCommandValue(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");
+    }
+    function escapeProperty(s) {
+      return utils_1.toCommandValue(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A").replace(/:/g, "%3A").replace(/,/g, "%2C");
+    }
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/file-command.js
+var require_file_command = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/file-command.js"(exports) {
+    "use strict";
+    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports && exports.__importStar || function(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod)
+          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
+            __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.issueCommand = void 0;
+    var fs = __importStar(require("fs"));
+    var os = __importStar(require("os"));
+    var utils_1 = require_utils();
+    function issueCommand(command, message) {
+      const filePath = process.env[`GITHUB_${command}`];
+      if (!filePath) {
+        throw new Error(`Unable to find environment variable for file command ${command}`);
+      }
+      if (!fs.existsSync(filePath)) {
+        throw new Error(`Missing file at path: ${filePath}`);
+      }
+      fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+        encoding: "utf8"
+      });
+    }
+    exports.issueCommand = issueCommand;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/rng.js
+var require_rng = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/rng.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = rng;
+    var _crypto = _interopRequireDefault(require("crypto"));
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var rnds8Pool = new Uint8Array(256);
+    var poolPtr = rnds8Pool.length;
+    function rng() {
+      if (poolPtr > rnds8Pool.length - 16) {
+        _crypto.default.randomFillSync(rnds8Pool);
+        poolPtr = 0;
+      }
+      return rnds8Pool.slice(poolPtr, poolPtr += 16);
+    }
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/regex.js
+var require_regex = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/regex.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/validate.js
+var require_validate = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/validate.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _regex = _interopRequireDefault(require_regex());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function validate(uuid) {
+      return typeof uuid === "string" && _regex.default.test(uuid);
+    }
+    var _default = validate;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/stringify.js
+var require_stringify = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/stringify.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _validate = _interopRequireDefault(require_validate());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var byteToHex = [];
+    for (let i = 0; i < 256; ++i) {
+      byteToHex.push((i + 256).toString(16).substr(1));
+    }
+    function stringify(arr, offset = 0) {
+      const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+      if (!(0, _validate.default)(uuid)) {
+        throw TypeError("Stringified UUID is invalid");
+      }
+      return uuid;
+    }
+    var _default = stringify;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v1.js
+var require_v1 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v1.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _rng = _interopRequireDefault(require_rng());
+    var _stringify = _interopRequireDefault(require_stringify());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var _nodeId;
+    var _clockseq;
+    var _lastMSecs = 0;
+    var _lastNSecs = 0;
+    function v1(options, buf, offset) {
+      let i = buf && offset || 0;
+      const b = buf || new Array(16);
+      options = options || {};
+      let node = options.node || _nodeId;
+      let clockseq = options.clockseq !== void 0 ? options.clockseq : _clockseq;
+      if (node == null || clockseq == null) {
+        const seedBytes = options.random || (options.rng || _rng.default)();
+        if (node == null) {
+          node = _nodeId = [seedBytes[0] | 1, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
+        }
+        if (clockseq == null) {
+          clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 16383;
+        }
+      }
+      let msecs = options.msecs !== void 0 ? options.msecs : Date.now();
+      let nsecs = options.nsecs !== void 0 ? options.nsecs : _lastNSecs + 1;
+      const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 1e4;
+      if (dt < 0 && options.clockseq === void 0) {
+        clockseq = clockseq + 1 & 16383;
+      }
+      if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === void 0) {
+        nsecs = 0;
+      }
+      if (nsecs >= 1e4) {
+        throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+      }
+      _lastMSecs = msecs;
+      _lastNSecs = nsecs;
+      _clockseq = clockseq;
+      msecs += 122192928e5;
+      const tl = ((msecs & 268435455) * 1e4 + nsecs) % 4294967296;
+      b[i++] = tl >>> 24 & 255;
+      b[i++] = tl >>> 16 & 255;
+      b[i++] = tl >>> 8 & 255;
+      b[i++] = tl & 255;
+      const tmh = msecs / 4294967296 * 1e4 & 268435455;
+      b[i++] = tmh >>> 8 & 255;
+      b[i++] = tmh & 255;
+      b[i++] = tmh >>> 24 & 15 | 16;
+      b[i++] = tmh >>> 16 & 255;
+      b[i++] = clockseq >>> 8 | 128;
+      b[i++] = clockseq & 255;
+      for (let n = 0; n < 6; ++n) {
+        b[i + n] = node[n];
+      }
+      return buf || (0, _stringify.default)(b);
+    }
+    var _default = v1;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/parse.js
+var require_parse = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/parse.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _validate = _interopRequireDefault(require_validate());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function parse(uuid) {
+      if (!(0, _validate.default)(uuid)) {
+        throw TypeError("Invalid UUID");
+      }
+      let v;
+      const arr = new Uint8Array(16);
+      arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+      arr[1] = v >>> 16 & 255;
+      arr[2] = v >>> 8 & 255;
+      arr[3] = v & 255;
+      arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+      arr[5] = v & 255;
+      arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+      arr[7] = v & 255;
+      arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+      arr[9] = v & 255;
+      arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 1099511627776 & 255;
+      arr[11] = v / 4294967296 & 255;
+      arr[12] = v >>> 24 & 255;
+      arr[13] = v >>> 16 & 255;
+      arr[14] = v >>> 8 & 255;
+      arr[15] = v & 255;
+      return arr;
+    }
+    var _default = parse;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v35.js
+var require_v35 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v35.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = _default;
+    exports.URL = exports.DNS = void 0;
+    var _stringify = _interopRequireDefault(require_stringify());
+    var _parse = _interopRequireDefault(require_parse());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function stringToBytes(str) {
+      str = unescape(encodeURIComponent(str));
+      const bytes = [];
+      for (let i = 0; i < str.length; ++i) {
+        bytes.push(str.charCodeAt(i));
+      }
+      return bytes;
+    }
+    var DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+    exports.DNS = DNS;
+    var URL2 = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
+    exports.URL = URL2;
+    function _default(name, version, hashfunc) {
+      function generateUUID(value, namespace, buf, offset) {
+        if (typeof value === "string") {
+          value = stringToBytes(value);
+        }
+        if (typeof namespace === "string") {
+          namespace = (0, _parse.default)(namespace);
+        }
+        if (namespace.length !== 16) {
+          throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
+        }
+        let bytes = new Uint8Array(16 + value.length);
+        bytes.set(namespace);
+        bytes.set(value, namespace.length);
+        bytes = hashfunc(bytes);
+        bytes[6] = bytes[6] & 15 | version;
+        bytes[8] = bytes[8] & 63 | 128;
+        if (buf) {
+          offset = offset || 0;
+          for (let i = 0; i < 16; ++i) {
+            buf[offset + i] = bytes[i];
+          }
+          return buf;
+        }
+        return (0, _stringify.default)(bytes);
+      }
+      try {
+        generateUUID.name = name;
+      } catch (err) {
+      }
+      generateUUID.DNS = DNS;
+      generateUUID.URL = URL2;
+      return generateUUID;
+    }
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/md5.js
+var require_md5 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/md5.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _crypto = _interopRequireDefault(require("crypto"));
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function md5(bytes) {
+      if (Array.isArray(bytes)) {
+        bytes = Buffer.from(bytes);
+      } else if (typeof bytes === "string") {
+        bytes = Buffer.from(bytes, "utf8");
+      }
+      return _crypto.default.createHash("md5").update(bytes).digest();
+    }
+    var _default = md5;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v3.js
+var require_v3 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v3.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _v = _interopRequireDefault(require_v35());
+    var _md = _interopRequireDefault(require_md5());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var v3 = (0, _v.default)("v3", 48, _md.default);
+    var _default = v3;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v4.js
+var require_v4 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v4.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _rng = _interopRequireDefault(require_rng());
+    var _stringify = _interopRequireDefault(require_stringify());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function v4(options, buf, offset) {
+      options = options || {};
+      const rnds = options.random || (options.rng || _rng.default)();
+      rnds[6] = rnds[6] & 15 | 64;
+      rnds[8] = rnds[8] & 63 | 128;
+      if (buf) {
+        offset = offset || 0;
+        for (let i = 0; i < 16; ++i) {
+          buf[offset + i] = rnds[i];
+        }
+        return buf;
+      }
+      return (0, _stringify.default)(rnds);
+    }
+    var _default = v4;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/sha1.js
+var require_sha1 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/sha1.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _crypto = _interopRequireDefault(require("crypto"));
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function sha1(bytes) {
+      if (Array.isArray(bytes)) {
+        bytes = Buffer.from(bytes);
+      } else if (typeof bytes === "string") {
+        bytes = Buffer.from(bytes, "utf8");
+      }
+      return _crypto.default.createHash("sha1").update(bytes).digest();
+    }
+    var _default = sha1;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v5.js
+var require_v5 = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/v5.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _v = _interopRequireDefault(require_v35());
+    var _sha = _interopRequireDefault(require_sha1());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var v5 = (0, _v.default)("v5", 80, _sha.default);
+    var _default = v5;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/nil.js
+var require_nil = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/nil.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _default = "00000000-0000-0000-0000-000000000000";
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/version.js
+var require_version = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/version.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _validate = _interopRequireDefault(require_validate());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function version(uuid) {
+      if (!(0, _validate.default)(uuid)) {
+        throw TypeError("Invalid UUID");
+      }
+      return parseInt(uuid.substr(14, 1), 16);
+    }
+    var _default = version;
+    exports.default = _default;
+  }
+});
+
+// node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/index.js
+var require_dist = __commonJS({
+  "node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/index.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    Object.defineProperty(exports, "v1", {
+      enumerable: true,
+      get: function() {
+        return _v.default;
+      }
+    });
+    Object.defineProperty(exports, "v3", {
+      enumerable: true,
+      get: function() {
+        return _v2.default;
+      }
+    });
+    Object.defineProperty(exports, "v4", {
+      enumerable: true,
+      get: function() {
+        return _v3.default;
+      }
+    });
+    Object.defineProperty(exports, "v5", {
+      enumerable: true,
+      get: function() {
+        return _v4.default;
+      }
+    });
+    Object.defineProperty(exports, "NIL", {
+      enumerable: true,
+      get: function() {
+        return _nil.default;
+      }
+    });
+    Object.defineProperty(exports, "version", {
+      enumerable: true,
+      get: function() {
+        return _version.default;
+      }
+    });
+    Object.defineProperty(exports, "validate", {
+      enumerable: true,
+      get: function() {
+        return _validate.default;
+      }
+    });
+    Object.defineProperty(exports, "stringify", {
+      enumerable: true,
+      get: function() {
+        return _stringify.default;
+      }
+    });
+    Object.defineProperty(exports, "parse", {
+      enumerable: true,
+      get: function() {
+        return _parse.default;
+      }
+    });
+    var _v = _interopRequireDefault(require_v1());
+    var _v2 = _interopRequireDefault(require_v3());
+    var _v3 = _interopRequireDefault(require_v4());
+    var _v4 = _interopRequireDefault(require_v5());
+    var _nil = _interopRequireDefault(require_nil());
+    var _version = _interopRequireDefault(require_version());
+    var _validate = _interopRequireDefault(require_validate());
+    var _stringify = _interopRequireDefault(require_stringify());
+    var _parse = _interopRequireDefault(require_parse());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+  }
+});
+
+// node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/proxy.js
+var require_proxy = __commonJS({
+  "node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/proxy.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.checkBypass = exports.getProxyUrl = void 0;
+    function getProxyUrl(reqUrl) {
+      const usingSsl = reqUrl.protocol === "https:";
+      if (checkBypass(reqUrl)) {
+        return void 0;
+      }
+      const proxyVar = (() => {
+        if (usingSsl) {
+          return process.env["https_proxy"] || process.env["HTTPS_PROXY"];
+        } else {
+          return process.env["http_proxy"] || process.env["HTTP_PROXY"];
+        }
+      })();
+      if (proxyVar) {
+        return new URL(proxyVar);
+      } else {
+        return void 0;
+      }
+    }
+    exports.getProxyUrl = getProxyUrl;
+    function checkBypass(reqUrl) {
+      if (!reqUrl.hostname) {
+        return false;
+      }
+      const noProxy = process.env["no_proxy"] || process.env["NO_PROXY"] || "";
+      if (!noProxy) {
+        return false;
+      }
+      let reqPort;
+      if (reqUrl.port) {
+        reqPort = Number(reqUrl.port);
+      } else if (reqUrl.protocol === "http:") {
+        reqPort = 80;
+      } else if (reqUrl.protocol === "https:") {
+        reqPort = 443;
+      }
+      const upperReqHosts = [reqUrl.hostname.toUpperCase()];
+      if (typeof reqPort === "number") {
+        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
+      }
+      for (const upperNoProxyItem of noProxy.split(",").map((x) => x.trim().toUpperCase()).filter((x) => x)) {
+        if (upperReqHosts.some((x) => x === upperNoProxyItem)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    exports.checkBypass = checkBypass;
+  }
+});
+
+// node_modules/.pnpm/tunnel@0.0.6/node_modules/tunnel/lib/tunnel.js
+var require_tunnel = __commonJS({
+  "node_modules/.pnpm/tunnel@0.0.6/node_modules/tunnel/lib/tunnel.js"(exports) {
+    "use strict";
+    var net = require("net");
+    var tls = require("tls");
+    var http = require("http");
+    var https = require("https");
+    var events = require("events");
+    var assert = require("assert");
+    var util = require("util");
+    exports.httpOverHttp = httpOverHttp;
+    exports.httpsOverHttp = httpsOverHttp;
+    exports.httpOverHttps = httpOverHttps;
+    exports.httpsOverHttps = httpsOverHttps;
+    function httpOverHttp(options) {
+      var agent = new TunnelingAgent(options);
+      agent.request = http.request;
+      return agent;
+    }
+    function httpsOverHttp(options) {
+      var agent = new TunnelingAgent(options);
+      agent.request = http.request;
+      agent.createSocket = createSecureSocket;
+      agent.defaultPort = 443;
+      return agent;
+    }
+    function httpOverHttps(options) {
+      var agent = new TunnelingAgent(options);
+      agent.request = https.request;
+      return agent;
+    }
+    function httpsOverHttps(options) {
+      var agent = new TunnelingAgent(options);
+      agent.request = https.request;
+      agent.createSocket = createSecureSocket;
+      agent.defaultPort = 443;
+      return agent;
+    }
+    function TunnelingAgent(options) {
+      var self2 = this;
+      self2.options = options || {};
+      self2.proxyOptions = self2.options.proxy || {};
+      self2.maxSockets = self2.options.maxSockets || http.Agent.defaultMaxSockets;
+      self2.requests = [];
+      self2.sockets = [];
+      self2.on("free", function onFree(socket, host, port, localAddress) {
+        var options2 = toOptions(host, port, localAddress);
+        for (var i = 0, len = self2.requests.length; i < len; ++i) {
+          var pending = self2.requests[i];
+          if (pending.host === options2.host && pending.port === options2.port) {
+            self2.requests.splice(i, 1);
+            pending.request.onSocket(socket);
+            return;
+          }
+        }
+        socket.destroy();
+        self2.removeSocket(socket);
+      });
+    }
+    util.inherits(TunnelingAgent, events.EventEmitter);
+    TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
+      var self2 = this;
+      var options = mergeOptions({ request: req }, self2.options, toOptions(host, port, localAddress));
+      if (self2.sockets.length >= this.maxSockets) {
+        self2.requests.push(options);
+        return;
+      }
+      self2.createSocket(options, function(socket) {
+        socket.on("free", onFree);
+        socket.on("close", onCloseOrRemove);
+        socket.on("agentRemove", onCloseOrRemove);
+        req.onSocket(socket);
+        function onFree() {
+          self2.emit("free", socket, options);
+        }
+        function onCloseOrRemove(err) {
+          self2.removeSocket(socket);
+          socket.removeListener("free", onFree);
+          socket.removeListener("close", onCloseOrRemove);
+          socket.removeListener("agentRemove", onCloseOrRemove);
+        }
+      });
+    };
+    TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
+      var self2 = this;
+      var placeholder = {};
+      self2.sockets.push(placeholder);
+      var connectOptions = mergeOptions({}, self2.proxyOptions, {
+        method: "CONNECT",
+        path: options.host + ":" + options.port,
+        agent: false,
+        headers: {
+          host: options.host + ":" + options.port
+        }
+      });
+      if (options.localAddress) {
+        connectOptions.localAddress = options.localAddress;
+      }
+      if (connectOptions.proxyAuth) {
+        connectOptions.headers = connectOptions.headers || {};
+        connectOptions.headers["Proxy-Authorization"] = "Basic " + new Buffer(connectOptions.proxyAuth).toString("base64");
+      }
+      debug("making CONNECT request");
+      var connectReq = self2.request(connectOptions);
+      connectReq.useChunkedEncodingByDefault = false;
+      connectReq.once("response", onResponse);
+      connectReq.once("upgrade", onUpgrade);
+      connectReq.once("connect", onConnect);
+      connectReq.once("error", onError);
+      connectReq.end();
+      function onResponse(res) {
+        res.upgrade = true;
+      }
+      function onUpgrade(res, socket, head) {
+        process.nextTick(function() {
+          onConnect(res, socket, head);
+        });
+      }
+      function onConnect(res, socket, head) {
+        connectReq.removeAllListeners();
+        socket.removeAllListeners();
+        if (res.statusCode !== 200) {
+          debug(
+            "tunneling socket could not be established, statusCode=%d",
+            res.statusCode
+          );
+          socket.destroy();
+          var error = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
+          error.code = "ECONNRESET";
+          options.request.emit("error", error);
+          self2.removeSocket(placeholder);
+          return;
+        }
+        if (head.length > 0) {
+          debug("got illegal response body from proxy");
+          socket.destroy();
+          var error = new Error("got illegal response body from proxy");
+          error.code = "ECONNRESET";
+          options.request.emit("error", error);
+          self2.removeSocket(placeholder);
+          return;
+        }
+        debug("tunneling connection has established");
+        self2.sockets[self2.sockets.indexOf(placeholder)] = socket;
+        return cb(socket);
+      }
+      function onError(cause) {
+        connectReq.removeAllListeners();
+        debug(
+          "tunneling socket could not be established, cause=%s\n",
+          cause.message,
+          cause.stack
+        );
+        var error = new Error("tunneling socket could not be established, cause=" + cause.message);
+        error.code = "ECONNRESET";
+        options.request.emit("error", error);
+        self2.removeSocket(placeholder);
+      }
+    };
+    TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
+      var pos = this.sockets.indexOf(socket);
+      if (pos === -1) {
+        return;
+      }
+      this.sockets.splice(pos, 1);
+      var pending = this.requests.shift();
+      if (pending) {
+        this.createSocket(pending, function(socket2) {
+          pending.request.onSocket(socket2);
+        });
+      }
+    };
+    function createSecureSocket(options, cb) {
+      var self2 = this;
+      TunnelingAgent.prototype.createSocket.call(self2, options, function(socket) {
+        var hostHeader = options.request.getHeader("host");
+        var tlsOptions = mergeOptions({}, self2.options, {
+          socket,
+          servername: hostHeader ? hostHeader.replace(/:.*$/, "") : options.host
+        });
+        var secureSocket = tls.connect(0, tlsOptions);
+        self2.sockets[self2.sockets.indexOf(socket)] = secureSocket;
+        cb(secureSocket);
+      });
+    }
+    function toOptions(host, port, localAddress) {
+      if (typeof host === "string") {
+        return {
+          host,
+          port,
+          localAddress
+        };
+      }
+      return host;
+    }
+    function mergeOptions(target) {
+      for (var i = 1, len = arguments.length; i < len; ++i) {
+        var overrides = arguments[i];
+        if (typeof overrides === "object") {
+          var keys = Object.keys(overrides);
+          for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
+            var k = keys[j];
+            if (overrides[k] !== void 0) {
+              target[k] = overrides[k];
+            }
+          }
+        }
+      }
+      return target;
+    }
+    var debug;
+    if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
+      debug = function() {
+        var args = Array.prototype.slice.call(arguments);
+        if (typeof args[0] === "string") {
+          args[0] = "TUNNEL: " + args[0];
+        } else {
+          args.unshift("TUNNEL:");
+        }
+        console.error.apply(console, args);
+      };
+    } else {
+      debug = function() {
+      };
+    }
+    exports.debug = debug;
+  }
+});
+
+// node_modules/.pnpm/tunnel@0.0.6/node_modules/tunnel/index.js
+var require_tunnel2 = __commonJS({
+  "node_modules/.pnpm/tunnel@0.0.6/node_modules/tunnel/index.js"(exports, module2) {
+    module2.exports = require_tunnel();
+  }
+});
+
+// node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/index.js
+var require_lib = __commonJS({
+  "node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/index.js"(exports) {
+    "use strict";
+    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports && exports.__importStar || function(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod)
+          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
+            __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
+    var http = __importStar(require("http"));
+    var https = __importStar(require("https"));
+    var pm = __importStar(require_proxy());
+    var tunnel = __importStar(require_tunnel2());
+    var HttpCodes;
+    (function(HttpCodes2) {
+      HttpCodes2[HttpCodes2["OK"] = 200] = "OK";
+      HttpCodes2[HttpCodes2["MultipleChoices"] = 300] = "MultipleChoices";
+      HttpCodes2[HttpCodes2["MovedPermanently"] = 301] = "MovedPermanently";
+      HttpCodes2[HttpCodes2["ResourceMoved"] = 302] = "ResourceMoved";
+      HttpCodes2[HttpCodes2["SeeOther"] = 303] = "SeeOther";
+      HttpCodes2[HttpCodes2["NotModified"] = 304] = "NotModified";
+      HttpCodes2[HttpCodes2["UseProxy"] = 305] = "UseProxy";
+      HttpCodes2[HttpCodes2["SwitchProxy"] = 306] = "SwitchProxy";
+      HttpCodes2[HttpCodes2["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+      HttpCodes2[HttpCodes2["PermanentRedirect"] = 308] = "PermanentRedirect";
+      HttpCodes2[HttpCodes2["BadRequest"] = 400] = "BadRequest";
+      HttpCodes2[HttpCodes2["Unauthorized"] = 401] = "Unauthorized";
+      HttpCodes2[HttpCodes2["PaymentRequired"] = 402] = "PaymentRequired";
+      HttpCodes2[HttpCodes2["Forbidden"] = 403] = "Forbidden";
+      HttpCodes2[HttpCodes2["NotFound"] = 404] = "NotFound";
+      HttpCodes2[HttpCodes2["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+      HttpCodes2[HttpCodes2["NotAcceptable"] = 406] = "NotAcceptable";
+      HttpCodes2[HttpCodes2["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+      HttpCodes2[HttpCodes2["RequestTimeout"] = 408] = "RequestTimeout";
+      HttpCodes2[HttpCodes2["Conflict"] = 409] = "Conflict";
+      HttpCodes2[HttpCodes2["Gone"] = 410] = "Gone";
+      HttpCodes2[HttpCodes2["TooManyRequests"] = 429] = "TooManyRequests";
+      HttpCodes2[HttpCodes2["InternalServerError"] = 500] = "InternalServerError";
+      HttpCodes2[HttpCodes2["NotImplemented"] = 501] = "NotImplemented";
+      HttpCodes2[HttpCodes2["BadGateway"] = 502] = "BadGateway";
+      HttpCodes2[HttpCodes2["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+      HttpCodes2[HttpCodes2["GatewayTimeout"] = 504] = "GatewayTimeout";
+    })(HttpCodes = exports.HttpCodes || (exports.HttpCodes = {}));
+    var Headers;
+    (function(Headers2) {
+      Headers2["Accept"] = "accept";
+      Headers2["ContentType"] = "content-type";
+    })(Headers = exports.Headers || (exports.Headers = {}));
+    var MediaTypes;
+    (function(MediaTypes2) {
+      MediaTypes2["ApplicationJson"] = "application/json";
+    })(MediaTypes = exports.MediaTypes || (exports.MediaTypes = {}));
+    function getProxyUrl(serverUrl) {
+      const proxyUrl = pm.getProxyUrl(new URL(serverUrl));
+      return proxyUrl ? proxyUrl.href : "";
+    }
+    exports.getProxyUrl = getProxyUrl;
+    var HttpRedirectCodes = [
+      HttpCodes.MovedPermanently,
+      HttpCodes.ResourceMoved,
+      HttpCodes.SeeOther,
+      HttpCodes.TemporaryRedirect,
+      HttpCodes.PermanentRedirect
+    ];
+    var HttpResponseRetryCodes = [
+      HttpCodes.BadGateway,
+      HttpCodes.ServiceUnavailable,
+      HttpCodes.GatewayTimeout
+    ];
+    var RetryableHttpVerbs = ["OPTIONS", "GET", "DELETE", "HEAD"];
+    var ExponentialBackoffCeiling = 10;
+    var ExponentialBackoffTimeSlice = 5;
+    var HttpClientError = class extends Error {
+      constructor(message, statusCode) {
+        super(message);
+        this.name = "HttpClientError";
+        this.statusCode = statusCode;
+        Object.setPrototypeOf(this, HttpClientError.prototype);
+      }
+    };
+    exports.HttpClientError = HttpClientError;
+    var HttpClientResponse = class {
+      constructor(message) {
+        this.message = message;
+      }
+      readBody() {
+        return __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+            let output = Buffer.alloc(0);
+            this.message.on("data", (chunk) => {
+              output = Buffer.concat([output, chunk]);
+            });
+            this.message.on("end", () => {
+              resolve(output.toString());
+            });
+          }));
+        });
+      }
+    };
+    exports.HttpClientResponse = HttpClientResponse;
+    function isHttps(requestUrl) {
+      const parsedUrl = new URL(requestUrl);
+      return parsedUrl.protocol === "https:";
+    }
+    exports.isHttps = isHttps;
+    var HttpClient = class {
+      constructor(userAgent, handlers, requestOptions) {
+        this._ignoreSslError = false;
+        this._allowRedirects = true;
+        this._allowRedirectDowngrade = false;
+        this._maxRedirects = 50;
+        this._allowRetries = false;
+        this._maxRetries = 1;
+        this._keepAlive = false;
+        this._disposed = false;
+        this.userAgent = userAgent;
+        this.handlers = handlers || [];
+        this.requestOptions = requestOptions;
+        if (requestOptions) {
+          if (requestOptions.ignoreSslError != null) {
+            this._ignoreSslError = requestOptions.ignoreSslError;
+          }
+          this._socketTimeout = requestOptions.socketTimeout;
+          if (requestOptions.allowRedirects != null) {
+            this._allowRedirects = requestOptions.allowRedirects;
+          }
+          if (requestOptions.allowRedirectDowngrade != null) {
+            this._allowRedirectDowngrade = requestOptions.allowRedirectDowngrade;
+          }
+          if (requestOptions.maxRedirects != null) {
+            this._maxRedirects = Math.max(requestOptions.maxRedirects, 0);
+          }
+          if (requestOptions.keepAlive != null) {
+            this._keepAlive = requestOptions.keepAlive;
+          }
+          if (requestOptions.allowRetries != null) {
+            this._allowRetries = requestOptions.allowRetries;
+          }
+          if (requestOptions.maxRetries != null) {
+            this._maxRetries = requestOptions.maxRetries;
+          }
+        }
+      }
+      options(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("OPTIONS", requestUrl, null, additionalHeaders || {});
+        });
+      }
+      get(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("GET", requestUrl, null, additionalHeaders || {});
+        });
+      }
+      del(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("DELETE", requestUrl, null, additionalHeaders || {});
+        });
+      }
+      post(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("POST", requestUrl, data, additionalHeaders || {});
+        });
+      }
+      patch(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("PATCH", requestUrl, data, additionalHeaders || {});
+        });
+      }
+      put(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("PUT", requestUrl, data, additionalHeaders || {});
+        });
+      }
+      head(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request("HEAD", requestUrl, null, additionalHeaders || {});
+        });
+      }
+      sendStream(verb, requestUrl, stream, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.request(verb, requestUrl, stream, additionalHeaders);
+        });
+      }
+      getJson(requestUrl, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          const res = yield this.get(requestUrl, additionalHeaders);
+          return this._processResponse(res, this.requestOptions);
+        });
+      }
+      postJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const data = JSON.stringify(obj, null, 2);
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          const res = yield this.post(requestUrl, data, additionalHeaders);
+          return this._processResponse(res, this.requestOptions);
+        });
+      }
+      putJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const data = JSON.stringify(obj, null, 2);
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          const res = yield this.put(requestUrl, data, additionalHeaders);
+          return this._processResponse(res, this.requestOptions);
+        });
+      }
+      patchJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const data = JSON.stringify(obj, null, 2);
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          const res = yield this.patch(requestUrl, data, additionalHeaders);
+          return this._processResponse(res, this.requestOptions);
+        });
+      }
+      request(verb, requestUrl, data, headers) {
+        return __awaiter(this, void 0, void 0, function* () {
+          if (this._disposed) {
+            throw new Error("Client has already been disposed.");
+          }
+          const parsedUrl = new URL(requestUrl);
+          let info = this._prepareRequest(verb, parsedUrl, headers);
+          const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb) ? this._maxRetries + 1 : 1;
+          let numTries = 0;
+          let response;
+          do {
+            response = yield this.requestRaw(info, data);
+            if (response && response.message && response.message.statusCode === HttpCodes.Unauthorized) {
+              let authenticationHandler;
+              for (const handler of this.handlers) {
+                if (handler.canHandleAuthentication(response)) {
+                  authenticationHandler = handler;
+                  break;
+                }
+              }
+              if (authenticationHandler) {
+                return authenticationHandler.handleAuthentication(this, info, data);
+              } else {
+                return response;
+              }
+            }
+            let redirectsRemaining = this._maxRedirects;
+            while (response.message.statusCode && HttpRedirectCodes.includes(response.message.statusCode) && this._allowRedirects && redirectsRemaining > 0) {
+              const redirectUrl = response.message.headers["location"];
+              if (!redirectUrl) {
+                break;
+              }
+              const parsedRedirectUrl = new URL(redirectUrl);
+              if (parsedUrl.protocol === "https:" && parsedUrl.protocol !== parsedRedirectUrl.protocol && !this._allowRedirectDowngrade) {
+                throw new Error("Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.");
+              }
+              yield response.readBody();
+              if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
+                for (const header in headers) {
+                  if (header.toLowerCase() === "authorization") {
+                    delete headers[header];
+                  }
+                }
+              }
+              info = this._prepareRequest(verb, parsedRedirectUrl, headers);
+              response = yield this.requestRaw(info, data);
+              redirectsRemaining--;
+            }
+            if (!response.message.statusCode || !HttpResponseRetryCodes.includes(response.message.statusCode)) {
+              return response;
+            }
+            numTries += 1;
+            if (numTries < maxTries) {
+              yield response.readBody();
+              yield this._performExponentialBackoff(numTries);
+            }
+          } while (numTries < maxTries);
+          return response;
+        });
+      }
+      dispose() {
+        if (this._agent) {
+          this._agent.destroy();
+        }
+        this._disposed = true;
+      }
+      requestRaw(info, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve, reject) => {
+            function callbackForResult(err, res) {
+              if (err) {
+                reject(err);
+              } else if (!res) {
+                reject(new Error("Unknown error"));
+              } else {
+                resolve(res);
+              }
+            }
+            this.requestRawWithCallback(info, data, callbackForResult);
+          });
+        });
+      }
+      requestRawWithCallback(info, data, onResult) {
+        if (typeof data === "string") {
+          if (!info.options.headers) {
+            info.options.headers = {};
+          }
+          info.options.headers["Content-Length"] = Buffer.byteLength(data, "utf8");
+        }
+        let callbackCalled = false;
+        function handleResult(err, res) {
+          if (!callbackCalled) {
+            callbackCalled = true;
+            onResult(err, res);
+          }
+        }
+        const req = info.httpModule.request(info.options, (msg) => {
+          const res = new HttpClientResponse(msg);
+          handleResult(void 0, res);
+        });
+        let socket;
+        req.on("socket", (sock) => {
+          socket = sock;
+        });
+        req.setTimeout(this._socketTimeout || 3 * 6e4, () => {
+          if (socket) {
+            socket.end();
+          }
+          handleResult(new Error(`Request timeout: ${info.options.path}`));
+        });
+        req.on("error", function(err) {
+          handleResult(err);
+        });
+        if (data && typeof data === "string") {
+          req.write(data, "utf8");
+        }
+        if (data && typeof data !== "string") {
+          data.on("close", function() {
+            req.end();
+          });
+          data.pipe(req);
+        } else {
+          req.end();
+        }
+      }
+      getAgent(serverUrl) {
+        const parsedUrl = new URL(serverUrl);
+        return this._getAgent(parsedUrl);
+      }
+      _prepareRequest(method, requestUrl, headers) {
+        const info = {};
+        info.parsedUrl = requestUrl;
+        const usingSsl = info.parsedUrl.protocol === "https:";
+        info.httpModule = usingSsl ? https : http;
+        const defaultPort = usingSsl ? 443 : 80;
+        info.options = {};
+        info.options.host = info.parsedUrl.hostname;
+        info.options.port = info.parsedUrl.port ? parseInt(info.parsedUrl.port) : defaultPort;
+        info.options.path = (info.parsedUrl.pathname || "") + (info.parsedUrl.search || "");
+        info.options.method = method;
+        info.options.headers = this._mergeHeaders(headers);
+        if (this.userAgent != null) {
+          info.options.headers["user-agent"] = this.userAgent;
+        }
+        info.options.agent = this._getAgent(info.parsedUrl);
+        if (this.handlers) {
+          for (const handler of this.handlers) {
+            handler.prepareRequest(info.options);
+          }
+        }
+        return info;
+      }
+      _mergeHeaders(headers) {
+        if (this.requestOptions && this.requestOptions.headers) {
+          return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers || {}));
+        }
+        return lowercaseKeys(headers || {});
+      }
+      _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
+        let clientHeader;
+        if (this.requestOptions && this.requestOptions.headers) {
+          clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
+        }
+        return additionalHeaders[header] || clientHeader || _default;
+      }
+      _getAgent(parsedUrl) {
+        let agent;
+        const proxyUrl = pm.getProxyUrl(parsedUrl);
+        const useProxy = proxyUrl && proxyUrl.hostname;
+        if (this._keepAlive && useProxy) {
+          agent = this._proxyAgent;
+        }
+        if (this._keepAlive && !useProxy) {
+          agent = this._agent;
+        }
+        if (agent) {
+          return agent;
+        }
+        const usingSsl = parsedUrl.protocol === "https:";
+        let maxSockets = 100;
+        if (this.requestOptions) {
+          maxSockets = this.requestOptions.maxSockets || http.globalAgent.maxSockets;
+        }
+        if (proxyUrl && proxyUrl.hostname) {
+          const agentOptions = {
+            maxSockets,
+            keepAlive: this._keepAlive,
+            proxy: Object.assign(Object.assign({}, (proxyUrl.username || proxyUrl.password) && {
+              proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
+            }), { host: proxyUrl.hostname, port: proxyUrl.port })
+          };
+          let tunnelAgent;
+          const overHttps = proxyUrl.protocol === "https:";
+          if (usingSsl) {
+            tunnelAgent = overHttps ? tunnel.httpsOverHttps : tunnel.httpsOverHttp;
+          } else {
+            tunnelAgent = overHttps ? tunnel.httpOverHttps : tunnel.httpOverHttp;
+          }
+          agent = tunnelAgent(agentOptions);
+          this._proxyAgent = agent;
+        }
+        if (this._keepAlive && !agent) {
+          const options = { keepAlive: this._keepAlive, maxSockets };
+          agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
+          this._agent = agent;
+        }
+        if (!agent) {
+          agent = usingSsl ? https.globalAgent : http.globalAgent;
+        }
+        if (usingSsl && this._ignoreSslError) {
+          agent.options = Object.assign(agent.options || {}, {
+            rejectUnauthorized: false
+          });
+        }
+        return agent;
+      }
+      _performExponentialBackoff(retryNumber) {
+        return __awaiter(this, void 0, void 0, function* () {
+          retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
+          const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
+          return new Promise((resolve) => setTimeout(() => resolve(), ms));
+        });
+      }
+      _processResponse(res, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const statusCode = res.message.statusCode || 0;
+            const response = {
+              statusCode,
+              result: null,
+              headers: {}
+            };
+            if (statusCode === HttpCodes.NotFound) {
+              resolve(response);
+            }
+            function dateTimeDeserializer(key, value) {
+              if (typeof value === "string") {
+                const a = new Date(value);
+                if (!isNaN(a.valueOf())) {
+                  return a;
+                }
+              }
+              return value;
+            }
+            let obj;
+            let contents;
+            try {
+              contents = yield res.readBody();
+              if (contents && contents.length > 0) {
+                if (options && options.deserializeDates) {
+                  obj = JSON.parse(contents, dateTimeDeserializer);
+                } else {
+                  obj = JSON.parse(contents);
+                }
+                response.result = obj;
+              }
+              response.headers = res.message.headers;
+            } catch (err) {
+            }
+            if (statusCode > 299) {
+              let msg;
+              if (obj && obj.message) {
+                msg = obj.message;
+              } else if (contents && contents.length > 0) {
+                msg = contents;
+              } else {
+                msg = `Failed request: (${statusCode})`;
+              }
+              const err = new HttpClientError(msg, statusCode);
+              err.result = response.result;
+              reject(err);
+            } else {
+              resolve(response);
+            }
+          }));
+        });
+      }
+    };
+    exports.HttpClient = HttpClient;
+    var lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => (c[k.toLowerCase()] = obj[k], c), {});
+  }
+});
+
+// node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/auth.js
+var require_auth = __commonJS({
+  "node_modules/.pnpm/@actions+http-client@2.0.1/node_modules/@actions/http-client/lib/auth.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.PersonalAccessTokenCredentialHandler = exports.BearerCredentialHandler = exports.BasicCredentialHandler = void 0;
+    var BasicCredentialHandler = class {
+      constructor(username, password) {
+        this.username = username;
+        this.password = password;
+      }
+      prepareRequest(options) {
+        if (!options.headers) {
+          throw Error("The request has no headers");
+        }
+        options.headers["Authorization"] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString("base64")}`;
+      }
+      canHandleAuthentication() {
+        return false;
+      }
+      handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+          throw new Error("not implemented");
+        });
+      }
+    };
+    exports.BasicCredentialHandler = BasicCredentialHandler;
+    var BearerCredentialHandler = class {
+      constructor(token) {
+        this.token = token;
+      }
+      prepareRequest(options) {
+        if (!options.headers) {
+          throw Error("The request has no headers");
+        }
+        options.headers["Authorization"] = `Bearer ${this.token}`;
+      }
+      canHandleAuthentication() {
+        return false;
+      }
+      handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+          throw new Error("not implemented");
+        });
+      }
+    };
+    exports.BearerCredentialHandler = BearerCredentialHandler;
+    var PersonalAccessTokenCredentialHandler = class {
+      constructor(token) {
+        this.token = token;
+      }
+      prepareRequest(options) {
+        if (!options.headers) {
+          throw Error("The request has no headers");
+        }
+        options.headers["Authorization"] = `Basic ${Buffer.from(`PAT:${this.token}`).toString("base64")}`;
+      }
+      canHandleAuthentication() {
+        return false;
+      }
+      handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+          throw new Error("not implemented");
+        });
+      }
+    };
+    exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/oidc-utils.js
+var require_oidc_utils = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/oidc-utils.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.OidcClient = void 0;
+    var http_client_1 = require_lib();
+    var auth_1 = require_auth();
+    var core_1 = require_core();
+    var OidcClient = class {
+      static createHttpClient(allowRetry = true, maxRetry = 10) {
+        const requestOptions = {
+          allowRetries: allowRetry,
+          maxRetries: maxRetry
+        };
+        return new http_client_1.HttpClient("actions/oidc-client", [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
+      }
+      static getRequestToken() {
+        const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
+        if (!token) {
+          throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable");
+        }
+        return token;
+      }
+      static getIDTokenUrl() {
+        const runtimeUrl = process.env["ACTIONS_ID_TOKEN_REQUEST_URL"];
+        if (!runtimeUrl) {
+          throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable");
+        }
+        return runtimeUrl;
+      }
+      static getCall(id_token_url) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+          const httpclient = OidcClient.createHttpClient();
+          const res = yield httpclient.getJson(id_token_url).catch((error) => {
+            throw new Error(`Failed to get ID Token. 
  
-        Error Code : ${a.statusCode}
+        Error Code : ${error.statusCode}
  
-        Error Message: ${a.result.message}`)})).result)===null||n===void 0?void 0:n.value;if(!o)throw new Error("Response json body do not have ID Token field");return o})}static getIDToken(e){return wi(this,void 0,void 0,function*(){try{let n=Ce.getIDTokenUrl();if(e){let i=encodeURIComponent(e);n=`${n}&audience=${i}`}yi.debug(`ID token url is ${n}`);let r=yield Ce.getCall(n);return yi.setSecret(r),r}catch(n){throw new Error(`Error message: ${n.message}`)}})}};He.OidcClient=Ce});var Nr=w(re=>{"use strict";var qr=re&&re.__awaiter||function(t,e,n,r){function i(o){return o instanceof n?o:new n(function(a){a(o)})}return new(n||(n=Promise))(function(o,a){function s(d){try{f(r.next(d))}catch(l){a(l)}}function c(d){try{f(r.throw(d))}catch(l){a(l)}}function f(d){d.done?o(d.value):i(d.value).then(s,c)}f((r=r.apply(t,e||[])).next())})};Object.defineProperty(re,"__esModule",{value:!0});re.summary=re.markdownSummary=re.SUMMARY_DOCS_URL=re.SUMMARY_ENV_VAR=void 0;var nc=require("os"),Lr=require("fs"),{access:ic,appendFile:oc,writeFile:ac}=Lr.promises;re.SUMMARY_ENV_VAR="GITHUB_STEP_SUMMARY";re.SUMMARY_DOCS_URL="https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary";var Ar=class{constructor(){this._buffer=""}filePath(){return qr(this,void 0,void 0,function*(){if(this._filePath)return this._filePath;let e=process.env[re.SUMMARY_ENV_VAR];if(!e)throw new Error(`Unable to find environment variable for $${re.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);try{yield ic(e,Lr.constants.R_OK|Lr.constants.W_OK)}catch{throw new Error(`Unable to access summary file: '${e}'. Check if the file has correct read/write permissions.`)}return this._filePath=e,this._filePath})}wrap(e,n,r={}){let i=Object.entries(r).map(([o,a])=>` ${o}="${a}"`).join("");return n?`<${e}${i}>${n}</${e}>`:`<${e}${i}>`}write(e){return qr(this,void 0,void 0,function*(){let n=!!(e!=null&&e.overwrite),r=yield this.filePath();return yield(n?ac:oc)(r,this._buffer,{encoding:"utf8"}),this.emptyBuffer()})}clear(){return qr(this,void 0,void 0,function*(){return this.emptyBuffer().write({overwrite:!0})})}stringify(){return this._buffer}isEmptyBuffer(){return this._buffer.length===0}emptyBuffer(){return this._buffer="",this}addRaw(e,n=!1){return this._buffer+=e,n?this.addEOL():this}addEOL(){return this.addRaw(nc.EOL)}addCodeBlock(e,n){let r=Object.assign({},n&&{lang:n}),i=this.wrap("pre",this.wrap("code",e),r);return this.addRaw(i).addEOL()}addList(e,n=!1){let r=n?"ol":"ul",i=e.map(a=>this.wrap("li",a)).join(""),o=this.wrap(r,i);return this.addRaw(o).addEOL()}addTable(e){let n=e.map(i=>{let o=i.map(a=>{if(typeof a=="string")return this.wrap("td",a);let{header:s,data:c,colspan:f,rowspan:d}=a,l=s?"th":"td",p=Object.assign(Object.assign({},f&&{colspan:f}),d&&{rowspan:d});return this.wrap(l,c,p)}).join("");return this.wrap("tr",o)}).join(""),r=this.wrap("table",n);return this.addRaw(r).addEOL()}addDetails(e,n){let r=this.wrap("details",this.wrap("summary",e)+n);return this.addRaw(r).addEOL()}addImage(e,n,r){let{width:i,height:o}=r||{},a=Object.assign(Object.assign({},i&&{width:i}),o&&{height:o}),s=this.wrap("img",null,Object.assign({src:e,alt:n},a));return this.addRaw(s).addEOL()}addHeading(e,n){let r=`h${n}`,i=["h1","h2","h3","h4","h5","h6"].includes(r)?r:"h1",o=this.wrap(i,e);return this.addRaw(o).addEOL()}addSeparator(){let e=this.wrap("hr",null);return this.addRaw(e).addEOL()}addBreak(){let e=this.wrap("br",null);return this.addRaw(e).addEOL()}addQuote(e,n){let r=Object.assign({},n&&{cite:n}),i=this.wrap("blockquote",e,r);return this.addRaw(i).addEOL()}addLink(e,n){let r=this.wrap("a",e,{href:n});return this.addRaw(r).addEOL()}},Ii=new Ar;re.markdownSummary=Ii;re.summary=Ii});var Bi=w(ne=>{"use strict";var sc=ne&&ne.__createBinding||(Object.create?function(t,e,n,r){r===void 0&&(r=n),Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[n]}})}:function(t,e,n,r){r===void 0&&(r=n),t[r]=e[n]}),uc=ne&&ne.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),cc=ne&&ne.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var n in t)n!=="default"&&Object.hasOwnProperty.call(t,n)&&sc(e,t,n);return uc(e,t),e};Object.defineProperty(ne,"__esModule",{value:!0});ne.toPlatformPath=ne.toWin32Path=ne.toPosixPath=void 0;var lc=cc(require("path"));function fc(t){return t.replace(/[\\]/g,"/")}ne.toPosixPath=fc;function dc(t){return t.replace(/[/]/g,"\\")}ne.toWin32Path=dc;function hc(t){return t.replace(/[/\\]/g,lc.sep)}ne.toPlatformPath=hc});var Mr=w(B=>{"use strict";var pc=B&&B.__createBinding||(Object.create?function(t,e,n,r){r===void 0&&(r=n),Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[n]}})}:function(t,e,n,r){r===void 0&&(r=n),t[r]=e[n]}),vc=B&&B.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),bi=B&&B.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var n in t)n!=="default"&&Object.hasOwnProperty.call(t,n)&&pc(e,t,n);return vc(e,t),e},xi=B&&B.__awaiter||function(t,e,n,r){function i(o){return o instanceof n?o:new n(function(a){a(o)})}return new(n||(n=Promise))(function(o,a){function s(d){try{f(r.next(d))}catch(l){a(l)}}function c(d){try{f(r.throw(d))}catch(l){a(l)}}function f(d){d.done?o(d.value):i(d.value).then(s,c)}f((r=r.apply(t,e||[])).next())})};Object.defineProperty(B,"__esModule",{value:!0});B.getIDToken=B.getState=B.saveState=B.group=B.endGroup=B.startGroup=B.info=B.notice=B.warning=B.error=B.debug=B.isDebug=B.setFailed=B.setCommandEcho=B.setOutput=B.getBooleanInput=B.getMultilineInput=B.getInput=B.addPath=B.setSecret=B.exportVariable=B.ExitCode=void 0;var ue=Fn(),Ui=zn(),jt=Et(),Pt=bi(require("os")),gc=bi(require("path")),mc=ai(),wc=Ei(),_i;(function(t){t[t.Success=0]="Success",t[t.Failure=1]="Failure"})(_i=B.ExitCode||(B.ExitCode={}));function yc(t,e){let n=jt.toCommandValue(e);if(process.env[t]=n,process.env.GITHUB_ENV||""){let i=`ghadelimiter_${mc.v4()}`;if(t.includes(i))throw new Error(`Unexpected input: name should not contain the delimiter "${i}"`);if(n.includes(i))throw new Error(`Unexpected input: value should not contain the delimiter "${i}"`);let o=`${t}<<${i}${Pt.EOL}${n}${Pt.EOL}${i}`;Ui.issueCommand("ENV",o)}else ue.issueCommand("set-env",{name:t},n)}B.exportVariable=yc;function Ec(t){ue.issueCommand("add-mask",{},t)}B.setSecret=Ec;function Ic(t){process.env.GITHUB_PATH||""?Ui.issueCommand("PATH",t):ue.issueCommand("add-path",{},t),process.env.PATH=`${t}${gc.delimiter}${process.env.PATH}`}B.addPath=Ic;function Dr(t,e){let n=process.env[`INPUT_${t.replace(/ /g,"_").toUpperCase()}`]||"";if(e&&e.required&&!n)throw new Error(`Input required and not supplied: ${t}`);return e&&e.trimWhitespace===!1?n:n.trim()}B.getInput=Dr;function Bc(t,e){return Dr(t,e).split(`
-`).filter(r=>r!=="")}B.getMultilineInput=Bc;function bc(t,e){let n=["true","True","TRUE"],r=["false","False","FALSE"],i=Dr(t,e);if(n.includes(i))return!0;if(r.includes(i))return!1;throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${t}
-Support boolean input list: \`true | True | TRUE | false | False | FALSE\``)}B.getBooleanInput=bc;function xc(t,e){process.stdout.write(Pt.EOL),ue.issueCommand("set-output",{name:t},e)}B.setOutput=xc;function Uc(t){ue.issue("echo",t?"on":"off")}B.setCommandEcho=Uc;function _c(t){process.exitCode=_i.Failure,ki(t)}B.setFailed=_c;function kc(){return process.env.RUNNER_DEBUG==="1"}B.isDebug=kc;function Cc(t){ue.issueCommand("debug",{},t)}B.debug=Cc;function ki(t,e={}){ue.issueCommand("error",jt.toCommandProperties(e),t instanceof Error?t.toString():t)}B.error=ki;function Oc(t,e={}){ue.issueCommand("warning",jt.toCommandProperties(e),t instanceof Error?t.toString():t)}B.warning=Oc;function Tc(t,e={}){ue.issueCommand("notice",jt.toCommandProperties(e),t instanceof Error?t.toString():t)}B.notice=Tc;function Sc(t){process.stdout.write(t+Pt.EOL)}B.info=Sc;function Ci(t){ue.issue("group",t)}B.startGroup=Ci;function Oi(){ue.issue("endgroup")}B.endGroup=Oi;function Rc(t,e){return xi(this,void 0,void 0,function*(){Ci(t);let n;try{n=yield e()}finally{Oi()}return n})}B.group=Rc;function Mc(t,e){ue.issueCommand("save-state",{name:t},e)}B.saveState=Mc;function qc(t){return process.env[`STATE_${t}`]||""}B.getState=qc;function Lc(t){return xi(this,void 0,void 0,function*(){return yield wc.OidcClient.getIDToken(t)})}B.getIDToken=Lc;var Ac=Nr();Object.defineProperty(B,"summary",{enumerable:!0,get:function(){return Ac.summary}});var Nc=Nr();Object.defineProperty(B,"markdownSummary",{enumerable:!0,get:function(){return Nc.markdownSummary}});var Fr=Bi();Object.defineProperty(B,"toPosixPath",{enumerable:!0,get:function(){return Fr.toPosixPath}});Object.defineProperty(B,"toWin32Path",{enumerable:!0,get:function(){return Fr.toWin32Path}});Object.defineProperty(B,"toPlatformPath",{enumerable:!0,get:function(){return Fr.toPlatformPath}})});var Si=w((Dg,Ti)=>{"use strict";Ti.exports=function(e,n){if(n=n.split(":")[0],e=+e,!e)return!1;switch(n){case"http":case"ws":return e!==80;case"https":case"wss":return e!==443;case"ftp":return e!==21;case"gopher":return e!==70;case"file":return!1}return e!==0}});var qi=w(Pr=>{"use strict";var Dc=Object.prototype.hasOwnProperty,Fc;function Ri(t){try{return decodeURIComponent(t.replace(/\+/g," "))}catch{return null}}function Mi(t){try{return encodeURIComponent(t)}catch{return null}}function Pc(t){for(var e=/([^=?#&]+)=?([^&]*)/g,n={},r;r=e.exec(t);){var i=Ri(r[1]),o=Ri(r[2]);i===null||o===null||i in n||(n[i]=o)}return n}function jc(t,e){e=e||"";var n=[],r,i;typeof e!="string"&&(e="?");for(i in t)if(Dc.call(t,i)){if(r=t[i],!r&&(r===null||r===Fc||isNaN(r))&&(r=""),i=Mi(i),r=Mi(r),i===null||r===null)continue;n.push(i+"="+r)}return n.length?e+n.join("&"):""}Pr.stringify=jc;Pr.parse=Pc});var zi=w((Pg,ji)=>{"use strict";var Ai=Si(),zt=qi(),zc=/^[\x00-\x20\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]+/,Ni=/[\n\r\t]/g,Qc=/^[A-Za-z][A-Za-z0-9+-.]*:\/\//,Di=/:\d+$/,Hc=/^([a-z][a-z0-9.+-]*:)?(\/\/)?([\\/]+)?([\S\s]*)/i,Kc=/^[a-zA-Z]:/;function zr(t){return(t||"").toString().replace(zc,"")}var jr=[["#","hash"],["?","query"],function(e,n){return me(n.protocol)?e.replace(/\\/g,"/"):e},["/","pathname"],["@","auth",1],[NaN,"host",void 0,1,1],[/:(\d*)$/,"port",void 0,1],[NaN,"hostname",void 0,1,1]],Li={hash:1,query:1};function Fi(t){var e;typeof window<"u"?e=window:typeof global<"u"?e=global:typeof self<"u"?e=self:e={};var n=e.location||{};t=t||n;var r={},i=typeof t,o;if(t.protocol==="blob:")r=new we(unescape(t.pathname),{});else if(i==="string"){r=new we(t,{});for(o in Li)delete r[o]}else if(i==="object"){for(o in t)o in Li||(r[o]=t[o]);r.slashes===void 0&&(r.slashes=Qc.test(t.href))}return r}function me(t){return t==="file:"||t==="ftp:"||t==="http:"||t==="https:"||t==="ws:"||t==="wss:"}function Pi(t,e){t=zr(t),t=t.replace(Ni,""),e=e||{};var n=Hc.exec(t),r=n[1]?n[1].toLowerCase():"",i=!!n[2],o=!!n[3],a=0,s;return i?o?(s=n[2]+n[3]+n[4],a=n[2].length+n[3].length):(s=n[2]+n[4],a=n[2].length):o?(s=n[3]+n[4],a=n[3].length):s=n[4],r==="file:"?a>=2&&(s=s.slice(2)):me(r)?s=n[4]:r?i&&(s=s.slice(2)):a>=2&&me(e.protocol)&&(s=n[4]),{protocol:r,slashes:i||me(r),slashesCount:a,rest:s}}function $c(t,e){if(t==="")return e;for(var n=(e||"/").split("/").slice(0,-1).concat(t.split("/")),r=n.length,i=n[r-1],o=!1,a=0;r--;)n[r]==="."?n.splice(r,1):n[r]===".."?(n.splice(r,1),a++):a&&(r===0&&(o=!0),n.splice(r,1),a--);return o&&n.unshift(""),(i==="."||i==="..")&&n.push(""),n.join("/")}function we(t,e,n){if(t=zr(t),t=t.replace(Ni,""),!(this instanceof we))return new we(t,e,n);var r,i,o,a,s,c,f=jr.slice(),d=typeof e,l=this,p=0;for(d!=="object"&&d!=="string"&&(n=e,e=null),n&&typeof n!="function"&&(n=zt.parse),e=Fi(e),i=Pi(t||"",e),r=!i.protocol&&!i.slashes,l.slashes=i.slashes||r&&e.slashes,l.protocol=i.protocol||e.protocol||"",t=i.rest,(i.protocol==="file:"&&(i.slashesCount!==2||Kc.test(t))||!i.slashes&&(i.protocol||i.slashesCount<2||!me(l.protocol)))&&(f[3]=[/(.*)/,"pathname"]);p<f.length;p++){if(a=f[p],typeof a=="function"){t=a(t,l);continue}o=a[0],c=a[1],o!==o?l[c]=t:typeof o=="string"?(s=o==="@"?t.lastIndexOf(o):t.indexOf(o),~s&&(typeof a[2]=="number"?(l[c]=t.slice(0,s),t=t.slice(s+a[2])):(l[c]=t.slice(s),t=t.slice(0,s)))):(s=o.exec(t))&&(l[c]=s[1],t=t.slice(0,s.index)),l[c]=l[c]||r&&a[3]&&e[c]||"",a[4]&&(l[c]=l[c].toLowerCase())}n&&(l.query=n(l.query)),r&&e.slashes&&l.pathname.charAt(0)!=="/"&&(l.pathname!==""||e.pathname!=="")&&(l.pathname=$c(l.pathname,e.pathname)),l.pathname.charAt(0)!=="/"&&me(l.protocol)&&(l.pathname="/"+l.pathname),Ai(l.port,l.protocol)||(l.host=l.hostname,l.port=""),l.username=l.password="",l.auth&&(s=l.auth.indexOf(":"),~s?(l.username=l.auth.slice(0,s),l.username=encodeURIComponent(decodeURIComponent(l.username)),l.password=l.auth.slice(s+1),l.password=encodeURIComponent(decodeURIComponent(l.password))):l.username=encodeURIComponent(decodeURIComponent(l.auth)),l.auth=l.password?l.username+":"+l.password:l.username),l.origin=l.protocol!=="file:"&&me(l.protocol)&&l.host?l.protocol+"//"+l.host:"null",l.href=l.toString()}function Wc(t,e,n){var r=this;switch(t){case"query":typeof e=="string"&&e.length&&(e=(n||zt.parse)(e)),r[t]=e;break;case"port":r[t]=e,Ai(e,r.protocol)?e&&(r.host=r.hostname+":"+e):(r.host=r.hostname,r[t]="");break;case"hostname":r[t]=e,r.port&&(e+=":"+r.port),r.host=e;break;case"host":r[t]=e,Di.test(e)?(e=e.split(":"),r.port=e.pop(),r.hostname=e.join(":")):(r.hostname=e,r.port="");break;case"protocol":r.protocol=e.toLowerCase(),r.slashes=!n;break;case"pathname":case"hash":if(e){var i=t==="pathname"?"/":"#";r[t]=e.charAt(0)!==i?i+e:e}else r[t]=e;break;case"username":case"password":r[t]=encodeURIComponent(e);break;case"auth":var o=e.indexOf(":");~o?(r.username=e.slice(0,o),r.username=encodeURIComponent(decodeURIComponent(r.username)),r.password=e.slice(o+1),r.password=encodeURIComponent(decodeURIComponent(r.password))):r.username=encodeURIComponent(decodeURIComponent(e))}for(var a=0;a<jr.length;a++){var s=jr[a];s[4]&&(r[s[1]]=r[s[1]].toLowerCase())}return r.auth=r.password?r.username+":"+r.password:r.username,r.origin=r.protocol!=="file:"&&me(r.protocol)&&r.host?r.protocol+"//"+r.host:"null",r.href=r.toString(),r}function Gc(t){(!t||typeof t!="function")&&(t=zt.stringify);var e,n=this,r=n.host,i=n.protocol;i&&i.charAt(i.length-1)!==":"&&(i+=":");var o=i+(n.protocol&&n.slashes||me(n.protocol)?"//":"");return n.username?(o+=n.username,n.password&&(o+=":"+n.password),o+="@"):n.password?(o+=":"+n.password,o+="@"):n.protocol!=="file:"&&me(n.protocol)&&!r&&n.pathname!=="/"&&(o+="@"),(r[r.length-1]===":"||Di.test(n.hostname)&&!n.port)&&(r+=":"),o+=r+n.pathname,e=typeof n.query=="object"?t(n.query):n.query,e&&(o+=e.charAt(0)!=="?"?"?"+e:e),n.hash&&(o+=n.hash),o}we.prototype={set:Wc,toString:Gc};we.extractProtocol=Pi;we.location=Fi;we.trimLeft=zr;we.qs=zt;ji.exports=we});var Ke=w((jg,x)=>{"use strict";var J=4294967296,Y=1/J,Qi=9007199254740991;function Hi(t){return t<=Qi&&t>=-Qi}function Vc(t){if(!Hi(t))throw new TypeError("number cannot be represented as a contiguous integer")}x.exports.isContiguousInt=Hi;x.exports.assertContiguousInt=Vc;["UInt","Int"].forEach(function(t){var e=t+"8";x.exports["read"+e]=Buffer.prototype["read"+e].call,x.exports["write"+e]=Buffer.prototype["write"+e].call,["16","32"].forEach(function(n){["LE","BE"].forEach(function(r){var i=t+n+r,o=Buffer.prototype["read"+i];x.exports["read"+i]=function(s,c){return o.call(s,c)};var a=Buffer.prototype["write"+i];x.exports["write"+i]=function(s,c,f){return a.call(s,c,f)}})})});function Q(t,e,n){if(t=+t,typeof t!="number"||t<e||t>n||Math.floor(t)!==t)throw new TypeError('"value" argument is out of bounds');return t}function H(t,e,n){if(e<0||e+n>t.length)throw new RangeError("Index out of range")}function Jc(t,e){return t.readUInt8(e)<<16|t.readUInt16BE(e+1)}x.exports.readUInt24BE=Jc;function Yc(t,e,n){e=Q(e,0,16777215),H(t,n,3),t.writeUInt8(e>>>16,n),t.writeUInt16BE(e&65535,n+1)}x.exports.writeUInt24BE=Yc;function Zc(t,e){return(t.readUInt8(e)||0)*J+t.readUInt32BE(e+1)}x.exports.readUInt40BE=Zc;function Xc(t,e,n){e=Q(e,0,0xffffffffff),H(t,n,5),t.writeUInt8(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+1)}x.exports.writeUInt40BE=Xc;function el(t,e){return t.readUInt16BE(e)*J+t.readUInt32BE(e+2)}x.exports.readUInt48BE=el;function tl(t,e,n){e=Q(e,0,0xffffffffffff),H(t,n,6),t.writeUInt16BE(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+2)}x.exports.writeUInt48BE=tl;function rl(t,e){return((t.readUInt8(e)||0)<<16|t.readUInt16BE(e+1))*J+t.readUInt32BE(e+3)}x.exports.readUInt56BE=rl;function nl(t,e,n){if(e=Q(e,0,72057594037927940),H(t,n,7),e<72057594037927940){var r=Math.floor(e*Y);t.writeUInt8(r>>>16,n),t.writeUInt16BE(r&65535,n+1),t.writeInt32BE(e&-1,n+3)}else t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255}x.exports.writeUInt56BE=nl;function il(t,e){return t.readUInt32BE(e)*J+t.readUInt32BE(e+4)}x.exports.readUInt64BE=il;function ol(t,e,n){e=Q(e,0,18446744073709552e3),H(t,n,8),e<18446744073709552e3?(t.writeUInt32BE(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+4)):(t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255,t[n+7]=255)}x.exports.writeUInt64BE=ol;function al(t,e){return t.readUInt8(e+2)<<16|t.readUInt16LE(e)}x.exports.readUInt24LE=al;function sl(t,e,n){e=Q(e,0,16777215),H(t,n,3),t.writeUInt16LE(e&65535,n),t.writeUInt8(e>>>16,n+2)}x.exports.writeUInt24LE=sl;function ul(t,e){return(t.readUInt8(e+4)||0)*J+t.readUInt32LE(e)}x.exports.readUInt40LE=ul;function cl(t,e,n){e=Q(e,0,0xffffffffff),H(t,n,5),t.writeInt32LE(e&-1,n),t.writeUInt8(Math.floor(e*Y),n+4)}x.exports.writeUInt40LE=cl;function ll(t,e){return t.readUInt16LE(e+4)*J+t.readUInt32LE(e)}x.exports.readUInt48LE=ll;function fl(t,e,n){e=Q(e,0,0xffffffffffff),H(t,n,6),t.writeInt32LE(e&-1,n),t.writeUInt16LE(Math.floor(e*Y),n+4)}x.exports.writeUInt48LE=fl;function dl(t,e){return((t.readUInt8(e+6)||0)<<16|t.readUInt16LE(e+4))*J+t.readUInt32LE(e)}x.exports.readUInt56LE=dl;function hl(t,e,n){if(e=Q(e,0,72057594037927940),H(t,n,7),e<72057594037927940){t.writeInt32LE(e&-1,n);var r=Math.floor(e*Y);t.writeUInt16LE(r&65535,n+4),t.writeUInt8(r>>>16,n+6)}else t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255}x.exports.writeUInt56LE=hl;function pl(t,e){return t.readUInt32LE(e+4)*J+t.readUInt32LE(e)}x.exports.readUInt64LE=pl;function vl(t,e,n){e=Q(e,0,18446744073709552e3),H(t,n,8),e<18446744073709552e3?(t.writeInt32LE(e&-1,n),t.writeUInt32LE(Math.floor(e*Y),n+4)):(t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255,t[n+7]=255)}x.exports.writeUInt64LE=vl;function gl(t,e){return(t.readInt8(e)<<16)+t.readUInt16BE(e+1)}x.exports.readInt24BE=gl;function ml(t,e,n){e=Q(e,-8388608,8388607),H(t,n,3),t.writeInt8(e>>16,n),t.writeUInt16BE(e&65535,n+1)}x.exports.writeInt24BE=ml;function wl(t,e){return(t.readInt8(e)||0)*J+t.readUInt32BE(e+1)}x.exports.readInt40BE=wl;function yl(t,e,n){e=Q(e,-549755813888,549755813887),H(t,n,5),t.writeInt8(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+1)}x.exports.writeInt40BE=yl;function El(t,e){return t.readInt16BE(e)*J+t.readUInt32BE(e+2)}x.exports.readInt48BE=El;function Il(t,e,n){e=Q(e,-0x800000000000,0x7fffffffffff),H(t,n,6),t.writeInt16BE(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+2)}x.exports.writeInt48BE=Il;function Bl(t,e){return(((t.readInt8(e)||0)<<16)+t.readUInt16BE(e+1))*J+t.readUInt32BE(e+3)}x.exports.readInt56BE=Bl;function bl(t,e,n){if(e=Q(e,-0x800000000000000,0x80000000000000),H(t,n,7),e<0x80000000000000){var r=Math.floor(e*Y);t.writeInt8(r>>16,n),t.writeUInt16BE(r&65535,n+1),t.writeInt32BE(e&-1,n+3)}else t[n]=127,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255}x.exports.writeInt56BE=bl;function xl(t,e){return t.readInt32BE(e)*J+t.readUInt32BE(e+4)}x.exports.readInt64BE=xl;function Ul(t,e,n){e=Q(e,-23611832414348226e5,9223372036854776e3),H(t,n,8),e<9223372036854776e3?(t.writeInt32BE(Math.floor(e*Y),n),t.writeInt32BE(e&-1,n+4)):(t[n]=127,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255,t[n+7]=255)}x.exports.writeInt64BE=Ul;function _l(t,e){return(t.readInt8(e+2)<<16)+t.readUInt16LE(e)}x.exports.readInt24LE=_l;function kl(t,e,n){e=Q(e,-8388608,8388607),H(t,n,3),t.writeUInt16LE(e&65535,n),t.writeInt8(e>>16,n+2)}x.exports.writeInt24LE=kl;function Cl(t,e){return(t.readInt8(e+4)||0)*J+t.readUInt32LE(e)}x.exports.readInt40LE=Cl;function Ol(t,e,n){e=Q(e,-549755813888,549755813887),H(t,n,5),t.writeInt32LE(e&-1,n),t.writeInt8(Math.floor(e*Y),n+4)}x.exports.writeInt40LE=Ol;function Tl(t,e){return t.readInt16LE(e+4)*J+t.readUInt32LE(e)}x.exports.readInt48LE=Tl;function Sl(t,e,n){e=Q(e,-0x800000000000,0x7fffffffffff),H(t,n,6),t.writeInt32LE(e&-1,n),t.writeInt16LE(Math.floor(e*Y),n+4)}x.exports.writeInt48LE=Sl;function Rl(t,e){return(((t.readInt8(e+6)||0)<<16)+t.readUInt16LE(e+4))*J+t.readUInt32LE(e)}x.exports.readInt56LE=Rl;function Ml(t,e,n){if(e=Q(e,-0x80000000000000,0x80000000000000),H(t,n,7),e<0x80000000000000){t.writeInt32LE(e&-1,n);var r=Math.floor(e*Y);t.writeUInt16LE(r&65535,n+4),t.writeInt8(r>>16,n+6)}else t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=127}x.exports.writeInt56LE=Ml;function ql(t,e){return t.readInt32LE(e+4)*J+t.readUInt32LE(e)}x.exports.readInt64LE=ql;function Ll(t,e,n){e=Q(e,-9223372036854776e3,9223372036854776e3),H(t,n,8),e<9223372036854776e3?(t.writeInt32LE(e&-1,n),t.writeInt32LE(Math.floor(e*Y),n+4)):(t[n]=255,t[n+1]=255,t[n+2]=255,t[n+3]=255,t[n+4]=255,t[n+5]=255,t[n+6]=255,t[n+7]=127)}x.exports.writeInt64LE=Ll});var Hr=w((zg,Qr)=>{"use strict";var Qt=Ke();function Al(t){return t>=9223372036854776e3||Math.abs(t)<0x4000000000000&&Math.floor(t)!==t}function Ki(t,e,n){var r=n;n+=4;for(var i in e)if(e[i]!==void 0){var o=Buffer.byteLength(i);t.writeUInt8(o,n),n++,t.write(i,n,"utf8"),n+=o,n+=$i(t,e[i],n)}var a=n-r;return t.writeUInt32BE(a-4,r),a}function Nl(t,e,n){var r=n;n+=4;for(var i=0,o=e.length;i<o;i++)n+=$i(t,e[i],n);var a=n-r;return t.writeUInt32BE(a-4,r),a}function $i(t,e,n){var r=n,i=typeof e,o=e;e&&i==="object"&&e.hasOwnProperty("!")&&(o=e.value,i=e["!"]),i=="number"&&(Al(o)?i="double":o<128&&o>=-128?i="byte":o>=-32768&&o<32768?i="short":o>=-2147483648&&o<2147483648?i="int":i="long");function a(c){t.write(c,n),n++}switch(i){case"string":var s=Buffer.byteLength(o,"utf8");a("S"),t.writeUInt32BE(s,n),n+=4,t.write(o,n,"utf8"),n+=s;break;case"object":o===null?a("V"):Array.isArray(o)?(a("A"),n+=Nl(t,o,n)):Buffer.isBuffer(o)?(a("x"),t.writeUInt32BE(o.length,n),n+=4,o.copy(t,n),n+=o.length):(a("F"),n+=Ki(t,o,n));break;case"boolean":a("t"),t.writeUInt8(o?1:0,n),n++;break;case"double":case"float64":a("d"),t.writeDoubleBE(o,n),n+=8;break;case"byte":case"int8":a("b"),t.writeInt8(o,n),n++;break;case"short":case"int16":a("s"),t.writeInt16BE(o,n),n+=2;break;case"int":case"int32":a("I"),t.writeInt32BE(o,n),n+=4;break;case"long":case"int64":a("l"),Qt.writeInt64BE(t,o,n),n+=8;break;case"timestamp":a("T"),Qt.writeUInt64BE(t,o,n),n+=8;break;case"float":a("f"),t.writeFloatBE(o,n),n+=4;break;case"decimal":if(a("D"),o.hasOwnProperty("places")&&o.hasOwnProperty("digits")&&o.places>=0&&o.places<256)t[n]=o.places,n++,t.writeUInt32BE(o.digits,n),n+=4;else throw new TypeError("Decimal value must be {'places': 0..255, 'digits': uint32}, got "+JSON.stringify(o));break;default:throw new TypeError("Unknown type to encode: "+i)}return n-r}function Wi(t){var e={},n=0,r=t.length,i,o,a;function s(){var f=String.fromCharCode(t[n]);switch(n++,f){case"b":a=t.readInt8(n),n++;break;case"S":i=t.readUInt32BE(n),n+=4,a=t.toString("utf8",n,n+i),n+=i;break;case"I":a=t.readInt32BE(n),n+=4;break;case"D":var d=t[n];n++;var l=t.readUInt32BE(n);n+=4,a={"!":"decimal",value:{places:d,digits:l}};break;case"T":a=Qt.readUInt64BE(t,n),n+=8,a={"!":"timestamp",value:a};break;case"F":i=t.readUInt32BE(n),n+=4,a=Wi(t.slice(n,n+i)),n+=i;break;case"A":i=t.readUInt32BE(n),n+=4,c(n+i);break;case"d":a=t.readDoubleBE(n),n+=8;break;case"f":a=t.readFloatBE(n),n+=4;break;case"l":a=Qt.readInt64BE(t,n),n+=8;break;case"s":a=t.readInt16BE(n),n+=2;break;case"t":a=t[n]!=0,n++;break;case"V":a=null;break;case"x":i=t.readUInt32BE(n),n+=4,a=t.slice(n,n+i),n+=i;break;default:throw new TypeError('Unexpected type tag "'+f+'"')}}function c(f){for(var d=[];n<f;)s(),d.push(a);a=d}for(;n<r;)i=t.readUInt8(n),n++,o=t.toString("utf8",n,n+i),n+=i,s(),e[o]=a;return e}Qr.exports.encodeTable=Ki;Qr.exports.decodeFields=Wi});var $e=w((Hg,h)=>{"use strict";function Dl(t){var e,n,r=0,i={versionMajor:void 0,versionMinor:void 0,serverProperties:void 0,mechanisms:void 0,locales:void 0};return e=t[r],r++,i.versionMajor=e,e=t[r],r++,i.versionMinor=e,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.serverProperties=e,n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.mechanisms=e,n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.locales=e,i}function Fl(t,e){var n,r=0,i=null,o=0,a=0;if(i=e.serverProperties,i===void 0)throw new Error("Missing value for mandatory field 'serverProperties'");if(typeof i!="object")throw new TypeError("Field 'serverProperties' is the wrong type; must be an object");n=ye(K,i,a);var s=K.slice(a,a+n);if(a+=n,o+=s.length,i=e.mechanisms,i===void 0)i=Buffer.from("PLAIN");else if(!Buffer.isBuffer(i))throw new TypeError("Field 'mechanisms' is the wrong type; must be a Buffer");if(o+=i.length,i=e.locales,i===void 0)i=Buffer.from("en_US");else if(!Buffer.isBuffer(i))throw new TypeError("Field 'locales' is the wrong type; must be a Buffer");o+=i.length;var c=Buffer.alloc(22+o);if(c[0]=1,c.writeUInt16BE(t,1),c.writeUInt32BE(655370,7),r=11,i=e.versionMajor,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'versionMajor' is the wrong type; must be a number (but not NaN)");if(c.writeUInt8(i,r),r++,i=e.versionMinor,i===void 0)i=9;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'versionMinor' is the wrong type; must be a number (but not NaN)");return c.writeUInt8(i,r),r++,r+=s.copy(c,r),i=e.mechanisms,i===void 0&&(i=Buffer.from("PLAIN")),n=i.length,c.writeUInt32BE(n,r),r+=4,i.copy(c,r),r+=n,i=e.locales,i===void 0&&(i=Buffer.from("en_US")),n=i.length,c.writeUInt32BE(n,r),r+=4,i.copy(c,r),r+=n,c[r]=206,c.writeUInt32BE(r-7,3),c}function Pl(t){var e,n,r=0,i={clientProperties:void 0,mechanism:void 0,response:void 0,locale:void 0};return n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.clientProperties=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.mechanism=e,n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.response=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.locale=e,i}function jl(t,e){var n,r=0,i=null,o=0,a=0;if(i=e.clientProperties,i===void 0)throw new Error("Missing value for mandatory field 'clientProperties'");if(typeof i!="object")throw new TypeError("Field 'clientProperties' is the wrong type; must be an object");n=ye(K,i,a);var s=K.slice(a,a+n);if(a+=n,o+=s.length,i=e.mechanism,i===void 0)i="PLAIN";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'mechanism' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(o+=c,i=e.response,i===void 0)throw new Error("Missing value for mandatory field 'response'");if(!Buffer.isBuffer(i))throw new TypeError("Field 'response' is the wrong type; must be a Buffer");if(o+=i.length,i=e.locale,i===void 0)i="en_US";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'locale' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");o+=f;var d=Buffer.alloc(18+o);return d[0]=1,d.writeUInt16BE(t,1),d.writeUInt32BE(655371,7),r=11,r+=s.copy(d,r),i=e.mechanism,i===void 0&&(i="PLAIN"),d[r]=c,r++,d.write(i,r,"utf8"),r+=c,i=e.response,i===void 0&&(i=Buffer.from(void 0)),n=i.length,d.writeUInt32BE(n,r),r+=4,i.copy(d,r),r+=n,i=e.locale,i===void 0&&(i="en_US"),d[r]=f,r++,d.write(i,r,"utf8"),r+=f,d[r]=206,d.writeUInt32BE(r-7,3),d}function zl(t){var e,n,r=0,i={challenge:void 0};return n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.challenge=e,i}function Ql(t,e){var n,r=0,i=null,o=0;if(i=e.challenge,i===void 0)throw new Error("Missing value for mandatory field 'challenge'");if(!Buffer.isBuffer(i))throw new TypeError("Field 'challenge' is the wrong type; must be a Buffer");o+=i.length;var a=Buffer.alloc(16+o);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(655380,7),r=11,i=e.challenge,i===void 0&&(i=Buffer.from(void 0)),n=i.length,a.writeUInt32BE(n,r),r+=4,i.copy(a,r),r+=n,a[r]=206,a.writeUInt32BE(r-7,3),a}function Hl(t){var e,n,r=0,i={response:void 0};return n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.response=e,i}function Kl(t,e){var n,r=0,i=null,o=0;if(i=e.response,i===void 0)throw new Error("Missing value for mandatory field 'response'");if(!Buffer.isBuffer(i))throw new TypeError("Field 'response' is the wrong type; must be a Buffer");o+=i.length;var a=Buffer.alloc(16+o);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(655381,7),r=11,i=e.response,i===void 0&&(i=Buffer.from(void 0)),n=i.length,a.writeUInt32BE(n,r),r+=4,i.copy(a,r),r+=n,a[r]=206,a.writeUInt32BE(r-7,3),a}function $l(t){var e,n=0,r={channelMax:void 0,frameMax:void 0,heartbeat:void 0};return e=t.readUInt16BE(n),n+=2,r.channelMax=e,e=t.readUInt32BE(n),n+=4,r.frameMax=e,e=t.readUInt16BE(n),n+=2,r.heartbeat=e,r}function Wl(t,e){var n=0,r=null,i=Buffer.alloc(20);if(i[0]=1,i.writeUInt16BE(t,1),i.writeUInt32BE(655390,7),n=11,r=e.channelMax,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'channelMax' is the wrong type; must be a number (but not NaN)");if(i.writeUInt16BE(r,n),n+=2,r=e.frameMax,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'frameMax' is the wrong type; must be a number (but not NaN)");if(i.writeUInt32BE(r,n),n+=4,r=e.heartbeat,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'heartbeat' is the wrong type; must be a number (but not NaN)");return i.writeUInt16BE(r,n),n+=2,i[n]=206,i.writeUInt32BE(n-7,3),i}function Gl(t){var e,n=0,r={channelMax:void 0,frameMax:void 0,heartbeat:void 0};return e=t.readUInt16BE(n),n+=2,r.channelMax=e,e=t.readUInt32BE(n),n+=4,r.frameMax=e,e=t.readUInt16BE(n),n+=2,r.heartbeat=e,r}function Vl(t,e){var n=0,r=null,i=Buffer.alloc(20);if(i[0]=1,i.writeUInt16BE(t,1),i.writeUInt32BE(655391,7),n=11,r=e.channelMax,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'channelMax' is the wrong type; must be a number (but not NaN)");if(i.writeUInt16BE(r,n),n+=2,r=e.frameMax,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'frameMax' is the wrong type; must be a number (but not NaN)");if(i.writeUInt32BE(r,n),n+=4,r=e.heartbeat,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'heartbeat' is the wrong type; must be a number (but not NaN)");return i.writeUInt16BE(r,n),n+=2,i[n]=206,i.writeUInt32BE(n-7,3),i}function Jl(t){var e,n,r=0,i={virtualHost:void 0,capabilities:void 0,insist:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.virtualHost=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.capabilities=e,e=!!(1&t[r]),i.insist=e,i}function Yl(t,e){var n=0,r=null,i=0,o=0;if(r=e.virtualHost,r===void 0)r="/";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'virtualHost' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");if(o+=a,r=e.capabilities,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'capabilities' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(r,"utf8");o+=s;var c=Buffer.alloc(15+o);return c[0]=1,c.writeUInt16BE(t,1),c.writeUInt32BE(655400,7),n=11,r=e.virtualHost,r===void 0&&(r="/"),c[n]=a,n++,c.write(r,n,"utf8"),n+=a,r=e.capabilities,r===void 0&&(r=""),c[n]=s,n++,c.write(r,n,"utf8"),n+=s,r=e.insist,r===void 0&&(r=!1),r&&(i+=1),c[n]=i,n++,c[n]=206,c.writeUInt32BE(n-7,3),c}function Zl(t){var e,n,r=0,i={knownHosts:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.knownHosts=e,i}function Xl(t,e){var n=0,r=null,i=0;if(r=e.knownHosts,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'knownHosts' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(655401,7),n=11,r=e.knownHosts,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function ef(t){var e,n,r=0,i={replyCode:void 0,replyText:void 0,classId:void 0,methodId:void 0};return e=t.readUInt16BE(r),r+=2,i.replyCode=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.replyText=e,e=t.readUInt16BE(r),r+=2,i.classId=e,e=t.readUInt16BE(r),r+=2,i.methodId=e,i}function tf(t,e){var n=0,r=null,i=0;if(r=e.replyText,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(19+i);if(a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(655410,7),n=11,r=e.replyCode,r===void 0)throw new Error("Missing value for mandatory field 'replyCode'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");if(a.writeUInt16BE(r,n),n+=2,r=e.replyText,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,r=e.classId,r===void 0)throw new Error("Missing value for mandatory field 'classId'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'classId' is the wrong type; must be a number (but not NaN)");if(a.writeUInt16BE(r,n),n+=2,r=e.methodId,r===void 0)throw new Error("Missing value for mandatory field 'methodId'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'methodId' is the wrong type; must be a number (but not NaN)");return a.writeUInt16BE(r,n),n+=2,a[n]=206,a.writeUInt32BE(n-7,3),a}function rf(t){return{}}function nf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(655411,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function of(t){var e,n,r=0,i={reason:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.reason=e,i}function af(t,e){var n=0,r=null,i=0;if(r=e.reason,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'reason' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(655420,7),n=11,r=e.reason,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function sf(t){return{}}function uf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(655421,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function cf(t){var e,n,r=0,i={outOfBand:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.outOfBand=e,i}function lf(t,e){var n=0,r=null,i=0;if(r=e.outOfBand,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'outOfBand' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(1310730,7),n=11,r=e.outOfBand,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function ff(t){var e,n,r=0,i={channelId:void 0};return n=t.readUInt32BE(r),r+=4,e=t.slice(r,r+n),r+=n,i.channelId=e,i}function df(t,e){var n,r=0,i=null,o=0;if(i=e.channelId,i===void 0)i=Buffer.from("");else if(!Buffer.isBuffer(i))throw new TypeError("Field 'channelId' is the wrong type; must be a Buffer");o+=i.length;var a=Buffer.alloc(16+o);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(1310731,7),r=11,i=e.channelId,i===void 0&&(i=Buffer.from("")),n=i.length,a.writeUInt32BE(n,r),r+=4,i.copy(a,r),r+=n,a[r]=206,a.writeUInt32BE(r-7,3),a}function hf(t){var e,n={active:void 0};return e=!!(1&t[0]),n.active=e,n}function pf(t,e){var n=0,r=null,i=0,o=Buffer.alloc(13);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(1310740,7),n=11,r=e.active,r===void 0)throw new Error("Missing value for mandatory field 'active'");return r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function vf(t){var e,n={active:void 0};return e=!!(1&t[0]),n.active=e,n}function gf(t,e){var n=0,r=null,i=0,o=Buffer.alloc(13);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(1310741,7),n=11,r=e.active,r===void 0)throw new Error("Missing value for mandatory field 'active'");return r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function mf(t){var e,n,r=0,i={replyCode:void 0,replyText:void 0,classId:void 0,methodId:void 0};return e=t.readUInt16BE(r),r+=2,i.replyCode=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.replyText=e,e=t.readUInt16BE(r),r+=2,i.classId=e,e=t.readUInt16BE(r),r+=2,i.methodId=e,i}function wf(t,e){var n=0,r=null,i=0;if(r=e.replyText,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(19+i);if(a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(1310760,7),n=11,r=e.replyCode,r===void 0)throw new Error("Missing value for mandatory field 'replyCode'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");if(a.writeUInt16BE(r,n),n+=2,r=e.replyText,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,r=e.classId,r===void 0)throw new Error("Missing value for mandatory field 'classId'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'classId' is the wrong type; must be a number (but not NaN)");if(a.writeUInt16BE(r,n),n+=2,r=e.methodId,r===void 0)throw new Error("Missing value for mandatory field 'methodId'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'methodId' is the wrong type; must be a number (but not NaN)");return a.writeUInt16BE(r,n),n+=2,a[n]=206,a.writeUInt32BE(n-7,3),a}function yf(t){return{}}function Ef(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(1310761,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function If(t){var e,n,r=0,i={realm:void 0,exclusive:void 0,passive:void 0,active:void 0,write:void 0,read:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.realm=e,e=!!(1&t[r]),i.exclusive=e,e=!!(2&t[r]),i.passive=e,e=!!(4&t[r]),i.active=e,e=!!(8&t[r]),i.write=e,e=!!(16&t[r]),i.read=e,i}function Bf(t,e){var n=0,r=null,i=0,o=0;if(r=e.realm,r===void 0)r="/data";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'realm' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(14+o);return s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(1966090,7),n=11,r=e.realm,r===void 0&&(r="/data"),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.exclusive,r===void 0&&(r=!1),r&&(i+=1),r=e.passive,r===void 0&&(r=!0),r&&(i+=2),r=e.active,r===void 0&&(r=!0),r&&(i+=4),r=e.write,r===void 0&&(r=!0),r&&(i+=8),r=e.read,r===void 0&&(r=!0),r&&(i+=16),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function bf(t){var e,n=0,r={ticket:void 0};return e=t.readUInt16BE(n),n+=2,r.ticket=e,r}function xf(t,e){var n=0,r=null,i=Buffer.alloc(14);if(i[0]=1,i.writeUInt16BE(t,1),i.writeUInt32BE(1966091,7),n=11,r=e.ticket,r===void 0)r=1;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return i.writeUInt16BE(r,n),n+=2,i[n]=206,i.writeUInt32BE(n-7,3),i}function Uf(t){var e,n,r=0,i={ticket:void 0,exchange:void 0,type:void 0,passive:void 0,durable:void 0,autoDelete:void 0,internal:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.type=e,e=!!(1&t[r]),i.passive=e,e=!!(2&t[r]),i.durable=e,e=!!(4&t[r]),i.autoDelete=e,e=!!(8&t[r]),i.internal=e,e=!!(16&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function _f(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.exchange,i===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.type,i===void 0)i="direct";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'type' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(a+=f,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var d=K.slice(s,s+n);s+=n,a+=d.length;var l=Buffer.alloc(17+a);if(l[0]=1,l.writeUInt16BE(t,1),l.writeUInt32BE(2621450,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return l.writeUInt16BE(i,r),r+=2,i=e.exchange,i===void 0&&(i=void 0),l[r]=c,r++,l.write(i,r,"utf8"),r+=c,i=e.type,i===void 0&&(i="direct"),l[r]=f,r++,l.write(i,r,"utf8"),r+=f,i=e.passive,i===void 0&&(i=!1),i&&(o+=1),i=e.durable,i===void 0&&(i=!1),i&&(o+=2),i=e.autoDelete,i===void 0&&(i=!1),i&&(o+=4),i=e.internal,i===void 0&&(i=!1),i&&(o+=8),i=e.nowait,i===void 0&&(i=!1),i&&(o+=16),l[r]=o,r++,o=0,r+=d.copy(l,r),l[r]=206,l.writeUInt32BE(r-7,3),l}function kf(t){return{}}function Cf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(2621451,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Of(t){var e,n,r=0,i={ticket:void 0,exchange:void 0,ifUnused:void 0,nowait:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,e=!!(1&t[r]),i.ifUnused=e,e=!!(2&t[r]),i.nowait=e,i}function Tf(t,e){var n=0,r=null,i=0,o=0;if(r=e.exchange,r===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(16+o);if(s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(2621460,7),n=11,r=e.ticket,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return s.writeUInt16BE(r,n),n+=2,r=e.exchange,r===void 0&&(r=void 0),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.ifUnused,r===void 0&&(r=!1),r&&(i+=1),r=e.nowait,r===void 0&&(r=!1),r&&(i+=2),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function Sf(t){return{}}function Rf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(2621461,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Mf(t){var e,n,r=0,i={ticket:void 0,destination:void 0,source:void 0,routingKey:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.destination=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.source=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,e=!!(1&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function qf(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.destination,i===void 0)throw new Error("Missing value for mandatory field 'destination'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'destination' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.source,i===void 0)throw new Error("Missing value for mandatory field 'source'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'source' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(a+=f,i=e.routingKey,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var d=Buffer.byteLength(i,"utf8");if(a+=d,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var l=K.slice(s,s+n);s+=n,a+=l.length;var p=Buffer.alloc(18+a);if(p[0]=1,p.writeUInt16BE(t,1),p.writeUInt32BE(2621470,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return p.writeUInt16BE(i,r),r+=2,i=e.destination,i===void 0&&(i=void 0),p[r]=c,r++,p.write(i,r,"utf8"),r+=c,i=e.source,i===void 0&&(i=void 0),p[r]=f,r++,p.write(i,r,"utf8"),r+=f,i=e.routingKey,i===void 0&&(i=""),p[r]=d,r++,p.write(i,r,"utf8"),r+=d,i=e.nowait,i===void 0&&(i=!1),i&&(o+=1),p[r]=o,r++,o=0,r+=l.copy(p,r),p[r]=206,p.writeUInt32BE(r-7,3),p}function Lf(t){return{}}function Af(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(2621471,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Nf(t){var e,n,r=0,i={ticket:void 0,destination:void 0,source:void 0,routingKey:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.destination=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.source=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,e=!!(1&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function Df(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.destination,i===void 0)throw new Error("Missing value for mandatory field 'destination'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'destination' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.source,i===void 0)throw new Error("Missing value for mandatory field 'source'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'source' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(a+=f,i=e.routingKey,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var d=Buffer.byteLength(i,"utf8");if(a+=d,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var l=K.slice(s,s+n);s+=n,a+=l.length;var p=Buffer.alloc(18+a);if(p[0]=1,p.writeUInt16BE(t,1),p.writeUInt32BE(2621480,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return p.writeUInt16BE(i,r),r+=2,i=e.destination,i===void 0&&(i=void 0),p[r]=c,r++,p.write(i,r,"utf8"),r+=c,i=e.source,i===void 0&&(i=void 0),p[r]=f,r++,p.write(i,r,"utf8"),r+=f,i=e.routingKey,i===void 0&&(i=""),p[r]=d,r++,p.write(i,r,"utf8"),r+=d,i=e.nowait,i===void 0&&(i=!1),i&&(o+=1),p[r]=o,r++,o=0,r+=l.copy(p,r),p[r]=206,p.writeUInt32BE(r-7,3),p}function Ff(t){return{}}function Pf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(2621491,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function jf(t){var e,n,r=0,i={ticket:void 0,queue:void 0,passive:void 0,durable:void 0,exclusive:void 0,autoDelete:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,e=!!(1&t[r]),i.passive=e,e=!!(2&t[r]),i.durable=e,e=!!(4&t[r]),i.exclusive=e,e=!!(8&t[r]),i.autoDelete=e,e=!!(16&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function zf(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.queue,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var f=K.slice(s,s+n);s+=n,a+=f.length;var d=Buffer.alloc(16+a);if(d[0]=1,d.writeUInt16BE(t,1),d.writeUInt32BE(3276810,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return d.writeUInt16BE(i,r),r+=2,i=e.queue,i===void 0&&(i=""),d[r]=c,r++,d.write(i,r,"utf8"),r+=c,i=e.passive,i===void 0&&(i=!1),i&&(o+=1),i=e.durable,i===void 0&&(i=!1),i&&(o+=2),i=e.exclusive,i===void 0&&(i=!1),i&&(o+=4),i=e.autoDelete,i===void 0&&(i=!1),i&&(o+=8),i=e.nowait,i===void 0&&(i=!1),i&&(o+=16),d[r]=o,r++,o=0,r+=f.copy(d,r),d[r]=206,d.writeUInt32BE(r-7,3),d}function Qf(t){var e,n,r=0,i={queue:void 0,messageCount:void 0,consumerCount:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,e=t.readUInt32BE(r),r+=4,i.messageCount=e,e=t.readUInt32BE(r),r+=4,i.consumerCount=e,i}function Hf(t,e){var n=0,r=null,i=0;if(r=e.queue,r===void 0)throw new Error("Missing value for mandatory field 'queue'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(21+i);if(a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(3276811,7),n=11,r=e.queue,r===void 0&&(r=void 0),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,r=e.messageCount,r===void 0)throw new Error("Missing value for mandatory field 'messageCount'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");if(a.writeUInt32BE(r,n),n+=4,r=e.consumerCount,r===void 0)throw new Error("Missing value for mandatory field 'consumerCount'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'consumerCount' is the wrong type; must be a number (but not NaN)");return a.writeUInt32BE(r,n),n+=4,a[n]=206,a.writeUInt32BE(n-7,3),a}function Kf(t){var e,n,r=0,i={ticket:void 0,queue:void 0,exchange:void 0,routingKey:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,e=!!(1&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function $f(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.queue,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.exchange,i===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(a+=f,i=e.routingKey,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var d=Buffer.byteLength(i,"utf8");if(a+=d,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var l=K.slice(s,s+n);s+=n,a+=l.length;var p=Buffer.alloc(18+a);if(p[0]=1,p.writeUInt16BE(t,1),p.writeUInt32BE(3276820,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return p.writeUInt16BE(i,r),r+=2,i=e.queue,i===void 0&&(i=""),p[r]=c,r++,p.write(i,r,"utf8"),r+=c,i=e.exchange,i===void 0&&(i=void 0),p[r]=f,r++,p.write(i,r,"utf8"),r+=f,i=e.routingKey,i===void 0&&(i=""),p[r]=d,r++,p.write(i,r,"utf8"),r+=d,i=e.nowait,i===void 0&&(i=!1),i&&(o+=1),p[r]=o,r++,o=0,r+=l.copy(p,r),p[r]=206,p.writeUInt32BE(r-7,3),p}function Wf(t){return{}}function Gf(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(3276821,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Vf(t){var e,n,r=0,i={ticket:void 0,queue:void 0,nowait:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,e=!!(1&t[r]),i.nowait=e,i}function Jf(t,e){var n=0,r=null,i=0,o=0;if(r=e.queue,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(16+o);if(s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(3276830,7),n=11,r=e.ticket,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return s.writeUInt16BE(r,n),n+=2,r=e.queue,r===void 0&&(r=""),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.nowait,r===void 0&&(r=!1),r&&(i+=1),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function Yf(t){var e,n=0,r={messageCount:void 0};return e=t.readUInt32BE(n),n+=4,r.messageCount=e,r}function Zf(t,e){var n=0,r=null,i=Buffer.alloc(16);if(i[0]=1,i.writeUInt16BE(t,1),i.writeUInt32BE(3276831,7),n=11,r=e.messageCount,r===void 0)throw new Error("Missing value for mandatory field 'messageCount'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");return i.writeUInt32BE(r,n),n+=4,i[n]=206,i.writeUInt32BE(n-7,3),i}function Xf(t){var e,n,r=0,i={ticket:void 0,queue:void 0,ifUnused:void 0,ifEmpty:void 0,nowait:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,e=!!(1&t[r]),i.ifUnused=e,e=!!(2&t[r]),i.ifEmpty=e,e=!!(4&t[r]),i.nowait=e,i}function ed(t,e){var n=0,r=null,i=0,o=0;if(r=e.queue,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(16+o);if(s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(3276840,7),n=11,r=e.ticket,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return s.writeUInt16BE(r,n),n+=2,r=e.queue,r===void 0&&(r=""),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.ifUnused,r===void 0&&(r=!1),r&&(i+=1),r=e.ifEmpty,r===void 0&&(r=!1),r&&(i+=2),r=e.nowait,r===void 0&&(r=!1),r&&(i+=4),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function td(t){var e,n=0,r={messageCount:void 0};return e=t.readUInt32BE(n),n+=4,r.messageCount=e,r}function rd(t,e){var n=0,r=null,i=Buffer.alloc(16);if(i[0]=1,i.writeUInt16BE(t,1),i.writeUInt32BE(3276841,7),n=11,r=e.messageCount,r===void 0)throw new Error("Missing value for mandatory field 'messageCount'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");return i.writeUInt32BE(r,n),n+=4,i[n]=206,i.writeUInt32BE(n-7,3),i}function nd(t){var e,n,r=0,i={ticket:void 0,queue:void 0,exchange:void 0,routingKey:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function id(t,e){var n,r=0,i=null,o=0,a=0;if(i=e.queue,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(i,"utf8");if(o+=s,i=e.exchange,i===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(o+=c,i=e.routingKey,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(o+=f,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,a);var d=K.slice(a,a+n);a+=n,o+=d.length;var l=Buffer.alloc(17+o);if(l[0]=1,l.writeUInt16BE(t,1),l.writeUInt32BE(3276850,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return l.writeUInt16BE(i,r),r+=2,i=e.queue,i===void 0&&(i=""),l[r]=s,r++,l.write(i,r,"utf8"),r+=s,i=e.exchange,i===void 0&&(i=void 0),l[r]=c,r++,l.write(i,r,"utf8"),r+=c,i=e.routingKey,i===void 0&&(i=""),l[r]=f,r++,l.write(i,r,"utf8"),r+=f,r+=d.copy(l,r),l[r]=206,l.writeUInt32BE(r-7,3),l}function od(t){return{}}function ad(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(3276851,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function sd(t){var e,n=0,r={prefetchSize:void 0,prefetchCount:void 0,global:void 0};return e=t.readUInt32BE(n),n+=4,r.prefetchSize=e,e=t.readUInt16BE(n),n+=2,r.prefetchCount=e,e=!!(1&t[n]),r.global=e,r}function ud(t,e){var n=0,r=null,i=0,o=Buffer.alloc(19);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932170,7),n=11,r=e.prefetchSize,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'prefetchSize' is the wrong type; must be a number (but not NaN)");if(o.writeUInt32BE(r,n),n+=4,r=e.prefetchCount,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'prefetchCount' is the wrong type; must be a number (but not NaN)");return o.writeUInt16BE(r,n),n+=2,r=e.global,r===void 0&&(r=!1),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function cd(t){return{}}function ld(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(3932171,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function fd(t){var e,n,r=0,i={ticket:void 0,queue:void 0,consumerTag:void 0,noLocal:void 0,noAck:void 0,exclusive:void 0,nowait:void 0,arguments:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.consumerTag=e,e=!!(1&t[r]),i.noLocal=e,e=!!(2&t[r]),i.noAck=e,e=!!(4&t[r]),i.exclusive=e,e=!!(8&t[r]),i.nowait=e,r++,n=t.readUInt32BE(r),r+=4,e=Ee(t.slice(r,r+n)),r+=n,i.arguments=e,i}function dd(t,e){var n,r=0,i=null,o=0,a=0,s=0;if(i=e.queue,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(i,"utf8");if(a+=c,i=e.consumerTag,i===void 0)i="";else if(!(typeof i=="string"&&Buffer.byteLength(i)<256))throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(i,"utf8");if(a+=f,i=e.arguments,i===void 0)i={};else if(typeof i!="object")throw new TypeError("Field 'arguments' is the wrong type; must be an object");n=ye(K,i,s);var d=K.slice(s,s+n);s+=n,a+=d.length;var l=Buffer.alloc(17+a);if(l[0]=1,l.writeUInt16BE(t,1),l.writeUInt32BE(3932180,7),r=11,i=e.ticket,i===void 0)i=0;else if(typeof i!="number"||isNaN(i))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return l.writeUInt16BE(i,r),r+=2,i=e.queue,i===void 0&&(i=""),l[r]=c,r++,l.write(i,r,"utf8"),r+=c,i=e.consumerTag,i===void 0&&(i=""),l[r]=f,r++,l.write(i,r,"utf8"),r+=f,i=e.noLocal,i===void 0&&(i=!1),i&&(o+=1),i=e.noAck,i===void 0&&(i=!1),i&&(o+=2),i=e.exclusive,i===void 0&&(i=!1),i&&(o+=4),i=e.nowait,i===void 0&&(i=!1),i&&(o+=8),l[r]=o,r++,o=0,r+=d.copy(l,r),l[r]=206,l.writeUInt32BE(r-7,3),l}function hd(t){var e,n,r=0,i={consumerTag:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.consumerTag=e,i}function pd(t,e){var n=0,r=null,i=0;if(r=e.consumerTag,r===void 0)throw new Error("Missing value for mandatory field 'consumerTag'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(3932181,7),n=11,r=e.consumerTag,r===void 0&&(r=void 0),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function vd(t){var e,n,r=0,i={consumerTag:void 0,nowait:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.consumerTag=e,e=!!(1&t[r]),i.nowait=e,i}function gd(t,e){var n=0,r=null,i=0,o=0;if(r=e.consumerTag,r===void 0)throw new Error("Missing value for mandatory field 'consumerTag'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(14+o);return s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(3932190,7),n=11,r=e.consumerTag,r===void 0&&(r=void 0),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.nowait,r===void 0&&(r=!1),r&&(i+=1),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function md(t){var e,n,r=0,i={consumerTag:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.consumerTag=e,i}function wd(t,e){var n=0,r=null,i=0;if(r=e.consumerTag,r===void 0)throw new Error("Missing value for mandatory field 'consumerTag'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(3932191,7),n=11,r=e.consumerTag,r===void 0&&(r=void 0),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function yd(t){var e,n,r=0,i={ticket:void 0,exchange:void 0,routingKey:void 0,mandatory:void 0,immediate:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,e=!!(1&t[r]),i.mandatory=e,e=!!(2&t[r]),i.immediate=e,i}function Ed(t,e){var n=0,r=null,i=0,o=0;if(r=e.exchange,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");if(o+=a,r=e.routingKey,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(r,"utf8");o+=s;var c=Buffer.alloc(17+o);if(c[0]=1,c.writeUInt16BE(t,1),c.writeUInt32BE(3932200,7),n=11,r=e.ticket,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return c.writeUInt16BE(r,n),n+=2,r=e.exchange,r===void 0&&(r=""),c[n]=a,n++,c.write(r,n,"utf8"),n+=a,r=e.routingKey,r===void 0&&(r=""),c[n]=s,n++,c.write(r,n,"utf8"),n+=s,r=e.mandatory,r===void 0&&(r=!1),r&&(i+=1),r=e.immediate,r===void 0&&(r=!1),r&&(i+=2),c[n]=i,n++,c[n]=206,c.writeUInt32BE(n-7,3),c}function Id(t){var e,n,r=0,i={replyCode:void 0,replyText:void 0,exchange:void 0,routingKey:void 0};return e=t.readUInt16BE(r),r+=2,i.replyCode=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.replyText=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,i}function Bd(t,e){var n=0,r=null,i=0;if(r=e.replyText,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");if(i+=o,r=e.exchange,r===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");if(i+=a,r=e.routingKey,r===void 0)throw new Error("Missing value for mandatory field 'routingKey'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(r,"utf8");i+=s;var c=Buffer.alloc(17+i);if(c[0]=1,c.writeUInt16BE(t,1),c.writeUInt32BE(3932210,7),n=11,r=e.replyCode,r===void 0)throw new Error("Missing value for mandatory field 'replyCode'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");return c.writeUInt16BE(r,n),n+=2,r=e.replyText,r===void 0&&(r=""),c[n]=o,n++,c.write(r,n,"utf8"),n+=o,r=e.exchange,r===void 0&&(r=void 0),c[n]=a,n++,c.write(r,n,"utf8"),n+=a,r=e.routingKey,r===void 0&&(r=void 0),c[n]=s,n++,c.write(r,n,"utf8"),n+=s,c[n]=206,c.writeUInt32BE(n-7,3),c}function bd(t){var e,n,r=0,i={consumerTag:void 0,deliveryTag:void 0,redelivered:void 0,exchange:void 0,routingKey:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.consumerTag=e,e=ie.readUInt64BE(t,r),r+=8,i.deliveryTag=e,e=!!(1&t[r]),i.redelivered=e,r++,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,i}function xd(t,e){var n=0,r=null,i=0,o=0;if(r=e.consumerTag,r===void 0)throw new Error("Missing value for mandatory field 'consumerTag'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");if(o+=a,r=e.exchange,r===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(r,"utf8");if(o+=s,r=e.routingKey,r===void 0)throw new Error("Missing value for mandatory field 'routingKey'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var c=Buffer.byteLength(r,"utf8");o+=c;var f=Buffer.alloc(24+o);if(f[0]=1,f.writeUInt16BE(t,1),f.writeUInt32BE(3932220,7),n=11,r=e.consumerTag,r===void 0&&(r=void 0),f[n]=a,n++,f.write(r,n,"utf8"),n+=a,r=e.deliveryTag,r===void 0)throw new Error("Missing value for mandatory field 'deliveryTag'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");return ie.writeUInt64BE(f,r,n),n+=8,r=e.redelivered,r===void 0&&(r=!1),r&&(i+=1),f[n]=i,n++,i=0,r=e.exchange,r===void 0&&(r=void 0),f[n]=s,n++,f.write(r,n,"utf8"),n+=s,r=e.routingKey,r===void 0&&(r=void 0),f[n]=c,n++,f.write(r,n,"utf8"),n+=c,f[n]=206,f.writeUInt32BE(n-7,3),f}function Ud(t){var e,n,r=0,i={ticket:void 0,queue:void 0,noAck:void 0};return e=t.readUInt16BE(r),r+=2,i.ticket=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.queue=e,e=!!(1&t[r]),i.noAck=e,i}function _d(t,e){var n=0,r=null,i=0,o=0;if(r=e.queue,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");o+=a;var s=Buffer.alloc(16+o);if(s[0]=1,s.writeUInt16BE(t,1),s.writeUInt32BE(3932230,7),n=11,r=e.ticket,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");return s.writeUInt16BE(r,n),n+=2,r=e.queue,r===void 0&&(r=""),s[n]=a,n++,s.write(r,n,"utf8"),n+=a,r=e.noAck,r===void 0&&(r=!1),r&&(i+=1),s[n]=i,n++,s[n]=206,s.writeUInt32BE(n-7,3),s}function kd(t){var e,n,r=0,i={deliveryTag:void 0,redelivered:void 0,exchange:void 0,routingKey:void 0,messageCount:void 0};return e=ie.readUInt64BE(t,r),r+=8,i.deliveryTag=e,e=!!(1&t[r]),i.redelivered=e,r++,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.exchange=e,n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.routingKey=e,e=t.readUInt32BE(r),r+=4,i.messageCount=e,i}function Cd(t,e){var n=0,r=null,i=0,o=0;if(r=e.exchange,r===void 0)throw new Error("Missing value for mandatory field 'exchange'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");var a=Buffer.byteLength(r,"utf8");if(o+=a,r=e.routingKey,r===void 0)throw new Error("Missing value for mandatory field 'routingKey'");if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");var s=Buffer.byteLength(r,"utf8");o+=s;var c=Buffer.alloc(27+o);if(c[0]=1,c.writeUInt16BE(t,1),c.writeUInt32BE(3932231,7),n=11,r=e.deliveryTag,r===void 0)throw new Error("Missing value for mandatory field 'deliveryTag'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");if(ie.writeUInt64BE(c,r,n),n+=8,r=e.redelivered,r===void 0&&(r=!1),r&&(i+=1),c[n]=i,n++,i=0,r=e.exchange,r===void 0&&(r=void 0),c[n]=a,n++,c.write(r,n,"utf8"),n+=a,r=e.routingKey,r===void 0&&(r=void 0),c[n]=s,n++,c.write(r,n,"utf8"),n+=s,r=e.messageCount,r===void 0)throw new Error("Missing value for mandatory field 'messageCount'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");return c.writeUInt32BE(r,n),n+=4,c[n]=206,c.writeUInt32BE(n-7,3),c}function Od(t){var e,n,r=0,i={clusterId:void 0};return n=t.readUInt8(r),r++,e=t.toString("utf8",r,r+n),r+=n,i.clusterId=e,i}function Td(t,e){var n=0,r=null,i=0;if(r=e.clusterId,r===void 0)r="";else if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'clusterId' is the wrong type; must be a string (up to 255 chars)");var o=Buffer.byteLength(r,"utf8");i+=o;var a=Buffer.alloc(13+i);return a[0]=1,a.writeUInt16BE(t,1),a.writeUInt32BE(3932232,7),n=11,r=e.clusterId,r===void 0&&(r=""),a[n]=o,n++,a.write(r,n,"utf8"),n+=o,a[n]=206,a.writeUInt32BE(n-7,3),a}function Sd(t){var e,n=0,r={deliveryTag:void 0,multiple:void 0};return e=ie.readUInt64BE(t,n),n+=8,r.deliveryTag=e,e=!!(1&t[n]),r.multiple=e,r}function Rd(t,e){var n=0,r=null,i=0,o=Buffer.alloc(21);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932240,7),n=11,r=e.deliveryTag,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");return ie.writeUInt64BE(o,r,n),n+=8,r=e.multiple,r===void 0&&(r=!1),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function Md(t){var e,n=0,r={deliveryTag:void 0,requeue:void 0};return e=ie.readUInt64BE(t,n),n+=8,r.deliveryTag=e,e=!!(1&t[n]),r.requeue=e,r}function qd(t,e){var n=0,r=null,i=0,o=Buffer.alloc(21);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932250,7),n=11,r=e.deliveryTag,r===void 0)throw new Error("Missing value for mandatory field 'deliveryTag'");if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");return ie.writeUInt64BE(o,r,n),n+=8,r=e.requeue,r===void 0&&(r=!0),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function Ld(t){var e,n={requeue:void 0};return e=!!(1&t[0]),n.requeue=e,n}function Ad(t,e){var n=0,r=null,i=0,o=Buffer.alloc(13);return o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932260,7),n=11,r=e.requeue,r===void 0&&(r=!1),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function Nd(t){var e,n={requeue:void 0};return e=!!(1&t[0]),n.requeue=e,n}function Dd(t,e){var n=0,r=null,i=0,o=Buffer.alloc(13);return o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932270,7),n=11,r=e.requeue,r===void 0&&(r=!1),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function Fd(t){return{}}function Pd(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(3932271,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function jd(t){var e,n=0,r={deliveryTag:void 0,multiple:void 0,requeue:void 0};return e=ie.readUInt64BE(t,n),n+=8,r.deliveryTag=e,e=!!(1&t[n]),r.multiple=e,e=!!(2&t[n]),r.requeue=e,r}function zd(t,e){var n=0,r=null,i=0,o=Buffer.alloc(21);if(o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(3932280,7),n=11,r=e.deliveryTag,r===void 0)r=0;else if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");return ie.writeUInt64BE(o,r,n),n+=8,r=e.multiple,r===void 0&&(r=!1),r&&(i+=1),r=e.requeue,r===void 0&&(r=!0),r&&(i+=2),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function Qd(t){return{}}function Hd(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898250,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Kd(t){return{}}function $d(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898251,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Wd(t){return{}}function Gd(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898260,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Vd(t){return{}}function Jd(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898261,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Yd(t){return{}}function Zd(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898270,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function Xd(t){return{}}function eh(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5898271,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function th(t){var e,n={nowait:void 0};return e=!!(1&t[0]),n.nowait=e,n}function rh(t,e){var n=0,r=null,i=0,o=Buffer.alloc(13);return o[0]=1,o.writeUInt16BE(t,1),o.writeUInt32BE(5570570,7),n=11,r=e.nowait,r===void 0&&(r=!1),r&&(i+=1),o[n]=i,n++,o[n]=206,o.writeUInt32BE(n-7,3),o}function nh(t){return{}}function ih(t,e){var n=0,r=Buffer.alloc(12);return r[0]=1,r.writeUInt16BE(t,1),r.writeUInt32BE(5570571,7),n=11,r[n]=206,r.writeUInt32BE(n-7,3),r}function oh(t,e,n){var r,i,o=0,a=0,s=0,c=0;if(r=n.contentType,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'contentType' is the wrong type; must be a string (up to 255 chars)");var f=Buffer.byteLength(r,"utf8");c+=1,c+=f}if(r=n.contentEncoding,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'contentEncoding' is the wrong type; must be a string (up to 255 chars)");var d=Buffer.byteLength(r,"utf8");c+=1,c+=d}if(r=n.headers,r!=null){if(typeof r!="object")throw new TypeError("Field 'headers' is the wrong type; must be an object");i=ye(K,r,s);var l=K.slice(s,s+i);s+=i,c+=l.length}if(r=n.deliveryMode,r!=null){if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'deliveryMode' is the wrong type; must be a number (but not NaN)");c+=1}if(r=n.priority,r!=null){if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'priority' is the wrong type; must be a number (but not NaN)");c+=1}if(r=n.correlationId,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'correlationId' is the wrong type; must be a string (up to 255 chars)");var p=Buffer.byteLength(r,"utf8");c+=1,c+=p}if(r=n.replyTo,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'replyTo' is the wrong type; must be a string (up to 255 chars)");var k=Buffer.byteLength(r,"utf8");c+=1,c+=k}if(r=n.expiration,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'expiration' is the wrong type; must be a string (up to 255 chars)");var C=Buffer.byteLength(r,"utf8");c+=1,c+=C}if(r=n.messageId,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'messageId' is the wrong type; must be a string (up to 255 chars)");var E=Buffer.byteLength(r,"utf8");c+=1,c+=E}if(r=n.timestamp,r!=null){if(typeof r!="number"||isNaN(r))throw new TypeError("Field 'timestamp' is the wrong type; must be a number (but not NaN)");c+=8}if(r=n.type,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'type' is the wrong type; must be a string (up to 255 chars)");var T=Buffer.byteLength(r,"utf8");c+=1,c+=T}if(r=n.userId,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'userId' is the wrong type; must be a string (up to 255 chars)");var U=Buffer.byteLength(r,"utf8");c+=1,c+=U}if(r=n.appId,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'appId' is the wrong type; must be a string (up to 255 chars)");var L=Buffer.byteLength(r,"utf8");c+=1,c+=L}if(r=n.clusterId,r!=null){if(!(typeof r=="string"&&Buffer.byteLength(r)<256))throw new TypeError("Field 'clusterId' is the wrong type; must be a string (up to 255 chars)");var P=Buffer.byteLength(r,"utf8");c+=1,c+=P}var O=Buffer.alloc(22+c);return O[0]=2,O.writeUInt16BE(t,1),O.writeUInt32BE(3932160,7),ie.writeUInt64BE(O,e,11),a=0,o=21,r=n.contentType,r!=null&&(a+=32768,O[o]=f,o++,O.write(r,o,"utf8"),o+=f),r=n.contentEncoding,r!=null&&(a+=16384,O[o]=d,o++,O.write(r,o,"utf8"),o+=d),r=n.headers,r!=null&&(a+=8192,o+=l.copy(O,o)),r=n.deliveryMode,r!=null&&(a+=4096,O.writeUInt8(r,o),o++),r=n.priority,r!=null&&(a+=2048,O.writeUInt8(r,o),o++),r=n.correlationId,r!=null&&(a+=1024,O[o]=p,o++,O.write(r,o,"utf8"),o+=p),r=n.replyTo,r!=null&&(a+=512,O[o]=k,o++,O.write(r,o,"utf8"),o+=k),r=n.expiration,r!=null&&(a+=256,O[o]=C,o++,O.write(r,o,"utf8"),o+=C),r=n.messageId,r!=null&&(a+=128,O[o]=E,o++,O.write(r,o,"utf8"),o+=E),r=n.timestamp,r!=null&&(a+=64,ie.writeUInt64BE(O,r,o),o+=8),r=n.type,r!=null&&(a+=32,O[o]=T,o++,O.write(r,o,"utf8"),o+=T),r=n.userId,r!=null&&(a+=16,O[o]=U,o++,O.write(r,o,"utf8"),o+=U),r=n.appId,r!=null&&(a+=8,O[o]=L,o++,O.write(r,o,"utf8"),o+=L),r=n.clusterId,r!=null&&(a+=4,O[o]=P,o++,O.write(r,o,"utf8"),o+=P),O[o]=206,O.writeUInt32BE(o-7,3),O.writeUInt16BE(a,19),O.slice(0,o+1)}function ah(t){var e,n,r,i=2;if(e=t.readUInt16BE(0),e===0)return{};var o={contentType:void 0,contentEncoding:void 0,headers:void 0,deliveryMode:void 0,priority:void 0,correlationId:void 0,replyTo:void 0,expiration:void 0,messageId:void 0,timestamp:void 0,type:void 0,userId:void 0,appId:void 0,clusterId:void 0};return 32768&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.contentType=n),16384&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.contentEncoding=n),8192&e&&(r=t.readUInt32BE(i),i+=4,n=Ee(t.slice(i,i+r)),i+=r,o.headers=n),4096&e&&(n=t[i],i++,o.deliveryMode=n),2048&e&&(n=t[i],i++,o.priority=n),1024&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.correlationId=n),512&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.replyTo=n),256&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.expiration=n),128&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.messageId=n),64&e&&(n=ie.readUInt64BE(t,i),i+=8,o.timestamp=n),32&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.type=n),16&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.userId=n),8&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.appId=n),4&e&&(r=t.readUInt8(i),i++,n=t.toString("utf8",i,i+r),i+=r,o.clusterId=n),o}var Gi=Hr(),ie=Ke(),ye=Gi.encodeTable,Ee=Gi.decodeFields,K=Buffer.alloc(65536),Qg=Object.freeze({});h.exports.constants={FRAME_METHOD:1,FRAME_HEADER:2,FRAME_BODY:3,FRAME_HEARTBEAT:8,FRAME_MIN_SIZE:4096,FRAME_END:206,REPLY_SUCCESS:200,CONTENT_TOO_LARGE:311,NO_ROUTE:312,NO_CONSUMERS:313,ACCESS_REFUSED:403,NOT_FOUND:404,RESOURCE_LOCKED:405,PRECONDITION_FAILED:406,CONNECTION_FORCED:320,INVALID_PATH:402,FRAME_ERROR:501,SYNTAX_ERROR:502,COMMAND_INVALID:503,CHANNEL_ERROR:504,UNEXPECTED_FRAME:505,RESOURCE_ERROR:506,NOT_ALLOWED:530,NOT_IMPLEMENTED:540,INTERNAL_ERROR:541};h.exports.constant_strs={1:"FRAME-METHOD",2:"FRAME-HEADER",3:"FRAME-BODY",8:"FRAME-HEARTBEAT",200:"REPLY-SUCCESS",206:"FRAME-END",311:"CONTENT-TOO-LARGE",312:"NO-ROUTE",313:"NO-CONSUMERS",320:"CONNECTION-FORCED",402:"INVALID-PATH",403:"ACCESS-REFUSED",404:"NOT-FOUND",405:"RESOURCE-LOCKED",406:"PRECONDITION-FAILED",501:"FRAME-ERROR",502:"SYNTAX-ERROR",503:"COMMAND-INVALID",504:"CHANNEL-ERROR",505:"UNEXPECTED-FRAME",506:"RESOURCE-ERROR",530:"NOT-ALLOWED",540:"NOT-IMPLEMENTED",541:"INTERNAL-ERROR",4096:"FRAME-MIN-SIZE"};h.exports.FRAME_OVERHEAD=8;h.exports.decode=function(t,e){switch(t){case 655370:return Dl(e);case 655371:return Pl(e);case 655380:return zl(e);case 655381:return Hl(e);case 655390:return $l(e);case 655391:return Gl(e);case 655400:return Jl(e);case 655401:return Zl(e);case 655410:return ef(e);case 655411:return rf(e);case 655420:return of(e);case 655421:return sf(e);case 1310730:return cf(e);case 1310731:return ff(e);case 1310740:return hf(e);case 1310741:return vf(e);case 1310760:return mf(e);case 1310761:return yf(e);case 1966090:return If(e);case 1966091:return bf(e);case 2621450:return Uf(e);case 2621451:return kf(e);case 2621460:return Of(e);case 2621461:return Sf(e);case 2621470:return Mf(e);case 2621471:return Lf(e);case 2621480:return Nf(e);case 2621491:return Ff(e);case 3276810:return jf(e);case 3276811:return Qf(e);case 3276820:return Kf(e);case 3276821:return Wf(e);case 3276830:return Vf(e);case 3276831:return Yf(e);case 3276840:return Xf(e);case 3276841:return td(e);case 3276850:return nd(e);case 3276851:return od(e);case 3932170:return sd(e);case 3932171:return cd(e);case 3932180:return fd(e);case 3932181:return hd(e);case 3932190:return vd(e);case 3932191:return md(e);case 3932200:return yd(e);case 3932210:return Id(e);case 3932220:return bd(e);case 3932230:return Ud(e);case 3932231:return kd(e);case 3932232:return Od(e);case 3932240:return Sd(e);case 3932250:return Md(e);case 3932260:return Ld(e);case 3932270:return Nd(e);case 3932271:return Fd(e);case 3932280:return jd(e);case 5898250:return Qd(e);case 5898251:return Kd(e);case 5898260:return Wd(e);case 5898261:return Vd(e);case 5898270:return Yd(e);case 5898271:return Xd(e);case 5570570:return th(e);case 5570571:return nh(e);case 60:return ah(e);default:throw new Error("Unknown class/method ID")}};h.exports.encodeMethod=function(t,e,n){switch(t){case 655370:return Fl(e,n);case 655371:return jl(e,n);case 655380:return Ql(e,n);case 655381:return Kl(e,n);case 655390:return Wl(e,n);case 655391:return Vl(e,n);case 655400:return Yl(e,n);case 655401:return Xl(e,n);case 655410:return tf(e,n);case 655411:return nf(e,n);case 655420:return af(e,n);case 655421:return uf(e,n);case 1310730:return lf(e,n);case 1310731:return df(e,n);case 1310740:return pf(e,n);case 1310741:return gf(e,n);case 1310760:return wf(e,n);case 1310761:return Ef(e,n);case 1966090:return Bf(e,n);case 1966091:return xf(e,n);case 2621450:return _f(e,n);case 2621451:return Cf(e,n);case 2621460:return Tf(e,n);case 2621461:return Rf(e,n);case 2621470:return qf(e,n);case 2621471:return Af(e,n);case 2621480:return Df(e,n);case 2621491:return Pf(e,n);case 3276810:return zf(e,n);case 3276811:return Hf(e,n);case 3276820:return $f(e,n);case 3276821:return Gf(e,n);case 3276830:return Jf(e,n);case 3276831:return Zf(e,n);case 3276840:return ed(e,n);case 3276841:return rd(e,n);case 3276850:return id(e,n);case 3276851:return ad(e,n);case 3932170:return ud(e,n);case 3932171:return ld(e,n);case 3932180:return dd(e,n);case 3932181:return pd(e,n);case 3932190:return gd(e,n);case 3932191:return wd(e,n);case 3932200:return Ed(e,n);case 3932210:return Bd(e,n);case 3932220:return xd(e,n);case 3932230:return _d(e,n);case 3932231:return Cd(e,n);case 3932232:return Td(e,n);case 3932240:return Rd(e,n);case 3932250:return qd(e,n);case 3932260:return Ad(e,n);case 3932270:return Dd(e,n);case 3932271:return Pd(e,n);case 3932280:return zd(e,n);case 5898250:return Hd(e,n);case 5898251:return $d(e,n);case 5898260:return Gd(e,n);case 5898261:return Jd(e,n);case 5898270:return Zd(e,n);case 5898271:return eh(e,n);case 5570570:return rh(e,n);case 5570571:return ih(e,n);default:throw new Error("Unknown class/method ID")}};h.exports.encodeProperties=function(t,e,n,r){switch(t){case 60:return oh(e,n,r);default:throw new Error("Unknown class/properties ID")}};h.exports.info=function(t){switch(t){case 655370:return sh;case 655371:return uh;case 655380:return ch;case 655381:return lh;case 655390:return fh;case 655391:return dh;case 655400:return hh;case 655401:return ph;case 655410:return vh;case 655411:return gh;case 655420:return mh;case 655421:return wh;case 1310730:return yh;case 1310731:return Eh;case 1310740:return Ih;case 1310741:return Bh;case 1310760:return bh;case 1310761:return xh;case 1966090:return Uh;case 1966091:return _h;case 2621450:return kh;case 2621451:return Ch;case 2621460:return Oh;case 2621461:return Th;case 2621470:return Sh;case 2621471:return Rh;case 2621480:return Mh;case 2621491:return qh;case 3276810:return Lh;case 3276811:return Ah;case 3276820:return Nh;case 3276821:return Dh;case 3276830:return Fh;case 3276831:return Ph;case 3276840:return jh;case 3276841:return zh;case 3276850:return Qh;case 3276851:return Hh;case 3932170:return Kh;case 3932171:return $h;case 3932180:return Wh;case 3932181:return Gh;case 3932190:return Vh;case 3932191:return Jh;case 3932200:return Yh;case 3932210:return Zh;case 3932220:return Xh;case 3932230:return e0;case 3932231:return t0;case 3932232:return r0;case 3932240:return n0;case 3932250:return i0;case 3932260:return o0;case 3932270:return a0;case 3932271:return s0;case 3932280:return u0;case 5898250:return c0;case 5898251:return l0;case 5898260:return f0;case 5898261:return d0;case 5898270:return h0;case 5898271:return p0;case 5570570:return v0;case 5570571:return g0;case 60:return m0;default:throw new Error("Unknown class/method ID")}};h.exports.ConnectionStart=655370;var sh=h.exports.methodInfoConnectionStart={id:655370,classId:10,methodId:10,name:"ConnectionStart",args:[{type:"octet",name:"versionMajor",default:0},{type:"octet",name:"versionMinor",default:9},{type:"table",name:"serverProperties"},{type:"longstr",name:"mechanisms",default:"PLAIN"},{type:"longstr",name:"locales",default:"en_US"}]};h.exports.ConnectionStartOk=655371;var uh=h.exports.methodInfoConnectionStartOk={id:655371,classId:10,methodId:11,name:"ConnectionStartOk",args:[{type:"table",name:"clientProperties"},{type:"shortstr",name:"mechanism",default:"PLAIN"},{type:"longstr",name:"response"},{type:"shortstr",name:"locale",default:"en_US"}]};h.exports.ConnectionSecure=655380;var ch=h.exports.methodInfoConnectionSecure={id:655380,classId:10,methodId:20,name:"ConnectionSecure",args:[{type:"longstr",name:"challenge"}]};h.exports.ConnectionSecureOk=655381;var lh=h.exports.methodInfoConnectionSecureOk={id:655381,classId:10,methodId:21,name:"ConnectionSecureOk",args:[{type:"longstr",name:"response"}]};h.exports.ConnectionTune=655390;var fh=h.exports.methodInfoConnectionTune={id:655390,classId:10,methodId:30,name:"ConnectionTune",args:[{type:"short",name:"channelMax",default:0},{type:"long",name:"frameMax",default:0},{type:"short",name:"heartbeat",default:0}]};h.exports.ConnectionTuneOk=655391;var dh=h.exports.methodInfoConnectionTuneOk={id:655391,classId:10,methodId:31,name:"ConnectionTuneOk",args:[{type:"short",name:"channelMax",default:0},{type:"long",name:"frameMax",default:0},{type:"short",name:"heartbeat",default:0}]};h.exports.ConnectionOpen=655400;var hh=h.exports.methodInfoConnectionOpen={id:655400,classId:10,methodId:40,name:"ConnectionOpen",args:[{type:"shortstr",name:"virtualHost",default:"/"},{type:"shortstr",name:"capabilities",default:""},{type:"bit",name:"insist",default:!1}]};h.exports.ConnectionOpenOk=655401;var ph=h.exports.methodInfoConnectionOpenOk={id:655401,classId:10,methodId:41,name:"ConnectionOpenOk",args:[{type:"shortstr",name:"knownHosts",default:""}]};h.exports.ConnectionClose=655410;var vh=h.exports.methodInfoConnectionClose={id:655410,classId:10,methodId:50,name:"ConnectionClose",args:[{type:"short",name:"replyCode"},{type:"shortstr",name:"replyText",default:""},{type:"short",name:"classId"},{type:"short",name:"methodId"}]};h.exports.ConnectionCloseOk=655411;var gh=h.exports.methodInfoConnectionCloseOk={id:655411,classId:10,methodId:51,name:"ConnectionCloseOk",args:[]};h.exports.ConnectionBlocked=655420;var mh=h.exports.methodInfoConnectionBlocked={id:655420,classId:10,methodId:60,name:"ConnectionBlocked",args:[{type:"shortstr",name:"reason",default:""}]};h.exports.ConnectionUnblocked=655421;var wh=h.exports.methodInfoConnectionUnblocked={id:655421,classId:10,methodId:61,name:"ConnectionUnblocked",args:[]};h.exports.ChannelOpen=1310730;var yh=h.exports.methodInfoChannelOpen={id:1310730,classId:20,methodId:10,name:"ChannelOpen",args:[{type:"shortstr",name:"outOfBand",default:""}]};h.exports.ChannelOpenOk=1310731;var Eh=h.exports.methodInfoChannelOpenOk={id:1310731,classId:20,methodId:11,name:"ChannelOpenOk",args:[{type:"longstr",name:"channelId",default:""}]};h.exports.ChannelFlow=1310740;var Ih=h.exports.methodInfoChannelFlow={id:1310740,classId:20,methodId:20,name:"ChannelFlow",args:[{type:"bit",name:"active"}]};h.exports.ChannelFlowOk=1310741;var Bh=h.exports.methodInfoChannelFlowOk={id:1310741,classId:20,methodId:21,name:"ChannelFlowOk",args:[{type:"bit",name:"active"}]};h.exports.ChannelClose=1310760;var bh=h.exports.methodInfoChannelClose={id:1310760,classId:20,methodId:40,name:"ChannelClose",args:[{type:"short",name:"replyCode"},{type:"shortstr",name:"replyText",default:""},{type:"short",name:"classId"},{type:"short",name:"methodId"}]};h.exports.ChannelCloseOk=1310761;var xh=h.exports.methodInfoChannelCloseOk={id:1310761,classId:20,methodId:41,name:"ChannelCloseOk",args:[]};h.exports.AccessRequest=1966090;var Uh=h.exports.methodInfoAccessRequest={id:1966090,classId:30,methodId:10,name:"AccessRequest",args:[{type:"shortstr",name:"realm",default:"/data"},{type:"bit",name:"exclusive",default:!1},{type:"bit",name:"passive",default:!0},{type:"bit",name:"active",default:!0},{type:"bit",name:"write",default:!0},{type:"bit",name:"read",default:!0}]};h.exports.AccessRequestOk=1966091;var _h=h.exports.methodInfoAccessRequestOk={id:1966091,classId:30,methodId:11,name:"AccessRequestOk",args:[{type:"short",name:"ticket",default:1}]};h.exports.ExchangeDeclare=2621450;var kh=h.exports.methodInfoExchangeDeclare={id:2621450,classId:40,methodId:10,name:"ExchangeDeclare",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"type",default:"direct"},{type:"bit",name:"passive",default:!1},{type:"bit",name:"durable",default:!1},{type:"bit",name:"autoDelete",default:!1},{type:"bit",name:"internal",default:!1},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.ExchangeDeclareOk=2621451;var Ch=h.exports.methodInfoExchangeDeclareOk={id:2621451,classId:40,methodId:11,name:"ExchangeDeclareOk",args:[]};h.exports.ExchangeDelete=2621460;var Oh=h.exports.methodInfoExchangeDelete={id:2621460,classId:40,methodId:20,name:"ExchangeDelete",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"exchange"},{type:"bit",name:"ifUnused",default:!1},{type:"bit",name:"nowait",default:!1}]};h.exports.ExchangeDeleteOk=2621461;var Th=h.exports.methodInfoExchangeDeleteOk={id:2621461,classId:40,methodId:21,name:"ExchangeDeleteOk",args:[]};h.exports.ExchangeBind=2621470;var Sh=h.exports.methodInfoExchangeBind={id:2621470,classId:40,methodId:30,name:"ExchangeBind",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"destination"},{type:"shortstr",name:"source"},{type:"shortstr",name:"routingKey",default:""},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.ExchangeBindOk=2621471;var Rh=h.exports.methodInfoExchangeBindOk={id:2621471,classId:40,methodId:31,name:"ExchangeBindOk",args:[]};h.exports.ExchangeUnbind=2621480;var Mh=h.exports.methodInfoExchangeUnbind={id:2621480,classId:40,methodId:40,name:"ExchangeUnbind",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"destination"},{type:"shortstr",name:"source"},{type:"shortstr",name:"routingKey",default:""},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.ExchangeUnbindOk=2621491;var qh=h.exports.methodInfoExchangeUnbindOk={id:2621491,classId:40,methodId:51,name:"ExchangeUnbindOk",args:[]};h.exports.QueueDeclare=3276810;var Lh=h.exports.methodInfoQueueDeclare={id:3276810,classId:50,methodId:10,name:"QueueDeclare",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"bit",name:"passive",default:!1},{type:"bit",name:"durable",default:!1},{type:"bit",name:"exclusive",default:!1},{type:"bit",name:"autoDelete",default:!1},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.QueueDeclareOk=3276811;var Ah=h.exports.methodInfoQueueDeclareOk={id:3276811,classId:50,methodId:11,name:"QueueDeclareOk",args:[{type:"shortstr",name:"queue"},{type:"long",name:"messageCount"},{type:"long",name:"consumerCount"}]};h.exports.QueueBind=3276820;var Nh=h.exports.methodInfoQueueBind={id:3276820,classId:50,methodId:20,name:"QueueBind",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"routingKey",default:""},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.QueueBindOk=3276821;var Dh=h.exports.methodInfoQueueBindOk={id:3276821,classId:50,methodId:21,name:"QueueBindOk",args:[]};h.exports.QueuePurge=3276830;var Fh=h.exports.methodInfoQueuePurge={id:3276830,classId:50,methodId:30,name:"QueuePurge",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"bit",name:"nowait",default:!1}]};h.exports.QueuePurgeOk=3276831;var Ph=h.exports.methodInfoQueuePurgeOk={id:3276831,classId:50,methodId:31,name:"QueuePurgeOk",args:[{type:"long",name:"messageCount"}]};h.exports.QueueDelete=3276840;var jh=h.exports.methodInfoQueueDelete={id:3276840,classId:50,methodId:40,name:"QueueDelete",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"bit",name:"ifUnused",default:!1},{type:"bit",name:"ifEmpty",default:!1},{type:"bit",name:"nowait",default:!1}]};h.exports.QueueDeleteOk=3276841;var zh=h.exports.methodInfoQueueDeleteOk={id:3276841,classId:50,methodId:41,name:"QueueDeleteOk",args:[{type:"long",name:"messageCount"}]};h.exports.QueueUnbind=3276850;var Qh=h.exports.methodInfoQueueUnbind={id:3276850,classId:50,methodId:50,name:"QueueUnbind",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"routingKey",default:""},{type:"table",name:"arguments",default:{}}]};h.exports.QueueUnbindOk=3276851;var Hh=h.exports.methodInfoQueueUnbindOk={id:3276851,classId:50,methodId:51,name:"QueueUnbindOk",args:[]};h.exports.BasicQos=3932170;var Kh=h.exports.methodInfoBasicQos={id:3932170,classId:60,methodId:10,name:"BasicQos",args:[{type:"long",name:"prefetchSize",default:0},{type:"short",name:"prefetchCount",default:0},{type:"bit",name:"global",default:!1}]};h.exports.BasicQosOk=3932171;var $h=h.exports.methodInfoBasicQosOk={id:3932171,classId:60,methodId:11,name:"BasicQosOk",args:[]};h.exports.BasicConsume=3932180;var Wh=h.exports.methodInfoBasicConsume={id:3932180,classId:60,methodId:20,name:"BasicConsume",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"shortstr",name:"consumerTag",default:""},{type:"bit",name:"noLocal",default:!1},{type:"bit",name:"noAck",default:!1},{type:"bit",name:"exclusive",default:!1},{type:"bit",name:"nowait",default:!1},{type:"table",name:"arguments",default:{}}]};h.exports.BasicConsumeOk=3932181;var Gh=h.exports.methodInfoBasicConsumeOk={id:3932181,classId:60,methodId:21,name:"BasicConsumeOk",args:[{type:"shortstr",name:"consumerTag"}]};h.exports.BasicCancel=3932190;var Vh=h.exports.methodInfoBasicCancel={id:3932190,classId:60,methodId:30,name:"BasicCancel",args:[{type:"shortstr",name:"consumerTag"},{type:"bit",name:"nowait",default:!1}]};h.exports.BasicCancelOk=3932191;var Jh=h.exports.methodInfoBasicCancelOk={id:3932191,classId:60,methodId:31,name:"BasicCancelOk",args:[{type:"shortstr",name:"consumerTag"}]};h.exports.BasicPublish=3932200;var Yh=h.exports.methodInfoBasicPublish={id:3932200,classId:60,methodId:40,name:"BasicPublish",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"exchange",default:""},{type:"shortstr",name:"routingKey",default:""},{type:"bit",name:"mandatory",default:!1},{type:"bit",name:"immediate",default:!1}]};h.exports.BasicReturn=3932210;var Zh=h.exports.methodInfoBasicReturn={id:3932210,classId:60,methodId:50,name:"BasicReturn",args:[{type:"short",name:"replyCode"},{type:"shortstr",name:"replyText",default:""},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"routingKey"}]};h.exports.BasicDeliver=3932220;var Xh=h.exports.methodInfoBasicDeliver={id:3932220,classId:60,methodId:60,name:"BasicDeliver",args:[{type:"shortstr",name:"consumerTag"},{type:"longlong",name:"deliveryTag"},{type:"bit",name:"redelivered",default:!1},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"routingKey"}]};h.exports.BasicGet=3932230;var e0=h.exports.methodInfoBasicGet={id:3932230,classId:60,methodId:70,name:"BasicGet",args:[{type:"short",name:"ticket",default:0},{type:"shortstr",name:"queue",default:""},{type:"bit",name:"noAck",default:!1}]};h.exports.BasicGetOk=3932231;var t0=h.exports.methodInfoBasicGetOk={id:3932231,classId:60,methodId:71,name:"BasicGetOk",args:[{type:"longlong",name:"deliveryTag"},{type:"bit",name:"redelivered",default:!1},{type:"shortstr",name:"exchange"},{type:"shortstr",name:"routingKey"},{type:"long",name:"messageCount"}]};h.exports.BasicGetEmpty=3932232;var r0=h.exports.methodInfoBasicGetEmpty={id:3932232,classId:60,methodId:72,name:"BasicGetEmpty",args:[{type:"shortstr",name:"clusterId",default:""}]};h.exports.BasicAck=3932240;var n0=h.exports.methodInfoBasicAck={id:3932240,classId:60,methodId:80,name:"BasicAck",args:[{type:"longlong",name:"deliveryTag",default:0},{type:"bit",name:"multiple",default:!1}]};h.exports.BasicReject=3932250;var i0=h.exports.methodInfoBasicReject={id:3932250,classId:60,methodId:90,name:"BasicReject",args:[{type:"longlong",name:"deliveryTag"},{type:"bit",name:"requeue",default:!0}]};h.exports.BasicRecoverAsync=3932260;var o0=h.exports.methodInfoBasicRecoverAsync={id:3932260,classId:60,methodId:100,name:"BasicRecoverAsync",args:[{type:"bit",name:"requeue",default:!1}]};h.exports.BasicRecover=3932270;var a0=h.exports.methodInfoBasicRecover={id:3932270,classId:60,methodId:110,name:"BasicRecover",args:[{type:"bit",name:"requeue",default:!1}]};h.exports.BasicRecoverOk=3932271;var s0=h.exports.methodInfoBasicRecoverOk={id:3932271,classId:60,methodId:111,name:"BasicRecoverOk",args:[]};h.exports.BasicNack=3932280;var u0=h.exports.methodInfoBasicNack={id:3932280,classId:60,methodId:120,name:"BasicNack",args:[{type:"longlong",name:"deliveryTag",default:0},{type:"bit",name:"multiple",default:!1},{type:"bit",name:"requeue",default:!0}]};h.exports.TxSelect=5898250;var c0=h.exports.methodInfoTxSelect={id:5898250,classId:90,methodId:10,name:"TxSelect",args:[]};h.exports.TxSelectOk=5898251;var l0=h.exports.methodInfoTxSelectOk={id:5898251,classId:90,methodId:11,name:"TxSelectOk",args:[]};h.exports.TxCommit=5898260;var f0=h.exports.methodInfoTxCommit={id:5898260,classId:90,methodId:20,name:"TxCommit",args:[]};h.exports.TxCommitOk=5898261;var d0=h.exports.methodInfoTxCommitOk={id:5898261,classId:90,methodId:21,name:"TxCommitOk",args:[]};h.exports.TxRollback=5898270;var h0=h.exports.methodInfoTxRollback={id:5898270,classId:90,methodId:30,name:"TxRollback",args:[]};h.exports.TxRollbackOk=5898271;var p0=h.exports.methodInfoTxRollbackOk={id:5898271,classId:90,methodId:31,name:"TxRollbackOk",args:[]};h.exports.ConfirmSelect=5570570;var v0=h.exports.methodInfoConfirmSelect={id:5570570,classId:85,methodId:10,name:"ConfirmSelect",args:[{type:"bit",name:"nowait",default:!1}]};h.exports.ConfirmSelectOk=5570571;var g0=h.exports.methodInfoConfirmSelectOk={id:5570571,classId:85,methodId:11,name:"ConfirmSelectOk",args:[]};h.exports.BasicProperties=60;var m0=h.exports.propertiesInfoBasicProperties={id:60,name:"BasicProperties",args:[{type:"shortstr",name:"contentType"},{type:"shortstr",name:"contentEncoding"},{type:"table",name:"headers"},{type:"octet",name:"deliveryMode"},{type:"octet",name:"priority"},{type:"shortstr",name:"correlationId"},{type:"shortstr",name:"replyTo"},{type:"shortstr",name:"expiration"},{type:"shortstr",name:"messageId"},{type:"timestamp",name:"timestamp"},{type:"shortstr",name:"type"},{type:"shortstr",name:"userId"},{type:"shortstr",name:"appId"},{type:"shortstr",name:"clusterId"}]}});var eo=w((Kg,ot)=>{"use strict";function Vi(t){var e={};for(var n in t)e[t[n]]=1;return e}function Ji(t,e,n){var r=Vi(n),i={name:t};return i.type=Yi(r),Zi(i,i.type,r),i.size=Xi(i,i.type,e,i.unit),i}ot.exports.variable=Ji;ot.exports.rest=function(){return Ji("_",!0,["binary"])};function w0(t,e,n){var r=Vi(n),i={value:t};return i.type=Yi(r),Zi(i,i.type,r),i.size=Xi(i,i.type,e,i.unit),i}ot.exports.value=w0;function y0(t){return{value:t,type:"string"}}ot.exports.string=y0;var E0={integer:1,binary:1,float:1};function Yi(t){for(var e in t)if(E0[e])return e;return"integer"}function Zi(t,e,n){switch(e){case"integer":t.signed=B0(n);case"float":t.bigendian=I0(n);default:t.unit=b0(n,t.type)}return t}function I0(t){return!t.little}function B0(t){return t.signed}function b0(t,e){for(var n in t)if(n.substr(0,5)=="unit:"){var r=parseInt(n.substr(5));return r}switch(e){case"binary":return 8;case"integer":case"float":return 1}}function Xi(t,e,n,r){if(n!==void 0&&n!=="")return n;switch(e){case"integer":return 8;case"float":return 64;case"binary":return!0}}});var ro=w(($g,to)=>{to.exports=function(){function t(n){return'"'+n.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\x08/g,"\\b").replace(/\t/g,"\\t").replace(/\n/g,"\\n").replace(/\f/g,"\\f").replace(/\r/g,"\\r").replace(/[\x00-\x07\x0B\x0E-\x1F\x80-\uFFFF]/g,escape)+'"'}var e={parse:function(n,r){var i={start:p,segmentTail:k,segment:C,string:E,chars:T,char:U,hexDigit:L,identifier:P,number:O,size:wt,specifierList:hr,specifierTail:pr,specifier:vr,unit:Sn,ws:yt};if(r!==void 0){if(i[r]===void 0)throw new Error("Invalid rule name: "+t(r)+".")}else r="start";var o=0,a=0,s=0,c=[];function f(u,v,g){for(var m=u,b=g-u.length,I=0;I<b;I++)m=v+m;return m}function d(u){var v=u.charCodeAt(0),g,m;return v<=255?(g="x",m=2):(g="u",m=4),"\\"+g+f(v.toString(16).toUpperCase(),"0",m)}function l(u){o<s||(o>s&&(s=o,c=[]),c.push(u))}function p(){var u,v,g,m,b,I;if(b=o,I=o,u=yt(),u!==null)if(v=C(),v!==null){for(g=[],m=k();m!==null;)g.push(m),m=k();g!==null?u=[u,v,g]:(u=null,o=I)}else u=null,o=I;else u=null,o=I;return u!==null&&(u=function(j,A,de){return de.unshift(A),de}(b,u[1],u[2])),u===null&&(o=b),u}function k(){var u,v,g,m,b,I;return b=o,I=o,u=yt(),u!==null?(n.charCodeAt(o)===44?(v=",",o++):(v=null,a===0&&l('","')),v!==null?(g=yt(),g!==null?(m=C(),m!==null?u=[u,v,g,m]:(u=null,o=I)):(u=null,o=I)):(u=null,o=I)):(u=null,o=I),u!==null&&(u=function(j,A){return A}(b,u[3])),u===null&&(o=b),u}function C(){var u,v,g,m,b;return m=o,u=E(),u!==null&&(u=function(I,j){return{string:j}}(m,u)),u===null&&(o=m),u===null&&(m=o,b=o,u=P(),u!==null?(v=wt(),v=v!==null?v:"",v!==null?(g=hr(),g=g!==null?g:"",g!==null?u=[u,v,g]:(u=null,o=b)):(u=null,o=b)):(u=null,o=b),u!==null&&(u=function(I,j,A,de){return{name:j,size:A,specifiers:de}}(m,u[0],u[1],u[2])),u===null&&(o=m),u===null&&(m=o,b=o,u=O(),u!==null?(v=wt(),v=v!==null?v:"",v!==null?(g=hr(),g=g!==null?g:"",g!==null?u=[u,v,g]:(u=null,o=b)):(u=null,o=b)):(u=null,o=b),u!==null&&(u=function(I,j,A,de){return{value:j,size:A,specifiers:de}}(m,u[0],u[1],u[2])),u===null&&(o=m))),u}function E(){var u,v,g,m,b;return m=o,b=o,n.charCodeAt(o)===34?(u='"',o++):(u=null,a===0&&l('"\\""')),u!==null?(n.charCodeAt(o)===34?(v='"',o++):(v=null,a===0&&l('"\\""')),v!==null?u=[u,v]:(u=null,o=b)):(u=null,o=b),u!==null&&(u=function(I){return""}(m)),u===null&&(o=m),u===null&&(m=o,b=o,n.charCodeAt(o)===34?(u='"',o++):(u=null,a===0&&l('"\\""')),u!==null?(v=T(),v!==null?(n.charCodeAt(o)===34?(g='"',o++):(g=null,a===0&&l('"\\""')),g!==null?u=[u,v,g]:(u=null,o=b)):(u=null,o=b)):(u=null,o=b),u!==null&&(u=function(I,j){return j}(m,u[1])),u===null&&(o=m)),u}function T(){var u,v,g;if(g=o,v=U(),v!==null)for(u=[];v!==null;)u.push(v),v=U();else u=null;return u!==null&&(u=function(m,b){return b.join("")}(g,u)),u===null&&(o=g),u}function U(){var u,v,g,m,b,I,j;return/^[^"\\\0-\x1F]/.test(n.charAt(o))?(u=n.charAt(o),o++):(u=null,a===0&&l('[^"\\\\\\0-\\x1F\x7F]')),u===null&&(I=o,n.substr(o,2)==='\\"'?(u='\\"',o+=2):(u=null,a===0&&l('"\\\\\\""')),u!==null&&(u=function(A){return'"'}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\\\"?(u="\\\\",o+=2):(u=null,a===0&&l('"\\\\\\\\"')),u!==null&&(u=function(A){return"\\"}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\/"?(u="\\/",o+=2):(u=null,a===0&&l('"\\\\/"')),u!==null&&(u=function(A){return"/"}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\b"?(u="\\b",o+=2):(u=null,a===0&&l('"\\\\b"')),u!==null&&(u=function(A){return"\b"}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\f"?(u="\\f",o+=2):(u=null,a===0&&l('"\\\\f"')),u!==null&&(u=function(A){return"\f"}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\n"?(u="\\n",o+=2):(u=null,a===0&&l('"\\\\n"')),u!==null&&(u=function(A){return`
-`}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\r"?(u="\\r",o+=2):(u=null,a===0&&l('"\\\\r"')),u!==null&&(u=function(A){return"\r"}(I)),u===null&&(o=I),u===null&&(I=o,n.substr(o,2)==="\\t"?(u="\\t",o+=2):(u=null,a===0&&l('"\\\\t"')),u!==null&&(u=function(A){return"	"}(I)),u===null&&(o=I),u===null&&(I=o,j=o,n.substr(o,2)==="\\u"?(u="\\u",o+=2):(u=null,a===0&&l('"\\\\u"')),u!==null?(v=L(),v!==null?(g=L(),g!==null?(m=L(),m!==null?(b=L(),b!==null?u=[u,v,g,m,b]:(u=null,o=j)):(u=null,o=j)):(u=null,o=j)):(u=null,o=j)):(u=null,o=j),u!==null&&(u=function(A,de,fs,ds,hs){return String.fromCharCode(parseInt("0x"+de+fs+ds+hs))}(I,u[1],u[2],u[3],u[4])),u===null&&(o=I)))))))))),u}function L(){var u;return/^[0-9a-fA-F]/.test(n.charAt(o))?(u=n.charAt(o),o++):(u=null,a===0&&l("[0-9a-fA-F]")),u}function P(){var u,v,g,m,b;if(m=o,b=o,/^[_a-zA-Z]/.test(n.charAt(o))?(u=n.charAt(o),o++):(u=null,a===0&&l("[_a-zA-Z]")),u!==null){for(v=[],/^[_a-zA-Z0-9]/.test(n.charAt(o))?(g=n.charAt(o),o++):(g=null,a===0&&l("[_a-zA-Z0-9]"));g!==null;)v.push(g),/^[_a-zA-Z0-9]/.test(n.charAt(o))?(g=n.charAt(o),o++):(g=null,a===0&&l("[_a-zA-Z0-9]"));v!==null?u=[u,v]:(u=null,o=b)}else u=null,o=b;return u!==null&&(u=function(I,j,A){return j+A.join("")}(m,u[0],u[1])),u===null&&(o=m),u}function O(){var u,v,g,m,b;if(m=o,n.charCodeAt(o)===48?(u="0",o++):(u=null,a===0&&l('"0"')),u!==null&&(u=function(I){return 0}(m)),u===null&&(o=m),u===null){if(m=o,b=o,/^[1-9]/.test(n.charAt(o))?(u=n.charAt(o),o++):(u=null,a===0&&l("[1-9]")),u!==null){for(v=[],/^[0-9]/.test(n.charAt(o))?(g=n.charAt(o),o++):(g=null,a===0&&l("[0-9]"));g!==null;)v.push(g),/^[0-9]/.test(n.charAt(o))?(g=n.charAt(o),o++):(g=null,a===0&&l("[0-9]"));v!==null?u=[u,v]:(u=null,o=b)}else u=null,o=b;u!==null&&(u=function(I,j,A){return parseInt(j+A.join(""))}(m,u[0],u[1])),u===null&&(o=m)}return u}function wt(){var u,v,g,m;return g=o,m=o,n.charCodeAt(o)===58?(u=":",o++):(u=null,a===0&&l('":"')),u!==null?(v=O(),v!==null?u=[u,v]:(u=null,o=m)):(u=null,o=m),u!==null&&(u=function(b,I){return I}(g,u[1])),u===null&&(o=g),u===null&&(g=o,m=o,n.charCodeAt(o)===58?(u=":",o++):(u=null,a===0&&l('":"')),u!==null?(v=P(),v!==null?u=[u,v]:(u=null,o=m)):(u=null,o=m),u!==null&&(u=function(b,I){return I}(g,u[1])),u===null&&(o=g)),u}function hr(){var u,v,g,m,b,I;if(b=o,I=o,n.charCodeAt(o)===47?(u="/",o++):(u=null,a===0&&l('"/"')),u!==null)if(v=vr(),v!==null){for(g=[],m=pr();m!==null;)g.push(m),m=pr();g!==null?u=[u,v,g]:(u=null,o=I)}else u=null,o=I;else u=null,o=I;return u!==null&&(u=function(j,A,de){return de.unshift(A),de}(b,u[1],u[2])),u===null&&(o=b),u}function pr(){var u,v,g,m;return g=o,m=o,n.charCodeAt(o)===45?(u="-",o++):(u=null,a===0&&l('"-"')),u!==null?(v=vr(),v!==null?u=[u,v]:(u=null,o=m)):(u=null,o=m),u!==null&&(u=function(b,I){return I}(g,u[1])),u===null&&(o=g),u}function vr(){var u;return n.substr(o,6)==="little"?(u="little",o+=6):(u=null,a===0&&l('"little"')),u===null&&(n.substr(o,3)==="big"?(u="big",o+=3):(u=null,a===0&&l('"big"')),u===null&&(n.substr(o,6)==="signed"?(u="signed",o+=6):(u=null,a===0&&l('"signed"')),u===null&&(n.substr(o,8)==="unsigned"?(u="unsigned",o+=8):(u=null,a===0&&l('"unsigned"')),u===null&&(n.substr(o,7)==="integer"?(u="integer",o+=7):(u=null,a===0&&l('"integer"')),u===null&&(n.substr(o,6)==="binary"?(u="binary",o+=6):(u=null,a===0&&l('"binary"')),u===null&&(n.substr(o,5)==="float"?(u="float",o+=5):(u=null,a===0&&l('"float"')),u===null&&(u=Sn()))))))),u}function Sn(){var u,v,g,m;return g=o,m=o,n.substr(o,5)==="unit:"?(u="unit:",o+=5):(u=null,a===0&&l('"unit:"')),u!==null?(v=O(),v!==null?u=[u,v]:(u=null,o=m)):(u=null,o=m),u!==null&&(u=function(b,I){return"unit:"+I}(g,u[1])),u===null&&(o=g),u}function yt(){var u,v;for(u=[],/^[ \t\n]/.test(n.charAt(o))?(v=n.charAt(o),o++):(v=null,a===0&&l("[ \\t\\n]"));v!==null;)u.push(v),/^[ \t\n]/.test(n.charAt(o))?(v=n.charAt(o),o++):(v=null,a===0&&l("[ \\t\\n]"));return u}function us(u){u.sort();for(var v=null,g=[],m=0;m<u.length;m++)u[m]!==v&&(g.push(u[m]),v=u[m]);return g}function cs(){for(var u=1,v=1,g=!1,m=0;m<Math.max(o,s);m++){var b=n.charAt(m);b===`
-`?(g||u++,v=1,g=!1):b==="\r"||b==="\u2028"||b==="\u2029"?(u++,v=1,g=!0):(v++,g=!1)}return{line:u,column:v}}var Rn=i[r]();if(Rn===null||o!==n.length){var gr=Math.max(o,s),ls=gr<n.length?n.charAt(gr):null,Mn=cs();throw new this.SyntaxError(us(c),ls,gr,Mn.line,Mn.column)}return Rn},toSource:function(){return this._source}};return e.SyntaxError=function(n,r,i,o,a){function s(c,f){var d,l;switch(c.length){case 0:d="end of input";break;case 1:d=c[0];break;default:d=c.slice(0,c.length-1).join(", ")+" or "+c[c.length-1]}return l=f?t(f):"end of input","Expected "+d+" but "+l+" found."}this.name="SyntaxError",this.expected=n,this.found=r,this.message=s(n,r),this.offset=i,this.line=o,this.column=a},e.SyntaxError.prototype=Error.prototype,e}()});var Ht=w((Wg,no)=>{"use strict";var Kr=eo(),x0=ro();function U0(t){for(var e=x0.parse(t),n=0,r=e.length;n<r;n++){var i=e[n];if(i.string!=null)e[n]=Kr.string(i.string);else if(i.value!=null)e[n]=Kr.value(i.value,i.size,i.specifiers);else if(i.name!=null)e[n]=Kr.variable(i.name,i.size,i.specifiers);else throw"Unknown segment "+i}return e}no.exports.parse=function(){var t=[].join.call(arguments,",");return U0(t)}});var oo=w((Gg,io)=>{var at=1e3,st=at*60,ut=st*60,ct=ut*24,_0=ct*365.25;io.exports=function(t,e){e=e||{};var n=typeof t;if(n==="string"&&t.length>0)return k0(t);if(n==="number"&&isNaN(t)===!1)return e.long?O0(t):C0(t);throw new Error("val is not a non-empty string or a valid number. val="+JSON.stringify(t))};function k0(t){if(t=String(t),!(t.length>100)){var e=/^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(t);if(!!e){var n=parseFloat(e[1]),r=(e[2]||"ms").toLowerCase();switch(r){case"years":case"year":case"yrs":case"yr":case"y":return n*_0;case"days":case"day":case"d":return n*ct;case"hours":case"hour":case"hrs":case"hr":case"h":return n*ut;case"minutes":case"minute":case"mins":case"min":case"m":return n*st;case"seconds":case"second":case"secs":case"sec":case"s":return n*at;case"milliseconds":case"millisecond":case"msecs":case"msec":case"ms":return n;default:return}}}}function C0(t){return t>=ct?Math.round(t/ct)+"d":t>=ut?Math.round(t/ut)+"h":t>=st?Math.round(t/st)+"m":t>=at?Math.round(t/at)+"s":t+"ms"}function O0(t){return Kt(t,ct,"day")||Kt(t,ut,"hour")||Kt(t,st,"minute")||Kt(t,at,"second")||t+" ms"}function Kt(t,e,n){if(!(t<e))return t<e*1.5?Math.floor(t/e)+" "+n:Math.ceil(t/e)+" "+n+"s"}});var Gr=w((R,ao)=>{R=ao.exports=Wr.debug=Wr.default=Wr;R.coerce=q0;R.disable=R0;R.enable=S0;R.enabled=M0;R.humanize=oo();R.names=[];R.skips=[];R.formatters={};var $r;function T0(t){var e=0,n;for(n in t)e=(e<<5)-e+t.charCodeAt(n),e|=0;return R.colors[Math.abs(e)%R.colors.length]}function Wr(t){function e(){if(!!e.enabled){var n=e,r=+new Date,i=r-($r||r);n.diff=i,n.prev=$r,n.curr=r,$r=r;for(var o=new Array(arguments.length),a=0;a<o.length;a++)o[a]=arguments[a];o[0]=R.coerce(o[0]),typeof o[0]!="string"&&o.unshift("%O");var s=0;o[0]=o[0].replace(/%([a-zA-Z%])/g,function(f,d){if(f==="%%")return f;s++;var l=R.formatters[d];if(typeof l=="function"){var p=o[s];f=l.call(n,p),o.splice(s,1),s--}return f}),R.formatArgs.call(n,o);var c=e.log||R.log||console.log.bind(console);c.apply(n,o)}}return e.namespace=t,e.enabled=R.enabled(t),e.useColors=R.useColors(),e.color=T0(t),typeof R.init=="function"&&R.init(e),e}function S0(t){R.save(t),R.names=[],R.skips=[];for(var e=(typeof t=="string"?t:"").split(/[\s,]+/),n=e.length,r=0;r<n;r++)!e[r]||(t=e[r].replace(/\*/g,".*?"),t[0]==="-"?R.skips.push(new RegExp("^"+t.substr(1)+"$")):R.names.push(new RegExp("^"+t+"$")))}function R0(){R.enable("")}function M0(t){var e,n;for(e=0,n=R.skips.length;e<n;e++)if(R.skips[e].test(t))return!1;for(e=0,n=R.names.length;e<n;e++)if(R.names[e].test(t))return!0;return!1}function q0(t){return t instanceof Error?t.stack||t.message:t}});var co=w((ee,uo)=>{ee=uo.exports=Gr();ee.log=N0;ee.formatArgs=A0;ee.save=D0;ee.load=so;ee.useColors=L0;ee.storage=typeof chrome<"u"&&typeof chrome.storage<"u"?chrome.storage.local:F0();ee.colors=["lightseagreen","forestgreen","goldenrod","dodgerblue","darkorchid","crimson"];function L0(){return typeof window<"u"&&window.process&&window.process.type==="renderer"?!0:typeof document<"u"&&document.documentElement&&document.documentElement.style&&document.documentElement.style.WebkitAppearance||typeof window<"u"&&window.console&&(window.console.firebug||window.console.exception&&window.console.table)||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)&&parseInt(RegExp.$1,10)>=31||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/)}ee.formatters.j=function(t){try{return JSON.stringify(t)}catch(e){return"[UnexpectedJSONParseError]: "+e.message}};function A0(t){var e=this.useColors;if(t[0]=(e?"%c":"")+this.namespace+(e?" %c":" ")+t[0]+(e?"%c ":" ")+"+"+ee.humanize(this.diff),!!e){var n="color: "+this.color;t.splice(1,0,n,"color: inherit");var r=0,i=0;t[0].replace(/%[a-zA-Z%]/g,function(o){o!=="%%"&&(r++,o==="%c"&&(i=r))}),t.splice(i,0,n)}}function N0(){return typeof console=="object"&&console.log&&Function.prototype.apply.call(console.log,console,arguments)}function D0(t){try{t==null?ee.storage.removeItem("debug"):ee.storage.debug=t}catch{}}function so(){var t;try{t=ee.storage.debug}catch{}return!t&&typeof process<"u"&&"env"in process&&(t=process.env.DEBUG),t}ee.enable(so());function F0(){try{return window.localStorage}catch{}}});var po=w((G,ho)=>{var lo=require("tty"),lt=require("util");G=ho.exports=Gr();G.init=$0;G.log=Q0;G.formatArgs=z0;G.save=H0;G.load=fo;G.useColors=j0;G.colors=[6,2,3,4,5,1];G.inspectOpts=Object.keys(process.env).filter(function(t){return/^debug_/i.test(t)}).reduce(function(t,e){var n=e.substring(6).toLowerCase().replace(/_([a-z])/g,function(i,o){return o.toUpperCase()}),r=process.env[e];return/^(yes|on|true|enabled)$/i.test(r)?r=!0:/^(no|off|false|disabled)$/i.test(r)?r=!1:r==="null"?r=null:r=Number(r),t[n]=r,t},{});var We=parseInt(process.env.DEBUG_FD,10)||2;We!==1&&We!==2&&lt.deprecate(function(){},"except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)")();var P0=We===1?process.stdout:We===2?process.stderr:K0(We);function j0(){return"colors"in G.inspectOpts?Boolean(G.inspectOpts.colors):lo.isatty(We)}G.formatters.o=function(t){return this.inspectOpts.colors=this.useColors,lt.inspect(t,this.inspectOpts).split(`
-`).map(function(e){return e.trim()}).join(" ")};G.formatters.O=function(t){return this.inspectOpts.colors=this.useColors,lt.inspect(t,this.inspectOpts)};function z0(t){var e=this.namespace,n=this.useColors;if(n){var r=this.color,i="  \x1B[3"+r+";1m"+e+" \x1B[0m";t[0]=i+t[0].split(`
-`).join(`
-`+i),t.push("\x1B[3"+r+"m+"+G.humanize(this.diff)+"\x1B[0m")}else t[0]=new Date().toUTCString()+" "+e+" "+t[0]}function Q0(){return P0.write(lt.format.apply(lt,arguments)+`
-`)}function H0(t){t==null?delete process.env.DEBUG:process.env.DEBUG=t}function fo(){return process.env.DEBUG}function K0(t){var e,n=process.binding("tty_wrap");switch(n.guessHandleType(t)){case"TTY":e=new lo.WriteStream(t),e._type="tty",e._handle&&e._handle.unref&&e._handle.unref();break;case"FILE":var r=require("fs");e=new r.SyncWriteStream(t,{autoClose:!1}),e._type="fs";break;case"PIPE":case"TCP":var i=require("net");e=new i.Socket({fd:t,readable:!1,writable:!0}),e.readable=!1,e.read=null,e._type="pipe",e._handle&&e._handle.unref&&e._handle.unref();break;default:throw new Error("Implement me. Unknown stream file type!")}return e.fd=t,e._isStdio=!0,e}function $0(t){t.inspectOpts={};for(var e=Object.keys(G.inspectOpts),n=0;n<e.length;n++)t.inspectOpts[e[n]]=G.inspectOpts[e[n]]}G.enable(fo())});var vo=w((Vg,Vr)=>{typeof process<"u"&&process.type==="renderer"?Vr.exports=co():Vr.exports=po()});var Jr=w((Jg,Gt)=>{"use strict";var $t=Ke(),Ie=vo()("bitsyntax-Interpreter");function go(t,e,n,r,i){switch(n){case 1:return i?t.readInt8(e):t.readUInt8(e);case 2:return r?i?t.readInt16BE(e):t.readUInt16BE(e):i?t.readInt16LE(e):t.readUInt16LE(e);case 4:return r?i?t.readInt32BE(e):t.readUInt32BE(e):i?t.readInt32LE(e):t.readUInt32LE(e);case 8:return r?(i?$t.readInt64BE:$t.readUInt64BE)(t,e):(i?$t.readInt64LE:$t.readUInt64LE)(t,e);default:throw"Integers must be 8-, 16-, 32- or 64-bit"}}function mo(t,e,n,r){switch(n){case 4:return r?t.readFloatBE(e):t.readFloatLE(e);case 8:return r?t.readDoubleBE(e):t.readDoubleLE(e);default:throw"Floats must be 32- or 64-bit"}}function Wt(t,e){var n=t.size;return typeof n=="string"?e[n]:n}function W0(t){function e(){}return e.prototype=t,new e}function G0(t){var e={};for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n]);return e}function V0(t,e,n){var r=0,i=W0(n),o=e.length*8;function a(E){Ie("skip bits"),Ie(E);var T=Wt(E,i);if(T===!0)return r%8===0?(r=o,!0):!1;var U=E.unit*T;if(r+U>o)return!1;r+=U}function s(E){Ie("get_integer"),Ie(E);var T=E.unit,U=Wt(E,i),L=U*T,P=r/8;return r+=L,L%8>0||r>o?!1:go(e,P,L/8,E.bigendian,E.signed)}function c(E){Ie("get_float"),Ie(E);var T=E.unit,U=Wt(E,i),L=U*T,P=r/8;return r+=L,r>o?!1:mo(e,P,L/8,E.bigendian)}function f(E){Ie("get_binary"),Ie(E);var T=E.unit,U=Wt(E,i),L=r/8;if(U===!0)return r=o,e.slice(L);var P=U*T;return P%8>0||r+P>o?!1:(r+=P,e.slice(L,L+P/8))}function d(E){Ie("get_string"),Ie(E);var T=E.value.length,U=r/8;return r+=T*8,r>o?!1:e.slice(U,U+T).toString("utf8")}for(var l=t.length,p=0;p<l;p++){var k=t[p],C=!1;if(k.name==="_")C=a(k);else{switch(k.type){case"string":C=d(k);break;case"integer":C=s(k);break;case"float":C=c(k);break;case"binary":C=f(k);break}if(C===!1)return!1;if(k.name)i[k.name]=C;else if(k.value!=C)return!1}}return r==o?G0(i):!1}Gt.exports.match=V0;Gt.exports.parse_int=go;Gt.exports.parse_float=mo});var Zr=w((Yr,yo)=>{var Vt=require("buffer"),Ue=Vt.Buffer;function wo(t,e){for(var n in t)e[n]=t[n]}Ue.from&&Ue.alloc&&Ue.allocUnsafe&&Ue.allocUnsafeSlow?yo.exports=Vt:(wo(Vt,Yr),Yr.Buffer=Ge);function Ge(t,e,n){return Ue(t,e,n)}wo(Ue,Ge);Ge.from=function(t,e,n){if(typeof t=="number")throw new TypeError("Argument must not be a number");return Ue(t,e,n)};Ge.alloc=function(t,e,n){if(typeof t!="number")throw new TypeError("Argument must be a number");var r=Ue(t);return e!==void 0?typeof n=="string"?r.fill(e,n):r.fill(e):r.fill(0),r};Ge.allocUnsafe=function(t){if(typeof t!="number")throw new TypeError("Argument must be a number");return Ue(t)};Ge.allocUnsafeSlow=function(t){if(typeof t!="number")throw new TypeError("Argument must be a number");return Vt.SlowBuffer(t)}});var Yt=w((Yg,Ve)=>{"use strict";var Eo=Ke(),Io=Zr().Buffer;function Bo(t,e,n,r){for(var i=0,o=n.length;i<o;i++){var a=n[i];switch(a.type){case"string":e+=t.write(a.value,e,"utf8");break;case"binary":e+=Y0(a,t,e,r);break;case"integer":e+=Z0(a,t,e,r);break;case"float":e+=X0(a,t,e,r);break}}return e}function bo(t,e){var n=J0(t,e),r=Io.alloc(n);return Bo(r,0,t,e),r}function Jt(t,e){if(typeof t.size=="string")return e[t.size]*t.unit/8;if(t.type==="string")return Io.byteLength(t.value,"utf8");if(t.type==="binary"&&t.size===!0){var n=e[t.name];return n.length}return t.size*t.unit/8}function J0(t,e){for(var n=0,r=0,i=t.length;r<i;r++)n+=Jt(t[r],e);return n}function Y0(t,e,n,r){var i=r[t.name],o=Jt(t,r);return i.copy(e,n,0,o),o}function Z0(t,e,n,r){var i=t.name?r[t.name]:t.value,o=Jt(t,r);return xo(e,i,n,o,t.bigendian)}function xo(t,e,n,r,i){switch(r){case 1:t.writeUInt8(e,n);break;case 2:i?t.writeUInt16BE(e,n):t.writeUInt16LE(e,n);break;case 4:i?t.writeUInt32BE(e,n):t.writeUInt32LE(e,n);break;case 8:i?Eo.writeUInt64BE(t,e,n):Eo.writeUInt64LE(t,e,n);break;default:throw new Error("integer size * unit must be 8, 16, 32 or 64")}return r}function X0(t,e,n,r){var i=t.name?r[t.name]:t.value,o=Jt(t,r);return Uo(e,i,n,o,t.bigendian)}function Uo(t,e,n,r,i){if(r===4)i?t.writeFloatBE(e,n):t.writeFloatLE(e,n);else if(r===8)i?t.writeDoubleBE(e,n):t.writeDoubleLE(e,n);else throw new Error("float size * unit must be 32 or 64");return r}var ep=Ht().parse;Ve.exports.write=Bo;Ve.exports.build=bo;Ve.exports.write_int=xo;Ve.exports.write_float=Uo;Ve.exports.builder=function(t){t=arguments.length>1?[].join.call(arguments,","):t;var e=ep(t);return function(n){return bo(e,n)}}});var tn=w((Zg,Zt)=>{"use strict";Ke();var Xr=require("util").format,_o=Ht().parse,ko=Jr(),tp=ko.parse_int,rp=ko.parse_float,Co=Yt(),np=Co.write_int,ip=Co.write_float,Oo=Zr().Buffer,en=[];function To(){en=[]}function y(){en.push(Xr.apply(null,arguments))}function So(){return en.join(`
-`)}function Ro(t){return typeof t.size=="string"?Xr("%s * %d",qe(t.size),t.unit):(t.size*t.unit).toString()}function op(t){y(`bits = %s;
-`,Ro(t));var e=t.type==="integer"?"parse_int":"parse_float",n=t.bigendian,r=t.signed;y("byteoffset = offset / 8; offset += bits"),y("if (offset > binsize) { return false; }"),y("else { result = %s(bin, byteoffset, bits / 8, %s, %s); }",e,n,r)}function ap(t){y("byteoffset = offset / 8;"),t.size===!0?(y("offset = binsize;"),y("result = bin.slice(byteoffset);")):(y("bits = %s;",Ro(t)),y("offset += bits;"),y("if (offset > binsize) { return false; }"),y("else { result = bin.slice(byteoffset,","byteoffset + bits / 8); }"))}function sp(t){y("byteoffset = offset / 8;");var e=t.value.length,n=e*8;y("offset += %d;",n),y("if (offset > binsize) { return false; }"),y("else { result = bin.toString(byteoffset,",Xr("byteoffset + %d); }",e))}function up(t){if(typeof t.size=="string")y("var skipbits = %s * %d;",qe(t.size),t.unit),y("if (offset + skipbits > binsize) { return false; }"),y("else { offset += skipbits; }");else if(t.size===!0)y("if (offset % 8 === 0) { offset = binsize; }"),y("else { return false; }");else{var e=t.unit*t.size;y("if (offset + %d > binsize) { return false; }",e),y("else { offset += %d; }",e)}}function cp(t){if(t.name==="_")up(t);else{var e;switch(t.type){case"integer":case"float":op(t);break;case"binary":ap(t);break;case"string":sp(t);break}if(y("if (result === false) return false;"),t.name)y("else if (%s !== undefined) {",qe(t.name)),y("if (%s != result) return false;",qe(t.name)),y("}"),y("else %s = result;",qe(t.name));else{var n=JSON.stringify(t.value);y("else if (result != %s) return false;",n)}}}function qe(t){return"var_"+t}function lp(t){for(var e={},n=0;n<t.length;n++){var r=t[n].name;r&&r!=="_"&&(e[r]=!0),r=t[n].size,typeof r=="string"&&(e[r]=!0)}return Object.keys(e)}function Mo(t){To(),y("return function(binary, env) {"),y("'use strict';"),y("var bin = binary, env = env || {};"),y("var offset = 0, binsize = bin.length * 8;"),y("var bits, result, byteoffset;");for(var e=lp(t),n=0;n<e.length;n++){var r=e[n];y("var %s = env['%s'];",qe(r),r)}for(var i=t.length,o=0;o<i;o++){var a=t[o];y("// "+JSON.stringify(a)),cp(a)}y("if (offset == binsize) {"),y("return {");for(var n=0;n<e.length;n++){var r=e[n];y("%s: %s,",r,qe(r))}y("};"),y("}"),y("else return false;"),y("}");var s=new Function("parse_int","parse_float",So());return s(tp,rp)}function fp(t){switch(t.type){case"string":y("offset += buf.write(%s, offset, 'utf8');",JSON.stringify(t.value));break;case"binary":y("val = bindings['%s'];",t.name),t.size===!0?y("size = val.length;"):typeof t.size=="string"?y("size = (bindings['%s'] * %d) / 8;",t.size,t.unit):y("size = %d;",t.size*t.unit/8),y("val.copy(buf, offset, 0, size);"),y("offset += size;");break;case"integer":case"float":dp(t);break}}function dp(t){t.name?y("val = bindings['%s'];",t.name):y("val = %d",t.value);var e=t.type==="integer"?"write_int":"write_float";typeof t.size=="string"?y("size = (bindings['%s'] * %d) / 8;",t.size,t.unit):y("size = %d;",t.size*t.unit/8),y("%s(buf, val, offset, size, %s);",e,t.bigendian),y("offset += size;")}function hp(t){for(var e=[],n=0,r=0;r<t.length;r++){var i=t[r];typeof i.size=="string"||i.size===!0?e.push(i):i.type==="string"?n+=Oo.byteLength(i.value):n+=i.size*i.unit/8}if(y("var buffersize = %d;",n),e.length>0)for(var o=0;o<e.length;o++){var i=e[o];i.size===!0?y("buffersize += bindings['%s'].length;",i.name):y("buffersize += (bindings['%s'] * %d) / 8;",i.size,i.unit)}}function pp(t){y("var val, size;");for(var e=t.length,n=0;n<e;n++){var r=t[n];y("// %s",JSON.stringify(r)),fp(r)}}function vp(t){return To(),y("return function(bindings) {"),y("'use strict';"),hp(t),y("var buf = Buffer.alloc(buffersize);"),y("var offset = 0;"),pp(t),y("return buf;"),y("}"),new Function("write_int","write_float","Buffer",So())(np,ip,Oo)}Zt.exports.compile_pattern=Mo;Zt.exports.compile=function(){var t=[].join.call(arguments,","),e=_o(t);return Mo(e)};Zt.exports.compile_builder=function(){var t=[].join.call(arguments,","),e=_o(t);return vp(e)}});var qo=w((Xg,Oe)=>{"use strict";Oe.exports.parse=Ht().parse;Oe.exports.match=Jr().match;Oe.exports.build=Yt().build;Oe.exports.write=Yt().write;Oe.exports.matcher=Oe.exports.compile=tn().compile;Oe.exports.builder=tn().compile_builder});var rn=w((em,Ae)=>{"use strict";var Ao=$e(),Le=Ao.constants,Lo=Ao.decode,Xt=qo();Ae.exports.PROTOCOL_HEADER="AMQP"+String.fromCharCode(0,0,9,1);var gp=Le.FRAME_METHOD,mp=Le.FRAME_HEARTBEAT,wp=Le.FRAME_HEADER,No=Le.FRAME_BODY,Do=Le.FRAME_END,yp=Xt.builder(No,"channel:16, size:32, payload:size/binary",Do);Ae.exports.makeBodyFrame=function(t,e){return yp({channel:t,size:e.length,payload:e})};var Ep=Xt.matcher("type:8","channel:16","size:32","rest/binary");function Ip(t,e){var n=Ep(t);if(n){var r=n.size,i=n.rest;if(r>e)throw new Error("Frame size exceeds frame max");if(i.length>r){if(i[r]!==Do)throw new Error("Invalid frame");return{type:n.type,channel:n.channel,size:r,payload:i.slice(0,r),rest:i.slice(r+1)}}}return!1}Ae.exports.parseFrame=Ip;var Bp=Xt.matcher("class:16","_weight:16","size:64","flagsAndfields/binary"),bp=Xt.matcher("id:32, args/binary"),Fo={channel:0};Ae.exports.decodeFrame=function(t){var e=t.payload;switch(t.type){case gp:var n=bp(e),i=n.id,o=Lo(i,n.args);return{id:i,channel:t.channel,fields:o};case wp:var r=Bp(e),i=r.class,o=Lo(i,r.flagsAndfields);return{id:i,channel:t.channel,size:r.size,fields:o};case No:return{channel:t.channel,content:t.payload};case mp:return Fo;default:throw new Error("Unknown frame type "+t.type)}};Ae.exports.HEARTBEAT_BUF=Buffer.from([Le.FRAME_HEARTBEAT,0,0,0,0,0,0,Le.FRAME_END]);Ae.exports.HEARTBEAT=Fo});var zo=w((tm,jo)=>{"use strict";var Po=require("assert"),xp=typeof setImmediate=="function"?setImmediate:process.nextTick;function ft(t){this.newStreams=[],this.oldStreams=[],this.blocked=!1,this.scheduledRead=!1,this.out=t;var e=this;t.on("drain",function(){e.blocked=!1,e._readIncoming()})}ft.prototype._readIncoming=function(){if(this.blocked)return;var t=!0,e=this.out;function n(r){for(var i;t&&(i=r.shift());){var o=i.read();o!==null&&(t=e.write(o),r.push(i))}}n(this.newStreams),t?(Po.equal(0,this.newStreams.length),n(this.oldStreams)):(Po(this.newStreams.length>0,"Expect some new streams to remain"),Array.prototype.push.apply(this.oldStreams,this.newStreams),this.newStreams=[]),this.blocked=!t};ft.prototype._scheduleRead=function(){var t=this;t.scheduledRead||(xp(function(){t.scheduledRead=!1,t._readIncoming()}),t.scheduledRead=!0)};ft.prototype.pipeFrom=function(t){var e=this;function n(){e.newStreams.push(t),e._scheduleRead()}function r(){t.removeListener("readable",n),t.removeListener("error",r),t.removeListener("end",r),t.removeListener("unpipeFrom",i)}function i(o){o===e&&r()}t.on("unpipeFrom",i),t.on("end",r),t.on("error",r),t.on("readable",n)};ft.prototype.unpipeFrom=function(t){t.emit("unpipeFrom",this)};jo.exports.Mux=ft});var Je=w(Z=>{function Up(t){return Array.isArray?Array.isArray(t):er(t)==="[object Array]"}Z.isArray=Up;function _p(t){return typeof t=="boolean"}Z.isBoolean=_p;function kp(t){return t===null}Z.isNull=kp;function Cp(t){return t==null}Z.isNullOrUndefined=Cp;function Op(t){return typeof t=="number"}Z.isNumber=Op;function Tp(t){return typeof t=="string"}Z.isString=Tp;function Sp(t){return typeof t=="symbol"}Z.isSymbol=Sp;function Rp(t){return t===void 0}Z.isUndefined=Rp;function Mp(t){return er(t)==="[object RegExp]"}Z.isRegExp=Mp;function qp(t){return typeof t=="object"&&t!==null}Z.isObject=qp;function Lp(t){return er(t)==="[object Date]"}Z.isDate=Lp;function Ap(t){return er(t)==="[object Error]"||t instanceof Error}Z.isError=Ap;function Np(t){return typeof t=="function"}Z.isFunction=Np;function Dp(t){return t===null||typeof t=="boolean"||typeof t=="number"||typeof t=="string"||typeof t=="symbol"||typeof t>"u"}Z.isPrimitive=Dp;Z.isBuffer=require("buffer").Buffer.isBuffer;function er(t){return Object.prototype.toString.call(t)}});var Qo=w((nm,nn)=>{typeof Object.create=="function"?nn.exports=function(e,n){n&&(e.super_=n,e.prototype=Object.create(n.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}))}:nn.exports=function(e,n){if(n){e.super_=n;var r=function(){};r.prototype=n.prototype,e.prototype=new r,e.prototype.constructor=e}}});var Ye=w((im,an)=>{try{if(on=require("util"),typeof on.inherits!="function")throw"";an.exports=on.inherits}catch{an.exports=Qo()}var on});var Ko=w((om,Ho)=>{Ho.exports=Array.isArray||function(t){return Object.prototype.toString.call(t)=="[object Array]"}});var un=w(Wo=>{var $o=require("buffer").Buffer,Fp=$o.isEncoding||function(t){switch(t&&t.toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":case"raw":return!0;default:return!1}};function Pp(t){if(t&&!Fp(t))throw new Error("Unknown encoding: "+t)}var sn=Wo.StringDecoder=function(t){switch(this.encoding=(t||"utf8").toLowerCase().replace(/[-_]/,""),Pp(t),this.encoding){case"utf8":this.surrogateSize=3;break;case"ucs2":case"utf16le":this.surrogateSize=2,this.detectIncompleteChar=zp;break;case"base64":this.surrogateSize=3,this.detectIncompleteChar=Qp;break;default:this.write=jp;return}this.charBuffer=new $o(6),this.charReceived=0,this.charLength=0};sn.prototype.write=function(t){for(var e="";this.charLength;){var n=t.length>=this.charLength-this.charReceived?this.charLength-this.charReceived:t.length;if(t.copy(this.charBuffer,this.charReceived,0,n),this.charReceived+=n,this.charReceived<this.charLength)return"";t=t.slice(n,t.length),e=this.charBuffer.slice(0,this.charLength).toString(this.encoding);var i=e.charCodeAt(e.length-1);if(i>=55296&&i<=56319){this.charLength+=this.surrogateSize,e="";continue}if(this.charReceived=this.charLength=0,t.length===0)return e;break}this.detectIncompleteChar(t);var r=t.length;this.charLength&&(t.copy(this.charBuffer,0,t.length-this.charReceived,r),r-=this.charReceived),e+=t.toString(this.encoding,0,r);var r=e.length-1,i=e.charCodeAt(r);if(i>=55296&&i<=56319){var o=this.surrogateSize;return this.charLength+=o,this.charReceived+=o,this.charBuffer.copy(this.charBuffer,o,0,o),t.copy(this.charBuffer,0,0,o),e.substring(0,r)}return e};sn.prototype.detectIncompleteChar=function(t){for(var e=t.length>=3?3:t.length;e>0;e--){var n=t[t.length-e];if(e==1&&n>>5==6){this.charLength=2;break}if(e<=2&&n>>4==14){this.charLength=3;break}if(e<=3&&n>>3==30){this.charLength=4;break}}this.charReceived=e};sn.prototype.end=function(t){var e="";if(t&&t.length&&(e=this.write(t)),this.charReceived){var n=this.charReceived,r=this.charBuffer,i=this.encoding;e+=r.slice(0,n).toString(i)}return e};function jp(t){return t.toString(this.encoding)}function zp(t){this.charReceived=t.length%2,this.charLength=this.charReceived?2:0}function Qp(t){this.charReceived=t.length%3,this.charLength=this.charReceived?3:0}});var ta=w((sm,ea)=>{ea.exports=W;var Hp=Ko(),ln=require("buffer").Buffer;W.ReadableState=Yo;var tr=require("events").EventEmitter;tr.listenerCount||(tr.listenerCount=function(t,e){return t.listeners(e).length});var fn=require("stream"),oe=Je();oe.inherits=Ye();var Ze,S=require("util");S&&S.debuglog?S=S.debuglog("stream"):S=function(){};oe.inherits(W,fn);function Yo(t,e){var n=Ne();t=t||{};var r=t.highWaterMark,i=t.objectMode?16:16*1024;this.highWaterMark=r||r===0?r:i,this.highWaterMark=~~this.highWaterMark,this.buffer=[],this.length=0,this.pipes=null,this.pipesCount=0,this.flowing=null,this.ended=!1,this.endEmitted=!1,this.reading=!1,this.sync=!0,this.needReadable=!1,this.emittedReadable=!1,this.readableListening=!1,this.objectMode=!!t.objectMode,e instanceof n&&(this.objectMode=this.objectMode||!!t.readableObjectMode),this.defaultEncoding=t.defaultEncoding||"utf8",this.ranOut=!1,this.awaitDrain=0,this.readingMore=!1,this.decoder=null,this.encoding=null,t.encoding&&(Ze||(Ze=un().StringDecoder),this.decoder=new Ze(t.encoding),this.encoding=t.encoding)}function W(t){var e=Ne();if(!(this instanceof W))return new W(t);this._readableState=new Yo(t,this),this.readable=!0,fn.call(this)}W.prototype.push=function(t,e){var n=this._readableState;return oe.isString(t)&&!n.objectMode&&(e=e||n.defaultEncoding,e!==n.encoding&&(t=new ln(t,e),e="")),Zo(this,n,t,e,!1)};W.prototype.unshift=function(t){var e=this._readableState;return Zo(this,e,t,"",!0)};function Zo(t,e,n,r,i){var o=Wp(e,n);if(o)t.emit("error",o);else if(oe.isNullOrUndefined(n))e.reading=!1,e.ended||Gp(t,e);else if(e.objectMode||n&&n.length>0)if(e.ended&&!i){var a=new Error("stream.push() after EOF");t.emit("error",a)}else if(e.endEmitted&&i){var a=new Error("stream.unshift() after end event");t.emit("error",a)}else e.decoder&&!i&&!r&&(n=e.decoder.write(n)),i||(e.reading=!1),e.flowing&&e.length===0&&!e.sync?(t.emit("data",n),t.read(0)):(e.length+=e.objectMode?1:n.length,i?e.buffer.unshift(n):e.buffer.push(n),e.needReadable&&rr(t)),Vp(t,e);else i||(e.reading=!1);return Kp(e)}function Kp(t){return!t.ended&&(t.needReadable||t.length<t.highWaterMark||t.length===0)}W.prototype.setEncoding=function(t){return Ze||(Ze=un().StringDecoder),this._readableState.decoder=new Ze(t),this._readableState.encoding=t,this};var Go=8388608;function $p(t){if(t>=Go)t=Go;else{t--;for(var e=1;e<32;e<<=1)t|=t>>e;t++}return t}function Vo(t,e){return e.length===0&&e.ended?0:e.objectMode?t===0?0:1:isNaN(t)||oe.isNull(t)?e.flowing&&e.buffer.length?e.buffer[0].length:e.length:t<=0?0:(t>e.highWaterMark&&(e.highWaterMark=$p(t)),t>e.length?e.ended?e.length:(e.needReadable=!0,0):t)}W.prototype.read=function(t){S("read",t);var e=this._readableState,n=t;if((!oe.isNumber(t)||t>0)&&(e.emittedReadable=!1),t===0&&e.needReadable&&(e.length>=e.highWaterMark||e.ended))return S("read: emitReadable",e.length,e.ended),e.length===0&&e.ended?cn(this):rr(this),null;if(t=Vo(t,e),t===0&&e.ended)return e.length===0&&cn(this),null;var r=e.needReadable;S("need readable",r),(e.length===0||e.length-t<e.highWaterMark)&&(r=!0,S("length less than watermark",r)),(e.ended||e.reading)&&(r=!1,S("reading or ended",r)),r&&(S("do read"),e.reading=!0,e.sync=!0,e.length===0&&(e.needReadable=!0),this._read(e.highWaterMark),e.sync=!1),r&&!e.reading&&(t=Vo(n,e));var i;return t>0?i=Xo(t,e):i=null,oe.isNull(i)&&(e.needReadable=!0,t=0),e.length-=t,e.length===0&&!e.ended&&(e.needReadable=!0),n!==t&&e.ended&&e.length===0&&cn(this),oe.isNull(i)||this.emit("data",i),i};function Wp(t,e){var n=null;return!oe.isBuffer(e)&&!oe.isString(e)&&!oe.isNullOrUndefined(e)&&!t.objectMode&&(n=new TypeError("Invalid non-string/buffer chunk")),n}function Gp(t,e){if(e.decoder&&!e.ended){var n=e.decoder.end();n&&n.length&&(e.buffer.push(n),e.length+=e.objectMode?1:n.length)}e.ended=!0,rr(t)}function rr(t){var e=t._readableState;e.needReadable=!1,e.emittedReadable||(S("emitReadable",e.flowing),e.emittedReadable=!0,e.sync?process.nextTick(function(){Jo(t)}):Jo(t))}function Jo(t){S("emit readable"),t.emit("readable"),dn(t)}function Vp(t,e){e.readingMore||(e.readingMore=!0,process.nextTick(function(){Jp(t,e)}))}function Jp(t,e){for(var n=e.length;!e.reading&&!e.flowing&&!e.ended&&e.length<e.highWaterMark&&(S("maybeReadMore read 0"),t.read(0),n!==e.length);)n=e.length;e.readingMore=!1}W.prototype._read=function(t){this.emit("error",new Error("not implemented"))};W.prototype.pipe=function(t,e){var n=this,r=this._readableState;switch(r.pipesCount){case 0:r.pipes=t;break;case 1:r.pipes=[r.pipes,t];break;default:r.pipes.push(t);break}r.pipesCount+=1,S("pipe count=%d opts=%j",r.pipesCount,e);var i=(!e||e.end!==!1)&&t!==process.stdout&&t!==process.stderr,o=i?s:f;r.endEmitted?process.nextTick(o):n.once("end",o),t.on("unpipe",a);function a(E){S("onunpipe"),E===n&&f()}function s(){S("onend"),t.end()}var c=Yp(n);t.on("drain",c);function f(){S("cleanup"),t.removeListener("close",p),t.removeListener("finish",k),t.removeListener("drain",c),t.removeListener("error",l),t.removeListener("unpipe",a),n.removeListener("end",s),n.removeListener("end",f),n.removeListener("data",d),r.awaitDrain&&(!t._writableState||t._writableState.needDrain)&&c()}n.on("data",d);function d(E){S("ondata");var T=t.write(E);T===!1&&(S("false write response, pause",n._readableState.awaitDrain),n._readableState.awaitDrain++,n.pause())}function l(E){S("onerror",E),C(),t.removeListener("error",l),tr.listenerCount(t,"error")===0&&t.emit("error",E)}!t._events||!t._events.error?t.on("error",l):Hp(t._events.error)?t._events.error.unshift(l):t._events.error=[l,t._events.error];function p(){t.removeListener("finish",k),C()}t.once("close",p);function k(){S("onfinish"),t.removeListener("close",p),C()}t.once("finish",k);function C(){S("unpipe"),n.unpipe(t)}return t.emit("pipe",n),r.flowing||(S("pipe resume"),n.resume()),t};function Yp(t){return function(){var e=t._readableState;S("pipeOnDrain",e.awaitDrain),e.awaitDrain&&e.awaitDrain--,e.awaitDrain===0&&tr.listenerCount(t,"data")&&(e.flowing=!0,dn(t))}}W.prototype.unpipe=function(t){var e=this._readableState;if(e.pipesCount===0)return this;if(e.pipesCount===1)return t&&t!==e.pipes?this:(t||(t=e.pipes),e.pipes=null,e.pipesCount=0,e.flowing=!1,t&&t.emit("unpipe",this),this);if(!t){var n=e.pipes,r=e.pipesCount;e.pipes=null,e.pipesCount=0,e.flowing=!1;for(var i=0;i<r;i++)n[i].emit("unpipe",this);return this}var i=tv(e.pipes,t);return i===-1?this:(e.pipes.splice(i,1),e.pipesCount-=1,e.pipesCount===1&&(e.pipes=e.pipes[0]),t.emit("unpipe",this),this)};W.prototype.on=function(t,e){var n=fn.prototype.on.call(this,t,e);if(t==="data"&&this._readableState.flowing!==!1&&this.resume(),t==="readable"&&this.readable){var r=this._readableState;if(!r.readableListening)if(r.readableListening=!0,r.emittedReadable=!1,r.needReadable=!0,r.reading)r.length&&rr(this,r);else{var i=this;process.nextTick(function(){S("readable nexttick read 0"),i.read(0)})}}return n};W.prototype.addListener=W.prototype.on;W.prototype.resume=function(){var t=this._readableState;return t.flowing||(S("resume"),t.flowing=!0,t.reading||(S("resume read 0"),this.read(0)),Zp(this,t)),this};function Zp(t,e){e.resumeScheduled||(e.resumeScheduled=!0,process.nextTick(function(){Xp(t,e)}))}function Xp(t,e){e.resumeScheduled=!1,t.emit("resume"),dn(t),e.flowing&&!e.reading&&t.read(0)}W.prototype.pause=function(){return S("call pause flowing=%j",this._readableState.flowing),this._readableState.flowing!==!1&&(S("pause"),this._readableState.flowing=!1,this.emit("pause")),this};function dn(t){var e=t._readableState;if(S("flow",e.flowing),e.flowing)do var n=t.read();while(n!==null&&e.flowing)}W.prototype.wrap=function(t){var e=this._readableState,n=!1,r=this;t.on("end",function(){if(S("wrapped end"),e.decoder&&!e.ended){var a=e.decoder.end();a&&a.length&&r.push(a)}r.push(null)}),t.on("data",function(a){if(S("wrapped data"),e.decoder&&(a=e.decoder.write(a)),!(!a||!e.objectMode&&!a.length)){var s=r.push(a);s||(n=!0,t.pause())}});for(var i in t)oe.isFunction(t[i])&&oe.isUndefined(this[i])&&(this[i]=function(a){return function(){return t[a].apply(t,arguments)}}(i));var o=["error","close","destroy","pause","resume"];return ev(o,function(a){t.on(a,r.emit.bind(r,a))}),r._read=function(a){S("wrapped _read",a),n&&(n=!1,t.resume())},r};W._fromList=Xo;function Xo(t,e){var n=e.buffer,r=e.length,i=!!e.decoder,o=!!e.objectMode,a;if(n.length===0)return null;if(r===0)a=null;else if(o)a=n.shift();else if(!t||t>=r)i?a=n.join(""):a=ln.concat(n,r),n.length=0;else if(t<n[0].length){var s=n[0];a=s.slice(0,t),n[0]=s.slice(t)}else if(t===n[0].length)a=n.shift();else{i?a="":a=new ln(t);for(var c=0,f=0,d=n.length;f<d&&c<t;f++){var s=n[0],l=Math.min(t-c,s.length);i?a+=s.slice(0,l):s.copy(a,c,0,l),l<s.length?n[0]=s.slice(l):n.shift(),c+=l}}return a}function cn(t){var e=t._readableState;if(e.length>0)throw new Error("endReadable called on non-empty stream");e.endEmitted||(e.ended=!0,process.nextTick(function(){!e.endEmitted&&e.length===0&&(e.endEmitted=!0,t.readable=!1,t.emit("end"))}))}function ev(t,e){for(var n=0,r=t.length;n<r;n++)e(t[n],n)}function tv(t,e){for(var n=0,r=t.length;n<r;n++)if(t[n]===e)return n;return-1}});var la=w((um,ca)=>{ca.exports=ce;var rv=require("buffer").Buffer;ce.WritableState=oa;var ae=Je();ae.inherits=Ye();var ia=require("stream");ae.inherits(ce,ia);function nv(t,e,n){this.chunk=t,this.encoding=e,this.callback=n}function oa(t,e){var n=Ne();t=t||{};var r=t.highWaterMark,i=t.objectMode?16:16*1024;this.highWaterMark=r||r===0?r:i,this.objectMode=!!t.objectMode,e instanceof n&&(this.objectMode=this.objectMode||!!t.writableObjectMode),this.highWaterMark=~~this.highWaterMark,this.needDrain=!1,this.ending=!1,this.ended=!1,this.finished=!1;var o=t.decodeStrings===!1;this.decodeStrings=!o,this.defaultEncoding=t.defaultEncoding||"utf8",this.length=0,this.writing=!1,this.corked=0,this.sync=!0,this.bufferProcessing=!1,this.onwrite=function(a){lv(e,a)},this.writecb=null,this.writelen=0,this.buffer=[],this.pendingcb=0,this.prefinished=!1,this.errorEmitted=!1}function ce(t){var e=Ne();if(!(this instanceof ce)&&!(this instanceof e))return new ce(t);this._writableState=new oa(t,this),this.writable=!0,ia.call(this)}ce.prototype.pipe=function(){this.emit("error",new Error("Cannot pipe. Not readable."))};function iv(t,e,n){var r=new Error("write after end");t.emit("error",r),process.nextTick(function(){n(r)})}function ov(t,e,n,r){var i=!0;if(!ae.isBuffer(n)&&!ae.isString(n)&&!ae.isNullOrUndefined(n)&&!e.objectMode){var o=new TypeError("Invalid non-string/buffer chunk");t.emit("error",o),process.nextTick(function(){r(o)}),i=!1}return i}ce.prototype.write=function(t,e,n){var r=this._writableState,i=!1;return ae.isFunction(e)&&(n=e,e=null),ae.isBuffer(t)?e="buffer":e||(e=r.defaultEncoding),ae.isFunction(n)||(n=function(){}),r.ended?iv(this,r,n):ov(this,r,t,n)&&(r.pendingcb++,i=sv(this,r,t,e,n)),i};ce.prototype.cork=function(){var t=this._writableState;t.corked++};ce.prototype.uncork=function(){var t=this._writableState;t.corked&&(t.corked--,!t.writing&&!t.corked&&!t.finished&&!t.bufferProcessing&&t.buffer.length&&aa(this,t))};function av(t,e,n){return!t.objectMode&&t.decodeStrings!==!1&&ae.isString(e)&&(e=new rv(e,n)),e}function sv(t,e,n,r,i){n=av(e,n,r),ae.isBuffer(n)&&(r="buffer");var o=e.objectMode?1:n.length;e.length+=o;var a=e.length<e.highWaterMark;return a||(e.needDrain=!0),e.writing||e.corked?e.buffer.push(new nv(n,r,i)):hn(t,e,!1,o,n,r,i),a}function hn(t,e,n,r,i,o,a){e.writelen=r,e.writecb=a,e.writing=!0,e.sync=!0,n?t._writev(i,e.onwrite):t._write(i,o,e.onwrite),e.sync=!1}function uv(t,e,n,r,i){n?process.nextTick(function(){e.pendingcb--,i(r)}):(e.pendingcb--,i(r)),t._writableState.errorEmitted=!0,t.emit("error",r)}function cv(t){t.writing=!1,t.writecb=null,t.length-=t.writelen,t.writelen=0}function lv(t,e){var n=t._writableState,r=n.sync,i=n.writecb;if(cv(n),e)uv(t,n,r,e,i);else{var o=sa(t,n);!o&&!n.corked&&!n.bufferProcessing&&n.buffer.length&&aa(t,n),r?process.nextTick(function(){ra(t,n,o,i)}):ra(t,n,o,i)}}function ra(t,e,n,r){n||fv(t,e),e.pendingcb--,r(),ua(t,e)}function fv(t,e){e.length===0&&e.needDrain&&(e.needDrain=!1,t.emit("drain"))}function aa(t,e){if(e.bufferProcessing=!0,t._writev&&e.buffer.length>1){for(var n=[],r=0;r<e.buffer.length;r++)n.push(e.buffer[r].callback);e.pendingcb++,hn(t,e,!0,e.length,e.buffer,"",function(f){for(var d=0;d<n.length;d++)e.pendingcb--,n[d](f)}),e.buffer=[]}else{for(var r=0;r<e.buffer.length;r++){var i=e.buffer[r],o=i.chunk,a=i.encoding,s=i.callback,c=e.objectMode?1:o.length;if(hn(t,e,!1,c,o,a,s),e.writing){r++;break}}r<e.buffer.length?e.buffer=e.buffer.slice(r):e.buffer.length=0}e.bufferProcessing=!1}ce.prototype._write=function(t,e,n){n(new Error("not implemented"))};ce.prototype._writev=null;ce.prototype.end=function(t,e,n){var r=this._writableState;ae.isFunction(t)?(n=t,t=null,e=null):ae.isFunction(e)&&(n=e,e=null),ae.isNullOrUndefined(t)||this.write(t,e),r.corked&&(r.corked=1,this.uncork()),!r.ending&&!r.finished&&dv(this,r,n)};function sa(t,e){return e.ending&&e.length===0&&!e.finished&&!e.writing}function na(t,e){e.prefinished||(e.prefinished=!0,t.emit("prefinish"))}function ua(t,e){var n=sa(t,e);return n&&(e.pendingcb===0?(na(t,e),e.finished=!0,t.emit("finish")):na(t,e)),n}function dv(t,e,n){e.ending=!0,ua(t,e),n&&(e.finished?process.nextTick(n):t.once("finish",n)),e.ended=!0}});var Ne=w((cm,ha)=>{ha.exports=Xe;var hv=Object.keys||function(t){var e=[];for(var n in t)e.push(n);return e},fa=Je();fa.inherits=Ye();var da=ta(),pn=la();fa.inherits(Xe,da);vv(hv(pn.prototype),function(t){Xe.prototype[t]||(Xe.prototype[t]=pn.prototype[t])});function Xe(t){if(!(this instanceof Xe))return new Xe(t);da.call(this,t),pn.call(this,t),t&&t.readable===!1&&(this.readable=!1),t&&t.writable===!1&&(this.writable=!1),this.allowHalfOpen=!0,t&&t.allowHalfOpen===!1&&(this.allowHalfOpen=!1),this.once("end",pv)}function pv(){this.allowHalfOpen||this._writableState.ended||process.nextTick(this.end.bind(this))}function vv(t,e){for(var n=0,r=t.length;n<r;n++)e(t[n],n)}});var va=w((lm,pa)=>{pa.exports=Ne()});var ma=w((fm,ir)=>{"use strict";var gv=require("util").inherits,ga=require("events").EventEmitter;ir.exports.UNITS_TO_MS=1e3;function nr(t,e,n){ga.call(this),this.interval=t;var r=t*ir.exports.UNITS_TO_MS,i=this.emit.bind(this,"beat"),o=this.emit.bind(this,"timeout");this.sendTimer=setInterval(this.runHeartbeat.bind(this,e,i),r/2);var a=0;function s(){return n()?(a=0,!0):++a<2}this.recvTimer=setInterval(this.runHeartbeat.bind(this,s,o),r)}gv(nr,ga);ir.exports.Heart=nr;nr.prototype.clear=function(){clearInterval(this.sendTimer),clearInterval(this.recvTimer)};nr.prototype.runHeartbeat=function(t,e){t()||e()}});var Te=w((hm,or)=>{"use strict";var gn=$e(),vn=require("util").format,dm=require("util").inherits,mv=rn().HEARTBEAT;or.exports.closeMessage=function(t){var e=t.fields.replyCode;return vn('%d (%s) with message "%s"',e,gn.constant_strs[e],t.fields.replyText)};or.exports.methodName=function(t){return gn.info(t).name};or.exports.inspect=function(t,e){if(t===mv)return"<Heartbeat>";if(t.id){var n=gn.info(t.id);return vn("<%s channel:%d%s>",n.name,t.channel,e?" "+JSON.stringify(t.fields,void 0,2):"")}else return vn("<Content channel:%d size:%d>",t.channel,t.size)}});var Ea=w((pm,ya)=>{"use strict";var mn=class{constructor(e){if(e){let n=Math.ceil(e/32);this.words=new Array(n)}else this.words=[];this.wordsInUse=0}ensureSize(e){let n=this.words.length;n<e&&(this.words=this.words.concat(new Array(e-n)))}set(e){let n=dt(e);n>=this.wordsInUse&&(this.ensureSize(n+1),this.wordsInUse=n+1);let r=1<<e;this.words[n]|=r}clear(e){let n=dt(e);if(n>=this.wordsInUse)return;let r=~(1<<e);this.words[n]&=r}get(e){let n=dt(e);if(n>=this.wordsInUse)return!1;let r=1<<e;return!!(this.words[n]&r)}nextSetBit(e){let n=dt(e);if(n>=this.wordsInUse)return-1;let r=this.words[n]&4294967295<<e;for(;;){if(r)return n*32+wa(r);if(n++,n===this.wordsInUse)return-1;r=this.words[n]}}nextClearBit(e){let n=dt(e);if(n>=this.wordsInUse)return e;let r=~this.words[n]&4294967295<<e;for(;;){if(r)return n*32+wa(r);if(n++,n==this.wordsInUse)return n*32;r=~this.words[n]}}};function dt(t){return Math.floor(t/32)}function wa(t){if(t===0)return 32;let e,n=31;return e=t<<16,e!=0&&(n=n-16,t=e),e=t<<8,e!=0&&(n=n-8,t=e),e=t<<4,e!=0&&(n=n-4,t=e),e=t<<2,e!=0&&(n=n-2,t=e),n-(t<<1>>>31)}ya.exports.BitSet=mn});var ba=w((vm,Ba)=>{Ba.exports=Se;var wn=Ne(),ht=Je();ht.inherits=Ye();ht.inherits(Se,wn);function wv(t,e){this.afterTransform=function(n,r){return yv(e,n,r)},this.needTransform=!1,this.transforming=!1,this.writecb=null,this.writechunk=null}function yv(t,e,n){var r=t._transformState;r.transforming=!1;var i=r.writecb;if(!i)return t.emit("error",new Error("no writecb in Transform class"));r.writechunk=null,r.writecb=null,ht.isNullOrUndefined(n)||t.push(n),i&&i(e);var o=t._readableState;o.reading=!1,(o.needReadable||o.length<o.highWaterMark)&&t._read(o.highWaterMark)}function Se(t){if(!(this instanceof Se))return new Se(t);wn.call(this,t),this._transformState=new wv(t,this);var e=this;this._readableState.needReadable=!0,this._readableState.sync=!1,this.once("prefinish",function(){ht.isFunction(this._flush)?this._flush(function(n){Ia(e,n)}):Ia(e)})}Se.prototype.push=function(t,e){return this._transformState.needTransform=!1,wn.prototype.push.call(this,t,e)};Se.prototype._transform=function(t,e,n){throw new Error("not implemented")};Se.prototype._write=function(t,e,n){var r=this._transformState;if(r.writecb=n,r.writechunk=t,r.writeencoding=e,!r.transforming){var i=this._readableState;(r.needTransform||i.needReadable||i.length<i.highWaterMark)&&this._read(i.highWaterMark)}};Se.prototype._read=function(t){var e=this._transformState;!ht.isNull(e.writechunk)&&e.writecb&&!e.transforming?(e.transforming=!0,this._transform(e.writechunk,e.writeencoding,e.afterTransform)):e.needTransform=!0};function Ia(t,e){if(e)return t.emit("error",e);var n=t._writableState,r=t._transformState;if(n.length)throw new Error("calling transform done when ws.length != 0");if(r.transforming)throw new Error("calling transform done when still transforming");return t.push(null)}});var ka=w((gm,_a)=>{_a.exports=pt;var xa=ba(),Ua=Je();Ua.inherits=Ye();Ua.inherits(pt,xa);function pt(t){if(!(this instanceof pt))return new pt(t);xa.call(this,t)}pt.prototype._transform=function(t,e,n){n(null,t)}});var Oa=w((mm,Ca)=>{Ca.exports=ka()});var et=w((wm,En)=>{var Ev=require("util").inherits;function Ta(t,e){return t&&t.split(`
-`).slice(e).join(`
-`)}function yn(t,e){var n=new Error;this.message=t,this.stack=this.toString()+`
-`+Ta(n.stack,2),this.stackAtStateChange=e}Ev(yn,Error);yn.prototype.name="IllegalOperationError";function Iv(t){var e=new Error;return"Stack capture: "+t+`
-`+Ta(e.stack,2)}En.exports.IllegalOperationError=yn;En.exports.stackCapture=Iv});var za=w((ym,Bn)=>{"use strict";var N=$e(),ar=N.constants,tt=rn(),Bv=tt.HEARTBEAT,bv=zo().Mux,Sa=require("stream").Duplex||va(),Ma=require("events").EventEmitter,xv=ma().Heart,Uv=Te().methodName,qa=Te().closeMessage,vt=Te().inspect,_v=Ea().BitSet,kv=require("util").inherits,le=require("util").format,Cv=require("stream").PassThrough||Oa(),La=et().IllegalOperationError,gt=et().stackCapture,Ov=1024,Ra=2048;function In(t){Ma.call(this);var e=this.stream=Lv(t);this.muxer=new bv(e),this.rest=Buffer.alloc(0),this.frameMax=ar.FRAME_MIN_SIZE,this.sentSinceLastCheck=!1,this.recvSinceLastCheck=!1,this.expectSocketClose=!1,this.freeChannels=new _v,this.channels=[{channel:{accept:Sv(this)},buffer:t}]}kv(In,Ma);var D=In.prototype;function Tv(t){var e=this.channels[t.channel];if(e)return e.channel.accept(t);this.closeWithError(le("Frame on unknown channel %d",t.channel),ar.CHANNEL_ERROR,new Error(le("Frame on unknown channel: %s",vt(t,!1))))}function Sv(t){return function(e){if(e!==Bv)if(e.id===N.ConnectionClose){t.sendMethod(0,N.ConnectionCloseOk,{});var n=le("Connection closed: %s",qa(e)),r=gt(n),i=new Error(n);i.code=e.fields.replyCode,ja(i)&&t.emit("error",i),t.toClosed(r,i)}else e.id===N.ConnectionBlocked?t.emit("blocked",e.fields.reason):e.id===N.ConnectionUnblocked?t.emit("unblocked"):t.closeWithError(le("Unexpected frame on channel 0"),ar.UNEXPECTED_FRAME,new Error(le("Unexpected frame on channel 0: %s",vt(e,!1))))}}D.sendProtocolHeader=function(){this.sendBytes(tt.PROTOCOL_HEADER)};D.open=function(t,e){var n=this,r=e||function(){},i=Object.create(t);function o(E){n.step(function(T,U){T!==null?s(T):U.channel!==0?s(new Error(le("Frame on channel != 0 during handshake: %s",vt(U,!1)))):E(U)})}function a(E,T){o(function(U){U.id===E?T(U):s(new Error(le("Expected %s; got %s",Uv(E),vt(U,!1))))})}function s(E){r(E)}function c(E){n.sendMethod(0,E,i)}function f(E,T){return E===0||T===0?Math.max(E,T):Math.min(E,T)}function d(E){var T=E.fields.mechanisms.toString().split(" ");if(T.indexOf(t.mechanism)<0){s(new Error(le("SASL mechanism %s is not provided by the server",t.mechanism)));return}n.serverProperties=E.fields.serverProperties;try{c(N.ConnectionStartOk)}catch(U){s(U);return}o(l)}function l(E){switch(E.id){case N.ConnectionSecure:s(new Error("Wasn't expecting to have to go through secure"));break;case N.ConnectionClose:s(new Error(le("Handshake terminated by server: %s",qa(E))));break;case N.ConnectionTune:var T=E.fields;i.frameMax=f(T.frameMax,t.frameMax),i.channelMax=f(T.channelMax,t.channelMax),i.heartbeat=f(T.heartbeat,t.heartbeat);try{c(N.ConnectionTuneOk),c(N.ConnectionOpen)}catch(U){s(U);return}a(N.ConnectionOpenOk,p);break;default:s(new Error(le("Expected connection.secure, connection.close, or connection.tune during handshake; got %s",vt(E,!1))));break}}function p(E){n.channelMax=i.channelMax||65535,n.frameMax=i.frameMax||4294967295,n.heartbeat=i.heartbeat,n.heartbeater=n.startHeartbeater(),n.accept=Tv,C(E)}function k(E){s(E||new Error("Socket closed abruptly during opening handshake"))}this.stream.on("end",k),this.stream.on("error",k);function C(E){n.stream.removeListener("end",k),n.stream.removeListener("error",k),n.stream.on("error",n.onSocketError.bind(n)),n.stream.on("end",n.onSocketError.bind(n,new Error("Unexpected close"))),n.on("frameError",n.onSocketError.bind(n)),n.acceptLoop(),r(null,E)}this.sendProtocolHeader(),a(N.ConnectionStart,d)};D.close=function(t){var e=t&&function(){t(null)};this.closeBecause("Cheers, thanks",ar.REPLY_SUCCESS,e)};D.closeBecause=function(t,e,n){this.sendMethod(0,N.ConnectionClose,{replyText:t,replyCode:e,methodId:0,classId:0});var r=gt("closeBecause called: "+t);this.toClosing(r,n)};D.closeWithError=function(t,e,n){this.emit("error",n),this.closeBecause(t,e)};D.onSocketError=function(t){if(!this.expectSocketClose){this.expectSocketClose=!0,this.emit("error",t);var e=gt("Socket error");this.toClosed(e,t)}};function Aa(t,e){return function(){throw new La(t,e)}}function Na(t,e,n){t.sendMethod=t.sendContent=t.sendMessage=Aa(e,n)}D.toClosing=function(t,e){var n=this.sendMethod.bind(this);this.accept=function(r){if(r.id===N.ConnectionCloseOk){e&&e();var i=gt("ConnectionCloseOk received");this.toClosed(i,void 0)}else r.id===N.ConnectionClose&&n(0,N.ConnectionCloseOk,{})},Na(this,"Connection closing",t)};D._closeChannels=function(t){for(var e=1;e<this.channels.length;e++){var n=this.channels[e];n!==null&&n.channel.toClosed(t)}};D.toClosed=function(t,e){this._closeChannels(t);var n=le("Connection closed (%s)",e?e.toString():"by client");Na(this,n,t),this.accept=Aa(n,t),this.close=function(r){r&&r(new La(n,t))},this.heartbeater&&this.heartbeater.clear(),this.expectSocketClose=!0,this.stream.end(),this.emit("close",e)};D.startHeartbeater=function(){if(this.heartbeat===0)return null;var t=this,e=new xv(this.heartbeat,this.checkSend.bind(this),this.checkRecv.bind(this));return e.on("timeout",function(){var n=new Error("Heartbeat timeout");t.emit("error",n);var r=gt("Heartbeat timeout");t.toClosed(r,n)}),e.on("beat",function(){t.sendHeartbeat()}),e};D.freshChannel=function(t,e){var n=this.freeChannels.nextClearBit(1);if(n<0||n>this.channelMax)throw new Error("No channels left to allocate");this.freeChannels.set(n);var r=e&&e.highWaterMark||Ov,i=new Cv({objectMode:!0,highWaterMark:r});return this.channels[n]={channel:t,buffer:i},i.on("drain",function(){t.onBufferDrain()}),this.muxer.pipeFrom(i),n};D.releaseChannel=function(t){this.freeChannels.clear(t);var e=this.channels[t].buffer;e.end(),this.channels[t]=null};D.acceptLoop=function(){var t=this;function e(){try{for(var n;n=t.recvFrame();)t.accept(n)}catch(r){t.emit("frameError",r)}}t.stream.on("readable",e),e()};D.step=function(t){var e=this;function n(){var r;try{r=e.recvFrame()}catch(i){t(i,null);return}r?t(null,r):e.stream.once("readable",n)}n()};D.checkSend=function(){var t=this.sentSinceLastCheck;return this.sentSinceLastCheck=!1,t};D.checkRecv=function(){var t=this.recvSinceLastCheck;return this.recvSinceLastCheck=!1,t};D.sendBytes=function(t){this.sentSinceLastCheck=!0,this.stream.write(t)};D.sendHeartbeat=function(){return this.sendBytes(tt.HEARTBEAT_BUF)};var Da=N.encodeMethod,Rv=N.encodeProperties;D.sendMethod=function(t,e,n){var r=Da(e,t,n);this.sentSinceLastCheck=!0;var i=this.channels[t].buffer;return i.write(r)};D.sendMessage=function(t,e,n,r,i,o){if(!Buffer.isBuffer(o))throw new TypeError("content is not a buffer");var a=Da(e,t,n),s=Rv(r,t,o.length,i),c=this.channels[t].buffer;this.sentSinceLastCheck=!0;var f=a.length+s.length,d=o.length>0?o.length+Fa:0,l=f+d;if(l<Ra){var p=Buffer.allocUnsafe(l),k=a.copy(p,0);return k+=s.copy(p,k),d>0&&Pa(t,o).copy(p,k),c.write(p)}else{if(f<Ra){var C=Buffer.allocUnsafe(f),k=a.copy(C,0);s.copy(C,k),c.write(C)}else c.write(a),c.write(s);return this.sendContent(t,o)}};var Fa=N.FRAME_OVERHEAD,Pa=tt.makeBodyFrame;D.sendContent=function(t,e){if(!Buffer.isBuffer(e))throw new TypeError(le("Expected buffer; got %s",e));for(var n=!0,r=this.channels[t].buffer,i=this.frameMax-Fa,o=0;o<e.length;o+=i){var a=o+i,s=a>e.length?e.slice(o):e.slice(o,a),c=Pa(t,s);n=r.write(c)}return this.sentSinceLastCheck=!0,n};var Mv=tt.parseFrame,qv=tt.decodeFrame;D.recvFrame=function(){var t=Mv(this.rest,this.frameMax);if(t)return this.rest=t.rest,qv(t);var e=this.stream.read();return e===null?!1:(this.recvSinceLastCheck=!0,this.rest=Buffer.concat([this.rest,e]),this.recvFrame())};function Lv(t){if(t instanceof Sa)return t;var e=new Sa;return e.wrap(t),e._write=function(n,r,i){return t.write(n,r,i)},e}function ja(t){switch(t&&t.code){case N.constants.CONNECTION_FORCED:case N.constants.REPLY_SUCCESS:return!1;default:return!0}}Bn.exports.Connection=In;Bn.exports.isFatalError=ja});var bn=w((Em,sr)=>{var Av=Hr();sr.exports.plain=function(t,e){return{mechanism:"PLAIN",response:function(){return Buffer.from(["",t,e].join(String.fromCharCode(0)))},username:t,password:e}};sr.exports.amqplain=function(t,e){return{mechanism:"AMQPLAIN",response:function(){let n=Buffer.alloc(16384),r=Av.encodeTable(n,{LOGIN:t,PASSWORD:e},0);return n.slice(4,r)},username:t,password:e}};sr.exports.external=function(){return{mechanism:"EXTERNAL",response:function(){return Buffer.from("")}}}});var Qa=w((Im,Nv)=>{Nv.exports={name:"amqplib",homepage:"http://amqp-node.github.io/amqplib/",main:"./channel_api.js",version:"0.10.2",description:"An AMQP 0-9-1 (e.g., RabbitMQ) library and client.",repository:{type:"git",url:"https://github.com/amqp-node/amqplib.git"},engines:{node:">=10"},dependencies:{bitsyntax:"~0.1.0","buffer-more-ints":"~1.0.0","readable-stream":"1.x >=1.1.9","url-parse":"~1.5.10"},devDependencies:{claire:"0.4.1",mocha:"^9.2.2",nyc:"^15.1.0","uglify-js":"2.8.x"},scripts:{test:"make test",prepare:"make"},keywords:["AMQP","AMQP 0-9-1","RabbitMQ"],author:"Michael Bridgen <mikeb@squaremobius.net>",license:"MIT"}});var Ga=w((Bm,xn)=>{"use strict";var Dv=zi(),Fv=require("querystring"),Pv=za().Connection,jv=require("util").format,Ka=bn();function $a(t,e){for(var n=Object.keys(t),r=n.length;r--;){var i=n[r];e[i]=t[i]}return e}function zv(t){return $a(t,{})}var Qv={product:"amqplib",version:Qa().version,platform:jv("Node.JS %s",process.version),information:"http://squaremo.github.io/amqp.node",capabilities:{publisher_confirms:!0,exchange_exchange_bindings:!0,"basic.nack":!0,consumer_cancel_notify:!0,"connection.blocked":!0,authentication_failure_close:!0}};function Ha(t,i,n,r){t?t=Fv.unescape(t):t="/";var i=i||{};function o(s,c){return s===void 0?c:parseInt(s)}var a=Object.create(Qv);return{clientProperties:$a(r,a),mechanism:n.mechanism,response:n.response(),locale:i.locale||"en_US",channelMax:o(i.channelMax,0),frameMax:o(i.frameMax,4096),heartbeat:o(i.heartbeat,0),virtualHost:t,capabilities:"",insist:0}}function Wa(t){var e="guest",n="guest";return(t.username!=""||t.password!="")&&(e=t.username?unescape(t.username):"",n=t.password?unescape(t.password):""),Ka.plain(e,n)}function Hv(t,e,n){var r=zv(e||{});t=t||"amqp://localhost";var i=!!r.noDelay,o=r.timeout,a=!!r.keepAlive,s=r.keepAliveDelay||0,c=r.clientProperties||{},f,d;if(typeof t=="object"){f=(t.protocol||"amqp")+":",r.host=t.hostname,r.servername=r.servername||t.hostname,r.port=t.port||(f==="amqp:"?5672:5671);var l,p;t.username==null&&t.password==null?(l="guest",p="guest"):(l=t.username||"",p=t.password||"");var k={locale:t.locale,channelMax:t.channelMax,frameMax:t.frameMax,heartbeat:t.heartbeat};d=Ha(t.vhost,k,r.credentials||Ka.plain(l,p),c)}else{var C=Dv(t,!0);f=C.protocol,r.host=C.hostname,r.servername=r.servername||C.hostname,r.port=parseInt(C.port)||(f==="amqp:"?5672:5671);var E=C.pathname?C.pathname.substr(1):null;d=Ha(E,C.query,r.credentials||Wa(C),c)}var T=!1,U;function L(){T=!0,U.setNoDelay(i),a&&U.setKeepAlive(a,s);var P=new Pv(U);P.open(d,function(O,wt){o&&U.setTimeout(0),O===null?n(null,P):(U.end(),U.destroy(),n(O))})}if(f==="amqp:")U=require("net").connect(r,L);else if(f==="amqps:")U=require("tls").connect(r,L);else throw new Error("Expected amqp: or amqps: as the protocol; got "+f);o&&U.setTimeout(o,function(){U.end(),U.destroy(),n(new Error("connect ETIMEDOUT"))}),U.once("error",function(P){T||n(P)})}xn.exports.connect=Hv;xn.exports.credentialsFromUrl=Wa});var On=w((bm,ur)=>{"use strict";var q=$e(),_n=Te().closeMessage,Va=Te().inspect,Un=Te().methodName,Kv=require("assert"),Ja=require("util").inherits,Ya=require("events").EventEmitter,rt=require("util").format,$v=et().IllegalOperationError,Cn=et().stackCapture;function mt(t){Ya.call(this),this.connection=t,this.reply=null,this.pending=[],this.lwm=1,this.unconfirmed=[],this.on("ack",this.handleConfirm.bind(this,function(e){e&&e(null)})),this.on("nack",this.handleConfirm.bind(this,function(e){e&&e(new Error("message nacked"))})),this.on("close",function(){for(var e;e=this.unconfirmed.shift();)e&&e(new Error("channel closed"))}),this.handleMessage=kn}Ja(mt,Ya);ur.exports.Channel=mt;ur.exports.acceptMessage=es;var te=mt.prototype;te.allocate=function(){return this.ch=this.connection.freshChannel(this),this};te.sendImmediately=function(t,e){return this.connection.sendMethod(this.ch,t,e)};te.sendOrEnqueue=function(t,e,n){this.reply?this.pending.push({method:t,fields:e,reply:n}):(Kv(this.pending.length===0),this.reply=n,this.sendImmediately(t,e))};te.sendMessage=function(t,e,n){return this.connection.sendMessage(this.ch,q.BasicPublish,t,q.BasicProperties,e,n)};te._rpc=function(t,e,n,r){var i=this;function o(a,s){if(a===null){if(s.id===n)return r(null,s);var c=Un(n),f=new Error(rt("Expected %s; got %s",c,Va(s,!1)));return i.closeWithError(s.id,rt("Expected %s; got %s",c,Un(s.id)),q.constants.UNEXPECTED_FRAME,f),r(f)}else{if(a instanceof Error)return r(a);var d=(a.fields.classId<<16)+a.fields.methodId,f=t===d?rt("Operation failed: %s; %s",Un(t),_n(a)):rt("Channel closed by server: %s",_n(a)),l=new Error(f);return l.code=a.fields.replyCode,l.classId=a.fields.classId,l.methodId=a.fields.methodId,r(l)}}this.sendOrEnqueue(t,e,o)};function Za(t,e){return function(){throw new $v(t,e)}}function Xa(t,e,n){t.sendImmediately=t.sendOrEnqueue=t.sendMessage=Za(e,n)}te.toClosed=function(t){this._rejectPending(),Xa(this,"Channel closed",t),this.accept=Za("Channel closed",t),this.connection.releaseChannel(this.ch),this.emit("close")};te.toClosing=function(t,e){var n=this.sendImmediately.bind(this);Xa(this,"Channel closing",t),this.accept=function(r){if(r.id===q.ChannelCloseOk){e&&e();var i=Cn("ChannelCloseOk frame received");this.toClosed(i)}else r.id===q.ChannelClose&&n(q.ChannelCloseOk,{})}};te._rejectPending=function(){function t(n){n(new Error("Channel ended, no reply will be forthcoming"))}this.reply!==null&&t(this.reply),this.reply=null;for(var e;e=this.pending.shift();)t(e.reply);this.pending=null};te.closeBecause=function(t,e,n){this.sendImmediately(q.ChannelClose,{replyText:t,replyCode:e,methodId:0,classId:0});var r=Cn("closeBecause called: "+t);this.toClosing(r,n)};te.closeWithError=function(t,e,n,r){var i=this;this.closeBecause(e,n,function(){r.code=n,t&&(r.classId=q.info(t).classId,r.methodId=q.info(t).methodId),i.emit("error",r)})};te.acceptMessageFrame=function(t){try{this.handleMessage=this.handleMessage(t)}catch(e){typeof e=="string"?this.closeWithError(t.id,e,q.constants.UNEXPECTED_FRAME,new Error(e)):e instanceof Error?this.closeWithError(t.id,"Error while processing message",q.constants.INTERNAL_ERROR,e):this.closeWithError(t.id,"Internal error while processing message",q.constants.INTERNAL_ERROR,new Error(e.toString()))}};function kn(t){var e;if(t.id===q.BasicDeliver)e="delivery";else if(t.id===q.BasicReturn)e="return";else throw rt("Expected BasicDeliver or BasicReturn; got %s",Va(t));var n=this,r=t.fields;return es(function(i){i.fields=r,n.emit(e,i)})}function es(t){var e=0,n=0,r=null,i={fields:null,properties:null,content:null};return o;function o(s){if(s.id===q.BasicProperties)return i.properties=s.fields,e=n=s.size,e===0?(i.content=Buffer.alloc(0),t(i),kn):a;throw"Expected headers frame after delivery"}function a(s){if(s.content){var c=s.content.length;if(n-=c,n===0)return r!==null?(r.push(s.content),i.content=Buffer.concat(r)):i.content=s.content,t(i),kn;if(n<0)throw rt("Too much content sent! Expected %d bytes",e);return r!==null?r.push(s.content):r=[s.content],a}else throw"Expected content frame after headers"}}te.handleConfirm=function(t,e){var n=e.deliveryTag,r=e.multiple;if(r){var i=this.unconfirmed.splice(0,n-this.lwm+1);this.lwm=n+1,i.forEach(t)}else{var o;if(n===this.lwm)for(o=this.unconfirmed.shift(),this.lwm++;this.unconfirmed[0]===null;)this.unconfirmed.shift(),this.lwm++;else o=this.unconfirmed[n-this.lwm],this.unconfirmed[n-this.lwm]=null;t(o)}};te.pushConfirmCallback=function(t){this.unconfirmed.push(t||!1)};te.accept=function(t){switch(t.id){case void 0:case q.BasicDeliver:case q.BasicReturn:case q.BasicProperties:return this.acceptMessageFrame(t);case q.BasicAck:return this.emit("ack",t.fields);case q.BasicNack:return this.emit("nack",t.fields);case q.BasicCancel:return this.emit("cancel",t.fields);case q.ChannelClose:if(this.reply){var i=this.reply;this.reply=null,i(t)}var e="Channel closed by server: "+_n(t);this.sendImmediately(q.ChannelCloseOk,{});var n=new Error(e);n.code=t.fields.replyCode,n.classId=t.fields.classId,n.methodId=t.fields.methodId,this.emit("error",n);var r=Cn(e);this.toClosed(r);return;case q.BasicFlow:return this.closeWithError(t.id,"Flow not implemented",q.constants.NOT_IMPLEMENTED,new Error("Flow not implemented"));default:var i=this.reply;if(this.reply=null,this.pending.length>0){var o=this.pending.shift();this.reply=o.reply,this.sendImmediately(o.method,o.fields)}return i(null,t)}};te.onBufferDrain=function(){this.emit("drain")};function De(t){mt.call(this,t),this.consumers=new Map}Ja(De,mt);ur.exports.BaseChannel=De;De.prototype.registerConsumer=function(t,e){this.consumers.set(t,e)};De.prototype.unregisterConsumer=function(t){this.consumers.delete(t)};De.prototype.dispatchMessage=function(t,e){var n=t.consumerTag,r=this.consumers.get(n);if(r)return r(e);throw new Error("Unknown consumer: "+n)};De.prototype.handleDelivery=function(t){return this.dispatchMessage(t.fields,t)};De.prototype.handleCancel=function(t){var e=this.dispatchMessage(t,null);return this.unregisterConsumer(t.consumerTag),e}});var rs=w((xm,ts)=>{"use strict";function fe(t,e,n){n!=null&&(t[e]=n)}var Fe=Object.freeze({}),z={};z.assertQueue=function(t,e){t=t||"",e=e||Fe;var n=Object.create(e.arguments||null);return fe(n,"x-expires",e.expires),fe(n,"x-message-ttl",e.messageTtl),fe(n,"x-dead-letter-exchange",e.deadLetterExchange),fe(n,"x-dead-letter-routing-key",e.deadLetterRoutingKey),fe(n,"x-max-length",e.maxLength),fe(n,"x-max-priority",e.maxPriority),fe(n,"x-overflow",e.overflow),fe(n,"x-queue-mode",e.queueMode),{queue:t,exclusive:!!e.exclusive,durable:e.durable===void 0?!0:e.durable,autoDelete:!!e.autoDelete,arguments:n,passive:!1,ticket:0,nowait:!1}};z.checkQueue=function(t){return{queue:t,passive:!0,nowait:!1,durable:!0,autoDelete:!1,exclusive:!1,ticket:0}};z.deleteQueue=function(t,e){return e=e||Fe,{queue:t,ifUnused:!!e.ifUnused,ifEmpty:!!e.ifEmpty,ticket:0,nowait:!1}};z.purgeQueue=function(t){return{queue:t,ticket:0,nowait:!1}};z.bindQueue=function(t,e,n,r){return{queue:t,exchange:e,routingKey:n,arguments:r,ticket:0,nowait:!1}};z.unbindQueue=function(t,e,n,r){return{queue:t,exchange:e,routingKey:n,arguments:r,ticket:0,nowait:!1}};z.assertExchange=function(t,e,n){n=n||Fe;var r=Object.create(n.arguments||null);return fe(r,"alternate-exchange",n.alternateExchange),{exchange:t,ticket:0,type:e,passive:!1,durable:n.durable===void 0?!0:n.durable,autoDelete:!!n.autoDelete,internal:!!n.internal,nowait:!1,arguments:r}};z.checkExchange=function(t){return{exchange:t,passive:!0,nowait:!1,durable:!0,internal:!1,type:"",autoDelete:!1,ticket:0}};z.deleteExchange=function(t,e){return e=e||Fe,{exchange:t,ifUnused:!!e.ifUnused,ticket:0,nowait:!1}};z.bindExchange=function(t,e,n,r){return{source:e,destination:t,routingKey:n,arguments:r,ticket:0,nowait:!1}};z.unbindExchange=function(t,e,n,r){return{source:e,destination:t,routingKey:n,arguments:r,ticket:0,nowait:!1}};z.publish=function(t,e,n){n=n||Fe;function r(s){if(s!==void 0)return Array.isArray(s)?s.map(String):[String(s)]}var i=Object.create(n.headers||null);fe(i,"CC",r(n.CC)),fe(i,"BCC",r(n.BCC));var o;n.persistent!==void 0?o=n.persistent?2:1:typeof n.deliveryMode=="number"?o=n.deliveryMode:n.deliveryMode&&(o=2);var a=n.expiration;return a!==void 0&&(a=a.toString()),{exchange:t,routingKey:e,mandatory:!!n.mandatory,immediate:!1,ticket:void 0,contentType:n.contentType,contentEncoding:n.contentEncoding,headers:i,deliveryMode:o,priority:n.priority,correlationId:n.correlationId,replyTo:n.replyTo,expiration:a,messageId:n.messageId,timestamp:n.timestamp,type:n.type,userId:n.userId,appId:n.appId,clusterId:void 0}};z.consume=function(t,e){e=e||Fe;var n=Object.create(e.arguments||null);return fe(n,"x-priority",e.priority),{ticket:0,queue:t,consumerTag:e.consumerTag||"",noLocal:!!e.noLocal,noAck:!!e.noAck,exclusive:!!e.exclusive,nowait:!1,arguments:n}};z.cancel=function(t){return{consumerTag:t,nowait:!1}};z.get=function(t,e){return e=e||Fe,{ticket:0,queue:t,noAck:!!e.noAck}};z.ack=function(t,e){return{deliveryTag:t,multiple:!!e}};z.nack=function(t,e,n){return{deliveryTag:t,multiple:!!e,requeue:n===void 0?!0:n}};z.reject=function(t,e){return{deliveryTag:t,requeue:e===void 0?!0:e}};z.prefetch=function(t,e){return{prefetchCount:t||0,prefetchSize:0,global:!!e}};z.recover=function(){return{requeue:!0}};ts.exports=Object.freeze(z)});var ns=w((Um,fr)=>{"use strict";var Wv=require("events"),cr=require("util").promisify,_=$e(),{BaseChannel:Gv}=On(),{acceptMessage:Vv}=On(),F=rs(),{inspect:Jv}=Te(),Tn=class extends Wv{constructor(e){super(),this.connection=e,["error","close","blocked","unblocked"].forEach(n=>{e.on(n,this.emit.bind(this,n))})}close(){return cr(this.connection.close.bind(this.connection))()}async createChannel(){let e=new Re(this.connection);return await e.open(),e}async createConfirmChannel(){let e=new lr(this.connection);return await e.open(),await e.rpc(_.ConfirmSelect,{nowait:!1},_.ConfirmSelectOk),e}},Re=class extends Gv{constructor(e){super(e),this.on("delivery",this.handleDelivery.bind(this)),this.on("cancel",this.handleCancel.bind(this))}async rpc(e,n,r){return(await cr(o=>this._rpc(e,n,r,o))()).fields}async open(){return(await this.allocate.bind(this)()).rpc(_.ChannelOpen,{outOfBand:""},_.ChannelOpenOk)}close(){return cr(e=>this.closeBecause("Goodbye",_.constants.REPLY_SUCCESS,e))()}assertQueue(e,n){return this.rpc(_.QueueDeclare,F.assertQueue(e,n),_.QueueDeclareOk)}checkQueue(e){return this.rpc(_.QueueDeclare,F.checkQueue(e),_.QueueDeclareOk)}deleteQueue(e,n){return this.rpc(_.QueueDelete,F.deleteQueue(e,n),_.QueueDeleteOk)}purgeQueue(e){return this.rpc(_.QueuePurge,F.purgeQueue(e),_.QueuePurgeOk)}bindQueue(e,n,r,i){return this.rpc(_.QueueBind,F.bindQueue(e,n,r,i),_.QueueBindOk)}unbindQueue(e,n,r,i){return this.rpc(_.QueueUnbind,F.unbindQueue(e,n,r,i),_.QueueUnbindOk)}assertExchange(e,n,r){return this.rpc(_.ExchangeDeclare,F.assertExchange(e,n,r),_.ExchangeDeclareOk).then(i=>({exchange:e}))}checkExchange(e){return this.rpc(_.ExchangeDeclare,F.checkExchange(e),_.ExchangeDeclareOk)}deleteExchange(e,n){return this.rpc(_.ExchangeDelete,F.deleteExchange(e,n),_.ExchangeDeleteOk)}bindExchange(e,n,r,i){return this.rpc(_.ExchangeBind,F.bindExchange(e,n,r,i),_.ExchangeBindOk)}unbindExchange(e,n,r,i){return this.rpc(_.ExchangeUnbind,F.unbindExchange(e,n,r,i),_.ExchangeUnbindOk)}publish(e,n,r,i){let o=F.publish(e,n,i);return this.sendMessage(o,o,r)}sendToQueue(e,n,r){return this.publish("",e,n,r)}consume(e,n,r){let i=F.consume(e,r);return new Promise((o,a)=>{this._rpc(_.BasicConsume,i,_.BasicConsumeOk,(s,c)=>{if(s)return a(s);this.registerConsumer(c.fields.consumerTag,n),o(c.fields)})})}async cancel(e){let n=await cr(r=>{this._rpc(_.BasicCancel,F.cancel(e),_.BasicCancelOk,r)})().then(r=>(this.unregisterConsumer(e),r.fields))}get(e,n){let r=F.get(e,n);return new Promise((i,o)=>{this.sendOrEnqueue(_.BasicGet,r,(a,s)=>{if(a)return o(a);if(s.id===_.BasicGetEmpty)return i(!1);if(s.id===_.BasicGetOk){let c=s.fields;this.handleMessage=Vv(f=>{f.fields=c,i(f)})}else o(new Error(`Unexpected response to BasicGet: ${Jv(s)}`))})})}ack(e,n){this.sendImmediately(_.BasicAck,F.ack(e.fields.deliveryTag,n))}ackAll(){this.sendImmediately(_.BasicAck,F.ack(0,!0))}nack(e,n,r){this.sendImmediately(_.BasicNack,F.nack(e.fields.deliveryTag,n,r))}nackAll(e){this.sendImmediately(_.BasicNack,F.nack(0,!0,e))}reject(e,n){this.sendImmediately(_.BasicReject,F.reject(e.fields.deliveryTag,n))}recover(){return this.rpc(_.BasicRecover,F.recover(),_.BasicRecoverOk)}qos(e,n){return this.rpc(_.BasicQos,F.prefetch(e,n),_.BasicQosOk)}};Re.prototype.prefetch=Re.prototype.qos;var lr=class extends Re{publish(e,n,r,i,o){return this.pushConfirmCallback(o),Re.prototype.publish.call(this,e,n,r,i)}sendToQueue(e,n,r,i){return this.publish("",e,n,r,i)}waitForConfirms(){let e=[],n=this.unconfirmed;if(n.forEach((i,o)=>{if(i!==null){let a=new Promise((s,c)=>{n[o]=f=>{i&&i(f),f===null?s():c(f)}});e.push(a)}}),!this.pending)for(var r;r=this.unconfirmed.shift();)r&&r(new Error("channel closed"));return Promise.all(e)}};fr.exports.ConfirmChannel=lr;fr.exports.Channel=Re;fr.exports.ChannelModel=Tn});var is=w((_m,dr)=>{var Yv=Ga().connect,Zv=ns().ChannelModel,Xv=require("util").promisify;function eg(t,e){return Xv(function(n){return Yv(t,e,n)})().then(function(n){return new Zv(n)})}dr.exports.connect=eg;dr.exports.credentials=bn();dr.exports.IllegalOperationError=et().IllegalOperationError});var Be=Ln(Mr()),ss=Ln(is());console.log("amqp created.");var tg=Be.default.getInput("rabbitmq_host"),rg=Be.default.getInput("rabbitmq_vhostname"),ng=Be.default.getInput("rabbitmq_username"),ig=Be.default.getInput("rabbitmq_password"),og=`amqp://${ng}:${ig}@${tg}/${rg}`,ag=Be.default.getInput("app_id"),km=Be.default.getInput("headers"),os=Be.default.getInput("message"),as=Be.default.getInput("queue_name");async function sg(){var n,r;let t=null,e=null;try{console.log("amqp connecting..."),t=await ss.default.connect(og),console.log("creating channel"),e=await t.createChannel(),console.log("asserting channel"),await e.assertQueue(as,{durable:!0}),console.log("sending message"),e.sendToQueue(as,Buffer.from(JSON.stringify(os)),{appId:ag,contentType:"application/json"}),console.log(" [x] Sent %s",os)}catch(i){console.error(i),Be.default.setFailed(i.message)}finally{await((n=e==null?void 0:e.close)==null?void 0:n.call(e)),await((r=t==null?void 0:t.close)==null?void 0:r.call(t))}}sg();
+        Error Message: ${error.result.message}`);
+          });
+          const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
+          if (!id_token) {
+            throw new Error("Response json body do not have ID Token field");
+          }
+          return id_token;
+        });
+      }
+      static getIDToken(audience) {
+        return __awaiter(this, void 0, void 0, function* () {
+          try {
+            let id_token_url = OidcClient.getIDTokenUrl();
+            if (audience) {
+              const encodedAudience = encodeURIComponent(audience);
+              id_token_url = `${id_token_url}&audience=${encodedAudience}`;
+            }
+            core_1.debug(`ID token url is ${id_token_url}`);
+            const id_token = yield OidcClient.getCall(id_token_url);
+            core_1.setSecret(id_token);
+            return id_token;
+          } catch (error) {
+            throw new Error(`Error message: ${error.message}`);
+          }
+        });
+      }
+    };
+    exports.OidcClient = OidcClient;
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/summary.js
+var require_summary = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/summary.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+    var os_1 = require("os");
+    var fs_1 = require("fs");
+    var { access, appendFile, writeFile } = fs_1.promises;
+    exports.SUMMARY_ENV_VAR = "GITHUB_STEP_SUMMARY";
+    exports.SUMMARY_DOCS_URL = "https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary";
+    var Summary = class {
+      constructor() {
+        this._buffer = "";
+      }
+      filePath() {
+        return __awaiter(this, void 0, void 0, function* () {
+          if (this._filePath) {
+            return this._filePath;
+          }
+          const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+          if (!pathFromEnv) {
+            throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+          }
+          try {
+            yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+          } catch (_a) {
+            throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+          }
+          this._filePath = pathFromEnv;
+          return this._filePath;
+        });
+      }
+      wrap(tag, content, attrs = {}) {
+        const htmlAttrs = Object.entries(attrs).map(([key, value]) => ` ${key}="${value}"`).join("");
+        if (!content) {
+          return `<${tag}${htmlAttrs}>`;
+        }
+        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
+      }
+      write(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+          const filePath = yield this.filePath();
+          const writeFunc = overwrite ? writeFile : appendFile;
+          yield writeFunc(filePath, this._buffer, { encoding: "utf8" });
+          return this.emptyBuffer();
+        });
+      }
+      clear() {
+        return __awaiter(this, void 0, void 0, function* () {
+          return this.emptyBuffer().write({ overwrite: true });
+        });
+      }
+      stringify() {
+        return this._buffer;
+      }
+      isEmptyBuffer() {
+        return this._buffer.length === 0;
+      }
+      emptyBuffer() {
+        this._buffer = "";
+        return this;
+      }
+      addRaw(text, addEOL = false) {
+        this._buffer += text;
+        return addEOL ? this.addEOL() : this;
+      }
+      addEOL() {
+        return this.addRaw(os_1.EOL);
+      }
+      addCodeBlock(code, lang) {
+        const attrs = Object.assign({}, lang && { lang });
+        const element = this.wrap("pre", this.wrap("code", code), attrs);
+        return this.addRaw(element).addEOL();
+      }
+      addList(items, ordered = false) {
+        const tag = ordered ? "ol" : "ul";
+        const listItems = items.map((item) => this.wrap("li", item)).join("");
+        const element = this.wrap(tag, listItems);
+        return this.addRaw(element).addEOL();
+      }
+      addTable(rows) {
+        const tableBody = rows.map((row) => {
+          const cells = row.map((cell) => {
+            if (typeof cell === "string") {
+              return this.wrap("td", cell);
+            }
+            const { header, data, colspan, rowspan } = cell;
+            const tag = header ? "th" : "td";
+            const attrs = Object.assign(Object.assign({}, colspan && { colspan }), rowspan && { rowspan });
+            return this.wrap(tag, data, attrs);
+          }).join("");
+          return this.wrap("tr", cells);
+        }).join("");
+        const element = this.wrap("table", tableBody);
+        return this.addRaw(element).addEOL();
+      }
+      addDetails(label, content) {
+        const element = this.wrap("details", this.wrap("summary", label) + content);
+        return this.addRaw(element).addEOL();
+      }
+      addImage(src, alt, options) {
+        const { width, height } = options || {};
+        const attrs = Object.assign(Object.assign({}, width && { width }), height && { height });
+        const element = this.wrap("img", null, Object.assign({ src, alt }, attrs));
+        return this.addRaw(element).addEOL();
+      }
+      addHeading(text, level) {
+        const tag = `h${level}`;
+        const allowedTag = ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) ? tag : "h1";
+        const element = this.wrap(allowedTag, text);
+        return this.addRaw(element).addEOL();
+      }
+      addSeparator() {
+        const element = this.wrap("hr", null);
+        return this.addRaw(element).addEOL();
+      }
+      addBreak() {
+        const element = this.wrap("br", null);
+        return this.addRaw(element).addEOL();
+      }
+      addQuote(text, cite) {
+        const attrs = Object.assign({}, cite && { cite });
+        const element = this.wrap("blockquote", text, attrs);
+        return this.addRaw(element).addEOL();
+      }
+      addLink(text, href) {
+        const element = this.wrap("a", text, { href });
+        return this.addRaw(element).addEOL();
+      }
+    };
+    var _summary = new Summary();
+    exports.markdownSummary = _summary;
+    exports.summary = _summary;
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/path-utils.js
+var require_path_utils = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/path-utils.js"(exports) {
+    "use strict";
+    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports && exports.__importStar || function(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod)
+          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
+            __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
+    var path = __importStar(require("path"));
+    function toPosixPath(pth) {
+      return pth.replace(/[\\]/g, "/");
+    }
+    exports.toPosixPath = toPosixPath;
+    function toWin32Path(pth) {
+      return pth.replace(/[/]/g, "\\");
+    }
+    exports.toWin32Path = toWin32Path;
+    function toPlatformPath(pth) {
+      return pth.replace(/[/\\]/g, path.sep);
+    }
+    exports.toPlatformPath = toPlatformPath;
+  }
+});
+
+// node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/core.js
+var require_core = __commonJS({
+  "node_modules/.pnpm/@actions+core@1.9.1/node_modules/@actions/core/lib/core.js"(exports) {
+    "use strict";
+    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports && exports.__importStar || function(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod)
+          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
+            __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+    var command_1 = require_command();
+    var file_command_1 = require_file_command();
+    var utils_1 = require_utils();
+    var os = __importStar(require("os"));
+    var path = __importStar(require("path"));
+    var uuid_1 = require_dist();
+    var oidc_utils_1 = require_oidc_utils();
+    var ExitCode;
+    (function(ExitCode2) {
+      ExitCode2[ExitCode2["Success"] = 0] = "Success";
+      ExitCode2[ExitCode2["Failure"] = 1] = "Failure";
+    })(ExitCode = exports.ExitCode || (exports.ExitCode = {}));
+    function exportVariable(name, val) {
+      const convertedVal = utils_1.toCommandValue(val);
+      process.env[name] = convertedVal;
+      const filePath = process.env["GITHUB_ENV"] || "";
+      if (filePath) {
+        const delimiter = `ghadelimiter_${uuid_1.v4()}`;
+        if (name.includes(delimiter)) {
+          throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
+        }
+        if (convertedVal.includes(delimiter)) {
+          throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
+        }
+        const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
+        file_command_1.issueCommand("ENV", commandValue);
+      } else {
+        command_1.issueCommand("set-env", { name }, convertedVal);
+      }
+    }
+    exports.exportVariable = exportVariable;
+    function setSecret(secret) {
+      command_1.issueCommand("add-mask", {}, secret);
+    }
+    exports.setSecret = setSecret;
+    function addPath(inputPath) {
+      const filePath = process.env["GITHUB_PATH"] || "";
+      if (filePath) {
+        file_command_1.issueCommand("PATH", inputPath);
+      } else {
+        command_1.issueCommand("add-path", {}, inputPath);
+      }
+      process.env["PATH"] = `${inputPath}${path.delimiter}${process.env["PATH"]}`;
+    }
+    exports.addPath = addPath;
+    function getInput2(name, options) {
+      const val = process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`] || "";
+      if (options && options.required && !val) {
+        throw new Error(`Input required and not supplied: ${name}`);
+      }
+      if (options && options.trimWhitespace === false) {
+        return val;
+      }
+      return val.trim();
+    }
+    exports.getInput = getInput2;
+    function getMultilineInput(name, options) {
+      const inputs = getInput2(name, options).split("\n").filter((x) => x !== "");
+      return inputs;
+    }
+    exports.getMultilineInput = getMultilineInput;
+    function getBooleanInput(name, options) {
+      const trueValue = ["true", "True", "TRUE"];
+      const falseValue = ["false", "False", "FALSE"];
+      const val = getInput2(name, options);
+      if (trueValue.includes(val))
+        return true;
+      if (falseValue.includes(val))
+        return false;
+      throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}
+Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
+    }
+    exports.getBooleanInput = getBooleanInput;
+    function setOutput(name, value) {
+      process.stdout.write(os.EOL);
+      command_1.issueCommand("set-output", { name }, value);
+    }
+    exports.setOutput = setOutput;
+    function setCommandEcho(enabled) {
+      command_1.issue("echo", enabled ? "on" : "off");
+    }
+    exports.setCommandEcho = setCommandEcho;
+    function setFailed2(message) {
+      process.exitCode = ExitCode.Failure;
+      error(message);
+    }
+    exports.setFailed = setFailed2;
+    function isDebug() {
+      return process.env["RUNNER_DEBUG"] === "1";
+    }
+    exports.isDebug = isDebug;
+    function debug(message) {
+      command_1.issueCommand("debug", {}, message);
+    }
+    exports.debug = debug;
+    function error(message, properties = {}) {
+      command_1.issueCommand("error", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    }
+    exports.error = error;
+    function warning(message, properties = {}) {
+      command_1.issueCommand("warning", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    }
+    exports.warning = warning;
+    function notice(message, properties = {}) {
+      command_1.issueCommand("notice", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    }
+    exports.notice = notice;
+    function info(message) {
+      process.stdout.write(message + os.EOL);
+    }
+    exports.info = info;
+    function startGroup(name) {
+      command_1.issue("group", name);
+    }
+    exports.startGroup = startGroup;
+    function endGroup() {
+      command_1.issue("endgroup");
+    }
+    exports.endGroup = endGroup;
+    function group(name, fn) {
+      return __awaiter(this, void 0, void 0, function* () {
+        startGroup(name);
+        let result;
+        try {
+          result = yield fn();
+        } finally {
+          endGroup();
+        }
+        return result;
+      });
+    }
+    exports.group = group;
+    function saveState(name, value) {
+      command_1.issueCommand("save-state", { name }, value);
+    }
+    exports.saveState = saveState;
+    function getState(name) {
+      return process.env[`STATE_${name}`] || "";
+    }
+    exports.getState = getState;
+    function getIDToken(aud) {
+      return __awaiter(this, void 0, void 0, function* () {
+        return yield oidc_utils_1.OidcClient.getIDToken(aud);
+      });
+    }
+    exports.getIDToken = getIDToken;
+    var summary_1 = require_summary();
+    Object.defineProperty(exports, "summary", { enumerable: true, get: function() {
+      return summary_1.summary;
+    } });
+    var summary_2 = require_summary();
+    Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function() {
+      return summary_2.markdownSummary;
+    } });
+    var path_utils_1 = require_path_utils();
+    Object.defineProperty(exports, "toPosixPath", { enumerable: true, get: function() {
+      return path_utils_1.toPosixPath;
+    } });
+    Object.defineProperty(exports, "toWin32Path", { enumerable: true, get: function() {
+      return path_utils_1.toWin32Path;
+    } });
+    Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: function() {
+      return path_utils_1.toPlatformPath;
+    } });
+  }
+});
+
+// node_modules/.pnpm/requires-port@1.0.0/node_modules/requires-port/index.js
+var require_requires_port = __commonJS({
+  "node_modules/.pnpm/requires-port@1.0.0/node_modules/requires-port/index.js"(exports, module2) {
+    "use strict";
+    module2.exports = function required(port, protocol) {
+      protocol = protocol.split(":")[0];
+      port = +port;
+      if (!port)
+        return false;
+      switch (protocol) {
+        case "http":
+        case "ws":
+          return port !== 80;
+        case "https":
+        case "wss":
+          return port !== 443;
+        case "ftp":
+          return port !== 21;
+        case "gopher":
+          return port !== 70;
+        case "file":
+          return false;
+      }
+      return port !== 0;
+    };
+  }
+});
+
+// node_modules/.pnpm/querystringify@2.2.0/node_modules/querystringify/index.js
+var require_querystringify = __commonJS({
+  "node_modules/.pnpm/querystringify@2.2.0/node_modules/querystringify/index.js"(exports) {
+    "use strict";
+    var has = Object.prototype.hasOwnProperty;
+    var undef;
+    function decode(input) {
+      try {
+        return decodeURIComponent(input.replace(/\+/g, " "));
+      } catch (e) {
+        return null;
+      }
+    }
+    function encode(input) {
+      try {
+        return encodeURIComponent(input);
+      } catch (e) {
+        return null;
+      }
+    }
+    function querystring(query) {
+      var parser = /([^=?#&]+)=?([^&]*)/g, result = {}, part;
+      while (part = parser.exec(query)) {
+        var key = decode(part[1]), value = decode(part[2]);
+        if (key === null || value === null || key in result)
+          continue;
+        result[key] = value;
+      }
+      return result;
+    }
+    function querystringify(obj, prefix) {
+      prefix = prefix || "";
+      var pairs = [], value, key;
+      if ("string" !== typeof prefix)
+        prefix = "?";
+      for (key in obj) {
+        if (has.call(obj, key)) {
+          value = obj[key];
+          if (!value && (value === null || value === undef || isNaN(value))) {
+            value = "";
+          }
+          key = encode(key);
+          value = encode(value);
+          if (key === null || value === null)
+            continue;
+          pairs.push(key + "=" + value);
+        }
+      }
+      return pairs.length ? prefix + pairs.join("&") : "";
+    }
+    exports.stringify = querystringify;
+    exports.parse = querystring;
+  }
+});
+
+// node_modules/.pnpm/url-parse@1.5.10/node_modules/url-parse/index.js
+var require_url_parse = __commonJS({
+  "node_modules/.pnpm/url-parse@1.5.10/node_modules/url-parse/index.js"(exports, module2) {
+    "use strict";
+    var required = require_requires_port();
+    var qs = require_querystringify();
+    var controlOrWhitespace = /^[\x00-\x20\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]+/;
+    var CRHTLF = /[\n\r\t]/g;
+    var slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
+    var port = /:\d+$/;
+    var protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\\/]+)?([\S\s]*)/i;
+    var windowsDriveLetter = /^[a-zA-Z]:/;
+    function trimLeft(str) {
+      return (str ? str : "").toString().replace(controlOrWhitespace, "");
+    }
+    var rules = [
+      ["#", "hash"],
+      ["?", "query"],
+      function sanitize(address, url) {
+        return isSpecial(url.protocol) ? address.replace(/\\/g, "/") : address;
+      },
+      ["/", "pathname"],
+      ["@", "auth", 1],
+      [NaN, "host", void 0, 1, 1],
+      [/:(\d*)$/, "port", void 0, 1],
+      [NaN, "hostname", void 0, 1, 1]
+    ];
+    var ignore = { hash: 1, query: 1 };
+    function lolcation(loc) {
+      var globalVar;
+      if (typeof window !== "undefined")
+        globalVar = window;
+      else if (typeof global !== "undefined")
+        globalVar = global;
+      else if (typeof self !== "undefined")
+        globalVar = self;
+      else
+        globalVar = {};
+      var location = globalVar.location || {};
+      loc = loc || location;
+      var finaldestination = {}, type = typeof loc, key;
+      if ("blob:" === loc.protocol) {
+        finaldestination = new Url(unescape(loc.pathname), {});
+      } else if ("string" === type) {
+        finaldestination = new Url(loc, {});
+        for (key in ignore)
+          delete finaldestination[key];
+      } else if ("object" === type) {
+        for (key in loc) {
+          if (key in ignore)
+            continue;
+          finaldestination[key] = loc[key];
+        }
+        if (finaldestination.slashes === void 0) {
+          finaldestination.slashes = slashes.test(loc.href);
+        }
+      }
+      return finaldestination;
+    }
+    function isSpecial(scheme) {
+      return scheme === "file:" || scheme === "ftp:" || scheme === "http:" || scheme === "https:" || scheme === "ws:" || scheme === "wss:";
+    }
+    function extractProtocol(address, location) {
+      address = trimLeft(address);
+      address = address.replace(CRHTLF, "");
+      location = location || {};
+      var match = protocolre.exec(address);
+      var protocol = match[1] ? match[1].toLowerCase() : "";
+      var forwardSlashes = !!match[2];
+      var otherSlashes = !!match[3];
+      var slashesCount = 0;
+      var rest;
+      if (forwardSlashes) {
+        if (otherSlashes) {
+          rest = match[2] + match[3] + match[4];
+          slashesCount = match[2].length + match[3].length;
+        } else {
+          rest = match[2] + match[4];
+          slashesCount = match[2].length;
+        }
+      } else {
+        if (otherSlashes) {
+          rest = match[3] + match[4];
+          slashesCount = match[3].length;
+        } else {
+          rest = match[4];
+        }
+      }
+      if (protocol === "file:") {
+        if (slashesCount >= 2) {
+          rest = rest.slice(2);
+        }
+      } else if (isSpecial(protocol)) {
+        rest = match[4];
+      } else if (protocol) {
+        if (forwardSlashes) {
+          rest = rest.slice(2);
+        }
+      } else if (slashesCount >= 2 && isSpecial(location.protocol)) {
+        rest = match[4];
+      }
+      return {
+        protocol,
+        slashes: forwardSlashes || isSpecial(protocol),
+        slashesCount,
+        rest
+      };
+    }
+    function resolve(relative, base) {
+      if (relative === "")
+        return base;
+      var path = (base || "/").split("/").slice(0, -1).concat(relative.split("/")), i = path.length, last = path[i - 1], unshift = false, up = 0;
+      while (i--) {
+        if (path[i] === ".") {
+          path.splice(i, 1);
+        } else if (path[i] === "..") {
+          path.splice(i, 1);
+          up++;
+        } else if (up) {
+          if (i === 0)
+            unshift = true;
+          path.splice(i, 1);
+          up--;
+        }
+      }
+      if (unshift)
+        path.unshift("");
+      if (last === "." || last === "..")
+        path.push("");
+      return path.join("/");
+    }
+    function Url(address, location, parser) {
+      address = trimLeft(address);
+      address = address.replace(CRHTLF, "");
+      if (!(this instanceof Url)) {
+        return new Url(address, location, parser);
+      }
+      var relative, extracted, parse, instruction, index, key, instructions = rules.slice(), type = typeof location, url = this, i = 0;
+      if ("object" !== type && "string" !== type) {
+        parser = location;
+        location = null;
+      }
+      if (parser && "function" !== typeof parser)
+        parser = qs.parse;
+      location = lolcation(location);
+      extracted = extractProtocol(address || "", location);
+      relative = !extracted.protocol && !extracted.slashes;
+      url.slashes = extracted.slashes || relative && location.slashes;
+      url.protocol = extracted.protocol || location.protocol || "";
+      address = extracted.rest;
+      if (extracted.protocol === "file:" && (extracted.slashesCount !== 2 || windowsDriveLetter.test(address)) || !extracted.slashes && (extracted.protocol || extracted.slashesCount < 2 || !isSpecial(url.protocol))) {
+        instructions[3] = [/(.*)/, "pathname"];
+      }
+      for (; i < instructions.length; i++) {
+        instruction = instructions[i];
+        if (typeof instruction === "function") {
+          address = instruction(address, url);
+          continue;
+        }
+        parse = instruction[0];
+        key = instruction[1];
+        if (parse !== parse) {
+          url[key] = address;
+        } else if ("string" === typeof parse) {
+          index = parse === "@" ? address.lastIndexOf(parse) : address.indexOf(parse);
+          if (~index) {
+            if ("number" === typeof instruction[2]) {
+              url[key] = address.slice(0, index);
+              address = address.slice(index + instruction[2]);
+            } else {
+              url[key] = address.slice(index);
+              address = address.slice(0, index);
+            }
+          }
+        } else if (index = parse.exec(address)) {
+          url[key] = index[1];
+          address = address.slice(0, index.index);
+        }
+        url[key] = url[key] || (relative && instruction[3] ? location[key] || "" : "");
+        if (instruction[4])
+          url[key] = url[key].toLowerCase();
+      }
+      if (parser)
+        url.query = parser(url.query);
+      if (relative && location.slashes && url.pathname.charAt(0) !== "/" && (url.pathname !== "" || location.pathname !== "")) {
+        url.pathname = resolve(url.pathname, location.pathname);
+      }
+      if (url.pathname.charAt(0) !== "/" && isSpecial(url.protocol)) {
+        url.pathname = "/" + url.pathname;
+      }
+      if (!required(url.port, url.protocol)) {
+        url.host = url.hostname;
+        url.port = "";
+      }
+      url.username = url.password = "";
+      if (url.auth) {
+        index = url.auth.indexOf(":");
+        if (~index) {
+          url.username = url.auth.slice(0, index);
+          url.username = encodeURIComponent(decodeURIComponent(url.username));
+          url.password = url.auth.slice(index + 1);
+          url.password = encodeURIComponent(decodeURIComponent(url.password));
+        } else {
+          url.username = encodeURIComponent(decodeURIComponent(url.auth));
+        }
+        url.auth = url.password ? url.username + ":" + url.password : url.username;
+      }
+      url.origin = url.protocol !== "file:" && isSpecial(url.protocol) && url.host ? url.protocol + "//" + url.host : "null";
+      url.href = url.toString();
+    }
+    function set(part, value, fn) {
+      var url = this;
+      switch (part) {
+        case "query":
+          if ("string" === typeof value && value.length) {
+            value = (fn || qs.parse)(value);
+          }
+          url[part] = value;
+          break;
+        case "port":
+          url[part] = value;
+          if (!required(value, url.protocol)) {
+            url.host = url.hostname;
+            url[part] = "";
+          } else if (value) {
+            url.host = url.hostname + ":" + value;
+          }
+          break;
+        case "hostname":
+          url[part] = value;
+          if (url.port)
+            value += ":" + url.port;
+          url.host = value;
+          break;
+        case "host":
+          url[part] = value;
+          if (port.test(value)) {
+            value = value.split(":");
+            url.port = value.pop();
+            url.hostname = value.join(":");
+          } else {
+            url.hostname = value;
+            url.port = "";
+          }
+          break;
+        case "protocol":
+          url.protocol = value.toLowerCase();
+          url.slashes = !fn;
+          break;
+        case "pathname":
+        case "hash":
+          if (value) {
+            var char = part === "pathname" ? "/" : "#";
+            url[part] = value.charAt(0) !== char ? char + value : value;
+          } else {
+            url[part] = value;
+          }
+          break;
+        case "username":
+        case "password":
+          url[part] = encodeURIComponent(value);
+          break;
+        case "auth":
+          var index = value.indexOf(":");
+          if (~index) {
+            url.username = value.slice(0, index);
+            url.username = encodeURIComponent(decodeURIComponent(url.username));
+            url.password = value.slice(index + 1);
+            url.password = encodeURIComponent(decodeURIComponent(url.password));
+          } else {
+            url.username = encodeURIComponent(decodeURIComponent(value));
+          }
+      }
+      for (var i = 0; i < rules.length; i++) {
+        var ins = rules[i];
+        if (ins[4])
+          url[ins[1]] = url[ins[1]].toLowerCase();
+      }
+      url.auth = url.password ? url.username + ":" + url.password : url.username;
+      url.origin = url.protocol !== "file:" && isSpecial(url.protocol) && url.host ? url.protocol + "//" + url.host : "null";
+      url.href = url.toString();
+      return url;
+    }
+    function toString(stringify) {
+      if (!stringify || "function" !== typeof stringify)
+        stringify = qs.stringify;
+      var query, url = this, host = url.host, protocol = url.protocol;
+      if (protocol && protocol.charAt(protocol.length - 1) !== ":")
+        protocol += ":";
+      var result = protocol + (url.protocol && url.slashes || isSpecial(url.protocol) ? "//" : "");
+      if (url.username) {
+        result += url.username;
+        if (url.password)
+          result += ":" + url.password;
+        result += "@";
+      } else if (url.password) {
+        result += ":" + url.password;
+        result += "@";
+      } else if (url.protocol !== "file:" && isSpecial(url.protocol) && !host && url.pathname !== "/") {
+        result += "@";
+      }
+      if (host[host.length - 1] === ":" || port.test(url.hostname) && !url.port) {
+        host += ":";
+      }
+      result += host + url.pathname;
+      query = "object" === typeof url.query ? stringify(url.query) : url.query;
+      if (query)
+        result += "?" !== query.charAt(0) ? "?" + query : query;
+      if (url.hash)
+        result += url.hash;
+      return result;
+    }
+    Url.prototype = { set, toString };
+    Url.extractProtocol = extractProtocol;
+    Url.location = lolcation;
+    Url.trimLeft = trimLeft;
+    Url.qs = qs;
+    module2.exports = Url;
+  }
+});
+
+// node_modules/.pnpm/buffer-more-ints@1.0.0/node_modules/buffer-more-ints/buffer-more-ints.js
+var require_buffer_more_ints = __commonJS({
+  "node_modules/.pnpm/buffer-more-ints@1.0.0/node_modules/buffer-more-ints/buffer-more-ints.js"(exports, module2) {
+    "use strict";
+    var SHIFT_LEFT_32 = (1 << 16) * (1 << 16);
+    var SHIFT_RIGHT_32 = 1 / SHIFT_LEFT_32;
+    var MAX_INT = 9007199254740991;
+    function isContiguousInt(val) {
+      return val <= MAX_INT && val >= -MAX_INT;
+    }
+    function assertContiguousInt(val) {
+      if (!isContiguousInt(val)) {
+        throw new TypeError("number cannot be represented as a contiguous integer");
+      }
+    }
+    module2.exports.isContiguousInt = isContiguousInt;
+    module2.exports.assertContiguousInt = assertContiguousInt;
+    ["UInt", "Int"].forEach(function(sign) {
+      var suffix = sign + "8";
+      module2.exports["read" + suffix] = Buffer.prototype["read" + suffix].call;
+      module2.exports["write" + suffix] = Buffer.prototype["write" + suffix].call;
+      ["16", "32"].forEach(function(size) {
+        ["LE", "BE"].forEach(function(endian) {
+          var suffix2 = sign + size + endian;
+          var read = Buffer.prototype["read" + suffix2];
+          module2.exports["read" + suffix2] = function(buf, offset) {
+            return read.call(buf, offset);
+          };
+          var write = Buffer.prototype["write" + suffix2];
+          module2.exports["write" + suffix2] = function(buf, val, offset) {
+            return write.call(buf, val, offset);
+          };
+        });
+      });
+    });
+    function check_value(val, min, max) {
+      val = +val;
+      if (typeof val != "number" || val < min || val > max || Math.floor(val) !== val) {
+        throw new TypeError('"value" argument is out of bounds');
+      }
+      return val;
+    }
+    function check_bounds(buf, offset, len) {
+      if (offset < 0 || offset + len > buf.length) {
+        throw new RangeError("Index out of range");
+      }
+    }
+    function readUInt24BE(buf, offset) {
+      return buf.readUInt8(offset) << 16 | buf.readUInt16BE(offset + 1);
+    }
+    module2.exports.readUInt24BE = readUInt24BE;
+    function writeUInt24BE(buf, val, offset) {
+      val = check_value(val, 0, 16777215);
+      check_bounds(buf, offset, 3);
+      buf.writeUInt8(val >>> 16, offset);
+      buf.writeUInt16BE(val & 65535, offset + 1);
+    }
+    module2.exports.writeUInt24BE = writeUInt24BE;
+    function readUInt40BE(buf, offset) {
+      return (buf.readUInt8(offset) || 0) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 1);
+    }
+    module2.exports.readUInt40BE = readUInt40BE;
+    function writeUInt40BE(buf, val, offset) {
+      val = check_value(val, 0, 1099511627775);
+      check_bounds(buf, offset, 5);
+      buf.writeUInt8(Math.floor(val * SHIFT_RIGHT_32), offset);
+      buf.writeInt32BE(val & -1, offset + 1);
+    }
+    module2.exports.writeUInt40BE = writeUInt40BE;
+    function readUInt48BE(buf, offset) {
+      return buf.readUInt16BE(offset) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 2);
+    }
+    module2.exports.readUInt48BE = readUInt48BE;
+    function writeUInt48BE(buf, val, offset) {
+      val = check_value(val, 0, 281474976710655);
+      check_bounds(buf, offset, 6);
+      buf.writeUInt16BE(Math.floor(val * SHIFT_RIGHT_32), offset);
+      buf.writeInt32BE(val & -1, offset + 2);
+    }
+    module2.exports.writeUInt48BE = writeUInt48BE;
+    function readUInt56BE(buf, offset) {
+      return ((buf.readUInt8(offset) || 0) << 16 | buf.readUInt16BE(offset + 1)) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 3);
+    }
+    module2.exports.readUInt56BE = readUInt56BE;
+    function writeUInt56BE(buf, val, offset) {
+      val = check_value(val, 0, 72057594037927940);
+      check_bounds(buf, offset, 7);
+      if (val < 72057594037927940) {
+        var hi = Math.floor(val * SHIFT_RIGHT_32);
+        buf.writeUInt8(hi >>> 16, offset);
+        buf.writeUInt16BE(hi & 65535, offset + 1);
+        buf.writeInt32BE(val & -1, offset + 3);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+      }
+    }
+    module2.exports.writeUInt56BE = writeUInt56BE;
+    function readUInt64BE(buf, offset) {
+      return buf.readUInt32BE(offset) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 4);
+    }
+    module2.exports.readUInt64BE = readUInt64BE;
+    function writeUInt64BE(buf, val, offset) {
+      val = check_value(val, 0, 18446744073709552e3);
+      check_bounds(buf, offset, 8);
+      if (val < 18446744073709552e3) {
+        buf.writeUInt32BE(Math.floor(val * SHIFT_RIGHT_32), offset);
+        buf.writeInt32BE(val & -1, offset + 4);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+        buf[offset + 7] = 255;
+      }
+    }
+    module2.exports.writeUInt64BE = writeUInt64BE;
+    function readUInt24LE(buf, offset) {
+      return buf.readUInt8(offset + 2) << 16 | buf.readUInt16LE(offset);
+    }
+    module2.exports.readUInt24LE = readUInt24LE;
+    function writeUInt24LE(buf, val, offset) {
+      val = check_value(val, 0, 16777215);
+      check_bounds(buf, offset, 3);
+      buf.writeUInt16LE(val & 65535, offset);
+      buf.writeUInt8(val >>> 16, offset + 2);
+    }
+    module2.exports.writeUInt24LE = writeUInt24LE;
+    function readUInt40LE(buf, offset) {
+      return (buf.readUInt8(offset + 4) || 0) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readUInt40LE = readUInt40LE;
+    function writeUInt40LE(buf, val, offset) {
+      val = check_value(val, 0, 1099511627775);
+      check_bounds(buf, offset, 5);
+      buf.writeInt32LE(val & -1, offset);
+      buf.writeUInt8(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+    }
+    module2.exports.writeUInt40LE = writeUInt40LE;
+    function readUInt48LE(buf, offset) {
+      return buf.readUInt16LE(offset + 4) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readUInt48LE = readUInt48LE;
+    function writeUInt48LE(buf, val, offset) {
+      val = check_value(val, 0, 281474976710655);
+      check_bounds(buf, offset, 6);
+      buf.writeInt32LE(val & -1, offset);
+      buf.writeUInt16LE(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+    }
+    module2.exports.writeUInt48LE = writeUInt48LE;
+    function readUInt56LE(buf, offset) {
+      return ((buf.readUInt8(offset + 6) || 0) << 16 | buf.readUInt16LE(offset + 4)) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readUInt56LE = readUInt56LE;
+    function writeUInt56LE(buf, val, offset) {
+      val = check_value(val, 0, 72057594037927940);
+      check_bounds(buf, offset, 7);
+      if (val < 72057594037927940) {
+        buf.writeInt32LE(val & -1, offset);
+        var hi = Math.floor(val * SHIFT_RIGHT_32);
+        buf.writeUInt16LE(hi & 65535, offset + 4);
+        buf.writeUInt8(hi >>> 16, offset + 6);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+      }
+    }
+    module2.exports.writeUInt56LE = writeUInt56LE;
+    function readUInt64LE(buf, offset) {
+      return buf.readUInt32LE(offset + 4) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readUInt64LE = readUInt64LE;
+    function writeUInt64LE(buf, val, offset) {
+      val = check_value(val, 0, 18446744073709552e3);
+      check_bounds(buf, offset, 8);
+      if (val < 18446744073709552e3) {
+        buf.writeInt32LE(val & -1, offset);
+        buf.writeUInt32LE(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+        buf[offset + 7] = 255;
+      }
+    }
+    module2.exports.writeUInt64LE = writeUInt64LE;
+    function readInt24BE(buf, offset) {
+      return (buf.readInt8(offset) << 16) + buf.readUInt16BE(offset + 1);
+    }
+    module2.exports.readInt24BE = readInt24BE;
+    function writeInt24BE(buf, val, offset) {
+      val = check_value(val, -8388608, 8388607);
+      check_bounds(buf, offset, 3);
+      buf.writeInt8(val >> 16, offset);
+      buf.writeUInt16BE(val & 65535, offset + 1);
+    }
+    module2.exports.writeInt24BE = writeInt24BE;
+    function readInt40BE(buf, offset) {
+      return (buf.readInt8(offset) || 0) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 1);
+    }
+    module2.exports.readInt40BE = readInt40BE;
+    function writeInt40BE(buf, val, offset) {
+      val = check_value(val, -549755813888, 549755813887);
+      check_bounds(buf, offset, 5);
+      buf.writeInt8(Math.floor(val * SHIFT_RIGHT_32), offset);
+      buf.writeInt32BE(val & -1, offset + 1);
+    }
+    module2.exports.writeInt40BE = writeInt40BE;
+    function readInt48BE(buf, offset) {
+      return buf.readInt16BE(offset) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 2);
+    }
+    module2.exports.readInt48BE = readInt48BE;
+    function writeInt48BE(buf, val, offset) {
+      val = check_value(val, -140737488355328, 140737488355327);
+      check_bounds(buf, offset, 6);
+      buf.writeInt16BE(Math.floor(val * SHIFT_RIGHT_32), offset);
+      buf.writeInt32BE(val & -1, offset + 2);
+    }
+    module2.exports.writeInt48BE = writeInt48BE;
+    function readInt56BE(buf, offset) {
+      return (((buf.readInt8(offset) || 0) << 16) + buf.readUInt16BE(offset + 1)) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 3);
+    }
+    module2.exports.readInt56BE = readInt56BE;
+    function writeInt56BE(buf, val, offset) {
+      val = check_value(val, -576460752303423500, 36028797018963970);
+      check_bounds(buf, offset, 7);
+      if (val < 36028797018963970) {
+        var hi = Math.floor(val * SHIFT_RIGHT_32);
+        buf.writeInt8(hi >> 16, offset);
+        buf.writeUInt16BE(hi & 65535, offset + 1);
+        buf.writeInt32BE(val & -1, offset + 3);
+      } else {
+        buf[offset] = 127;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+      }
+    }
+    module2.exports.writeInt56BE = writeInt56BE;
+    function readInt64BE(buf, offset) {
+      return buf.readInt32BE(offset) * SHIFT_LEFT_32 + buf.readUInt32BE(offset + 4);
+    }
+    module2.exports.readInt64BE = readInt64BE;
+    function writeInt64BE(buf, val, offset) {
+      val = check_value(val, -23611832414348226e5, 9223372036854776e3);
+      check_bounds(buf, offset, 8);
+      if (val < 9223372036854776e3) {
+        buf.writeInt32BE(Math.floor(val * SHIFT_RIGHT_32), offset);
+        buf.writeInt32BE(val & -1, offset + 4);
+      } else {
+        buf[offset] = 127;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+        buf[offset + 7] = 255;
+      }
+    }
+    module2.exports.writeInt64BE = writeInt64BE;
+    function readInt24LE(buf, offset) {
+      return (buf.readInt8(offset + 2) << 16) + buf.readUInt16LE(offset);
+    }
+    module2.exports.readInt24LE = readInt24LE;
+    function writeInt24LE(buf, val, offset) {
+      val = check_value(val, -8388608, 8388607);
+      check_bounds(buf, offset, 3);
+      buf.writeUInt16LE(val & 65535, offset);
+      buf.writeInt8(val >> 16, offset + 2);
+    }
+    module2.exports.writeInt24LE = writeInt24LE;
+    function readInt40LE(buf, offset) {
+      return (buf.readInt8(offset + 4) || 0) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readInt40LE = readInt40LE;
+    function writeInt40LE(buf, val, offset) {
+      val = check_value(val, -549755813888, 549755813887);
+      check_bounds(buf, offset, 5);
+      buf.writeInt32LE(val & -1, offset);
+      buf.writeInt8(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+    }
+    module2.exports.writeInt40LE = writeInt40LE;
+    function readInt48LE(buf, offset) {
+      return buf.readInt16LE(offset + 4) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readInt48LE = readInt48LE;
+    function writeInt48LE(buf, val, offset) {
+      val = check_value(val, -140737488355328, 140737488355327);
+      check_bounds(buf, offset, 6);
+      buf.writeInt32LE(val & -1, offset);
+      buf.writeInt16LE(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+    }
+    module2.exports.writeInt48LE = writeInt48LE;
+    function readInt56LE(buf, offset) {
+      return (((buf.readInt8(offset + 6) || 0) << 16) + buf.readUInt16LE(offset + 4)) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readInt56LE = readInt56LE;
+    function writeInt56LE(buf, val, offset) {
+      val = check_value(val, -36028797018963970, 36028797018963970);
+      check_bounds(buf, offset, 7);
+      if (val < 36028797018963970) {
+        buf.writeInt32LE(val & -1, offset);
+        var hi = Math.floor(val * SHIFT_RIGHT_32);
+        buf.writeUInt16LE(hi & 65535, offset + 4);
+        buf.writeInt8(hi >> 16, offset + 6);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 127;
+      }
+    }
+    module2.exports.writeInt56LE = writeInt56LE;
+    function readInt64LE(buf, offset) {
+      return buf.readInt32LE(offset + 4) * SHIFT_LEFT_32 + buf.readUInt32LE(offset);
+    }
+    module2.exports.readInt64LE = readInt64LE;
+    function writeInt64LE(buf, val, offset) {
+      val = check_value(val, -9223372036854776e3, 9223372036854776e3);
+      check_bounds(buf, offset, 8);
+      if (val < 9223372036854776e3) {
+        buf.writeInt32LE(val & -1, offset);
+        buf.writeInt32LE(Math.floor(val * SHIFT_RIGHT_32), offset + 4);
+      } else {
+        buf[offset] = 255;
+        buf[offset + 1] = 255;
+        buf[offset + 2] = 255;
+        buf[offset + 3] = 255;
+        buf[offset + 4] = 255;
+        buf[offset + 5] = 255;
+        buf[offset + 6] = 255;
+        buf[offset + 7] = 127;
+      }
+    }
+    module2.exports.writeInt64LE = writeInt64LE;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/codec.js
+var require_codec = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/codec.js"(exports, module2) {
+    "use strict";
+    var ints = require_buffer_more_ints();
+    function isFloatingPoint(n) {
+      return n >= 9223372036854776e3 || Math.abs(n) < 1125899906842624 && Math.floor(n) !== n;
+    }
+    function encodeTable(buffer, val, offset) {
+      var start = offset;
+      offset += 4;
+      for (var key in val) {
+        if (val[key] !== void 0) {
+          var len = Buffer.byteLength(key);
+          buffer.writeUInt8(len, offset);
+          offset++;
+          buffer.write(key, offset, "utf8");
+          offset += len;
+          offset += encodeFieldValue(buffer, val[key], offset);
+        }
+      }
+      var size = offset - start;
+      buffer.writeUInt32BE(size - 4, start);
+      return size;
+    }
+    function encodeArray(buffer, val, offset) {
+      var start = offset;
+      offset += 4;
+      for (var i = 0, num = val.length; i < num; i++) {
+        offset += encodeFieldValue(buffer, val[i], offset);
+      }
+      var size = offset - start;
+      buffer.writeUInt32BE(size - 4, start);
+      return size;
+    }
+    function encodeFieldValue(buffer, value, offset) {
+      var start = offset;
+      var type = typeof value, val = value;
+      if (value && type === "object" && value.hasOwnProperty("!")) {
+        val = value.value;
+        type = value["!"];
+      }
+      if (type == "number") {
+        if (isFloatingPoint(val)) {
+          type = "double";
+        } else {
+          if (val < 128 && val >= -128) {
+            type = "byte";
+          } else if (val >= -32768 && val < 32768) {
+            type = "short";
+          } else if (val >= -2147483648 && val < 2147483648) {
+            type = "int";
+          } else {
+            type = "long";
+          }
+        }
+      }
+      function tag(t) {
+        buffer.write(t, offset);
+        offset++;
+      }
+      switch (type) {
+        case "string":
+          var len = Buffer.byteLength(val, "utf8");
+          tag("S");
+          buffer.writeUInt32BE(len, offset);
+          offset += 4;
+          buffer.write(val, offset, "utf8");
+          offset += len;
+          break;
+        case "object":
+          if (val === null) {
+            tag("V");
+          } else if (Array.isArray(val)) {
+            tag("A");
+            offset += encodeArray(buffer, val, offset);
+          } else if (Buffer.isBuffer(val)) {
+            tag("x");
+            buffer.writeUInt32BE(val.length, offset);
+            offset += 4;
+            val.copy(buffer, offset);
+            offset += val.length;
+          } else {
+            tag("F");
+            offset += encodeTable(buffer, val, offset);
+          }
+          break;
+        case "boolean":
+          tag("t");
+          buffer.writeUInt8(val ? 1 : 0, offset);
+          offset++;
+          break;
+        case "double":
+        case "float64":
+          tag("d");
+          buffer.writeDoubleBE(val, offset);
+          offset += 8;
+          break;
+        case "byte":
+        case "int8":
+          tag("b");
+          buffer.writeInt8(val, offset);
+          offset++;
+          break;
+        case "short":
+        case "int16":
+          tag("s");
+          buffer.writeInt16BE(val, offset);
+          offset += 2;
+          break;
+        case "int":
+        case "int32":
+          tag("I");
+          buffer.writeInt32BE(val, offset);
+          offset += 4;
+          break;
+        case "long":
+        case "int64":
+          tag("l");
+          ints.writeInt64BE(buffer, val, offset);
+          offset += 8;
+          break;
+        case "timestamp":
+          tag("T");
+          ints.writeUInt64BE(buffer, val, offset);
+          offset += 8;
+          break;
+        case "float":
+          tag("f");
+          buffer.writeFloatBE(val, offset);
+          offset += 4;
+          break;
+        case "decimal":
+          tag("D");
+          if (val.hasOwnProperty("places") && val.hasOwnProperty("digits") && val.places >= 0 && val.places < 256) {
+            buffer[offset] = val.places;
+            offset++;
+            buffer.writeUInt32BE(val.digits, offset);
+            offset += 4;
+          } else
+            throw new TypeError(
+              "Decimal value must be {'places': 0..255, 'digits': uint32}, got " + JSON.stringify(val)
+            );
+          break;
+        default:
+          throw new TypeError("Unknown type to encode: " + type);
+      }
+      return offset - start;
+    }
+    function decodeFields(slice) {
+      var fields = {}, offset = 0, size = slice.length;
+      var len, key, val;
+      function decodeFieldValue() {
+        var tag = String.fromCharCode(slice[offset]);
+        offset++;
+        switch (tag) {
+          case "b":
+            val = slice.readInt8(offset);
+            offset++;
+            break;
+          case "S":
+            len = slice.readUInt32BE(offset);
+            offset += 4;
+            val = slice.toString("utf8", offset, offset + len);
+            offset += len;
+            break;
+          case "I":
+            val = slice.readInt32BE(offset);
+            offset += 4;
+            break;
+          case "D":
+            var places = slice[offset];
+            offset++;
+            var digits = slice.readUInt32BE(offset);
+            offset += 4;
+            val = { "!": "decimal", value: { places, digits } };
+            break;
+          case "T":
+            val = ints.readUInt64BE(slice, offset);
+            offset += 8;
+            val = { "!": "timestamp", value: val };
+            break;
+          case "F":
+            len = slice.readUInt32BE(offset);
+            offset += 4;
+            val = decodeFields(slice.slice(offset, offset + len));
+            offset += len;
+            break;
+          case "A":
+            len = slice.readUInt32BE(offset);
+            offset += 4;
+            decodeArray(offset + len);
+            break;
+          case "d":
+            val = slice.readDoubleBE(offset);
+            offset += 8;
+            break;
+          case "f":
+            val = slice.readFloatBE(offset);
+            offset += 4;
+            break;
+          case "l":
+            val = ints.readInt64BE(slice, offset);
+            offset += 8;
+            break;
+          case "s":
+            val = slice.readInt16BE(offset);
+            offset += 2;
+            break;
+          case "t":
+            val = slice[offset] != 0;
+            offset++;
+            break;
+          case "V":
+            val = null;
+            break;
+          case "x":
+            len = slice.readUInt32BE(offset);
+            offset += 4;
+            val = slice.slice(offset, offset + len);
+            offset += len;
+            break;
+          default:
+            throw new TypeError('Unexpected type tag "' + tag + '"');
+        }
+      }
+      function decodeArray(until) {
+        var vals = [];
+        while (offset < until) {
+          decodeFieldValue();
+          vals.push(val);
+        }
+        val = vals;
+      }
+      while (offset < size) {
+        len = slice.readUInt8(offset);
+        offset++;
+        key = slice.toString("utf8", offset, offset + len);
+        offset += len;
+        decodeFieldValue();
+        fields[key] = val;
+      }
+      return fields;
+    }
+    module2.exports.encodeTable = encodeTable;
+    module2.exports.decodeFields = decodeFields;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/defs.js
+var require_defs = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/defs.js"(exports, module2) {
+    "use strict";
+    function decodeConnectionStart(buffer) {
+      var val, len, offset = 0, fields = {
+        versionMajor: void 0,
+        versionMinor: void 0,
+        serverProperties: void 0,
+        mechanisms: void 0,
+        locales: void 0
+      };
+      val = buffer[offset];
+      offset++;
+      fields.versionMajor = val;
+      val = buffer[offset];
+      offset++;
+      fields.versionMinor = val;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.serverProperties = val;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.mechanisms = val;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.locales = val;
+      return fields;
+    }
+    function encodeConnectionStart(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0, scratchOffset = 0;
+      val = fields.serverProperties;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'serverProperties'");
+      if ("object" != typeof val)
+        throw new TypeError("Field 'serverProperties' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var serverProperties_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += serverProperties_encoded.length;
+      val = fields.mechanisms;
+      if (void 0 === val)
+        val = Buffer.from("PLAIN");
+      else if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'mechanisms' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      val = fields.locales;
+      if (void 0 === val)
+        val = Buffer.from("en_US");
+      else if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'locales' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      var buffer = Buffer.alloc(22 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655370, 7);
+      offset = 11;
+      val = fields.versionMajor;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'versionMajor' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt8(val, offset);
+      offset++;
+      val = fields.versionMinor;
+      if (void 0 === val)
+        val = 9;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'versionMinor' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt8(val, offset);
+      offset++;
+      offset += serverProperties_encoded.copy(buffer, offset);
+      val = fields.mechanisms;
+      void 0 === val && (val = Buffer.from("PLAIN"));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      val = fields.locales;
+      void 0 === val && (val = Buffer.from("en_US"));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionStartOk(buffer) {
+      var val, len, offset = 0, fields = {
+        clientProperties: void 0,
+        mechanism: void 0,
+        response: void 0,
+        locale: void 0
+      };
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.clientProperties = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.mechanism = val;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.response = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.locale = val;
+      return fields;
+    }
+    function encodeConnectionStartOk(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0, scratchOffset = 0;
+      val = fields.clientProperties;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'clientProperties'");
+      if ("object" != typeof val)
+        throw new TypeError("Field 'clientProperties' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var clientProperties_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += clientProperties_encoded.length;
+      val = fields.mechanism;
+      if (void 0 === val)
+        val = "PLAIN";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'mechanism' is the wrong type; must be a string (up to 255 chars)");
+      var mechanism_len = Buffer.byteLength(val, "utf8");
+      varyingSize += mechanism_len;
+      val = fields.response;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'response'");
+      if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'response' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      val = fields.locale;
+      if (void 0 === val)
+        val = "en_US";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'locale' is the wrong type; must be a string (up to 255 chars)");
+      var locale_len = Buffer.byteLength(val, "utf8");
+      varyingSize += locale_len;
+      var buffer = Buffer.alloc(18 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655371, 7);
+      offset = 11;
+      offset += clientProperties_encoded.copy(buffer, offset);
+      val = fields.mechanism;
+      void 0 === val && (val = "PLAIN");
+      buffer[offset] = mechanism_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += mechanism_len;
+      val = fields.response;
+      void 0 === val && (val = Buffer.from(void 0));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      val = fields.locale;
+      void 0 === val && (val = "en_US");
+      buffer[offset] = locale_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += locale_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionSecure(buffer) {
+      var val, len, offset = 0, fields = {
+        challenge: void 0
+      };
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.challenge = val;
+      return fields;
+    }
+    function encodeConnectionSecure(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0;
+      val = fields.challenge;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'challenge'");
+      if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'challenge' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655380, 7);
+      offset = 11;
+      val = fields.challenge;
+      void 0 === val && (val = Buffer.from(void 0));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionSecureOk(buffer) {
+      var val, len, offset = 0, fields = {
+        response: void 0
+      };
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.response = val;
+      return fields;
+    }
+    function encodeConnectionSecureOk(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0;
+      val = fields.response;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'response'");
+      if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'response' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655381, 7);
+      offset = 11;
+      val = fields.response;
+      void 0 === val && (val = Buffer.from(void 0));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionTune(buffer) {
+      var val, offset = 0, fields = {
+        channelMax: void 0,
+        frameMax: void 0,
+        heartbeat: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.channelMax = val;
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.frameMax = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.heartbeat = val;
+      return fields;
+    }
+    function encodeConnectionTune(channel, fields) {
+      var offset = 0, val = null, buffer = Buffer.alloc(20);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655390, 7);
+      offset = 11;
+      val = fields.channelMax;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'channelMax' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.frameMax;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'frameMax' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      val = fields.heartbeat;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'heartbeat' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionTuneOk(buffer) {
+      var val, offset = 0, fields = {
+        channelMax: void 0,
+        frameMax: void 0,
+        heartbeat: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.channelMax = val;
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.frameMax = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.heartbeat = val;
+      return fields;
+    }
+    function encodeConnectionTuneOk(channel, fields) {
+      var offset = 0, val = null, buffer = Buffer.alloc(20);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655391, 7);
+      offset = 11;
+      val = fields.channelMax;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'channelMax' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.frameMax;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'frameMax' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      val = fields.heartbeat;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'heartbeat' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionOpen(buffer) {
+      var val, len, offset = 0, fields = {
+        virtualHost: void 0,
+        capabilities: void 0,
+        insist: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.virtualHost = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.capabilities = val;
+      val = !!(1 & buffer[offset]);
+      fields.insist = val;
+      return fields;
+    }
+    function encodeConnectionOpen(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.virtualHost;
+      if (void 0 === val)
+        val = "/";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'virtualHost' is the wrong type; must be a string (up to 255 chars)");
+      var virtualHost_len = Buffer.byteLength(val, "utf8");
+      varyingSize += virtualHost_len;
+      val = fields.capabilities;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'capabilities' is the wrong type; must be a string (up to 255 chars)");
+      var capabilities_len = Buffer.byteLength(val, "utf8");
+      varyingSize += capabilities_len;
+      var buffer = Buffer.alloc(15 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655400, 7);
+      offset = 11;
+      val = fields.virtualHost;
+      void 0 === val && (val = "/");
+      buffer[offset] = virtualHost_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += virtualHost_len;
+      val = fields.capabilities;
+      void 0 === val && (val = "");
+      buffer[offset] = capabilities_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += capabilities_len;
+      val = fields.insist;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionOpenOk(buffer) {
+      var val, len, offset = 0, fields = {
+        knownHosts: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.knownHosts = val;
+      return fields;
+    }
+    function encodeConnectionOpenOk(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.knownHosts;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'knownHosts' is the wrong type; must be a string (up to 255 chars)");
+      var knownHosts_len = Buffer.byteLength(val, "utf8");
+      varyingSize += knownHosts_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655401, 7);
+      offset = 11;
+      val = fields.knownHosts;
+      void 0 === val && (val = "");
+      buffer[offset] = knownHosts_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += knownHosts_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionClose(buffer) {
+      var val, len, offset = 0, fields = {
+        replyCode: void 0,
+        replyText: void 0,
+        classId: void 0,
+        methodId: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.replyCode = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.replyText = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.classId = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.methodId = val;
+      return fields;
+    }
+    function encodeConnectionClose(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.replyText;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");
+      var replyText_len = Buffer.byteLength(val, "utf8");
+      varyingSize += replyText_len;
+      var buffer = Buffer.alloc(19 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655410, 7);
+      offset = 11;
+      val = fields.replyCode;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'replyCode'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.replyText;
+      void 0 === val && (val = "");
+      buffer[offset] = replyText_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += replyText_len;
+      val = fields.classId;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'classId'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'classId' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.methodId;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'methodId'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'methodId' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionCloseOk(buffer) {
+      return {};
+    }
+    function encodeConnectionCloseOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655411, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionBlocked(buffer) {
+      var val, len, offset = 0, fields = {
+        reason: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.reason = val;
+      return fields;
+    }
+    function encodeConnectionBlocked(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.reason;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'reason' is the wrong type; must be a string (up to 255 chars)");
+      var reason_len = Buffer.byteLength(val, "utf8");
+      varyingSize += reason_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655420, 7);
+      offset = 11;
+      val = fields.reason;
+      void 0 === val && (val = "");
+      buffer[offset] = reason_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += reason_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConnectionUnblocked(buffer) {
+      return {};
+    }
+    function encodeConnectionUnblocked(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(655421, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelOpen(buffer) {
+      var val, len, offset = 0, fields = {
+        outOfBand: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.outOfBand = val;
+      return fields;
+    }
+    function encodeChannelOpen(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.outOfBand;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'outOfBand' is the wrong type; must be a string (up to 255 chars)");
+      var outOfBand_len = Buffer.byteLength(val, "utf8");
+      varyingSize += outOfBand_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310730, 7);
+      offset = 11;
+      val = fields.outOfBand;
+      void 0 === val && (val = "");
+      buffer[offset] = outOfBand_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += outOfBand_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelOpenOk(buffer) {
+      var val, len, offset = 0, fields = {
+        channelId: void 0
+      };
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = buffer.slice(offset, offset + len);
+      offset += len;
+      fields.channelId = val;
+      return fields;
+    }
+    function encodeChannelOpenOk(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0;
+      val = fields.channelId;
+      if (void 0 === val)
+        val = Buffer.from("");
+      else if (!Buffer.isBuffer(val))
+        throw new TypeError("Field 'channelId' is the wrong type; must be a Buffer");
+      varyingSize += val.length;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310731, 7);
+      offset = 11;
+      val = fields.channelId;
+      void 0 === val && (val = Buffer.from(""));
+      len = val.length;
+      buffer.writeUInt32BE(len, offset);
+      offset += 4;
+      val.copy(buffer, offset);
+      offset += len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelFlow(buffer) {
+      var val, fields = {
+        active: void 0
+      };
+      val = !!(1 & buffer[0]);
+      fields.active = val;
+      return fields;
+    }
+    function encodeChannelFlow(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(13);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310740, 7);
+      offset = 11;
+      val = fields.active;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'active'");
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelFlowOk(buffer) {
+      var val, fields = {
+        active: void 0
+      };
+      val = !!(1 & buffer[0]);
+      fields.active = val;
+      return fields;
+    }
+    function encodeChannelFlowOk(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(13);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310741, 7);
+      offset = 11;
+      val = fields.active;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'active'");
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelClose(buffer) {
+      var val, len, offset = 0, fields = {
+        replyCode: void 0,
+        replyText: void 0,
+        classId: void 0,
+        methodId: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.replyCode = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.replyText = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.classId = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.methodId = val;
+      return fields;
+    }
+    function encodeChannelClose(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.replyText;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");
+      var replyText_len = Buffer.byteLength(val, "utf8");
+      varyingSize += replyText_len;
+      var buffer = Buffer.alloc(19 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310760, 7);
+      offset = 11;
+      val = fields.replyCode;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'replyCode'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.replyText;
+      void 0 === val && (val = "");
+      buffer[offset] = replyText_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += replyText_len;
+      val = fields.classId;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'classId'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'classId' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.methodId;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'methodId'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'methodId' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeChannelCloseOk(buffer) {
+      return {};
+    }
+    function encodeChannelCloseOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1310761, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeAccessRequest(buffer) {
+      var val, len, offset = 0, fields = {
+        realm: void 0,
+        exclusive: void 0,
+        passive: void 0,
+        active: void 0,
+        write: void 0,
+        read: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.realm = val;
+      val = !!(1 & buffer[offset]);
+      fields.exclusive = val;
+      val = !!(2 & buffer[offset]);
+      fields.passive = val;
+      val = !!(4 & buffer[offset]);
+      fields.active = val;
+      val = !!(8 & buffer[offset]);
+      fields.write = val;
+      val = !!(16 & buffer[offset]);
+      fields.read = val;
+      return fields;
+    }
+    function encodeAccessRequest(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.realm;
+      if (void 0 === val)
+        val = "/data";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'realm' is the wrong type; must be a string (up to 255 chars)");
+      var realm_len = Buffer.byteLength(val, "utf8");
+      varyingSize += realm_len;
+      var buffer = Buffer.alloc(14 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1966090, 7);
+      offset = 11;
+      val = fields.realm;
+      void 0 === val && (val = "/data");
+      buffer[offset] = realm_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += realm_len;
+      val = fields.exclusive;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.passive;
+      void 0 === val && (val = true);
+      val && (bits += 2);
+      val = fields.active;
+      void 0 === val && (val = true);
+      val && (bits += 4);
+      val = fields.write;
+      void 0 === val && (val = true);
+      val && (bits += 8);
+      val = fields.read;
+      void 0 === val && (val = true);
+      val && (bits += 16);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeAccessRequestOk(buffer) {
+      var val, offset = 0, fields = {
+        ticket: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      return fields;
+    }
+    function encodeAccessRequestOk(channel, fields) {
+      var offset = 0, val = null, buffer = Buffer.alloc(14);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(1966091, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 1;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeDeclare(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        exchange: void 0,
+        type: void 0,
+        passive: void 0,
+        durable: void 0,
+        autoDelete: void 0,
+        internal: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.type = val;
+      val = !!(1 & buffer[offset]);
+      fields.passive = val;
+      val = !!(2 & buffer[offset]);
+      fields.durable = val;
+      val = !!(4 & buffer[offset]);
+      fields.autoDelete = val;
+      val = !!(8 & buffer[offset]);
+      fields.internal = val;
+      val = !!(16 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeExchangeDeclare(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.type;
+      if (void 0 === val)
+        val = "direct";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'type' is the wrong type; must be a string (up to 255 chars)");
+      var type_len = Buffer.byteLength(val, "utf8");
+      varyingSize += type_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(17 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621450, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.type;
+      void 0 === val && (val = "direct");
+      buffer[offset] = type_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += type_len;
+      val = fields.passive;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.durable;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      val = fields.autoDelete;
+      void 0 === val && (val = false);
+      val && (bits += 4);
+      val = fields.internal;
+      void 0 === val && (val = false);
+      val && (bits += 8);
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 16);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeDeclareOk(buffer) {
+      return {};
+    }
+    function encodeExchangeDeclareOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621451, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeDelete(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        exchange: void 0,
+        ifUnused: void 0,
+        nowait: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      val = !!(1 & buffer[offset]);
+      fields.ifUnused = val;
+      val = !!(2 & buffer[offset]);
+      fields.nowait = val;
+      return fields;
+    }
+    function encodeExchangeDelete(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621460, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.ifUnused;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeDeleteOk(buffer) {
+      return {};
+    }
+    function encodeExchangeDeleteOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621461, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeBind(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        destination: void 0,
+        source: void 0,
+        routingKey: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.destination = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.source = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      val = !!(1 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeExchangeBind(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.destination;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'destination'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'destination' is the wrong type; must be a string (up to 255 chars)");
+      var destination_len = Buffer.byteLength(val, "utf8");
+      varyingSize += destination_len;
+      val = fields.source;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'source'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'source' is the wrong type; must be a string (up to 255 chars)");
+      var source_len = Buffer.byteLength(val, "utf8");
+      varyingSize += source_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(18 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621470, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.destination;
+      void 0 === val && (val = void 0);
+      buffer[offset] = destination_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += destination_len;
+      val = fields.source;
+      void 0 === val && (val = void 0);
+      buffer[offset] = source_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += source_len;
+      val = fields.routingKey;
+      void 0 === val && (val = "");
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeBindOk(buffer) {
+      return {};
+    }
+    function encodeExchangeBindOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621471, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeUnbind(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        destination: void 0,
+        source: void 0,
+        routingKey: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.destination = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.source = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      val = !!(1 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeExchangeUnbind(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.destination;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'destination'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'destination' is the wrong type; must be a string (up to 255 chars)");
+      var destination_len = Buffer.byteLength(val, "utf8");
+      varyingSize += destination_len;
+      val = fields.source;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'source'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'source' is the wrong type; must be a string (up to 255 chars)");
+      var source_len = Buffer.byteLength(val, "utf8");
+      varyingSize += source_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(18 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621480, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.destination;
+      void 0 === val && (val = void 0);
+      buffer[offset] = destination_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += destination_len;
+      val = fields.source;
+      void 0 === val && (val = void 0);
+      buffer[offset] = source_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += source_len;
+      val = fields.routingKey;
+      void 0 === val && (val = "");
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeExchangeUnbindOk(buffer) {
+      return {};
+    }
+    function encodeExchangeUnbindOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(2621491, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueDeclare(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        passive: void 0,
+        durable: void 0,
+        exclusive: void 0,
+        autoDelete: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      val = !!(1 & buffer[offset]);
+      fields.passive = val;
+      val = !!(2 & buffer[offset]);
+      fields.durable = val;
+      val = !!(4 & buffer[offset]);
+      fields.exclusive = val;
+      val = !!(8 & buffer[offset]);
+      fields.autoDelete = val;
+      val = !!(16 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeQueueDeclare(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276810, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.passive;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.durable;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      val = fields.exclusive;
+      void 0 === val && (val = false);
+      val && (bits += 4);
+      val = fields.autoDelete;
+      void 0 === val && (val = false);
+      val && (bits += 8);
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 16);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueDeclareOk(buffer) {
+      var val, len, offset = 0, fields = {
+        queue: void 0,
+        messageCount: void 0,
+        consumerCount: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.messageCount = val;
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.consumerCount = val;
+      return fields;
+    }
+    function encodeQueueDeclareOk(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'queue'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      var buffer = Buffer.alloc(21 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276811, 7);
+      offset = 11;
+      val = fields.queue;
+      void 0 === val && (val = void 0);
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.messageCount;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'messageCount'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      val = fields.consumerCount;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'consumerCount'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'consumerCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueBind(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        exchange: void 0,
+        routingKey: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      val = !!(1 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeQueueBind(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(18 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276820, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = "");
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueBindOk(buffer) {
+      return {};
+    }
+    function encodeQueueBindOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276821, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueuePurge(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        nowait: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      val = !!(1 & buffer[offset]);
+      fields.nowait = val;
+      return fields;
+    }
+    function encodeQueuePurge(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276830, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueuePurgeOk(buffer) {
+      var val, offset = 0, fields = {
+        messageCount: void 0
+      };
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.messageCount = val;
+      return fields;
+    }
+    function encodeQueuePurgeOk(channel, fields) {
+      var offset = 0, val = null, buffer = Buffer.alloc(16);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276831, 7);
+      offset = 11;
+      val = fields.messageCount;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'messageCount'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueDelete(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        ifUnused: void 0,
+        ifEmpty: void 0,
+        nowait: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      val = !!(1 & buffer[offset]);
+      fields.ifUnused = val;
+      val = !!(2 & buffer[offset]);
+      fields.ifEmpty = val;
+      val = !!(4 & buffer[offset]);
+      fields.nowait = val;
+      return fields;
+    }
+    function encodeQueueDelete(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276840, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.ifUnused;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.ifEmpty;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 4);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueDeleteOk(buffer) {
+      var val, offset = 0, fields = {
+        messageCount: void 0
+      };
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.messageCount = val;
+      return fields;
+    }
+    function encodeQueueDeleteOk(channel, fields) {
+      var offset = 0, val = null, buffer = Buffer.alloc(16);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276841, 7);
+      offset = 11;
+      val = fields.messageCount;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'messageCount'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueUnbind(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        exchange: void 0,
+        routingKey: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeQueueUnbind(channel, fields) {
+      var len, offset = 0, val = null, varyingSize = 0, scratchOffset = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(17 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276850, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = "");
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeQueueUnbindOk(buffer) {
+      return {};
+    }
+    function encodeQueueUnbindOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3276851, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicQos(buffer) {
+      var val, offset = 0, fields = {
+        prefetchSize: void 0,
+        prefetchCount: void 0,
+        global: void 0
+      };
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.prefetchSize = val;
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.prefetchCount = val;
+      val = !!(1 & buffer[offset]);
+      fields.global = val;
+      return fields;
+    }
+    function encodeBasicQos(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(19);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932170, 7);
+      offset = 11;
+      val = fields.prefetchSize;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'prefetchSize' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      val = fields.prefetchCount;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'prefetchCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.global;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicQosOk(buffer) {
+      return {};
+    }
+    function encodeBasicQosOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932171, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicConsume(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        consumerTag: void 0,
+        noLocal: void 0,
+        noAck: void 0,
+        exclusive: void 0,
+        nowait: void 0,
+        arguments: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.consumerTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.noLocal = val;
+      val = !!(2 & buffer[offset]);
+      fields.noAck = val;
+      val = !!(4 & buffer[offset]);
+      fields.exclusive = val;
+      val = !!(8 & buffer[offset]);
+      fields.nowait = val;
+      offset++;
+      len = buffer.readUInt32BE(offset);
+      offset += 4;
+      val = decodeFields(buffer.slice(offset, offset + len));
+      offset += len;
+      fields.arguments = val;
+      return fields;
+    }
+    function encodeBasicConsume(channel, fields) {
+      var len, offset = 0, val = null, bits = 0, varyingSize = 0, scratchOffset = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      val = fields.consumerTag;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");
+      var consumerTag_len = Buffer.byteLength(val, "utf8");
+      varyingSize += consumerTag_len;
+      val = fields.arguments;
+      if (void 0 === val)
+        val = {};
+      else if ("object" != typeof val)
+        throw new TypeError("Field 'arguments' is the wrong type; must be an object");
+      len = encodeTable(SCRATCH, val, scratchOffset);
+      var arguments_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+      scratchOffset += len;
+      varyingSize += arguments_encoded.length;
+      var buffer = Buffer.alloc(17 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932180, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.consumerTag;
+      void 0 === val && (val = "");
+      buffer[offset] = consumerTag_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += consumerTag_len;
+      val = fields.noLocal;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.noAck;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      val = fields.exclusive;
+      void 0 === val && (val = false);
+      val && (bits += 4);
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 8);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      offset += arguments_encoded.copy(buffer, offset);
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicConsumeOk(buffer) {
+      var val, len, offset = 0, fields = {
+        consumerTag: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.consumerTag = val;
+      return fields;
+    }
+    function encodeBasicConsumeOk(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.consumerTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'consumerTag'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");
+      var consumerTag_len = Buffer.byteLength(val, "utf8");
+      varyingSize += consumerTag_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932181, 7);
+      offset = 11;
+      val = fields.consumerTag;
+      void 0 === val && (val = void 0);
+      buffer[offset] = consumerTag_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += consumerTag_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicCancel(buffer) {
+      var val, len, offset = 0, fields = {
+        consumerTag: void 0,
+        nowait: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.consumerTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.nowait = val;
+      return fields;
+    }
+    function encodeBasicCancel(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.consumerTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'consumerTag'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");
+      var consumerTag_len = Buffer.byteLength(val, "utf8");
+      varyingSize += consumerTag_len;
+      var buffer = Buffer.alloc(14 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932190, 7);
+      offset = 11;
+      val = fields.consumerTag;
+      void 0 === val && (val = void 0);
+      buffer[offset] = consumerTag_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += consumerTag_len;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicCancelOk(buffer) {
+      var val, len, offset = 0, fields = {
+        consumerTag: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.consumerTag = val;
+      return fields;
+    }
+    function encodeBasicCancelOk(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.consumerTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'consumerTag'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");
+      var consumerTag_len = Buffer.byteLength(val, "utf8");
+      varyingSize += consumerTag_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932191, 7);
+      offset = 11;
+      val = fields.consumerTag;
+      void 0 === val && (val = void 0);
+      buffer[offset] = consumerTag_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += consumerTag_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicPublish(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        exchange: void 0,
+        routingKey: void 0,
+        mandatory: void 0,
+        immediate: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      val = !!(1 & buffer[offset]);
+      fields.mandatory = val;
+      val = !!(2 & buffer[offset]);
+      fields.immediate = val;
+      return fields;
+    }
+    function encodeBasicPublish(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.exchange;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      var buffer = Buffer.alloc(17 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932200, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.exchange;
+      void 0 === val && (val = "");
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = "");
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      val = fields.mandatory;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.immediate;
+      void 0 === val && (val = false);
+      val && (bits += 2);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicReturn(buffer) {
+      var val, len, offset = 0, fields = {
+        replyCode: void 0,
+        replyText: void 0,
+        exchange: void 0,
+        routingKey: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.replyCode = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.replyText = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      return fields;
+    }
+    function encodeBasicReturn(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.replyText;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'replyText' is the wrong type; must be a string (up to 255 chars)");
+      var replyText_len = Buffer.byteLength(val, "utf8");
+      varyingSize += replyText_len;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'routingKey'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      var buffer = Buffer.alloc(17 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932210, 7);
+      offset = 11;
+      val = fields.replyCode;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'replyCode'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'replyCode' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.replyText;
+      void 0 === val && (val = "");
+      buffer[offset] = replyText_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += replyText_len;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = void 0);
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicDeliver(buffer) {
+      var val, len, offset = 0, fields = {
+        consumerTag: void 0,
+        deliveryTag: void 0,
+        redelivered: void 0,
+        exchange: void 0,
+        routingKey: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.consumerTag = val;
+      val = ints.readUInt64BE(buffer, offset);
+      offset += 8;
+      fields.deliveryTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.redelivered = val;
+      offset++;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      return fields;
+    }
+    function encodeBasicDeliver(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.consumerTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'consumerTag'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'consumerTag' is the wrong type; must be a string (up to 255 chars)");
+      var consumerTag_len = Buffer.byteLength(val, "utf8");
+      varyingSize += consumerTag_len;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'routingKey'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      var buffer = Buffer.alloc(24 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932220, 7);
+      offset = 11;
+      val = fields.consumerTag;
+      void 0 === val && (val = void 0);
+      buffer[offset] = consumerTag_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += consumerTag_len;
+      val = fields.deliveryTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'deliveryTag'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");
+      ints.writeUInt64BE(buffer, val, offset);
+      offset += 8;
+      val = fields.redelivered;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = void 0);
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicGet(buffer) {
+      var val, len, offset = 0, fields = {
+        ticket: void 0,
+        queue: void 0,
+        noAck: void 0
+      };
+      val = buffer.readUInt16BE(offset);
+      offset += 2;
+      fields.ticket = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.queue = val;
+      val = !!(1 & buffer[offset]);
+      fields.noAck = val;
+      return fields;
+    }
+    function encodeBasicGet(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.queue;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'queue' is the wrong type; must be a string (up to 255 chars)");
+      var queue_len = Buffer.byteLength(val, "utf8");
+      varyingSize += queue_len;
+      var buffer = Buffer.alloc(16 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932230, 7);
+      offset = 11;
+      val = fields.ticket;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'ticket' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt16BE(val, offset);
+      offset += 2;
+      val = fields.queue;
+      void 0 === val && (val = "");
+      buffer[offset] = queue_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += queue_len;
+      val = fields.noAck;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicGetOk(buffer) {
+      var val, len, offset = 0, fields = {
+        deliveryTag: void 0,
+        redelivered: void 0,
+        exchange: void 0,
+        routingKey: void 0,
+        messageCount: void 0
+      };
+      val = ints.readUInt64BE(buffer, offset);
+      offset += 8;
+      fields.deliveryTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.redelivered = val;
+      offset++;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.exchange = val;
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.routingKey = val;
+      val = buffer.readUInt32BE(offset);
+      offset += 4;
+      fields.messageCount = val;
+      return fields;
+    }
+    function encodeBasicGetOk(channel, fields) {
+      var offset = 0, val = null, bits = 0, varyingSize = 0;
+      val = fields.exchange;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'exchange'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'exchange' is the wrong type; must be a string (up to 255 chars)");
+      var exchange_len = Buffer.byteLength(val, "utf8");
+      varyingSize += exchange_len;
+      val = fields.routingKey;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'routingKey'");
+      if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'routingKey' is the wrong type; must be a string (up to 255 chars)");
+      var routingKey_len = Buffer.byteLength(val, "utf8");
+      varyingSize += routingKey_len;
+      var buffer = Buffer.alloc(27 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932231, 7);
+      offset = 11;
+      val = fields.deliveryTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'deliveryTag'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");
+      ints.writeUInt64BE(buffer, val, offset);
+      offset += 8;
+      val = fields.redelivered;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      bits = 0;
+      val = fields.exchange;
+      void 0 === val && (val = void 0);
+      buffer[offset] = exchange_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += exchange_len;
+      val = fields.routingKey;
+      void 0 === val && (val = void 0);
+      buffer[offset] = routingKey_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += routingKey_len;
+      val = fields.messageCount;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'messageCount'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'messageCount' is the wrong type; must be a number (but not NaN)");
+      buffer.writeUInt32BE(val, offset);
+      offset += 4;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicGetEmpty(buffer) {
+      var val, len, offset = 0, fields = {
+        clusterId: void 0
+      };
+      len = buffer.readUInt8(offset);
+      offset++;
+      val = buffer.toString("utf8", offset, offset + len);
+      offset += len;
+      fields.clusterId = val;
+      return fields;
+    }
+    function encodeBasicGetEmpty(channel, fields) {
+      var offset = 0, val = null, varyingSize = 0;
+      val = fields.clusterId;
+      if (void 0 === val)
+        val = "";
+      else if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+        throw new TypeError("Field 'clusterId' is the wrong type; must be a string (up to 255 chars)");
+      var clusterId_len = Buffer.byteLength(val, "utf8");
+      varyingSize += clusterId_len;
+      var buffer = Buffer.alloc(13 + varyingSize);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932232, 7);
+      offset = 11;
+      val = fields.clusterId;
+      void 0 === val && (val = "");
+      buffer[offset] = clusterId_len;
+      offset++;
+      buffer.write(val, offset, "utf8");
+      offset += clusterId_len;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicAck(buffer) {
+      var val, offset = 0, fields = {
+        deliveryTag: void 0,
+        multiple: void 0
+      };
+      val = ints.readUInt64BE(buffer, offset);
+      offset += 8;
+      fields.deliveryTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.multiple = val;
+      return fields;
+    }
+    function encodeBasicAck(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(21);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932240, 7);
+      offset = 11;
+      val = fields.deliveryTag;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");
+      ints.writeUInt64BE(buffer, val, offset);
+      offset += 8;
+      val = fields.multiple;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicReject(buffer) {
+      var val, offset = 0, fields = {
+        deliveryTag: void 0,
+        requeue: void 0
+      };
+      val = ints.readUInt64BE(buffer, offset);
+      offset += 8;
+      fields.deliveryTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.requeue = val;
+      return fields;
+    }
+    function encodeBasicReject(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(21);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932250, 7);
+      offset = 11;
+      val = fields.deliveryTag;
+      if (void 0 === val)
+        throw new Error("Missing value for mandatory field 'deliveryTag'");
+      if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");
+      ints.writeUInt64BE(buffer, val, offset);
+      offset += 8;
+      val = fields.requeue;
+      void 0 === val && (val = true);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicRecoverAsync(buffer) {
+      var val, fields = {
+        requeue: void 0
+      };
+      val = !!(1 & buffer[0]);
+      fields.requeue = val;
+      return fields;
+    }
+    function encodeBasicRecoverAsync(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(13);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932260, 7);
+      offset = 11;
+      val = fields.requeue;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicRecover(buffer) {
+      var val, fields = {
+        requeue: void 0
+      };
+      val = !!(1 & buffer[0]);
+      fields.requeue = val;
+      return fields;
+    }
+    function encodeBasicRecover(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(13);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932270, 7);
+      offset = 11;
+      val = fields.requeue;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicRecoverOk(buffer) {
+      return {};
+    }
+    function encodeBasicRecoverOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932271, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeBasicNack(buffer) {
+      var val, offset = 0, fields = {
+        deliveryTag: void 0,
+        multiple: void 0,
+        requeue: void 0
+      };
+      val = ints.readUInt64BE(buffer, offset);
+      offset += 8;
+      fields.deliveryTag = val;
+      val = !!(1 & buffer[offset]);
+      fields.multiple = val;
+      val = !!(2 & buffer[offset]);
+      fields.requeue = val;
+      return fields;
+    }
+    function encodeBasicNack(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(21);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932280, 7);
+      offset = 11;
+      val = fields.deliveryTag;
+      if (void 0 === val)
+        val = 0;
+      else if ("number" != typeof val || isNaN(val))
+        throw new TypeError("Field 'deliveryTag' is the wrong type; must be a number (but not NaN)");
+      ints.writeUInt64BE(buffer, val, offset);
+      offset += 8;
+      val = fields.multiple;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      val = fields.requeue;
+      void 0 === val && (val = true);
+      val && (bits += 2);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxSelect(buffer) {
+      return {};
+    }
+    function encodeTxSelect(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898250, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxSelectOk(buffer) {
+      return {};
+    }
+    function encodeTxSelectOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898251, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxCommit(buffer) {
+      return {};
+    }
+    function encodeTxCommit(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898260, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxCommitOk(buffer) {
+      return {};
+    }
+    function encodeTxCommitOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898261, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxRollback(buffer) {
+      return {};
+    }
+    function encodeTxRollback(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898270, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeTxRollbackOk(buffer) {
+      return {};
+    }
+    function encodeTxRollbackOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5898271, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConfirmSelect(buffer) {
+      var val, fields = {
+        nowait: void 0
+      };
+      val = !!(1 & buffer[0]);
+      fields.nowait = val;
+      return fields;
+    }
+    function encodeConfirmSelect(channel, fields) {
+      var offset = 0, val = null, bits = 0, buffer = Buffer.alloc(13);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5570570, 7);
+      offset = 11;
+      val = fields.nowait;
+      void 0 === val && (val = false);
+      val && (bits += 1);
+      buffer[offset] = bits;
+      offset++;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function decodeConfirmSelectOk(buffer) {
+      return {};
+    }
+    function encodeConfirmSelectOk(channel, fields) {
+      var offset = 0, buffer = Buffer.alloc(12);
+      buffer[0] = 1;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(5570571, 7);
+      offset = 11;
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      return buffer;
+    }
+    function encodeBasicProperties(channel, size, fields) {
+      var val, len, offset = 0, flags = 0, scratchOffset = 0, varyingSize = 0;
+      val = fields.contentType;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'contentType' is the wrong type; must be a string (up to 255 chars)");
+        var contentType_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += contentType_len;
+      }
+      val = fields.contentEncoding;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'contentEncoding' is the wrong type; must be a string (up to 255 chars)");
+        var contentEncoding_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += contentEncoding_len;
+      }
+      val = fields.headers;
+      if (void 0 != val) {
+        if ("object" != typeof val)
+          throw new TypeError("Field 'headers' is the wrong type; must be an object");
+        len = encodeTable(SCRATCH, val, scratchOffset);
+        var headers_encoded = SCRATCH.slice(scratchOffset, scratchOffset + len);
+        scratchOffset += len;
+        varyingSize += headers_encoded.length;
+      }
+      val = fields.deliveryMode;
+      if (void 0 != val) {
+        if ("number" != typeof val || isNaN(val))
+          throw new TypeError("Field 'deliveryMode' is the wrong type; must be a number (but not NaN)");
+        varyingSize += 1;
+      }
+      val = fields.priority;
+      if (void 0 != val) {
+        if ("number" != typeof val || isNaN(val))
+          throw new TypeError("Field 'priority' is the wrong type; must be a number (but not NaN)");
+        varyingSize += 1;
+      }
+      val = fields.correlationId;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'correlationId' is the wrong type; must be a string (up to 255 chars)");
+        var correlationId_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += correlationId_len;
+      }
+      val = fields.replyTo;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'replyTo' is the wrong type; must be a string (up to 255 chars)");
+        var replyTo_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += replyTo_len;
+      }
+      val = fields.expiration;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'expiration' is the wrong type; must be a string (up to 255 chars)");
+        var expiration_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += expiration_len;
+      }
+      val = fields.messageId;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'messageId' is the wrong type; must be a string (up to 255 chars)");
+        var messageId_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += messageId_len;
+      }
+      val = fields.timestamp;
+      if (void 0 != val) {
+        if ("number" != typeof val || isNaN(val))
+          throw new TypeError("Field 'timestamp' is the wrong type; must be a number (but not NaN)");
+        varyingSize += 8;
+      }
+      val = fields.type;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'type' is the wrong type; must be a string (up to 255 chars)");
+        var type_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += type_len;
+      }
+      val = fields.userId;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'userId' is the wrong type; must be a string (up to 255 chars)");
+        var userId_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += userId_len;
+      }
+      val = fields.appId;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'appId' is the wrong type; must be a string (up to 255 chars)");
+        var appId_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += appId_len;
+      }
+      val = fields.clusterId;
+      if (void 0 != val) {
+        if (!("string" == typeof val && Buffer.byteLength(val) < 256))
+          throw new TypeError("Field 'clusterId' is the wrong type; must be a string (up to 255 chars)");
+        var clusterId_len = Buffer.byteLength(val, "utf8");
+        varyingSize += 1;
+        varyingSize += clusterId_len;
+      }
+      var buffer = Buffer.alloc(22 + varyingSize);
+      buffer[0] = 2;
+      buffer.writeUInt16BE(channel, 1);
+      buffer.writeUInt32BE(3932160, 7);
+      ints.writeUInt64BE(buffer, size, 11);
+      flags = 0;
+      offset = 21;
+      val = fields.contentType;
+      if (void 0 != val) {
+        flags += 32768;
+        buffer[offset] = contentType_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += contentType_len;
+      }
+      val = fields.contentEncoding;
+      if (void 0 != val) {
+        flags += 16384;
+        buffer[offset] = contentEncoding_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += contentEncoding_len;
+      }
+      val = fields.headers;
+      if (void 0 != val) {
+        flags += 8192;
+        offset += headers_encoded.copy(buffer, offset);
+      }
+      val = fields.deliveryMode;
+      if (void 0 != val) {
+        flags += 4096;
+        buffer.writeUInt8(val, offset);
+        offset++;
+      }
+      val = fields.priority;
+      if (void 0 != val) {
+        flags += 2048;
+        buffer.writeUInt8(val, offset);
+        offset++;
+      }
+      val = fields.correlationId;
+      if (void 0 != val) {
+        flags += 1024;
+        buffer[offset] = correlationId_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += correlationId_len;
+      }
+      val = fields.replyTo;
+      if (void 0 != val) {
+        flags += 512;
+        buffer[offset] = replyTo_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += replyTo_len;
+      }
+      val = fields.expiration;
+      if (void 0 != val) {
+        flags += 256;
+        buffer[offset] = expiration_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += expiration_len;
+      }
+      val = fields.messageId;
+      if (void 0 != val) {
+        flags += 128;
+        buffer[offset] = messageId_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += messageId_len;
+      }
+      val = fields.timestamp;
+      if (void 0 != val) {
+        flags += 64;
+        ints.writeUInt64BE(buffer, val, offset);
+        offset += 8;
+      }
+      val = fields.type;
+      if (void 0 != val) {
+        flags += 32;
+        buffer[offset] = type_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += type_len;
+      }
+      val = fields.userId;
+      if (void 0 != val) {
+        flags += 16;
+        buffer[offset] = userId_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += userId_len;
+      }
+      val = fields.appId;
+      if (void 0 != val) {
+        flags += 8;
+        buffer[offset] = appId_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += appId_len;
+      }
+      val = fields.clusterId;
+      if (void 0 != val) {
+        flags += 4;
+        buffer[offset] = clusterId_len;
+        offset++;
+        buffer.write(val, offset, "utf8");
+        offset += clusterId_len;
+      }
+      buffer[offset] = 206;
+      buffer.writeUInt32BE(offset - 7, 3);
+      buffer.writeUInt16BE(flags, 19);
+      return buffer.slice(0, offset + 1);
+    }
+    function decodeBasicProperties(buffer) {
+      var flags, val, len, offset = 2;
+      flags = buffer.readUInt16BE(0);
+      if (0 === flags)
+        return {};
+      var fields = {
+        contentType: void 0,
+        contentEncoding: void 0,
+        headers: void 0,
+        deliveryMode: void 0,
+        priority: void 0,
+        correlationId: void 0,
+        replyTo: void 0,
+        expiration: void 0,
+        messageId: void 0,
+        timestamp: void 0,
+        type: void 0,
+        userId: void 0,
+        appId: void 0,
+        clusterId: void 0
+      };
+      if (32768 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.contentType = val;
+      }
+      if (16384 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.contentEncoding = val;
+      }
+      if (8192 & flags) {
+        len = buffer.readUInt32BE(offset);
+        offset += 4;
+        val = decodeFields(buffer.slice(offset, offset + len));
+        offset += len;
+        fields.headers = val;
+      }
+      if (4096 & flags) {
+        val = buffer[offset];
+        offset++;
+        fields.deliveryMode = val;
+      }
+      if (2048 & flags) {
+        val = buffer[offset];
+        offset++;
+        fields.priority = val;
+      }
+      if (1024 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.correlationId = val;
+      }
+      if (512 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.replyTo = val;
+      }
+      if (256 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.expiration = val;
+      }
+      if (128 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.messageId = val;
+      }
+      if (64 & flags) {
+        val = ints.readUInt64BE(buffer, offset);
+        offset += 8;
+        fields.timestamp = val;
+      }
+      if (32 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.type = val;
+      }
+      if (16 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.userId = val;
+      }
+      if (8 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.appId = val;
+      }
+      if (4 & flags) {
+        len = buffer.readUInt8(offset);
+        offset++;
+        val = buffer.toString("utf8", offset, offset + len);
+        offset += len;
+        fields.clusterId = val;
+      }
+      return fields;
+    }
+    var codec = require_codec();
+    var ints = require_buffer_more_ints();
+    var encodeTable = codec.encodeTable;
+    var decodeFields = codec.decodeFields;
+    var SCRATCH = Buffer.alloc(65536);
+    var EMPTY_OBJECT = Object.freeze({});
+    module2.exports.constants = {
+      FRAME_METHOD: 1,
+      FRAME_HEADER: 2,
+      FRAME_BODY: 3,
+      FRAME_HEARTBEAT: 8,
+      FRAME_MIN_SIZE: 4096,
+      FRAME_END: 206,
+      REPLY_SUCCESS: 200,
+      CONTENT_TOO_LARGE: 311,
+      NO_ROUTE: 312,
+      NO_CONSUMERS: 313,
+      ACCESS_REFUSED: 403,
+      NOT_FOUND: 404,
+      RESOURCE_LOCKED: 405,
+      PRECONDITION_FAILED: 406,
+      CONNECTION_FORCED: 320,
+      INVALID_PATH: 402,
+      FRAME_ERROR: 501,
+      SYNTAX_ERROR: 502,
+      COMMAND_INVALID: 503,
+      CHANNEL_ERROR: 504,
+      UNEXPECTED_FRAME: 505,
+      RESOURCE_ERROR: 506,
+      NOT_ALLOWED: 530,
+      NOT_IMPLEMENTED: 540,
+      INTERNAL_ERROR: 541
+    };
+    module2.exports.constant_strs = {
+      "1": "FRAME-METHOD",
+      "2": "FRAME-HEADER",
+      "3": "FRAME-BODY",
+      "8": "FRAME-HEARTBEAT",
+      "200": "REPLY-SUCCESS",
+      "206": "FRAME-END",
+      "311": "CONTENT-TOO-LARGE",
+      "312": "NO-ROUTE",
+      "313": "NO-CONSUMERS",
+      "320": "CONNECTION-FORCED",
+      "402": "INVALID-PATH",
+      "403": "ACCESS-REFUSED",
+      "404": "NOT-FOUND",
+      "405": "RESOURCE-LOCKED",
+      "406": "PRECONDITION-FAILED",
+      "501": "FRAME-ERROR",
+      "502": "SYNTAX-ERROR",
+      "503": "COMMAND-INVALID",
+      "504": "CHANNEL-ERROR",
+      "505": "UNEXPECTED-FRAME",
+      "506": "RESOURCE-ERROR",
+      "530": "NOT-ALLOWED",
+      "540": "NOT-IMPLEMENTED",
+      "541": "INTERNAL-ERROR",
+      "4096": "FRAME-MIN-SIZE"
+    };
+    module2.exports.FRAME_OVERHEAD = 8;
+    module2.exports.decode = function(id, buf) {
+      switch (id) {
+        case 655370:
+          return decodeConnectionStart(buf);
+        case 655371:
+          return decodeConnectionStartOk(buf);
+        case 655380:
+          return decodeConnectionSecure(buf);
+        case 655381:
+          return decodeConnectionSecureOk(buf);
+        case 655390:
+          return decodeConnectionTune(buf);
+        case 655391:
+          return decodeConnectionTuneOk(buf);
+        case 655400:
+          return decodeConnectionOpen(buf);
+        case 655401:
+          return decodeConnectionOpenOk(buf);
+        case 655410:
+          return decodeConnectionClose(buf);
+        case 655411:
+          return decodeConnectionCloseOk(buf);
+        case 655420:
+          return decodeConnectionBlocked(buf);
+        case 655421:
+          return decodeConnectionUnblocked(buf);
+        case 1310730:
+          return decodeChannelOpen(buf);
+        case 1310731:
+          return decodeChannelOpenOk(buf);
+        case 1310740:
+          return decodeChannelFlow(buf);
+        case 1310741:
+          return decodeChannelFlowOk(buf);
+        case 1310760:
+          return decodeChannelClose(buf);
+        case 1310761:
+          return decodeChannelCloseOk(buf);
+        case 1966090:
+          return decodeAccessRequest(buf);
+        case 1966091:
+          return decodeAccessRequestOk(buf);
+        case 2621450:
+          return decodeExchangeDeclare(buf);
+        case 2621451:
+          return decodeExchangeDeclareOk(buf);
+        case 2621460:
+          return decodeExchangeDelete(buf);
+        case 2621461:
+          return decodeExchangeDeleteOk(buf);
+        case 2621470:
+          return decodeExchangeBind(buf);
+        case 2621471:
+          return decodeExchangeBindOk(buf);
+        case 2621480:
+          return decodeExchangeUnbind(buf);
+        case 2621491:
+          return decodeExchangeUnbindOk(buf);
+        case 3276810:
+          return decodeQueueDeclare(buf);
+        case 3276811:
+          return decodeQueueDeclareOk(buf);
+        case 3276820:
+          return decodeQueueBind(buf);
+        case 3276821:
+          return decodeQueueBindOk(buf);
+        case 3276830:
+          return decodeQueuePurge(buf);
+        case 3276831:
+          return decodeQueuePurgeOk(buf);
+        case 3276840:
+          return decodeQueueDelete(buf);
+        case 3276841:
+          return decodeQueueDeleteOk(buf);
+        case 3276850:
+          return decodeQueueUnbind(buf);
+        case 3276851:
+          return decodeQueueUnbindOk(buf);
+        case 3932170:
+          return decodeBasicQos(buf);
+        case 3932171:
+          return decodeBasicQosOk(buf);
+        case 3932180:
+          return decodeBasicConsume(buf);
+        case 3932181:
+          return decodeBasicConsumeOk(buf);
+        case 3932190:
+          return decodeBasicCancel(buf);
+        case 3932191:
+          return decodeBasicCancelOk(buf);
+        case 3932200:
+          return decodeBasicPublish(buf);
+        case 3932210:
+          return decodeBasicReturn(buf);
+        case 3932220:
+          return decodeBasicDeliver(buf);
+        case 3932230:
+          return decodeBasicGet(buf);
+        case 3932231:
+          return decodeBasicGetOk(buf);
+        case 3932232:
+          return decodeBasicGetEmpty(buf);
+        case 3932240:
+          return decodeBasicAck(buf);
+        case 3932250:
+          return decodeBasicReject(buf);
+        case 3932260:
+          return decodeBasicRecoverAsync(buf);
+        case 3932270:
+          return decodeBasicRecover(buf);
+        case 3932271:
+          return decodeBasicRecoverOk(buf);
+        case 3932280:
+          return decodeBasicNack(buf);
+        case 5898250:
+          return decodeTxSelect(buf);
+        case 5898251:
+          return decodeTxSelectOk(buf);
+        case 5898260:
+          return decodeTxCommit(buf);
+        case 5898261:
+          return decodeTxCommitOk(buf);
+        case 5898270:
+          return decodeTxRollback(buf);
+        case 5898271:
+          return decodeTxRollbackOk(buf);
+        case 5570570:
+          return decodeConfirmSelect(buf);
+        case 5570571:
+          return decodeConfirmSelectOk(buf);
+        case 60:
+          return decodeBasicProperties(buf);
+        default:
+          throw new Error("Unknown class/method ID");
+      }
+    };
+    module2.exports.encodeMethod = function(id, channel, fields) {
+      switch (id) {
+        case 655370:
+          return encodeConnectionStart(channel, fields);
+        case 655371:
+          return encodeConnectionStartOk(channel, fields);
+        case 655380:
+          return encodeConnectionSecure(channel, fields);
+        case 655381:
+          return encodeConnectionSecureOk(channel, fields);
+        case 655390:
+          return encodeConnectionTune(channel, fields);
+        case 655391:
+          return encodeConnectionTuneOk(channel, fields);
+        case 655400:
+          return encodeConnectionOpen(channel, fields);
+        case 655401:
+          return encodeConnectionOpenOk(channel, fields);
+        case 655410:
+          return encodeConnectionClose(channel, fields);
+        case 655411:
+          return encodeConnectionCloseOk(channel, fields);
+        case 655420:
+          return encodeConnectionBlocked(channel, fields);
+        case 655421:
+          return encodeConnectionUnblocked(channel, fields);
+        case 1310730:
+          return encodeChannelOpen(channel, fields);
+        case 1310731:
+          return encodeChannelOpenOk(channel, fields);
+        case 1310740:
+          return encodeChannelFlow(channel, fields);
+        case 1310741:
+          return encodeChannelFlowOk(channel, fields);
+        case 1310760:
+          return encodeChannelClose(channel, fields);
+        case 1310761:
+          return encodeChannelCloseOk(channel, fields);
+        case 1966090:
+          return encodeAccessRequest(channel, fields);
+        case 1966091:
+          return encodeAccessRequestOk(channel, fields);
+        case 2621450:
+          return encodeExchangeDeclare(channel, fields);
+        case 2621451:
+          return encodeExchangeDeclareOk(channel, fields);
+        case 2621460:
+          return encodeExchangeDelete(channel, fields);
+        case 2621461:
+          return encodeExchangeDeleteOk(channel, fields);
+        case 2621470:
+          return encodeExchangeBind(channel, fields);
+        case 2621471:
+          return encodeExchangeBindOk(channel, fields);
+        case 2621480:
+          return encodeExchangeUnbind(channel, fields);
+        case 2621491:
+          return encodeExchangeUnbindOk(channel, fields);
+        case 3276810:
+          return encodeQueueDeclare(channel, fields);
+        case 3276811:
+          return encodeQueueDeclareOk(channel, fields);
+        case 3276820:
+          return encodeQueueBind(channel, fields);
+        case 3276821:
+          return encodeQueueBindOk(channel, fields);
+        case 3276830:
+          return encodeQueuePurge(channel, fields);
+        case 3276831:
+          return encodeQueuePurgeOk(channel, fields);
+        case 3276840:
+          return encodeQueueDelete(channel, fields);
+        case 3276841:
+          return encodeQueueDeleteOk(channel, fields);
+        case 3276850:
+          return encodeQueueUnbind(channel, fields);
+        case 3276851:
+          return encodeQueueUnbindOk(channel, fields);
+        case 3932170:
+          return encodeBasicQos(channel, fields);
+        case 3932171:
+          return encodeBasicQosOk(channel, fields);
+        case 3932180:
+          return encodeBasicConsume(channel, fields);
+        case 3932181:
+          return encodeBasicConsumeOk(channel, fields);
+        case 3932190:
+          return encodeBasicCancel(channel, fields);
+        case 3932191:
+          return encodeBasicCancelOk(channel, fields);
+        case 3932200:
+          return encodeBasicPublish(channel, fields);
+        case 3932210:
+          return encodeBasicReturn(channel, fields);
+        case 3932220:
+          return encodeBasicDeliver(channel, fields);
+        case 3932230:
+          return encodeBasicGet(channel, fields);
+        case 3932231:
+          return encodeBasicGetOk(channel, fields);
+        case 3932232:
+          return encodeBasicGetEmpty(channel, fields);
+        case 3932240:
+          return encodeBasicAck(channel, fields);
+        case 3932250:
+          return encodeBasicReject(channel, fields);
+        case 3932260:
+          return encodeBasicRecoverAsync(channel, fields);
+        case 3932270:
+          return encodeBasicRecover(channel, fields);
+        case 3932271:
+          return encodeBasicRecoverOk(channel, fields);
+        case 3932280:
+          return encodeBasicNack(channel, fields);
+        case 5898250:
+          return encodeTxSelect(channel, fields);
+        case 5898251:
+          return encodeTxSelectOk(channel, fields);
+        case 5898260:
+          return encodeTxCommit(channel, fields);
+        case 5898261:
+          return encodeTxCommitOk(channel, fields);
+        case 5898270:
+          return encodeTxRollback(channel, fields);
+        case 5898271:
+          return encodeTxRollbackOk(channel, fields);
+        case 5570570:
+          return encodeConfirmSelect(channel, fields);
+        case 5570571:
+          return encodeConfirmSelectOk(channel, fields);
+        default:
+          throw new Error("Unknown class/method ID");
+      }
+    };
+    module2.exports.encodeProperties = function(id, channel, size, fields) {
+      switch (id) {
+        case 60:
+          return encodeBasicProperties(channel, size, fields);
+        default:
+          throw new Error("Unknown class/properties ID");
+      }
+    };
+    module2.exports.info = function(id) {
+      switch (id) {
+        case 655370:
+          return methodInfoConnectionStart;
+        case 655371:
+          return methodInfoConnectionStartOk;
+        case 655380:
+          return methodInfoConnectionSecure;
+        case 655381:
+          return methodInfoConnectionSecureOk;
+        case 655390:
+          return methodInfoConnectionTune;
+        case 655391:
+          return methodInfoConnectionTuneOk;
+        case 655400:
+          return methodInfoConnectionOpen;
+        case 655401:
+          return methodInfoConnectionOpenOk;
+        case 655410:
+          return methodInfoConnectionClose;
+        case 655411:
+          return methodInfoConnectionCloseOk;
+        case 655420:
+          return methodInfoConnectionBlocked;
+        case 655421:
+          return methodInfoConnectionUnblocked;
+        case 1310730:
+          return methodInfoChannelOpen;
+        case 1310731:
+          return methodInfoChannelOpenOk;
+        case 1310740:
+          return methodInfoChannelFlow;
+        case 1310741:
+          return methodInfoChannelFlowOk;
+        case 1310760:
+          return methodInfoChannelClose;
+        case 1310761:
+          return methodInfoChannelCloseOk;
+        case 1966090:
+          return methodInfoAccessRequest;
+        case 1966091:
+          return methodInfoAccessRequestOk;
+        case 2621450:
+          return methodInfoExchangeDeclare;
+        case 2621451:
+          return methodInfoExchangeDeclareOk;
+        case 2621460:
+          return methodInfoExchangeDelete;
+        case 2621461:
+          return methodInfoExchangeDeleteOk;
+        case 2621470:
+          return methodInfoExchangeBind;
+        case 2621471:
+          return methodInfoExchangeBindOk;
+        case 2621480:
+          return methodInfoExchangeUnbind;
+        case 2621491:
+          return methodInfoExchangeUnbindOk;
+        case 3276810:
+          return methodInfoQueueDeclare;
+        case 3276811:
+          return methodInfoQueueDeclareOk;
+        case 3276820:
+          return methodInfoQueueBind;
+        case 3276821:
+          return methodInfoQueueBindOk;
+        case 3276830:
+          return methodInfoQueuePurge;
+        case 3276831:
+          return methodInfoQueuePurgeOk;
+        case 3276840:
+          return methodInfoQueueDelete;
+        case 3276841:
+          return methodInfoQueueDeleteOk;
+        case 3276850:
+          return methodInfoQueueUnbind;
+        case 3276851:
+          return methodInfoQueueUnbindOk;
+        case 3932170:
+          return methodInfoBasicQos;
+        case 3932171:
+          return methodInfoBasicQosOk;
+        case 3932180:
+          return methodInfoBasicConsume;
+        case 3932181:
+          return methodInfoBasicConsumeOk;
+        case 3932190:
+          return methodInfoBasicCancel;
+        case 3932191:
+          return methodInfoBasicCancelOk;
+        case 3932200:
+          return methodInfoBasicPublish;
+        case 3932210:
+          return methodInfoBasicReturn;
+        case 3932220:
+          return methodInfoBasicDeliver;
+        case 3932230:
+          return methodInfoBasicGet;
+        case 3932231:
+          return methodInfoBasicGetOk;
+        case 3932232:
+          return methodInfoBasicGetEmpty;
+        case 3932240:
+          return methodInfoBasicAck;
+        case 3932250:
+          return methodInfoBasicReject;
+        case 3932260:
+          return methodInfoBasicRecoverAsync;
+        case 3932270:
+          return methodInfoBasicRecover;
+        case 3932271:
+          return methodInfoBasicRecoverOk;
+        case 3932280:
+          return methodInfoBasicNack;
+        case 5898250:
+          return methodInfoTxSelect;
+        case 5898251:
+          return methodInfoTxSelectOk;
+        case 5898260:
+          return methodInfoTxCommit;
+        case 5898261:
+          return methodInfoTxCommitOk;
+        case 5898270:
+          return methodInfoTxRollback;
+        case 5898271:
+          return methodInfoTxRollbackOk;
+        case 5570570:
+          return methodInfoConfirmSelect;
+        case 5570571:
+          return methodInfoConfirmSelectOk;
+        case 60:
+          return propertiesInfoBasicProperties;
+        default:
+          throw new Error("Unknown class/method ID");
+      }
+    };
+    module2.exports.ConnectionStart = 655370;
+    var methodInfoConnectionStart = module2.exports.methodInfoConnectionStart = {
+      id: 655370,
+      classId: 10,
+      methodId: 10,
+      name: "ConnectionStart",
+      args: [{
+        type: "octet",
+        name: "versionMajor",
+        default: 0
+      }, {
+        type: "octet",
+        name: "versionMinor",
+        default: 9
+      }, {
+        type: "table",
+        name: "serverProperties"
+      }, {
+        type: "longstr",
+        name: "mechanisms",
+        default: "PLAIN"
+      }, {
+        type: "longstr",
+        name: "locales",
+        default: "en_US"
+      }]
+    };
+    module2.exports.ConnectionStartOk = 655371;
+    var methodInfoConnectionStartOk = module2.exports.methodInfoConnectionStartOk = {
+      id: 655371,
+      classId: 10,
+      methodId: 11,
+      name: "ConnectionStartOk",
+      args: [{
+        type: "table",
+        name: "clientProperties"
+      }, {
+        type: "shortstr",
+        name: "mechanism",
+        default: "PLAIN"
+      }, {
+        type: "longstr",
+        name: "response"
+      }, {
+        type: "shortstr",
+        name: "locale",
+        default: "en_US"
+      }]
+    };
+    module2.exports.ConnectionSecure = 655380;
+    var methodInfoConnectionSecure = module2.exports.methodInfoConnectionSecure = {
+      id: 655380,
+      classId: 10,
+      methodId: 20,
+      name: "ConnectionSecure",
+      args: [{
+        type: "longstr",
+        name: "challenge"
+      }]
+    };
+    module2.exports.ConnectionSecureOk = 655381;
+    var methodInfoConnectionSecureOk = module2.exports.methodInfoConnectionSecureOk = {
+      id: 655381,
+      classId: 10,
+      methodId: 21,
+      name: "ConnectionSecureOk",
+      args: [{
+        type: "longstr",
+        name: "response"
+      }]
+    };
+    module2.exports.ConnectionTune = 655390;
+    var methodInfoConnectionTune = module2.exports.methodInfoConnectionTune = {
+      id: 655390,
+      classId: 10,
+      methodId: 30,
+      name: "ConnectionTune",
+      args: [{
+        type: "short",
+        name: "channelMax",
+        default: 0
+      }, {
+        type: "long",
+        name: "frameMax",
+        default: 0
+      }, {
+        type: "short",
+        name: "heartbeat",
+        default: 0
+      }]
+    };
+    module2.exports.ConnectionTuneOk = 655391;
+    var methodInfoConnectionTuneOk = module2.exports.methodInfoConnectionTuneOk = {
+      id: 655391,
+      classId: 10,
+      methodId: 31,
+      name: "ConnectionTuneOk",
+      args: [{
+        type: "short",
+        name: "channelMax",
+        default: 0
+      }, {
+        type: "long",
+        name: "frameMax",
+        default: 0
+      }, {
+        type: "short",
+        name: "heartbeat",
+        default: 0
+      }]
+    };
+    module2.exports.ConnectionOpen = 655400;
+    var methodInfoConnectionOpen = module2.exports.methodInfoConnectionOpen = {
+      id: 655400,
+      classId: 10,
+      methodId: 40,
+      name: "ConnectionOpen",
+      args: [{
+        type: "shortstr",
+        name: "virtualHost",
+        default: "/"
+      }, {
+        type: "shortstr",
+        name: "capabilities",
+        default: ""
+      }, {
+        type: "bit",
+        name: "insist",
+        default: false
+      }]
+    };
+    module2.exports.ConnectionOpenOk = 655401;
+    var methodInfoConnectionOpenOk = module2.exports.methodInfoConnectionOpenOk = {
+      id: 655401,
+      classId: 10,
+      methodId: 41,
+      name: "ConnectionOpenOk",
+      args: [{
+        type: "shortstr",
+        name: "knownHosts",
+        default: ""
+      }]
+    };
+    module2.exports.ConnectionClose = 655410;
+    var methodInfoConnectionClose = module2.exports.methodInfoConnectionClose = {
+      id: 655410,
+      classId: 10,
+      methodId: 50,
+      name: "ConnectionClose",
+      args: [{
+        type: "short",
+        name: "replyCode"
+      }, {
+        type: "shortstr",
+        name: "replyText",
+        default: ""
+      }, {
+        type: "short",
+        name: "classId"
+      }, {
+        type: "short",
+        name: "methodId"
+      }]
+    };
+    module2.exports.ConnectionCloseOk = 655411;
+    var methodInfoConnectionCloseOk = module2.exports.methodInfoConnectionCloseOk = {
+      id: 655411,
+      classId: 10,
+      methodId: 51,
+      name: "ConnectionCloseOk",
+      args: []
+    };
+    module2.exports.ConnectionBlocked = 655420;
+    var methodInfoConnectionBlocked = module2.exports.methodInfoConnectionBlocked = {
+      id: 655420,
+      classId: 10,
+      methodId: 60,
+      name: "ConnectionBlocked",
+      args: [{
+        type: "shortstr",
+        name: "reason",
+        default: ""
+      }]
+    };
+    module2.exports.ConnectionUnblocked = 655421;
+    var methodInfoConnectionUnblocked = module2.exports.methodInfoConnectionUnblocked = {
+      id: 655421,
+      classId: 10,
+      methodId: 61,
+      name: "ConnectionUnblocked",
+      args: []
+    };
+    module2.exports.ChannelOpen = 1310730;
+    var methodInfoChannelOpen = module2.exports.methodInfoChannelOpen = {
+      id: 1310730,
+      classId: 20,
+      methodId: 10,
+      name: "ChannelOpen",
+      args: [{
+        type: "shortstr",
+        name: "outOfBand",
+        default: ""
+      }]
+    };
+    module2.exports.ChannelOpenOk = 1310731;
+    var methodInfoChannelOpenOk = module2.exports.methodInfoChannelOpenOk = {
+      id: 1310731,
+      classId: 20,
+      methodId: 11,
+      name: "ChannelOpenOk",
+      args: [{
+        type: "longstr",
+        name: "channelId",
+        default: ""
+      }]
+    };
+    module2.exports.ChannelFlow = 1310740;
+    var methodInfoChannelFlow = module2.exports.methodInfoChannelFlow = {
+      id: 1310740,
+      classId: 20,
+      methodId: 20,
+      name: "ChannelFlow",
+      args: [{
+        type: "bit",
+        name: "active"
+      }]
+    };
+    module2.exports.ChannelFlowOk = 1310741;
+    var methodInfoChannelFlowOk = module2.exports.methodInfoChannelFlowOk = {
+      id: 1310741,
+      classId: 20,
+      methodId: 21,
+      name: "ChannelFlowOk",
+      args: [{
+        type: "bit",
+        name: "active"
+      }]
+    };
+    module2.exports.ChannelClose = 1310760;
+    var methodInfoChannelClose = module2.exports.methodInfoChannelClose = {
+      id: 1310760,
+      classId: 20,
+      methodId: 40,
+      name: "ChannelClose",
+      args: [{
+        type: "short",
+        name: "replyCode"
+      }, {
+        type: "shortstr",
+        name: "replyText",
+        default: ""
+      }, {
+        type: "short",
+        name: "classId"
+      }, {
+        type: "short",
+        name: "methodId"
+      }]
+    };
+    module2.exports.ChannelCloseOk = 1310761;
+    var methodInfoChannelCloseOk = module2.exports.methodInfoChannelCloseOk = {
+      id: 1310761,
+      classId: 20,
+      methodId: 41,
+      name: "ChannelCloseOk",
+      args: []
+    };
+    module2.exports.AccessRequest = 1966090;
+    var methodInfoAccessRequest = module2.exports.methodInfoAccessRequest = {
+      id: 1966090,
+      classId: 30,
+      methodId: 10,
+      name: "AccessRequest",
+      args: [{
+        type: "shortstr",
+        name: "realm",
+        default: "/data"
+      }, {
+        type: "bit",
+        name: "exclusive",
+        default: false
+      }, {
+        type: "bit",
+        name: "passive",
+        default: true
+      }, {
+        type: "bit",
+        name: "active",
+        default: true
+      }, {
+        type: "bit",
+        name: "write",
+        default: true
+      }, {
+        type: "bit",
+        name: "read",
+        default: true
+      }]
+    };
+    module2.exports.AccessRequestOk = 1966091;
+    var methodInfoAccessRequestOk = module2.exports.methodInfoAccessRequestOk = {
+      id: 1966091,
+      classId: 30,
+      methodId: 11,
+      name: "AccessRequestOk",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 1
+      }]
+    };
+    module2.exports.ExchangeDeclare = 2621450;
+    var methodInfoExchangeDeclare = module2.exports.methodInfoExchangeDeclare = {
+      id: 2621450,
+      classId: 40,
+      methodId: 10,
+      name: "ExchangeDeclare",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "type",
+        default: "direct"
+      }, {
+        type: "bit",
+        name: "passive",
+        default: false
+      }, {
+        type: "bit",
+        name: "durable",
+        default: false
+      }, {
+        type: "bit",
+        name: "autoDelete",
+        default: false
+      }, {
+        type: "bit",
+        name: "internal",
+        default: false
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.ExchangeDeclareOk = 2621451;
+    var methodInfoExchangeDeclareOk = module2.exports.methodInfoExchangeDeclareOk = {
+      id: 2621451,
+      classId: 40,
+      methodId: 11,
+      name: "ExchangeDeclareOk",
+      args: []
+    };
+    module2.exports.ExchangeDelete = 2621460;
+    var methodInfoExchangeDelete = module2.exports.methodInfoExchangeDelete = {
+      id: 2621460,
+      classId: 40,
+      methodId: 20,
+      name: "ExchangeDelete",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "bit",
+        name: "ifUnused",
+        default: false
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }]
+    };
+    module2.exports.ExchangeDeleteOk = 2621461;
+    var methodInfoExchangeDeleteOk = module2.exports.methodInfoExchangeDeleteOk = {
+      id: 2621461,
+      classId: 40,
+      methodId: 21,
+      name: "ExchangeDeleteOk",
+      args: []
+    };
+    module2.exports.ExchangeBind = 2621470;
+    var methodInfoExchangeBind = module2.exports.methodInfoExchangeBind = {
+      id: 2621470,
+      classId: 40,
+      methodId: 30,
+      name: "ExchangeBind",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "destination"
+      }, {
+        type: "shortstr",
+        name: "source"
+      }, {
+        type: "shortstr",
+        name: "routingKey",
+        default: ""
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.ExchangeBindOk = 2621471;
+    var methodInfoExchangeBindOk = module2.exports.methodInfoExchangeBindOk = {
+      id: 2621471,
+      classId: 40,
+      methodId: 31,
+      name: "ExchangeBindOk",
+      args: []
+    };
+    module2.exports.ExchangeUnbind = 2621480;
+    var methodInfoExchangeUnbind = module2.exports.methodInfoExchangeUnbind = {
+      id: 2621480,
+      classId: 40,
+      methodId: 40,
+      name: "ExchangeUnbind",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "destination"
+      }, {
+        type: "shortstr",
+        name: "source"
+      }, {
+        type: "shortstr",
+        name: "routingKey",
+        default: ""
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.ExchangeUnbindOk = 2621491;
+    var methodInfoExchangeUnbindOk = module2.exports.methodInfoExchangeUnbindOk = {
+      id: 2621491,
+      classId: 40,
+      methodId: 51,
+      name: "ExchangeUnbindOk",
+      args: []
+    };
+    module2.exports.QueueDeclare = 3276810;
+    var methodInfoQueueDeclare = module2.exports.methodInfoQueueDeclare = {
+      id: 3276810,
+      classId: 50,
+      methodId: 10,
+      name: "QueueDeclare",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "bit",
+        name: "passive",
+        default: false
+      }, {
+        type: "bit",
+        name: "durable",
+        default: false
+      }, {
+        type: "bit",
+        name: "exclusive",
+        default: false
+      }, {
+        type: "bit",
+        name: "autoDelete",
+        default: false
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.QueueDeclareOk = 3276811;
+    var methodInfoQueueDeclareOk = module2.exports.methodInfoQueueDeclareOk = {
+      id: 3276811,
+      classId: 50,
+      methodId: 11,
+      name: "QueueDeclareOk",
+      args: [{
+        type: "shortstr",
+        name: "queue"
+      }, {
+        type: "long",
+        name: "messageCount"
+      }, {
+        type: "long",
+        name: "consumerCount"
+      }]
+    };
+    module2.exports.QueueBind = 3276820;
+    var methodInfoQueueBind = module2.exports.methodInfoQueueBind = {
+      id: 3276820,
+      classId: 50,
+      methodId: 20,
+      name: "QueueBind",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "routingKey",
+        default: ""
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.QueueBindOk = 3276821;
+    var methodInfoQueueBindOk = module2.exports.methodInfoQueueBindOk = {
+      id: 3276821,
+      classId: 50,
+      methodId: 21,
+      name: "QueueBindOk",
+      args: []
+    };
+    module2.exports.QueuePurge = 3276830;
+    var methodInfoQueuePurge = module2.exports.methodInfoQueuePurge = {
+      id: 3276830,
+      classId: 50,
+      methodId: 30,
+      name: "QueuePurge",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }]
+    };
+    module2.exports.QueuePurgeOk = 3276831;
+    var methodInfoQueuePurgeOk = module2.exports.methodInfoQueuePurgeOk = {
+      id: 3276831,
+      classId: 50,
+      methodId: 31,
+      name: "QueuePurgeOk",
+      args: [{
+        type: "long",
+        name: "messageCount"
+      }]
+    };
+    module2.exports.QueueDelete = 3276840;
+    var methodInfoQueueDelete = module2.exports.methodInfoQueueDelete = {
+      id: 3276840,
+      classId: 50,
+      methodId: 40,
+      name: "QueueDelete",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "bit",
+        name: "ifUnused",
+        default: false
+      }, {
+        type: "bit",
+        name: "ifEmpty",
+        default: false
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }]
+    };
+    module2.exports.QueueDeleteOk = 3276841;
+    var methodInfoQueueDeleteOk = module2.exports.methodInfoQueueDeleteOk = {
+      id: 3276841,
+      classId: 50,
+      methodId: 41,
+      name: "QueueDeleteOk",
+      args: [{
+        type: "long",
+        name: "messageCount"
+      }]
+    };
+    module2.exports.QueueUnbind = 3276850;
+    var methodInfoQueueUnbind = module2.exports.methodInfoQueueUnbind = {
+      id: 3276850,
+      classId: 50,
+      methodId: 50,
+      name: "QueueUnbind",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "routingKey",
+        default: ""
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.QueueUnbindOk = 3276851;
+    var methodInfoQueueUnbindOk = module2.exports.methodInfoQueueUnbindOk = {
+      id: 3276851,
+      classId: 50,
+      methodId: 51,
+      name: "QueueUnbindOk",
+      args: []
+    };
+    module2.exports.BasicQos = 3932170;
+    var methodInfoBasicQos = module2.exports.methodInfoBasicQos = {
+      id: 3932170,
+      classId: 60,
+      methodId: 10,
+      name: "BasicQos",
+      args: [{
+        type: "long",
+        name: "prefetchSize",
+        default: 0
+      }, {
+        type: "short",
+        name: "prefetchCount",
+        default: 0
+      }, {
+        type: "bit",
+        name: "global",
+        default: false
+      }]
+    };
+    module2.exports.BasicQosOk = 3932171;
+    var methodInfoBasicQosOk = module2.exports.methodInfoBasicQosOk = {
+      id: 3932171,
+      classId: 60,
+      methodId: 11,
+      name: "BasicQosOk",
+      args: []
+    };
+    module2.exports.BasicConsume = 3932180;
+    var methodInfoBasicConsume = module2.exports.methodInfoBasicConsume = {
+      id: 3932180,
+      classId: 60,
+      methodId: 20,
+      name: "BasicConsume",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "shortstr",
+        name: "consumerTag",
+        default: ""
+      }, {
+        type: "bit",
+        name: "noLocal",
+        default: false
+      }, {
+        type: "bit",
+        name: "noAck",
+        default: false
+      }, {
+        type: "bit",
+        name: "exclusive",
+        default: false
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }, {
+        type: "table",
+        name: "arguments",
+        default: {}
+      }]
+    };
+    module2.exports.BasicConsumeOk = 3932181;
+    var methodInfoBasicConsumeOk = module2.exports.methodInfoBasicConsumeOk = {
+      id: 3932181,
+      classId: 60,
+      methodId: 21,
+      name: "BasicConsumeOk",
+      args: [{
+        type: "shortstr",
+        name: "consumerTag"
+      }]
+    };
+    module2.exports.BasicCancel = 3932190;
+    var methodInfoBasicCancel = module2.exports.methodInfoBasicCancel = {
+      id: 3932190,
+      classId: 60,
+      methodId: 30,
+      name: "BasicCancel",
+      args: [{
+        type: "shortstr",
+        name: "consumerTag"
+      }, {
+        type: "bit",
+        name: "nowait",
+        default: false
+      }]
+    };
+    module2.exports.BasicCancelOk = 3932191;
+    var methodInfoBasicCancelOk = module2.exports.methodInfoBasicCancelOk = {
+      id: 3932191,
+      classId: 60,
+      methodId: 31,
+      name: "BasicCancelOk",
+      args: [{
+        type: "shortstr",
+        name: "consumerTag"
+      }]
+    };
+    module2.exports.BasicPublish = 3932200;
+    var methodInfoBasicPublish = module2.exports.methodInfoBasicPublish = {
+      id: 3932200,
+      classId: 60,
+      methodId: 40,
+      name: "BasicPublish",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "exchange",
+        default: ""
+      }, {
+        type: "shortstr",
+        name: "routingKey",
+        default: ""
+      }, {
+        type: "bit",
+        name: "mandatory",
+        default: false
+      }, {
+        type: "bit",
+        name: "immediate",
+        default: false
+      }]
+    };
+    module2.exports.BasicReturn = 3932210;
+    var methodInfoBasicReturn = module2.exports.methodInfoBasicReturn = {
+      id: 3932210,
+      classId: 60,
+      methodId: 50,
+      name: "BasicReturn",
+      args: [{
+        type: "short",
+        name: "replyCode"
+      }, {
+        type: "shortstr",
+        name: "replyText",
+        default: ""
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "routingKey"
+      }]
+    };
+    module2.exports.BasicDeliver = 3932220;
+    var methodInfoBasicDeliver = module2.exports.methodInfoBasicDeliver = {
+      id: 3932220,
+      classId: 60,
+      methodId: 60,
+      name: "BasicDeliver",
+      args: [{
+        type: "shortstr",
+        name: "consumerTag"
+      }, {
+        type: "longlong",
+        name: "deliveryTag"
+      }, {
+        type: "bit",
+        name: "redelivered",
+        default: false
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "routingKey"
+      }]
+    };
+    module2.exports.BasicGet = 3932230;
+    var methodInfoBasicGet = module2.exports.methodInfoBasicGet = {
+      id: 3932230,
+      classId: 60,
+      methodId: 70,
+      name: "BasicGet",
+      args: [{
+        type: "short",
+        name: "ticket",
+        default: 0
+      }, {
+        type: "shortstr",
+        name: "queue",
+        default: ""
+      }, {
+        type: "bit",
+        name: "noAck",
+        default: false
+      }]
+    };
+    module2.exports.BasicGetOk = 3932231;
+    var methodInfoBasicGetOk = module2.exports.methodInfoBasicGetOk = {
+      id: 3932231,
+      classId: 60,
+      methodId: 71,
+      name: "BasicGetOk",
+      args: [{
+        type: "longlong",
+        name: "deliveryTag"
+      }, {
+        type: "bit",
+        name: "redelivered",
+        default: false
+      }, {
+        type: "shortstr",
+        name: "exchange"
+      }, {
+        type: "shortstr",
+        name: "routingKey"
+      }, {
+        type: "long",
+        name: "messageCount"
+      }]
+    };
+    module2.exports.BasicGetEmpty = 3932232;
+    var methodInfoBasicGetEmpty = module2.exports.methodInfoBasicGetEmpty = {
+      id: 3932232,
+      classId: 60,
+      methodId: 72,
+      name: "BasicGetEmpty",
+      args: [{
+        type: "shortstr",
+        name: "clusterId",
+        default: ""
+      }]
+    };
+    module2.exports.BasicAck = 3932240;
+    var methodInfoBasicAck = module2.exports.methodInfoBasicAck = {
+      id: 3932240,
+      classId: 60,
+      methodId: 80,
+      name: "BasicAck",
+      args: [{
+        type: "longlong",
+        name: "deliveryTag",
+        default: 0
+      }, {
+        type: "bit",
+        name: "multiple",
+        default: false
+      }]
+    };
+    module2.exports.BasicReject = 3932250;
+    var methodInfoBasicReject = module2.exports.methodInfoBasicReject = {
+      id: 3932250,
+      classId: 60,
+      methodId: 90,
+      name: "BasicReject",
+      args: [{
+        type: "longlong",
+        name: "deliveryTag"
+      }, {
+        type: "bit",
+        name: "requeue",
+        default: true
+      }]
+    };
+    module2.exports.BasicRecoverAsync = 3932260;
+    var methodInfoBasicRecoverAsync = module2.exports.methodInfoBasicRecoverAsync = {
+      id: 3932260,
+      classId: 60,
+      methodId: 100,
+      name: "BasicRecoverAsync",
+      args: [{
+        type: "bit",
+        name: "requeue",
+        default: false
+      }]
+    };
+    module2.exports.BasicRecover = 3932270;
+    var methodInfoBasicRecover = module2.exports.methodInfoBasicRecover = {
+      id: 3932270,
+      classId: 60,
+      methodId: 110,
+      name: "BasicRecover",
+      args: [{
+        type: "bit",
+        name: "requeue",
+        default: false
+      }]
+    };
+    module2.exports.BasicRecoverOk = 3932271;
+    var methodInfoBasicRecoverOk = module2.exports.methodInfoBasicRecoverOk = {
+      id: 3932271,
+      classId: 60,
+      methodId: 111,
+      name: "BasicRecoverOk",
+      args: []
+    };
+    module2.exports.BasicNack = 3932280;
+    var methodInfoBasicNack = module2.exports.methodInfoBasicNack = {
+      id: 3932280,
+      classId: 60,
+      methodId: 120,
+      name: "BasicNack",
+      args: [{
+        type: "longlong",
+        name: "deliveryTag",
+        default: 0
+      }, {
+        type: "bit",
+        name: "multiple",
+        default: false
+      }, {
+        type: "bit",
+        name: "requeue",
+        default: true
+      }]
+    };
+    module2.exports.TxSelect = 5898250;
+    var methodInfoTxSelect = module2.exports.methodInfoTxSelect = {
+      id: 5898250,
+      classId: 90,
+      methodId: 10,
+      name: "TxSelect",
+      args: []
+    };
+    module2.exports.TxSelectOk = 5898251;
+    var methodInfoTxSelectOk = module2.exports.methodInfoTxSelectOk = {
+      id: 5898251,
+      classId: 90,
+      methodId: 11,
+      name: "TxSelectOk",
+      args: []
+    };
+    module2.exports.TxCommit = 5898260;
+    var methodInfoTxCommit = module2.exports.methodInfoTxCommit = {
+      id: 5898260,
+      classId: 90,
+      methodId: 20,
+      name: "TxCommit",
+      args: []
+    };
+    module2.exports.TxCommitOk = 5898261;
+    var methodInfoTxCommitOk = module2.exports.methodInfoTxCommitOk = {
+      id: 5898261,
+      classId: 90,
+      methodId: 21,
+      name: "TxCommitOk",
+      args: []
+    };
+    module2.exports.TxRollback = 5898270;
+    var methodInfoTxRollback = module2.exports.methodInfoTxRollback = {
+      id: 5898270,
+      classId: 90,
+      methodId: 30,
+      name: "TxRollback",
+      args: []
+    };
+    module2.exports.TxRollbackOk = 5898271;
+    var methodInfoTxRollbackOk = module2.exports.methodInfoTxRollbackOk = {
+      id: 5898271,
+      classId: 90,
+      methodId: 31,
+      name: "TxRollbackOk",
+      args: []
+    };
+    module2.exports.ConfirmSelect = 5570570;
+    var methodInfoConfirmSelect = module2.exports.methodInfoConfirmSelect = {
+      id: 5570570,
+      classId: 85,
+      methodId: 10,
+      name: "ConfirmSelect",
+      args: [{
+        type: "bit",
+        name: "nowait",
+        default: false
+      }]
+    };
+    module2.exports.ConfirmSelectOk = 5570571;
+    var methodInfoConfirmSelectOk = module2.exports.methodInfoConfirmSelectOk = {
+      id: 5570571,
+      classId: 85,
+      methodId: 11,
+      name: "ConfirmSelectOk",
+      args: []
+    };
+    module2.exports.BasicProperties = 60;
+    var propertiesInfoBasicProperties = module2.exports.propertiesInfoBasicProperties = {
+      id: 60,
+      name: "BasicProperties",
+      args: [{
+        type: "shortstr",
+        name: "contentType"
+      }, {
+        type: "shortstr",
+        name: "contentEncoding"
+      }, {
+        type: "table",
+        name: "headers"
+      }, {
+        type: "octet",
+        name: "deliveryMode"
+      }, {
+        type: "octet",
+        name: "priority"
+      }, {
+        type: "shortstr",
+        name: "correlationId"
+      }, {
+        type: "shortstr",
+        name: "replyTo"
+      }, {
+        type: "shortstr",
+        name: "expiration"
+      }, {
+        type: "shortstr",
+        name: "messageId"
+      }, {
+        type: "timestamp",
+        name: "timestamp"
+      }, {
+        type: "shortstr",
+        name: "type"
+      }, {
+        type: "shortstr",
+        name: "userId"
+      }, {
+        type: "shortstr",
+        name: "appId"
+      }, {
+        type: "shortstr",
+        name: "clusterId"
+      }]
+    };
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/pattern.js
+var require_pattern = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/pattern.js"(exports, module2) {
+    "use strict";
+    function set(values) {
+      var s = {};
+      for (var i in values) {
+        s[values[i]] = 1;
+      }
+      return s;
+    }
+    function variable(name, size, specifiers0) {
+      var specifiers = set(specifiers0);
+      var segment = { name };
+      segment.type = type_in(specifiers);
+      specs(segment, segment.type, specifiers);
+      segment.size = size_of(segment, segment.type, size, segment.unit);
+      return segment;
+    }
+    module2.exports.variable = variable;
+    module2.exports.rest = function() {
+      return variable("_", true, ["binary"]);
+    };
+    function value(val, size, specifiers0) {
+      var specifiers = set(specifiers0);
+      var segment = { value: val };
+      segment.type = type_in(specifiers);
+      specs(segment, segment.type, specifiers);
+      segment.size = size_of(segment, segment.type, size, segment.unit);
+      return segment;
+    }
+    module2.exports.value = value;
+    function string(val) {
+      return { value: val, type: "string" };
+    }
+    module2.exports.string = string;
+    var TYPES = { "integer": 1, "binary": 1, "float": 1 };
+    function type_in(specifiers) {
+      for (var t in specifiers) {
+        if (TYPES[t]) {
+          return t;
+        }
+      }
+      return "integer";
+    }
+    function specs(segment, type, specifiers) {
+      switch (type) {
+        case "integer":
+          segment.signed = signed_in(specifiers);
+        case "float":
+          segment.bigendian = endian_in(specifiers);
+        default:
+          segment.unit = unit_in(specifiers, segment.type);
+      }
+      return segment;
+    }
+    function endian_in(specifiers) {
+      return !specifiers["little"];
+    }
+    function signed_in(specifiers) {
+      return specifiers["signed"];
+    }
+    function unit_in(specifiers, type) {
+      for (var s in specifiers) {
+        if (s.substr(0, 5) == "unit:") {
+          var unit = parseInt(s.substr(5));
+          return unit;
+        }
+      }
+      switch (type) {
+        case "binary":
+          return 8;
+        case "integer":
+        case "float":
+          return 1;
+      }
+    }
+    function size_of(segment, type, size, unit) {
+      if (size !== void 0 && size !== "") {
+        return size;
+      } else {
+        switch (type) {
+          case "integer":
+            return 8;
+          case "float":
+            return 64;
+          case "binary":
+            return true;
+        }
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/parser.js
+var require_parser = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/parser.js"(exports, module2) {
+    module2.exports = function() {
+      function quote(s) {
+        return '"' + s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\x08/g, "\\b").replace(/\t/g, "\\t").replace(/\n/g, "\\n").replace(/\f/g, "\\f").replace(/\r/g, "\\r").replace(/[\x00-\x07\x0B\x0E-\x1F\x80-\uFFFF]/g, escape) + '"';
+      }
+      var result = {
+        parse: function(input, startRule) {
+          var parseFunctions = {
+            "start": parse_start,
+            "segmentTail": parse_segmentTail,
+            "segment": parse_segment,
+            "string": parse_string,
+            "chars": parse_chars,
+            "char": parse_char,
+            "hexDigit": parse_hexDigit,
+            "identifier": parse_identifier,
+            "number": parse_number,
+            "size": parse_size,
+            "specifierList": parse_specifierList,
+            "specifierTail": parse_specifierTail,
+            "specifier": parse_specifier,
+            "unit": parse_unit,
+            "ws": parse_ws
+          };
+          if (startRule !== void 0) {
+            if (parseFunctions[startRule] === void 0) {
+              throw new Error("Invalid rule name: " + quote(startRule) + ".");
+            }
+          } else {
+            startRule = "start";
+          }
+          var pos = 0;
+          var reportFailures = 0;
+          var rightmostFailuresPos = 0;
+          var rightmostFailuresExpected = [];
+          function padLeft(input2, padding, length) {
+            var result3 = input2;
+            var padLength = length - input2.length;
+            for (var i = 0; i < padLength; i++) {
+              result3 = padding + result3;
+            }
+            return result3;
+          }
+          function escape2(ch) {
+            var charCode = ch.charCodeAt(0);
+            var escapeChar;
+            var length;
+            if (charCode <= 255) {
+              escapeChar = "x";
+              length = 2;
+            } else {
+              escapeChar = "u";
+              length = 4;
+            }
+            return "\\" + escapeChar + padLeft(charCode.toString(16).toUpperCase(), "0", length);
+          }
+          function matchFailed(failure) {
+            if (pos < rightmostFailuresPos) {
+              return;
+            }
+            if (pos > rightmostFailuresPos) {
+              rightmostFailuresPos = pos;
+              rightmostFailuresExpected = [];
+            }
+            rightmostFailuresExpected.push(failure);
+          }
+          function parse_start() {
+            var result0, result1, result22, result3;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            result0 = parse_ws();
+            if (result0 !== null) {
+              result1 = parse_segment();
+              if (result1 !== null) {
+                result22 = [];
+                result3 = parse_segmentTail();
+                while (result3 !== null) {
+                  result22.push(result3);
+                  result3 = parse_segmentTail();
+                }
+                if (result22 !== null) {
+                  result0 = [result0, result1, result22];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, head, tail) {
+                tail.unshift(head);
+                return tail;
+              }(pos0, result0[1], result0[2]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_segmentTail() {
+            var result0, result1, result22, result3;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            result0 = parse_ws();
+            if (result0 !== null) {
+              if (input.charCodeAt(pos) === 44) {
+                result1 = ",";
+                pos++;
+              } else {
+                result1 = null;
+                if (reportFailures === 0) {
+                  matchFailed('","');
+                }
+              }
+              if (result1 !== null) {
+                result22 = parse_ws();
+                if (result22 !== null) {
+                  result3 = parse_segment();
+                  if (result3 !== null) {
+                    result0 = [result0, result1, result22, result3];
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, seg) {
+                return seg;
+              }(pos0, result0[3]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_segment() {
+            var result0, result1, result22;
+            var pos0, pos1;
+            pos0 = pos;
+            result0 = parse_string();
+            if (result0 !== null) {
+              result0 = function(offset2, str) {
+                return { string: str };
+              }(pos0, result0);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              pos1 = pos;
+              result0 = parse_identifier();
+              if (result0 !== null) {
+                result1 = parse_size();
+                result1 = result1 !== null ? result1 : "";
+                if (result1 !== null) {
+                  result22 = parse_specifierList();
+                  result22 = result22 !== null ? result22 : "";
+                  if (result22 !== null) {
+                    result0 = [result0, result1, result22];
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+              if (result0 !== null) {
+                result0 = function(offset2, v, size, specs) {
+                  return { name: v, size, specifiers: specs };
+                }(pos0, result0[0], result0[1], result0[2]);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
+              if (result0 === null) {
+                pos0 = pos;
+                pos1 = pos;
+                result0 = parse_number();
+                if (result0 !== null) {
+                  result1 = parse_size();
+                  result1 = result1 !== null ? result1 : "";
+                  if (result1 !== null) {
+                    result22 = parse_specifierList();
+                    result22 = result22 !== null ? result22 : "";
+                    if (result22 !== null) {
+                      result0 = [result0, result1, result22];
+                    } else {
+                      result0 = null;
+                      pos = pos1;
+                    }
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+                if (result0 !== null) {
+                  result0 = function(offset2, v, size, specs) {
+                    return { value: v, size, specifiers: specs };
+                  }(pos0, result0[0], result0[1], result0[2]);
+                }
+                if (result0 === null) {
+                  pos = pos0;
+                }
+              }
+            }
+            return result0;
+          }
+          function parse_string() {
+            var result0, result1, result22;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (input.charCodeAt(pos) === 34) {
+              result0 = '"';
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"\\""');
+              }
+            }
+            if (result0 !== null) {
+              if (input.charCodeAt(pos) === 34) {
+                result1 = '"';
+                pos++;
+              } else {
+                result1 = null;
+                if (reportFailures === 0) {
+                  matchFailed('"\\""');
+                }
+              }
+              if (result1 !== null) {
+                result0 = [result0, result1];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2) {
+                return "";
+              }(pos0);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              pos1 = pos;
+              if (input.charCodeAt(pos) === 34) {
+                result0 = '"';
+                pos++;
+              } else {
+                result0 = null;
+                if (reportFailures === 0) {
+                  matchFailed('"\\""');
+                }
+              }
+              if (result0 !== null) {
+                result1 = parse_chars();
+                if (result1 !== null) {
+                  if (input.charCodeAt(pos) === 34) {
+                    result22 = '"';
+                    pos++;
+                  } else {
+                    result22 = null;
+                    if (reportFailures === 0) {
+                      matchFailed('"\\""');
+                    }
+                  }
+                  if (result22 !== null) {
+                    result0 = [result0, result1, result22];
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+              if (result0 !== null) {
+                result0 = function(offset2, chars) {
+                  return chars;
+                }(pos0, result0[1]);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
+            }
+            return result0;
+          }
+          function parse_chars() {
+            var result0, result1;
+            var pos0;
+            pos0 = pos;
+            result1 = parse_char();
+            if (result1 !== null) {
+              result0 = [];
+              while (result1 !== null) {
+                result0.push(result1);
+                result1 = parse_char();
+              }
+            } else {
+              result0 = null;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, chars) {
+                return chars.join("");
+              }(pos0, result0);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_char() {
+            var result0, result1, result22, result3, result4;
+            var pos0, pos1;
+            if (/^[^"\\\0-\x1F]/.test(input.charAt(pos))) {
+              result0 = input.charAt(pos);
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('[^"\\\\\\0-\\x1F\x7F]');
+              }
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              if (input.substr(pos, 2) === '\\"') {
+                result0 = '\\"';
+                pos += 2;
+              } else {
+                result0 = null;
+                if (reportFailures === 0) {
+                  matchFailed('"\\\\\\""');
+                }
+              }
+              if (result0 !== null) {
+                result0 = function(offset2) {
+                  return '"';
+                }(pos0);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
+              if (result0 === null) {
+                pos0 = pos;
+                if (input.substr(pos, 2) === "\\\\") {
+                  result0 = "\\\\";
+                  pos += 2;
+                } else {
+                  result0 = null;
+                  if (reportFailures === 0) {
+                    matchFailed('"\\\\\\\\"');
+                  }
+                }
+                if (result0 !== null) {
+                  result0 = function(offset2) {
+                    return "\\";
+                  }(pos0);
+                }
+                if (result0 === null) {
+                  pos = pos0;
+                }
+                if (result0 === null) {
+                  pos0 = pos;
+                  if (input.substr(pos, 2) === "\\/") {
+                    result0 = "\\/";
+                    pos += 2;
+                  } else {
+                    result0 = null;
+                    if (reportFailures === 0) {
+                      matchFailed('"\\\\/"');
+                    }
+                  }
+                  if (result0 !== null) {
+                    result0 = function(offset2) {
+                      return "/";
+                    }(pos0);
+                  }
+                  if (result0 === null) {
+                    pos = pos0;
+                  }
+                  if (result0 === null) {
+                    pos0 = pos;
+                    if (input.substr(pos, 2) === "\\b") {
+                      result0 = "\\b";
+                      pos += 2;
+                    } else {
+                      result0 = null;
+                      if (reportFailures === 0) {
+                        matchFailed('"\\\\b"');
+                      }
+                    }
+                    if (result0 !== null) {
+                      result0 = function(offset2) {
+                        return "\b";
+                      }(pos0);
+                    }
+                    if (result0 === null) {
+                      pos = pos0;
+                    }
+                    if (result0 === null) {
+                      pos0 = pos;
+                      if (input.substr(pos, 2) === "\\f") {
+                        result0 = "\\f";
+                        pos += 2;
+                      } else {
+                        result0 = null;
+                        if (reportFailures === 0) {
+                          matchFailed('"\\\\f"');
+                        }
+                      }
+                      if (result0 !== null) {
+                        result0 = function(offset2) {
+                          return "\f";
+                        }(pos0);
+                      }
+                      if (result0 === null) {
+                        pos = pos0;
+                      }
+                      if (result0 === null) {
+                        pos0 = pos;
+                        if (input.substr(pos, 2) === "\\n") {
+                          result0 = "\\n";
+                          pos += 2;
+                        } else {
+                          result0 = null;
+                          if (reportFailures === 0) {
+                            matchFailed('"\\\\n"');
+                          }
+                        }
+                        if (result0 !== null) {
+                          result0 = function(offset2) {
+                            return "\n";
+                          }(pos0);
+                        }
+                        if (result0 === null) {
+                          pos = pos0;
+                        }
+                        if (result0 === null) {
+                          pos0 = pos;
+                          if (input.substr(pos, 2) === "\\r") {
+                            result0 = "\\r";
+                            pos += 2;
+                          } else {
+                            result0 = null;
+                            if (reportFailures === 0) {
+                              matchFailed('"\\\\r"');
+                            }
+                          }
+                          if (result0 !== null) {
+                            result0 = function(offset2) {
+                              return "\r";
+                            }(pos0);
+                          }
+                          if (result0 === null) {
+                            pos = pos0;
+                          }
+                          if (result0 === null) {
+                            pos0 = pos;
+                            if (input.substr(pos, 2) === "\\t") {
+                              result0 = "\\t";
+                              pos += 2;
+                            } else {
+                              result0 = null;
+                              if (reportFailures === 0) {
+                                matchFailed('"\\\\t"');
+                              }
+                            }
+                            if (result0 !== null) {
+                              result0 = function(offset2) {
+                                return "	";
+                              }(pos0);
+                            }
+                            if (result0 === null) {
+                              pos = pos0;
+                            }
+                            if (result0 === null) {
+                              pos0 = pos;
+                              pos1 = pos;
+                              if (input.substr(pos, 2) === "\\u") {
+                                result0 = "\\u";
+                                pos += 2;
+                              } else {
+                                result0 = null;
+                                if (reportFailures === 0) {
+                                  matchFailed('"\\\\u"');
+                                }
+                              }
+                              if (result0 !== null) {
+                                result1 = parse_hexDigit();
+                                if (result1 !== null) {
+                                  result22 = parse_hexDigit();
+                                  if (result22 !== null) {
+                                    result3 = parse_hexDigit();
+                                    if (result3 !== null) {
+                                      result4 = parse_hexDigit();
+                                      if (result4 !== null) {
+                                        result0 = [result0, result1, result22, result3, result4];
+                                      } else {
+                                        result0 = null;
+                                        pos = pos1;
+                                      }
+                                    } else {
+                                      result0 = null;
+                                      pos = pos1;
+                                    }
+                                  } else {
+                                    result0 = null;
+                                    pos = pos1;
+                                  }
+                                } else {
+                                  result0 = null;
+                                  pos = pos1;
+                                }
+                              } else {
+                                result0 = null;
+                                pos = pos1;
+                              }
+                              if (result0 !== null) {
+                                result0 = function(offset2, h1, h2, h3, h4) {
+                                  return String.fromCharCode(parseInt("0x" + h1 + h2 + h3 + h4));
+                                }(pos0, result0[1], result0[2], result0[3], result0[4]);
+                              }
+                              if (result0 === null) {
+                                pos = pos0;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            return result0;
+          }
+          function parse_hexDigit() {
+            var result0;
+            if (/^[0-9a-fA-F]/.test(input.charAt(pos))) {
+              result0 = input.charAt(pos);
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed("[0-9a-fA-F]");
+              }
+            }
+            return result0;
+          }
+          function parse_identifier() {
+            var result0, result1, result22;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (/^[_a-zA-Z]/.test(input.charAt(pos))) {
+              result0 = input.charAt(pos);
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed("[_a-zA-Z]");
+              }
+            }
+            if (result0 !== null) {
+              result1 = [];
+              if (/^[_a-zA-Z0-9]/.test(input.charAt(pos))) {
+                result22 = input.charAt(pos);
+                pos++;
+              } else {
+                result22 = null;
+                if (reportFailures === 0) {
+                  matchFailed("[_a-zA-Z0-9]");
+                }
+              }
+              while (result22 !== null) {
+                result1.push(result22);
+                if (/^[_a-zA-Z0-9]/.test(input.charAt(pos))) {
+                  result22 = input.charAt(pos);
+                  pos++;
+                } else {
+                  result22 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("[_a-zA-Z0-9]");
+                  }
+                }
+              }
+              if (result1 !== null) {
+                result0 = [result0, result1];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, head, tail) {
+                return head + tail.join("");
+              }(pos0, result0[0], result0[1]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_number() {
+            var result0, result1, result22;
+            var pos0, pos1;
+            pos0 = pos;
+            if (input.charCodeAt(pos) === 48) {
+              result0 = "0";
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"0"');
+              }
+            }
+            if (result0 !== null) {
+              result0 = function(offset2) {
+                return 0;
+              }(pos0);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              pos1 = pos;
+              if (/^[1-9]/.test(input.charAt(pos))) {
+                result0 = input.charAt(pos);
+                pos++;
+              } else {
+                result0 = null;
+                if (reportFailures === 0) {
+                  matchFailed("[1-9]");
+                }
+              }
+              if (result0 !== null) {
+                result1 = [];
+                if (/^[0-9]/.test(input.charAt(pos))) {
+                  result22 = input.charAt(pos);
+                  pos++;
+                } else {
+                  result22 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("[0-9]");
+                  }
+                }
+                while (result22 !== null) {
+                  result1.push(result22);
+                  if (/^[0-9]/.test(input.charAt(pos))) {
+                    result22 = input.charAt(pos);
+                    pos++;
+                  } else {
+                    result22 = null;
+                    if (reportFailures === 0) {
+                      matchFailed("[0-9]");
+                    }
+                  }
+                }
+                if (result1 !== null) {
+                  result0 = [result0, result1];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+              if (result0 !== null) {
+                result0 = function(offset2, head, tail) {
+                  return parseInt(head + tail.join(""));
+                }(pos0, result0[0], result0[1]);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
+            }
+            return result0;
+          }
+          function parse_size() {
+            var result0, result1;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (input.charCodeAt(pos) === 58) {
+              result0 = ":";
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('":"');
+              }
+            }
+            if (result0 !== null) {
+              result1 = parse_number();
+              if (result1 !== null) {
+                result0 = [result0, result1];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, num) {
+                return num;
+              }(pos0, result0[1]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              pos1 = pos;
+              if (input.charCodeAt(pos) === 58) {
+                result0 = ":";
+                pos++;
+              } else {
+                result0 = null;
+                if (reportFailures === 0) {
+                  matchFailed('":"');
+                }
+              }
+              if (result0 !== null) {
+                result1 = parse_identifier();
+                if (result1 !== null) {
+                  result0 = [result0, result1];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+              if (result0 !== null) {
+                result0 = function(offset2, id) {
+                  return id;
+                }(pos0, result0[1]);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
+            }
+            return result0;
+          }
+          function parse_specifierList() {
+            var result0, result1, result22, result3;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (input.charCodeAt(pos) === 47) {
+              result0 = "/";
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"/"');
+              }
+            }
+            if (result0 !== null) {
+              result1 = parse_specifier();
+              if (result1 !== null) {
+                result22 = [];
+                result3 = parse_specifierTail();
+                while (result3 !== null) {
+                  result22.push(result3);
+                  result3 = parse_specifierTail();
+                }
+                if (result22 !== null) {
+                  result0 = [result0, result1, result22];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, head, tail) {
+                tail.unshift(head);
+                return tail;
+              }(pos0, result0[1], result0[2]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_specifierTail() {
+            var result0, result1;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (input.charCodeAt(pos) === 45) {
+              result0 = "-";
+              pos++;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"-"');
+              }
+            }
+            if (result0 !== null) {
+              result1 = parse_specifier();
+              if (result1 !== null) {
+                result0 = [result0, result1];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, spec) {
+                return spec;
+              }(pos0, result0[1]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_specifier() {
+            var result0;
+            if (input.substr(pos, 6) === "little") {
+              result0 = "little";
+              pos += 6;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"little"');
+              }
+            }
+            if (result0 === null) {
+              if (input.substr(pos, 3) === "big") {
+                result0 = "big";
+                pos += 3;
+              } else {
+                result0 = null;
+                if (reportFailures === 0) {
+                  matchFailed('"big"');
+                }
+              }
+              if (result0 === null) {
+                if (input.substr(pos, 6) === "signed") {
+                  result0 = "signed";
+                  pos += 6;
+                } else {
+                  result0 = null;
+                  if (reportFailures === 0) {
+                    matchFailed('"signed"');
+                  }
+                }
+                if (result0 === null) {
+                  if (input.substr(pos, 8) === "unsigned") {
+                    result0 = "unsigned";
+                    pos += 8;
+                  } else {
+                    result0 = null;
+                    if (reportFailures === 0) {
+                      matchFailed('"unsigned"');
+                    }
+                  }
+                  if (result0 === null) {
+                    if (input.substr(pos, 7) === "integer") {
+                      result0 = "integer";
+                      pos += 7;
+                    } else {
+                      result0 = null;
+                      if (reportFailures === 0) {
+                        matchFailed('"integer"');
+                      }
+                    }
+                    if (result0 === null) {
+                      if (input.substr(pos, 6) === "binary") {
+                        result0 = "binary";
+                        pos += 6;
+                      } else {
+                        result0 = null;
+                        if (reportFailures === 0) {
+                          matchFailed('"binary"');
+                        }
+                      }
+                      if (result0 === null) {
+                        if (input.substr(pos, 5) === "float") {
+                          result0 = "float";
+                          pos += 5;
+                        } else {
+                          result0 = null;
+                          if (reportFailures === 0) {
+                            matchFailed('"float"');
+                          }
+                        }
+                        if (result0 === null) {
+                          result0 = parse_unit();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            return result0;
+          }
+          function parse_unit() {
+            var result0, result1;
+            var pos0, pos1;
+            pos0 = pos;
+            pos1 = pos;
+            if (input.substr(pos, 5) === "unit:") {
+              result0 = "unit:";
+              pos += 5;
+            } else {
+              result0 = null;
+              if (reportFailures === 0) {
+                matchFailed('"unit:"');
+              }
+            }
+            if (result0 !== null) {
+              result1 = parse_number();
+              if (result1 !== null) {
+                result0 = [result0, result1];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+            if (result0 !== null) {
+              result0 = function(offset2, num) {
+                return "unit:" + num;
+              }(pos0, result0[1]);
+            }
+            if (result0 === null) {
+              pos = pos0;
+            }
+            return result0;
+          }
+          function parse_ws() {
+            var result0, result1;
+            result0 = [];
+            if (/^[ \t\n]/.test(input.charAt(pos))) {
+              result1 = input.charAt(pos);
+              pos++;
+            } else {
+              result1 = null;
+              if (reportFailures === 0) {
+                matchFailed("[ \\t\\n]");
+              }
+            }
+            while (result1 !== null) {
+              result0.push(result1);
+              if (/^[ \t\n]/.test(input.charAt(pos))) {
+                result1 = input.charAt(pos);
+                pos++;
+              } else {
+                result1 = null;
+                if (reportFailures === 0) {
+                  matchFailed("[ \\t\\n]");
+                }
+              }
+            }
+            return result0;
+          }
+          function cleanupExpected(expected) {
+            expected.sort();
+            var lastExpected = null;
+            var cleanExpected = [];
+            for (var i = 0; i < expected.length; i++) {
+              if (expected[i] !== lastExpected) {
+                cleanExpected.push(expected[i]);
+                lastExpected = expected[i];
+              }
+            }
+            return cleanExpected;
+          }
+          function computeErrorPosition() {
+            var line = 1;
+            var column = 1;
+            var seenCR = false;
+            for (var i = 0; i < Math.max(pos, rightmostFailuresPos); i++) {
+              var ch = input.charAt(i);
+              if (ch === "\n") {
+                if (!seenCR) {
+                  line++;
+                }
+                column = 1;
+                seenCR = false;
+              } else if (ch === "\r" || ch === "\u2028" || ch === "\u2029") {
+                line++;
+                column = 1;
+                seenCR = true;
+              } else {
+                column++;
+                seenCR = false;
+              }
+            }
+            return { line, column };
+          }
+          var result2 = parseFunctions[startRule]();
+          if (result2 === null || pos !== input.length) {
+            var offset = Math.max(pos, rightmostFailuresPos);
+            var found = offset < input.length ? input.charAt(offset) : null;
+            var errorPosition = computeErrorPosition();
+            throw new this.SyntaxError(
+              cleanupExpected(rightmostFailuresExpected),
+              found,
+              offset,
+              errorPosition.line,
+              errorPosition.column
+            );
+          }
+          return result2;
+        },
+        toSource: function() {
+          return this._source;
+        }
+      };
+      result.SyntaxError = function(expected, found, offset, line, column) {
+        function buildMessage(expected2, found2) {
+          var expectedHumanized, foundHumanized;
+          switch (expected2.length) {
+            case 0:
+              expectedHumanized = "end of input";
+              break;
+            case 1:
+              expectedHumanized = expected2[0];
+              break;
+            default:
+              expectedHumanized = expected2.slice(0, expected2.length - 1).join(", ") + " or " + expected2[expected2.length - 1];
+          }
+          foundHumanized = found2 ? quote(found2) : "end of input";
+          return "Expected " + expectedHumanized + " but " + foundHumanized + " found.";
+        }
+        this.name = "SyntaxError";
+        this.expected = expected;
+        this.found = found;
+        this.message = buildMessage(expected, found);
+        this.offset = offset;
+        this.line = line;
+        this.column = column;
+      };
+      result.SyntaxError.prototype = Error.prototype;
+      return result;
+    }();
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/parse.js
+var require_parse2 = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/parse.js"(exports, module2) {
+    "use strict";
+    var ast = require_pattern();
+    var parser = require_parser();
+    function parse_pattern(string) {
+      var segments = parser.parse(string);
+      for (var i = 0, len = segments.length; i < len; i++) {
+        var s = segments[i];
+        if (s.string != void 0) {
+          segments[i] = ast.string(s.string);
+        } else if (s.value != void 0) {
+          segments[i] = ast.value(s.value, s.size, s.specifiers);
+        } else if (s.name != void 0) {
+          segments[i] = ast.variable(s.name, s.size, s.specifiers);
+        } else {
+          throw "Unknown segment " + s;
+        }
+      }
+      return segments;
+    }
+    module2.exports.parse = function() {
+      var str = [].join.call(arguments, ",");
+      return parse_pattern(str);
+    };
+  }
+});
+
+// node_modules/.pnpm/ms@2.0.0/node_modules/ms/index.js
+var require_ms = __commonJS({
+  "node_modules/.pnpm/ms@2.0.0/node_modules/ms/index.js"(exports, module2) {
+    var s = 1e3;
+    var m = s * 60;
+    var h = m * 60;
+    var d = h * 24;
+    var y = d * 365.25;
+    module2.exports = function(val, options) {
+      options = options || {};
+      var type = typeof val;
+      if (type === "string" && val.length > 0) {
+        return parse(val);
+      } else if (type === "number" && isNaN(val) === false) {
+        return options.long ? fmtLong(val) : fmtShort(val);
+      }
+      throw new Error(
+        "val is not a non-empty string or a valid number. val=" + JSON.stringify(val)
+      );
+    };
+    function parse(str) {
+      str = String(str);
+      if (str.length > 100) {
+        return;
+      }
+      var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+        str
+      );
+      if (!match) {
+        return;
+      }
+      var n = parseFloat(match[1]);
+      var type = (match[2] || "ms").toLowerCase();
+      switch (type) {
+        case "years":
+        case "year":
+        case "yrs":
+        case "yr":
+        case "y":
+          return n * y;
+        case "days":
+        case "day":
+        case "d":
+          return n * d;
+        case "hours":
+        case "hour":
+        case "hrs":
+        case "hr":
+        case "h":
+          return n * h;
+        case "minutes":
+        case "minute":
+        case "mins":
+        case "min":
+        case "m":
+          return n * m;
+        case "seconds":
+        case "second":
+        case "secs":
+        case "sec":
+        case "s":
+          return n * s;
+        case "milliseconds":
+        case "millisecond":
+        case "msecs":
+        case "msec":
+        case "ms":
+          return n;
+        default:
+          return void 0;
+      }
+    }
+    function fmtShort(ms) {
+      if (ms >= d) {
+        return Math.round(ms / d) + "d";
+      }
+      if (ms >= h) {
+        return Math.round(ms / h) + "h";
+      }
+      if (ms >= m) {
+        return Math.round(ms / m) + "m";
+      }
+      if (ms >= s) {
+        return Math.round(ms / s) + "s";
+      }
+      return ms + "ms";
+    }
+    function fmtLong(ms) {
+      return plural(ms, d, "day") || plural(ms, h, "hour") || plural(ms, m, "minute") || plural(ms, s, "second") || ms + " ms";
+    }
+    function plural(ms, n, name) {
+      if (ms < n) {
+        return;
+      }
+      if (ms < n * 1.5) {
+        return Math.floor(ms / n) + " " + name;
+      }
+      return Math.ceil(ms / n) + " " + name + "s";
+    }
+  }
+});
+
+// node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/debug.js
+var require_debug = __commonJS({
+  "node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/debug.js"(exports, module2) {
+    exports = module2.exports = createDebug.debug = createDebug["default"] = createDebug;
+    exports.coerce = coerce;
+    exports.disable = disable;
+    exports.enable = enable;
+    exports.enabled = enabled;
+    exports.humanize = require_ms();
+    exports.names = [];
+    exports.skips = [];
+    exports.formatters = {};
+    var prevTime;
+    function selectColor(namespace) {
+      var hash = 0, i;
+      for (i in namespace) {
+        hash = (hash << 5) - hash + namespace.charCodeAt(i);
+        hash |= 0;
+      }
+      return exports.colors[Math.abs(hash) % exports.colors.length];
+    }
+    function createDebug(namespace) {
+      function debug() {
+        if (!debug.enabled)
+          return;
+        var self2 = debug;
+        var curr = +new Date();
+        var ms = curr - (prevTime || curr);
+        self2.diff = ms;
+        self2.prev = prevTime;
+        self2.curr = curr;
+        prevTime = curr;
+        var args = new Array(arguments.length);
+        for (var i = 0; i < args.length; i++) {
+          args[i] = arguments[i];
+        }
+        args[0] = exports.coerce(args[0]);
+        if ("string" !== typeof args[0]) {
+          args.unshift("%O");
+        }
+        var index = 0;
+        args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+          if (match === "%%")
+            return match;
+          index++;
+          var formatter = exports.formatters[format];
+          if ("function" === typeof formatter) {
+            var val = args[index];
+            match = formatter.call(self2, val);
+            args.splice(index, 1);
+            index--;
+          }
+          return match;
+        });
+        exports.formatArgs.call(self2, args);
+        var logFn = debug.log || exports.log || console.log.bind(console);
+        logFn.apply(self2, args);
+      }
+      debug.namespace = namespace;
+      debug.enabled = exports.enabled(namespace);
+      debug.useColors = exports.useColors();
+      debug.color = selectColor(namespace);
+      if ("function" === typeof exports.init) {
+        exports.init(debug);
+      }
+      return debug;
+    }
+    function enable(namespaces) {
+      exports.save(namespaces);
+      exports.names = [];
+      exports.skips = [];
+      var split = (typeof namespaces === "string" ? namespaces : "").split(/[\s,]+/);
+      var len = split.length;
+      for (var i = 0; i < len; i++) {
+        if (!split[i])
+          continue;
+        namespaces = split[i].replace(/\*/g, ".*?");
+        if (namespaces[0] === "-") {
+          exports.skips.push(new RegExp("^" + namespaces.substr(1) + "$"));
+        } else {
+          exports.names.push(new RegExp("^" + namespaces + "$"));
+        }
+      }
+    }
+    function disable() {
+      exports.enable("");
+    }
+    function enabled(name) {
+      var i, len;
+      for (i = 0, len = exports.skips.length; i < len; i++) {
+        if (exports.skips[i].test(name)) {
+          return false;
+        }
+      }
+      for (i = 0, len = exports.names.length; i < len; i++) {
+        if (exports.names[i].test(name)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function coerce(val) {
+      if (val instanceof Error)
+        return val.stack || val.message;
+      return val;
+    }
+  }
+});
+
+// node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/browser.js
+var require_browser = __commonJS({
+  "node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/browser.js"(exports, module2) {
+    exports = module2.exports = require_debug();
+    exports.log = log;
+    exports.formatArgs = formatArgs;
+    exports.save = save;
+    exports.load = load;
+    exports.useColors = useColors;
+    exports.storage = "undefined" != typeof chrome && "undefined" != typeof chrome.storage ? chrome.storage.local : localstorage();
+    exports.colors = [
+      "lightseagreen",
+      "forestgreen",
+      "goldenrod",
+      "dodgerblue",
+      "darkorchid",
+      "crimson"
+    ];
+    function useColors() {
+      if (typeof window !== "undefined" && window.process && window.process.type === "renderer") {
+        return true;
+      }
+      return typeof document !== "undefined" && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance || typeof window !== "undefined" && window.console && (window.console.firebug || window.console.exception && window.console.table) || typeof navigator !== "undefined" && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31 || typeof navigator !== "undefined" && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/);
+    }
+    exports.formatters.j = function(v) {
+      try {
+        return JSON.stringify(v);
+      } catch (err) {
+        return "[UnexpectedJSONParseError]: " + err.message;
+      }
+    };
+    function formatArgs(args) {
+      var useColors2 = this.useColors;
+      args[0] = (useColors2 ? "%c" : "") + this.namespace + (useColors2 ? " %c" : " ") + args[0] + (useColors2 ? "%c " : " ") + "+" + exports.humanize(this.diff);
+      if (!useColors2)
+        return;
+      var c = "color: " + this.color;
+      args.splice(1, 0, c, "color: inherit");
+      var index = 0;
+      var lastC = 0;
+      args[0].replace(/%[a-zA-Z%]/g, function(match) {
+        if ("%%" === match)
+          return;
+        index++;
+        if ("%c" === match) {
+          lastC = index;
+        }
+      });
+      args.splice(lastC, 0, c);
+    }
+    function log() {
+      return "object" === typeof console && console.log && Function.prototype.apply.call(console.log, console, arguments);
+    }
+    function save(namespaces) {
+      try {
+        if (null == namespaces) {
+          exports.storage.removeItem("debug");
+        } else {
+          exports.storage.debug = namespaces;
+        }
+      } catch (e) {
+      }
+    }
+    function load() {
+      var r;
+      try {
+        r = exports.storage.debug;
+      } catch (e) {
+      }
+      if (!r && typeof process !== "undefined" && "env" in process) {
+        r = process.env.DEBUG;
+      }
+      return r;
+    }
+    exports.enable(load());
+    function localstorage() {
+      try {
+        return window.localStorage;
+      } catch (e) {
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/node.js
+var require_node = __commonJS({
+  "node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/node.js"(exports, module2) {
+    var tty = require("tty");
+    var util = require("util");
+    exports = module2.exports = require_debug();
+    exports.init = init;
+    exports.log = log;
+    exports.formatArgs = formatArgs;
+    exports.save = save;
+    exports.load = load;
+    exports.useColors = useColors;
+    exports.colors = [6, 2, 3, 4, 5, 1];
+    exports.inspectOpts = Object.keys(process.env).filter(function(key) {
+      return /^debug_/i.test(key);
+    }).reduce(function(obj, key) {
+      var prop = key.substring(6).toLowerCase().replace(/_([a-z])/g, function(_, k) {
+        return k.toUpperCase();
+      });
+      var val = process.env[key];
+      if (/^(yes|on|true|enabled)$/i.test(val))
+        val = true;
+      else if (/^(no|off|false|disabled)$/i.test(val))
+        val = false;
+      else if (val === "null")
+        val = null;
+      else
+        val = Number(val);
+      obj[prop] = val;
+      return obj;
+    }, {});
+    var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
+    if (1 !== fd && 2 !== fd) {
+      util.deprecate(function() {
+      }, "except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)")();
+    }
+    var stream = 1 === fd ? process.stdout : 2 === fd ? process.stderr : createWritableStdioStream(fd);
+    function useColors() {
+      return "colors" in exports.inspectOpts ? Boolean(exports.inspectOpts.colors) : tty.isatty(fd);
+    }
+    exports.formatters.o = function(v) {
+      this.inspectOpts.colors = this.useColors;
+      return util.inspect(v, this.inspectOpts).split("\n").map(function(str) {
+        return str.trim();
+      }).join(" ");
+    };
+    exports.formatters.O = function(v) {
+      this.inspectOpts.colors = this.useColors;
+      return util.inspect(v, this.inspectOpts);
+    };
+    function formatArgs(args) {
+      var name = this.namespace;
+      var useColors2 = this.useColors;
+      if (useColors2) {
+        var c = this.color;
+        var prefix = "  \x1B[3" + c + ";1m" + name + " \x1B[0m";
+        args[0] = prefix + args[0].split("\n").join("\n" + prefix);
+        args.push("\x1B[3" + c + "m+" + exports.humanize(this.diff) + "\x1B[0m");
+      } else {
+        args[0] = new Date().toUTCString() + " " + name + " " + args[0];
+      }
+    }
+    function log() {
+      return stream.write(util.format.apply(util, arguments) + "\n");
+    }
+    function save(namespaces) {
+      if (null == namespaces) {
+        delete process.env.DEBUG;
+      } else {
+        process.env.DEBUG = namespaces;
+      }
+    }
+    function load() {
+      return process.env.DEBUG;
+    }
+    function createWritableStdioStream(fd2) {
+      var stream2;
+      var tty_wrap = process.binding("tty_wrap");
+      switch (tty_wrap.guessHandleType(fd2)) {
+        case "TTY":
+          stream2 = new tty.WriteStream(fd2);
+          stream2._type = "tty";
+          if (stream2._handle && stream2._handle.unref) {
+            stream2._handle.unref();
+          }
+          break;
+        case "FILE":
+          var fs = require("fs");
+          stream2 = new fs.SyncWriteStream(fd2, { autoClose: false });
+          stream2._type = "fs";
+          break;
+        case "PIPE":
+        case "TCP":
+          var net = require("net");
+          stream2 = new net.Socket({
+            fd: fd2,
+            readable: false,
+            writable: true
+          });
+          stream2.readable = false;
+          stream2.read = null;
+          stream2._type = "pipe";
+          if (stream2._handle && stream2._handle.unref) {
+            stream2._handle.unref();
+          }
+          break;
+        default:
+          throw new Error("Implement me. Unknown stream file type!");
+      }
+      stream2.fd = fd2;
+      stream2._isStdio = true;
+      return stream2;
+    }
+    function init(debug) {
+      debug.inspectOpts = {};
+      var keys = Object.keys(exports.inspectOpts);
+      for (var i = 0; i < keys.length; i++) {
+        debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
+      }
+    }
+    exports.enable(load());
+  }
+});
+
+// node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/index.js
+var require_src = __commonJS({
+  "node_modules/.pnpm/debug@2.6.9/node_modules/debug/src/index.js"(exports, module2) {
+    if (typeof process !== "undefined" && process.type === "renderer") {
+      module2.exports = require_browser();
+    } else {
+      module2.exports = require_node();
+    }
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/interp.js
+var require_interp = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/interp.js"(exports, module2) {
+    "use strict";
+    var ints = require_buffer_more_ints();
+    var debug = require_src()("bitsyntax-Interpreter");
+    function parse_int(bin, off, sizeInBytes, bigendian, signed) {
+      switch (sizeInBytes) {
+        case 1:
+          return signed ? bin.readInt8(off) : bin.readUInt8(off);
+        case 2:
+          return bigendian ? signed ? bin.readInt16BE(off) : bin.readUInt16BE(off) : signed ? bin.readInt16LE(off) : bin.readUInt16LE(off);
+        case 4:
+          return bigendian ? signed ? bin.readInt32BE(off) : bin.readUInt32BE(off) : signed ? bin.readInt32LE(off) : bin.readUInt32LE(off);
+        case 8:
+          return bigendian ? (signed ? ints.readInt64BE : ints.readUInt64BE)(bin, off) : (signed ? ints.readInt64LE : ints.readUInt64LE)(bin, off);
+        default:
+          throw "Integers must be 8-, 16-, 32- or 64-bit";
+      }
+    }
+    function parse_float(bin, off, sizeInBytes, bigendian) {
+      switch (sizeInBytes) {
+        case 4:
+          return bigendian ? bin.readFloatBE(off) : bin.readFloatLE(off);
+        case 8:
+          return bigendian ? bin.readDoubleBE(off) : bin.readDoubleLE(off);
+        default:
+          throw "Floats must be 32- or 64-bit";
+      }
+    }
+    function size_of(segment, bound) {
+      var size = segment.size;
+      if (typeof size === "string") {
+        return bound[size];
+      } else {
+        return size;
+      }
+    }
+    function new_scope(env) {
+      function scope() {
+      }
+      ;
+      scope.prototype = env;
+      return new scope();
+    }
+    function bindings(scope) {
+      var s = {};
+      for (var k in scope) {
+        if (scope.hasOwnProperty(k)) {
+          s[k] = scope[k];
+        }
+      }
+      return s;
+    }
+    function match(pattern, binary, boundvars) {
+      var offset = 0, vars = new_scope(boundvars);
+      var binsize = binary.length * 8;
+      function skip_bits(segment2) {
+        debug("skip bits");
+        debug(segment2);
+        var size = size_of(segment2, vars);
+        if (size === true) {
+          if (offset % 8 === 0) {
+            offset = binsize;
+            return true;
+          } else {
+            return false;
+          }
+        }
+        var bits = segment2.unit * size;
+        if (offset + bits > binsize) {
+          return false;
+        } else {
+          offset += bits;
+        }
+      }
+      function get_integer(segment2) {
+        debug("get_integer");
+        debug(segment2);
+        var unit = segment2.unit, size = size_of(segment2, vars);
+        var bitsize = size * unit;
+        var byteoffset = offset / 8;
+        offset += bitsize;
+        if (bitsize % 8 > 0 || offset > binsize) {
+          return false;
+        } else {
+          return parse_int(
+            binary,
+            byteoffset,
+            bitsize / 8,
+            segment2.bigendian,
+            segment2.signed
+          );
+        }
+      }
+      function get_float(segment2) {
+        debug("get_float");
+        debug(segment2);
+        var unit = segment2.unit;
+        var size = size_of(segment2, vars);
+        var bitsize = size * unit;
+        var byteoffset = offset / 8;
+        offset += bitsize;
+        if (offset > binsize) {
+          return false;
+        } else {
+          return parse_float(
+            binary,
+            byteoffset,
+            bitsize / 8,
+            segment2.bigendian
+          );
+        }
+      }
+      function get_binary(segment2) {
+        debug("get_binary");
+        debug(segment2);
+        var unit = segment2.unit, size = size_of(segment2, vars);
+        var byteoffset = offset / 8;
+        if (size === true) {
+          offset = binsize;
+          return binary.slice(byteoffset);
+        } else {
+          var bitsize = size * unit;
+          if (bitsize % 8 > 0 || offset + bitsize > binsize) {
+            return false;
+          } else {
+            offset += bitsize;
+            return binary.slice(byteoffset, byteoffset + bitsize / 8);
+          }
+        }
+      }
+      function get_string(segment2) {
+        debug("get_string");
+        debug(segment2);
+        var len = segment2.value.length;
+        var byteoffset = offset / 8;
+        offset += len * 8;
+        if (offset > binsize) {
+          return false;
+        }
+        return binary.slice(byteoffset, byteoffset + len).toString("utf8");
+      }
+      var patternlen = pattern.length;
+      for (var i = 0; i < patternlen; i++) {
+        var segment = pattern[i];
+        var result = false;
+        if (segment.name === "_") {
+          result = skip_bits(segment);
+        } else {
+          switch (segment.type) {
+            case "string":
+              result = get_string(segment);
+              break;
+            case "integer":
+              result = get_integer(segment);
+              break;
+            case "float":
+              result = get_float(segment);
+              break;
+            case "binary":
+              result = get_binary(segment);
+              break;
+          }
+          if (result === false) {
+            return false;
+          } else if (segment.name) {
+            vars[segment.name] = result;
+          } else if (segment.value != result) {
+            return false;
+          }
+        }
+      }
+      if (offset == binsize) {
+        return bindings(vars);
+      } else {
+        return false;
+      }
+    }
+    module2.exports.match = match;
+    module2.exports.parse_int = parse_int;
+    module2.exports.parse_float = parse_float;
+  }
+});
+
+// node_modules/.pnpm/safe-buffer@5.1.2/node_modules/safe-buffer/index.js
+var require_safe_buffer = __commonJS({
+  "node_modules/.pnpm/safe-buffer@5.1.2/node_modules/safe-buffer/index.js"(exports, module2) {
+    var buffer = require("buffer");
+    var Buffer2 = buffer.Buffer;
+    function copyProps(src, dst) {
+      for (var key in src) {
+        dst[key] = src[key];
+      }
+    }
+    if (Buffer2.from && Buffer2.alloc && Buffer2.allocUnsafe && Buffer2.allocUnsafeSlow) {
+      module2.exports = buffer;
+    } else {
+      copyProps(buffer, exports);
+      exports.Buffer = SafeBuffer;
+    }
+    function SafeBuffer(arg, encodingOrOffset, length) {
+      return Buffer2(arg, encodingOrOffset, length);
+    }
+    copyProps(Buffer2, SafeBuffer);
+    SafeBuffer.from = function(arg, encodingOrOffset, length) {
+      if (typeof arg === "number") {
+        throw new TypeError("Argument must not be a number");
+      }
+      return Buffer2(arg, encodingOrOffset, length);
+    };
+    SafeBuffer.alloc = function(size, fill, encoding) {
+      if (typeof size !== "number") {
+        throw new TypeError("Argument must be a number");
+      }
+      var buf = Buffer2(size);
+      if (fill !== void 0) {
+        if (typeof encoding === "string") {
+          buf.fill(fill, encoding);
+        } else {
+          buf.fill(fill);
+        }
+      } else {
+        buf.fill(0);
+      }
+      return buf;
+    };
+    SafeBuffer.allocUnsafe = function(size) {
+      if (typeof size !== "number") {
+        throw new TypeError("Argument must be a number");
+      }
+      return Buffer2(size);
+    };
+    SafeBuffer.allocUnsafeSlow = function(size) {
+      if (typeof size !== "number") {
+        throw new TypeError("Argument must be a number");
+      }
+      return buffer.SlowBuffer(size);
+    };
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/constructor.js
+var require_constructor = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/constructor.js"(exports, module2) {
+    "use strict";
+    var ints = require_buffer_more_ints();
+    var Buffer2 = require_safe_buffer().Buffer;
+    function write(buf, offset, pattern, bindings) {
+      for (var i = 0, len = pattern.length; i < len; i++) {
+        var segment = pattern[i];
+        switch (segment.type) {
+          case "string":
+            offset += buf.write(segment.value, offset, "utf8");
+            break;
+          case "binary":
+            offset += writeBinary(segment, buf, offset, bindings);
+            break;
+          case "integer":
+            offset += writeInteger(segment, buf, offset, bindings);
+            break;
+          case "float":
+            offset += writeFloat(segment, buf, offset, bindings);
+            break;
+        }
+      }
+      return offset;
+    }
+    function build(pattern, bindings) {
+      var bufsize = size_of(pattern, bindings);
+      var buf = Buffer2.alloc(bufsize);
+      write(buf, 0, pattern, bindings);
+      return buf;
+    }
+    function size_of_segment(segment, bindings) {
+      if (typeof segment.size === "string") {
+        return bindings[segment.size] * segment.unit / 8;
+      }
+      if (segment.type === "string") {
+        return Buffer2.byteLength(segment.value, "utf8");
+      }
+      if (segment.type === "binary" && segment.size === true) {
+        var val = bindings[segment.name];
+        return val.length;
+      }
+      return segment.size * segment.unit / 8;
+    }
+    function size_of(segments, bindings) {
+      var size = 0;
+      for (var i = 0, len = segments.length; i < len; i++) {
+        size += size_of_segment(segments[i], bindings);
+      }
+      return size;
+    }
+    function writeBinary(segment, buf, offset, bindings) {
+      var bin = bindings[segment.name];
+      var size = size_of_segment(segment, bindings);
+      bin.copy(buf, offset, 0, size);
+      return size;
+    }
+    function writeInteger(segment, buf, offset, bindings) {
+      var value = segment.name ? bindings[segment.name] : segment.value;
+      var size = size_of_segment(segment, bindings);
+      return write_int(buf, value, offset, size, segment.bigendian);
+    }
+    function write_int(buf, value, offset, size, bigendian) {
+      switch (size) {
+        case 1:
+          buf.writeUInt8(value, offset);
+          break;
+        case 2:
+          bigendian ? buf.writeUInt16BE(value, offset) : buf.writeUInt16LE(value, offset);
+          break;
+        case 4:
+          bigendian ? buf.writeUInt32BE(value, offset) : buf.writeUInt32LE(value, offset);
+          break;
+        case 8:
+          bigendian ? ints.writeUInt64BE(buf, value, offset) : ints.writeUInt64LE(buf, value, offset);
+          break;
+        default:
+          throw new Error("integer size * unit must be 8, 16, 32 or 64");
+      }
+      return size;
+    }
+    function writeFloat(segment, buf, offset, bindings) {
+      var value = segment.name ? bindings[segment.name] : segment.value;
+      var size = size_of_segment(segment, bindings);
+      return write_float(buf, value, offset, size, segment.bigendian);
+    }
+    function write_float(buf, value, offset, size, bigendian) {
+      if (size === 4) {
+        bigendian ? buf.writeFloatBE(value, offset) : buf.writeFloatLE(value, offset);
+      } else if (size === 8) {
+        bigendian ? buf.writeDoubleBE(value, offset) : buf.writeDoubleLE(value, offset);
+      } else {
+        throw new Error("float size * unit must be 32 or 64");
+      }
+      return size;
+    }
+    var parse = require_parse2().parse;
+    module2.exports.write = write;
+    module2.exports.build = build;
+    module2.exports.write_int = write_int;
+    module2.exports.write_float = write_float;
+    module2.exports.builder = function(pstr) {
+      pstr = arguments.length > 1 ? [].join.call(arguments, ",") : pstr;
+      var pattern = parse(pstr);
+      return function(vars) {
+        return build(pattern, vars);
+      };
+    };
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/compile.js
+var require_compile = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/lib/compile.js"(exports, module2) {
+    "use strict";
+    require_buffer_more_ints();
+    var $ = require("util").format;
+    var parse = require_parse2().parse;
+    var interp = require_interp();
+    var parse_int = interp.parse_int;
+    var parse_float = interp.parse_float;
+    var construct = require_constructor();
+    var write_int = construct.write_int;
+    var write_float = construct.write_float;
+    var Buffer2 = require_safe_buffer().Buffer;
+    var lines = [];
+    function $start() {
+      lines = [];
+    }
+    function $line() {
+      lines.push($.apply(null, arguments));
+    }
+    function $result() {
+      return lines.join("\n");
+    }
+    function bits_expr(segment) {
+      if (typeof segment.size === "string") {
+        return $("%s * %d", var_name(segment.size), segment.unit);
+      } else {
+        return (segment.size * segment.unit).toString();
+      }
+    }
+    function get_number(segment) {
+      $line("bits = %s;\n", bits_expr(segment));
+      var parser = segment.type === "integer" ? "parse_int" : "parse_float";
+      var be = segment.bigendian, sg = segment.signed;
+      $line("byteoffset = offset / 8; offset += bits");
+      $line("if (offset > binsize) { return false; }");
+      $line(
+        "else { result = %s(bin, byteoffset, bits / 8, %s, %s); }",
+        parser,
+        be,
+        sg
+      );
+    }
+    function get_binary(segment) {
+      $line("byteoffset = offset / 8;");
+      if (segment.size === true) {
+        $line("offset = binsize;");
+        $line("result = bin.slice(byteoffset);");
+      } else {
+        $line("bits = %s;", bits_expr(segment));
+        $line("offset += bits;");
+        $line("if (offset > binsize) { return false; }");
+        $line(
+          "else { result = bin.slice(byteoffset,",
+          "byteoffset + bits / 8); }"
+        );
+      }
+    }
+    function get_string(segment) {
+      $line("byteoffset = offset / 8;");
+      var strlen = segment.value.length;
+      var strlenbits = strlen * 8;
+      $line("offset += %d;", strlenbits);
+      $line("if (offset > binsize) { return false; }");
+      $line(
+        "else { result = bin.toString(byteoffset,",
+        $("byteoffset + %d); }", strlen)
+      );
+    }
+    function skip_bits(segment) {
+      if (typeof segment.size === "string") {
+        $line(
+          "var skipbits = %s * %d;",
+          var_name(segment.size),
+          segment.unit
+        );
+        $line("if (offset + skipbits > binsize) { return false; }");
+        $line("else { offset += skipbits; }");
+      } else if (segment.size === true) {
+        $line("if (offset % 8 === 0) { offset = binsize; }");
+        $line("else { return false; }");
+      } else {
+        var bits = segment.unit * segment.size;
+        $line("if (offset + %d > binsize) { return false; }", bits);
+        $line("else { offset += %d; }", bits);
+      }
+    }
+    function match_seg(segment) {
+      if (segment.name === "_") {
+        skip_bits(segment);
+      } else {
+        var assign_result;
+        switch (segment.type) {
+          case "integer":
+          case "float":
+            get_number(segment);
+            break;
+          case "binary":
+            get_binary(segment);
+            break;
+          case "string":
+            get_string(segment);
+            break;
+        }
+        $line("if (result === false) return false;");
+        if (segment.name) {
+          $line("else if (%s !== undefined) {", var_name(segment.name));
+          $line(
+            "if (%s != result) return false;",
+            var_name(segment.name)
+          );
+          $line("}");
+          $line("else %s = result;", var_name(segment.name));
+        } else {
+          var repr = JSON.stringify(segment.value);
+          $line("else if (result != %s) return false;", repr);
+        }
+      }
+    }
+    function var_name(name) {
+      return "var_" + name;
+    }
+    function variables(segments) {
+      var names = {};
+      for (var i = 0; i < segments.length; i++) {
+        var name = segments[i].name;
+        if (name && name !== "_") {
+          names[name] = true;
+        }
+        name = segments[i].size;
+        if (typeof name === "string") {
+          names[name] = true;
+        }
+      }
+      return Object.keys(names);
+    }
+    function compile_pattern(segments) {
+      $start();
+      $line("return function(binary, env) {");
+      $line("'use strict';");
+      $line("var bin = binary, env = env || {};");
+      $line("var offset = 0, binsize = bin.length * 8;");
+      $line("var bits, result, byteoffset;");
+      var varnames = variables(segments);
+      for (var v = 0; v < varnames.length; v++) {
+        var name = varnames[v];
+        $line("var %s = env['%s'];", var_name(name), name);
+      }
+      var len = segments.length;
+      for (var i = 0; i < len; i++) {
+        var segment = segments[i];
+        $line("// " + JSON.stringify(segment));
+        match_seg(segment);
+      }
+      $line("if (offset == binsize) {");
+      $line("return {");
+      for (var v = 0; v < varnames.length; v++) {
+        var name = varnames[v];
+        $line("%s: %s,", name, var_name(name));
+      }
+      $line("};");
+      $line("}");
+      $line("else return false;");
+      $line("}");
+      var fn = new Function("parse_int", "parse_float", $result());
+      return fn(parse_int, parse_float);
+    }
+    function write_seg(segment) {
+      switch (segment.type) {
+        case "string":
+          $line(
+            "offset += buf.write(%s, offset, 'utf8');",
+            JSON.stringify(segment.value)
+          );
+          break;
+        case "binary":
+          $line("val = bindings['%s'];", segment.name);
+          if (segment.size === true) {
+            $line("size = val.length;");
+          } else if (typeof segment.size === "string") {
+            $line(
+              "size = (bindings['%s'] * %d) / 8;",
+              segment.size,
+              segment.unit
+            );
+          } else {
+            $line("size = %d;", segment.size * segment.unit / 8);
+          }
+          $line("val.copy(buf, offset, 0, size);");
+          $line("offset += size;");
+          break;
+        case "integer":
+        case "float":
+          write_number(segment);
+          break;
+      }
+    }
+    function write_number(segment) {
+      if (segment.name) {
+        $line("val = bindings['%s'];", segment.name);
+      } else {
+        $line("val = %d", segment.value);
+      }
+      var writer = segment.type === "integer" ? "write_int" : "write_float";
+      if (typeof segment.size === "string") {
+        $line(
+          "size = (bindings['%s'] * %d) / 8;",
+          segment.size,
+          segment.unit
+        );
+      } else {
+        $line("size = %d;", segment.size * segment.unit / 8);
+      }
+      $line(
+        "%s(buf, val, offset, size, %s);",
+        writer,
+        segment.bigendian
+      );
+      $line("offset += size;");
+    }
+    function size_of(segments) {
+      var variable = [];
+      var fixed = 0;
+      for (var i = 0; i < segments.length; i++) {
+        var segment = segments[i];
+        if (typeof segment.size === "string" || segment.size === true) {
+          variable.push(segment);
+        } else if (segment.type === "string") {
+          fixed += Buffer2.byteLength(segment.value);
+        } else {
+          fixed += segment.size * segment.unit / 8;
+        }
+      }
+      $line("var buffersize = %d;", fixed);
+      if (variable.length > 0) {
+        for (var j = 0; j < variable.length; j++) {
+          var segment = variable[j];
+          if (segment.size === true) {
+            $line("buffersize += bindings['%s'].length;", segment.name);
+          } else {
+            $line(
+              "buffersize += (bindings['%s'] * %d) / 8;",
+              segment.size,
+              segment.unit
+            );
+          }
+        }
+      }
+    }
+    function emit_write(segments) {
+      $line("var val, size;");
+      var len = segments.length;
+      for (var i = 0; i < len; i++) {
+        var segment = segments[i];
+        $line("// %s", JSON.stringify(segment));
+        write_seg(segment);
+      }
+    }
+    function compile_ctor(segments) {
+      $start();
+      $line("return function(bindings) {");
+      $line("'use strict';");
+      size_of(segments);
+      $line("var buf = Buffer.alloc(buffersize);");
+      $line("var offset = 0;");
+      emit_write(segments);
+      $line("return buf;");
+      $line("}");
+      return new Function(
+        "write_int",
+        "write_float",
+        "Buffer",
+        $result()
+      )(write_int, write_float, Buffer2);
+    }
+    module2.exports.compile_pattern = compile_pattern;
+    module2.exports.compile = function() {
+      var str = [].join.call(arguments, ",");
+      var p = parse(str);
+      return compile_pattern(p);
+    };
+    module2.exports.compile_builder = function() {
+      var str = [].join.call(arguments, ",");
+      var p = parse(str);
+      return compile_ctor(p);
+    };
+  }
+});
+
+// node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/index.js
+var require_bitsyntax = __commonJS({
+  "node_modules/.pnpm/bitsyntax@0.1.0/node_modules/bitsyntax/index.js"(exports, module2) {
+    "use strict";
+    module2.exports.parse = require_parse2().parse;
+    module2.exports.match = require_interp().match;
+    module2.exports.build = require_constructor().build;
+    module2.exports.write = require_constructor().write;
+    module2.exports.matcher = module2.exports.compile = require_compile().compile;
+    module2.exports.builder = require_compile().compile_builder;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/frame.js
+var require_frame = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/frame.js"(exports, module2) {
+    "use strict";
+    var defs = require_defs();
+    var constants = defs.constants;
+    var decode = defs.decode;
+    var Bits = require_bitsyntax();
+    module2.exports.PROTOCOL_HEADER = "AMQP" + String.fromCharCode(0, 0, 9, 1);
+    var FRAME_METHOD = constants.FRAME_METHOD;
+    var FRAME_HEARTBEAT = constants.FRAME_HEARTBEAT;
+    var FRAME_HEADER = constants.FRAME_HEADER;
+    var FRAME_BODY = constants.FRAME_BODY;
+    var FRAME_END = constants.FRAME_END;
+    var bodyCons = Bits.builder(
+      FRAME_BODY,
+      "channel:16, size:32, payload:size/binary",
+      FRAME_END
+    );
+    module2.exports.makeBodyFrame = function(channel, payload) {
+      return bodyCons({ channel, size: payload.length, payload });
+    };
+    var frameHeaderPattern = Bits.matcher(
+      "type:8",
+      "channel:16",
+      "size:32",
+      "rest/binary"
+    );
+    function parseFrame(bin, max) {
+      var fh = frameHeaderPattern(bin);
+      if (fh) {
+        var size = fh.size, rest = fh.rest;
+        if (size > max) {
+          throw new Error("Frame size exceeds frame max");
+        } else if (rest.length > size) {
+          if (rest[size] !== FRAME_END)
+            throw new Error("Invalid frame");
+          return {
+            type: fh.type,
+            channel: fh.channel,
+            size,
+            payload: rest.slice(0, size),
+            rest: rest.slice(size + 1)
+          };
+        }
+      }
+      return false;
+    }
+    module2.exports.parseFrame = parseFrame;
+    var headerPattern = Bits.matcher(
+      "class:16",
+      "_weight:16",
+      "size:64",
+      "flagsAndfields/binary"
+    );
+    var methodPattern = Bits.matcher("id:32, args/binary");
+    var HEARTBEAT = { channel: 0 };
+    module2.exports.decodeFrame = function(frame) {
+      var payload = frame.payload;
+      switch (frame.type) {
+        case FRAME_METHOD:
+          var idAndArgs = methodPattern(payload);
+          var id = idAndArgs.id;
+          var fields = decode(id, idAndArgs.args);
+          return { id, channel: frame.channel, fields };
+        case FRAME_HEADER:
+          var parts = headerPattern(payload);
+          var id = parts["class"];
+          var fields = decode(id, parts.flagsAndfields);
+          return {
+            id,
+            channel: frame.channel,
+            size: parts.size,
+            fields
+          };
+        case FRAME_BODY:
+          return { channel: frame.channel, content: frame.payload };
+        case FRAME_HEARTBEAT:
+          return HEARTBEAT;
+        default:
+          throw new Error("Unknown frame type " + frame.type);
+      }
+    };
+    module2.exports.HEARTBEAT_BUF = Buffer.from([
+      constants.FRAME_HEARTBEAT,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      constants.FRAME_END
+    ]);
+    module2.exports.HEARTBEAT = HEARTBEAT;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/mux.js
+var require_mux = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/mux.js"(exports, module2) {
+    "use strict";
+    var assert = require("assert");
+    var schedule = typeof setImmediate === "function" ? setImmediate : process.nextTick;
+    function Mux(downstream) {
+      this.newStreams = [];
+      this.oldStreams = [];
+      this.blocked = false;
+      this.scheduledRead = false;
+      this.out = downstream;
+      var self2 = this;
+      downstream.on("drain", function() {
+        self2.blocked = false;
+        self2._readIncoming();
+      });
+    }
+    Mux.prototype._readIncoming = function() {
+      if (this.blocked)
+        return;
+      var accepting = true;
+      var out = this.out;
+      function roundrobin(streams) {
+        var s;
+        while (accepting && (s = streams.shift())) {
+          var chunk = s.read();
+          if (chunk !== null) {
+            accepting = out.write(chunk);
+            streams.push(s);
+          }
+        }
+      }
+      roundrobin(this.newStreams);
+      if (accepting) {
+        assert.equal(0, this.newStreams.length);
+        roundrobin(this.oldStreams);
+      } else {
+        assert(this.newStreams.length > 0, "Expect some new streams to remain");
+        Array.prototype.push.apply(this.oldStreams, this.newStreams);
+        this.newStreams = [];
+      }
+      this.blocked = !accepting;
+    };
+    Mux.prototype._scheduleRead = function() {
+      var self2 = this;
+      if (!self2.scheduledRead) {
+        schedule(function() {
+          self2.scheduledRead = false;
+          self2._readIncoming();
+        });
+        self2.scheduledRead = true;
+      }
+    };
+    Mux.prototype.pipeFrom = function(readable) {
+      var self2 = this;
+      function enqueue() {
+        self2.newStreams.push(readable);
+        self2._scheduleRead();
+      }
+      function cleanup() {
+        readable.removeListener("readable", enqueue);
+        readable.removeListener("error", cleanup);
+        readable.removeListener("end", cleanup);
+        readable.removeListener("unpipeFrom", cleanupIfMe);
+      }
+      function cleanupIfMe(dest) {
+        if (dest === self2)
+          cleanup();
+      }
+      readable.on("unpipeFrom", cleanupIfMe);
+      readable.on("end", cleanup);
+      readable.on("error", cleanup);
+      readable.on("readable", enqueue);
+    };
+    Mux.prototype.unpipeFrom = function(readable) {
+      readable.emit("unpipeFrom", this);
+    };
+    module2.exports.Mux = Mux;
+  }
+});
+
+// node_modules/.pnpm/core-util-is@1.0.3/node_modules/core-util-is/lib/util.js
+var require_util = __commonJS({
+  "node_modules/.pnpm/core-util-is@1.0.3/node_modules/core-util-is/lib/util.js"(exports) {
+    function isArray(arg) {
+      if (Array.isArray) {
+        return Array.isArray(arg);
+      }
+      return objectToString(arg) === "[object Array]";
+    }
+    exports.isArray = isArray;
+    function isBoolean(arg) {
+      return typeof arg === "boolean";
+    }
+    exports.isBoolean = isBoolean;
+    function isNull(arg) {
+      return arg === null;
+    }
+    exports.isNull = isNull;
+    function isNullOrUndefined(arg) {
+      return arg == null;
+    }
+    exports.isNullOrUndefined = isNullOrUndefined;
+    function isNumber(arg) {
+      return typeof arg === "number";
+    }
+    exports.isNumber = isNumber;
+    function isString(arg) {
+      return typeof arg === "string";
+    }
+    exports.isString = isString;
+    function isSymbol(arg) {
+      return typeof arg === "symbol";
+    }
+    exports.isSymbol = isSymbol;
+    function isUndefined(arg) {
+      return arg === void 0;
+    }
+    exports.isUndefined = isUndefined;
+    function isRegExp(re) {
+      return objectToString(re) === "[object RegExp]";
+    }
+    exports.isRegExp = isRegExp;
+    function isObject(arg) {
+      return typeof arg === "object" && arg !== null;
+    }
+    exports.isObject = isObject;
+    function isDate(d) {
+      return objectToString(d) === "[object Date]";
+    }
+    exports.isDate = isDate;
+    function isError(e) {
+      return objectToString(e) === "[object Error]" || e instanceof Error;
+    }
+    exports.isError = isError;
+    function isFunction(arg) {
+      return typeof arg === "function";
+    }
+    exports.isFunction = isFunction;
+    function isPrimitive(arg) {
+      return arg === null || typeof arg === "boolean" || typeof arg === "number" || typeof arg === "string" || typeof arg === "symbol" || typeof arg === "undefined";
+    }
+    exports.isPrimitive = isPrimitive;
+    exports.isBuffer = require("buffer").Buffer.isBuffer;
+    function objectToString(o) {
+      return Object.prototype.toString.call(o);
+    }
+  }
+});
+
+// node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits_browser.js
+var require_inherits_browser = __commonJS({
+  "node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits_browser.js"(exports, module2) {
+    if (typeof Object.create === "function") {
+      module2.exports = function inherits(ctor, superCtor) {
+        if (superCtor) {
+          ctor.super_ = superCtor;
+          ctor.prototype = Object.create(superCtor.prototype, {
+            constructor: {
+              value: ctor,
+              enumerable: false,
+              writable: true,
+              configurable: true
+            }
+          });
+        }
+      };
+    } else {
+      module2.exports = function inherits(ctor, superCtor) {
+        if (superCtor) {
+          ctor.super_ = superCtor;
+          var TempCtor = function() {
+          };
+          TempCtor.prototype = superCtor.prototype;
+          ctor.prototype = new TempCtor();
+          ctor.prototype.constructor = ctor;
+        }
+      };
+    }
+  }
+});
+
+// node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits.js
+var require_inherits = __commonJS({
+  "node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits.js"(exports, module2) {
+    try {
+      util = require("util");
+      if (typeof util.inherits !== "function")
+        throw "";
+      module2.exports = util.inherits;
+    } catch (e) {
+      module2.exports = require_inherits_browser();
+    }
+    var util;
+  }
+});
+
+// node_modules/.pnpm/isarray@0.0.1/node_modules/isarray/index.js
+var require_isarray = __commonJS({
+  "node_modules/.pnpm/isarray@0.0.1/node_modules/isarray/index.js"(exports, module2) {
+    module2.exports = Array.isArray || function(arr) {
+      return Object.prototype.toString.call(arr) == "[object Array]";
+    };
+  }
+});
+
+// node_modules/.pnpm/string_decoder@0.10.31/node_modules/string_decoder/index.js
+var require_string_decoder = __commonJS({
+  "node_modules/.pnpm/string_decoder@0.10.31/node_modules/string_decoder/index.js"(exports) {
+    var Buffer2 = require("buffer").Buffer;
+    var isBufferEncoding = Buffer2.isEncoding || function(encoding) {
+      switch (encoding && encoding.toLowerCase()) {
+        case "hex":
+        case "utf8":
+        case "utf-8":
+        case "ascii":
+        case "binary":
+        case "base64":
+        case "ucs2":
+        case "ucs-2":
+        case "utf16le":
+        case "utf-16le":
+        case "raw":
+          return true;
+        default:
+          return false;
+      }
+    };
+    function assertEncoding(encoding) {
+      if (encoding && !isBufferEncoding(encoding)) {
+        throw new Error("Unknown encoding: " + encoding);
+      }
+    }
+    var StringDecoder = exports.StringDecoder = function(encoding) {
+      this.encoding = (encoding || "utf8").toLowerCase().replace(/[-_]/, "");
+      assertEncoding(encoding);
+      switch (this.encoding) {
+        case "utf8":
+          this.surrogateSize = 3;
+          break;
+        case "ucs2":
+        case "utf16le":
+          this.surrogateSize = 2;
+          this.detectIncompleteChar = utf16DetectIncompleteChar;
+          break;
+        case "base64":
+          this.surrogateSize = 3;
+          this.detectIncompleteChar = base64DetectIncompleteChar;
+          break;
+        default:
+          this.write = passThroughWrite;
+          return;
+      }
+      this.charBuffer = new Buffer2(6);
+      this.charReceived = 0;
+      this.charLength = 0;
+    };
+    StringDecoder.prototype.write = function(buffer) {
+      var charStr = "";
+      while (this.charLength) {
+        var available = buffer.length >= this.charLength - this.charReceived ? this.charLength - this.charReceived : buffer.length;
+        buffer.copy(this.charBuffer, this.charReceived, 0, available);
+        this.charReceived += available;
+        if (this.charReceived < this.charLength) {
+          return "";
+        }
+        buffer = buffer.slice(available, buffer.length);
+        charStr = this.charBuffer.slice(0, this.charLength).toString(this.encoding);
+        var charCode = charStr.charCodeAt(charStr.length - 1);
+        if (charCode >= 55296 && charCode <= 56319) {
+          this.charLength += this.surrogateSize;
+          charStr = "";
+          continue;
+        }
+        this.charReceived = this.charLength = 0;
+        if (buffer.length === 0) {
+          return charStr;
+        }
+        break;
+      }
+      this.detectIncompleteChar(buffer);
+      var end = buffer.length;
+      if (this.charLength) {
+        buffer.copy(this.charBuffer, 0, buffer.length - this.charReceived, end);
+        end -= this.charReceived;
+      }
+      charStr += buffer.toString(this.encoding, 0, end);
+      var end = charStr.length - 1;
+      var charCode = charStr.charCodeAt(end);
+      if (charCode >= 55296 && charCode <= 56319) {
+        var size = this.surrogateSize;
+        this.charLength += size;
+        this.charReceived += size;
+        this.charBuffer.copy(this.charBuffer, size, 0, size);
+        buffer.copy(this.charBuffer, 0, 0, size);
+        return charStr.substring(0, end);
+      }
+      return charStr;
+    };
+    StringDecoder.prototype.detectIncompleteChar = function(buffer) {
+      var i = buffer.length >= 3 ? 3 : buffer.length;
+      for (; i > 0; i--) {
+        var c = buffer[buffer.length - i];
+        if (i == 1 && c >> 5 == 6) {
+          this.charLength = 2;
+          break;
+        }
+        if (i <= 2 && c >> 4 == 14) {
+          this.charLength = 3;
+          break;
+        }
+        if (i <= 3 && c >> 3 == 30) {
+          this.charLength = 4;
+          break;
+        }
+      }
+      this.charReceived = i;
+    };
+    StringDecoder.prototype.end = function(buffer) {
+      var res = "";
+      if (buffer && buffer.length)
+        res = this.write(buffer);
+      if (this.charReceived) {
+        var cr = this.charReceived;
+        var buf = this.charBuffer;
+        var enc = this.encoding;
+        res += buf.slice(0, cr).toString(enc);
+      }
+      return res;
+    };
+    function passThroughWrite(buffer) {
+      return buffer.toString(this.encoding);
+    }
+    function utf16DetectIncompleteChar(buffer) {
+      this.charReceived = buffer.length % 2;
+      this.charLength = this.charReceived ? 2 : 0;
+    }
+    function base64DetectIncompleteChar(buffer) {
+      this.charReceived = buffer.length % 3;
+      this.charLength = this.charReceived ? 3 : 0;
+    }
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_readable.js
+var require_stream_readable = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_readable.js"(exports, module2) {
+    module2.exports = Readable;
+    var isArray = require_isarray();
+    var Buffer2 = require("buffer").Buffer;
+    Readable.ReadableState = ReadableState;
+    var EE = require("events").EventEmitter;
+    if (!EE.listenerCount)
+      EE.listenerCount = function(emitter, type) {
+        return emitter.listeners(type).length;
+      };
+    var Stream = require("stream");
+    var util = require_util();
+    util.inherits = require_inherits();
+    var StringDecoder;
+    var debug = require("util");
+    if (debug && debug.debuglog) {
+      debug = debug.debuglog("stream");
+    } else {
+      debug = function() {
+      };
+    }
+    util.inherits(Readable, Stream);
+    function ReadableState(options, stream) {
+      var Duplex = require_stream_duplex();
+      options = options || {};
+      var hwm = options.highWaterMark;
+      var defaultHwm = options.objectMode ? 16 : 16 * 1024;
+      this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+      this.highWaterMark = ~~this.highWaterMark;
+      this.buffer = [];
+      this.length = 0;
+      this.pipes = null;
+      this.pipesCount = 0;
+      this.flowing = null;
+      this.ended = false;
+      this.endEmitted = false;
+      this.reading = false;
+      this.sync = true;
+      this.needReadable = false;
+      this.emittedReadable = false;
+      this.readableListening = false;
+      this.objectMode = !!options.objectMode;
+      if (stream instanceof Duplex)
+        this.objectMode = this.objectMode || !!options.readableObjectMode;
+      this.defaultEncoding = options.defaultEncoding || "utf8";
+      this.ranOut = false;
+      this.awaitDrain = 0;
+      this.readingMore = false;
+      this.decoder = null;
+      this.encoding = null;
+      if (options.encoding) {
+        if (!StringDecoder)
+          StringDecoder = require_string_decoder().StringDecoder;
+        this.decoder = new StringDecoder(options.encoding);
+        this.encoding = options.encoding;
+      }
+    }
+    function Readable(options) {
+      var Duplex = require_stream_duplex();
+      if (!(this instanceof Readable))
+        return new Readable(options);
+      this._readableState = new ReadableState(options, this);
+      this.readable = true;
+      Stream.call(this);
+    }
+    Readable.prototype.push = function(chunk, encoding) {
+      var state = this._readableState;
+      if (util.isString(chunk) && !state.objectMode) {
+        encoding = encoding || state.defaultEncoding;
+        if (encoding !== state.encoding) {
+          chunk = new Buffer2(chunk, encoding);
+          encoding = "";
+        }
+      }
+      return readableAddChunk(this, state, chunk, encoding, false);
+    };
+    Readable.prototype.unshift = function(chunk) {
+      var state = this._readableState;
+      return readableAddChunk(this, state, chunk, "", true);
+    };
+    function readableAddChunk(stream, state, chunk, encoding, addToFront) {
+      var er = chunkInvalid(state, chunk);
+      if (er) {
+        stream.emit("error", er);
+      } else if (util.isNullOrUndefined(chunk)) {
+        state.reading = false;
+        if (!state.ended)
+          onEofChunk(stream, state);
+      } else if (state.objectMode || chunk && chunk.length > 0) {
+        if (state.ended && !addToFront) {
+          var e = new Error("stream.push() after EOF");
+          stream.emit("error", e);
+        } else if (state.endEmitted && addToFront) {
+          var e = new Error("stream.unshift() after end event");
+          stream.emit("error", e);
+        } else {
+          if (state.decoder && !addToFront && !encoding)
+            chunk = state.decoder.write(chunk);
+          if (!addToFront)
+            state.reading = false;
+          if (state.flowing && state.length === 0 && !state.sync) {
+            stream.emit("data", chunk);
+            stream.read(0);
+          } else {
+            state.length += state.objectMode ? 1 : chunk.length;
+            if (addToFront)
+              state.buffer.unshift(chunk);
+            else
+              state.buffer.push(chunk);
+            if (state.needReadable)
+              emitReadable(stream);
+          }
+          maybeReadMore(stream, state);
+        }
+      } else if (!addToFront) {
+        state.reading = false;
+      }
+      return needMoreData(state);
+    }
+    function needMoreData(state) {
+      return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
+    }
+    Readable.prototype.setEncoding = function(enc) {
+      if (!StringDecoder)
+        StringDecoder = require_string_decoder().StringDecoder;
+      this._readableState.decoder = new StringDecoder(enc);
+      this._readableState.encoding = enc;
+      return this;
+    };
+    var MAX_HWM = 8388608;
+    function roundUpToNextPowerOf2(n) {
+      if (n >= MAX_HWM) {
+        n = MAX_HWM;
+      } else {
+        n--;
+        for (var p = 1; p < 32; p <<= 1)
+          n |= n >> p;
+        n++;
+      }
+      return n;
+    }
+    function howMuchToRead(n, state) {
+      if (state.length === 0 && state.ended)
+        return 0;
+      if (state.objectMode)
+        return n === 0 ? 0 : 1;
+      if (isNaN(n) || util.isNull(n)) {
+        if (state.flowing && state.buffer.length)
+          return state.buffer[0].length;
+        else
+          return state.length;
+      }
+      if (n <= 0)
+        return 0;
+      if (n > state.highWaterMark)
+        state.highWaterMark = roundUpToNextPowerOf2(n);
+      if (n > state.length) {
+        if (!state.ended) {
+          state.needReadable = true;
+          return 0;
+        } else
+          return state.length;
+      }
+      return n;
+    }
+    Readable.prototype.read = function(n) {
+      debug("read", n);
+      var state = this._readableState;
+      var nOrig = n;
+      if (!util.isNumber(n) || n > 0)
+        state.emittedReadable = false;
+      if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
+        debug("read: emitReadable", state.length, state.ended);
+        if (state.length === 0 && state.ended)
+          endReadable(this);
+        else
+          emitReadable(this);
+        return null;
+      }
+      n = howMuchToRead(n, state);
+      if (n === 0 && state.ended) {
+        if (state.length === 0)
+          endReadable(this);
+        return null;
+      }
+      var doRead = state.needReadable;
+      debug("need readable", doRead);
+      if (state.length === 0 || state.length - n < state.highWaterMark) {
+        doRead = true;
+        debug("length less than watermark", doRead);
+      }
+      if (state.ended || state.reading) {
+        doRead = false;
+        debug("reading or ended", doRead);
+      }
+      if (doRead) {
+        debug("do read");
+        state.reading = true;
+        state.sync = true;
+        if (state.length === 0)
+          state.needReadable = true;
+        this._read(state.highWaterMark);
+        state.sync = false;
+      }
+      if (doRead && !state.reading)
+        n = howMuchToRead(nOrig, state);
+      var ret;
+      if (n > 0)
+        ret = fromList(n, state);
+      else
+        ret = null;
+      if (util.isNull(ret)) {
+        state.needReadable = true;
+        n = 0;
+      }
+      state.length -= n;
+      if (state.length === 0 && !state.ended)
+        state.needReadable = true;
+      if (nOrig !== n && state.ended && state.length === 0)
+        endReadable(this);
+      if (!util.isNull(ret))
+        this.emit("data", ret);
+      return ret;
+    };
+    function chunkInvalid(state, chunk) {
+      var er = null;
+      if (!util.isBuffer(chunk) && !util.isString(chunk) && !util.isNullOrUndefined(chunk) && !state.objectMode) {
+        er = new TypeError("Invalid non-string/buffer chunk");
+      }
+      return er;
+    }
+    function onEofChunk(stream, state) {
+      if (state.decoder && !state.ended) {
+        var chunk = state.decoder.end();
+        if (chunk && chunk.length) {
+          state.buffer.push(chunk);
+          state.length += state.objectMode ? 1 : chunk.length;
+        }
+      }
+      state.ended = true;
+      emitReadable(stream);
+    }
+    function emitReadable(stream) {
+      var state = stream._readableState;
+      state.needReadable = false;
+      if (!state.emittedReadable) {
+        debug("emitReadable", state.flowing);
+        state.emittedReadable = true;
+        if (state.sync)
+          process.nextTick(function() {
+            emitReadable_(stream);
+          });
+        else
+          emitReadable_(stream);
+      }
+    }
+    function emitReadable_(stream) {
+      debug("emit readable");
+      stream.emit("readable");
+      flow(stream);
+    }
+    function maybeReadMore(stream, state) {
+      if (!state.readingMore) {
+        state.readingMore = true;
+        process.nextTick(function() {
+          maybeReadMore_(stream, state);
+        });
+      }
+    }
+    function maybeReadMore_(stream, state) {
+      var len = state.length;
+      while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
+        debug("maybeReadMore read 0");
+        stream.read(0);
+        if (len === state.length)
+          break;
+        else
+          len = state.length;
+      }
+      state.readingMore = false;
+    }
+    Readable.prototype._read = function(n) {
+      this.emit("error", new Error("not implemented"));
+    };
+    Readable.prototype.pipe = function(dest, pipeOpts) {
+      var src = this;
+      var state = this._readableState;
+      switch (state.pipesCount) {
+        case 0:
+          state.pipes = dest;
+          break;
+        case 1:
+          state.pipes = [state.pipes, dest];
+          break;
+        default:
+          state.pipes.push(dest);
+          break;
+      }
+      state.pipesCount += 1;
+      debug("pipe count=%d opts=%j", state.pipesCount, pipeOpts);
+      var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+      var endFn = doEnd ? onend : cleanup;
+      if (state.endEmitted)
+        process.nextTick(endFn);
+      else
+        src.once("end", endFn);
+      dest.on("unpipe", onunpipe);
+      function onunpipe(readable) {
+        debug("onunpipe");
+        if (readable === src) {
+          cleanup();
+        }
+      }
+      function onend() {
+        debug("onend");
+        dest.end();
+      }
+      var ondrain = pipeOnDrain(src);
+      dest.on("drain", ondrain);
+      function cleanup() {
+        debug("cleanup");
+        dest.removeListener("close", onclose);
+        dest.removeListener("finish", onfinish);
+        dest.removeListener("drain", ondrain);
+        dest.removeListener("error", onerror);
+        dest.removeListener("unpipe", onunpipe);
+        src.removeListener("end", onend);
+        src.removeListener("end", cleanup);
+        src.removeListener("data", ondata);
+        if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain))
+          ondrain();
+      }
+      src.on("data", ondata);
+      function ondata(chunk) {
+        debug("ondata");
+        var ret = dest.write(chunk);
+        if (false === ret) {
+          debug(
+            "false write response, pause",
+            src._readableState.awaitDrain
+          );
+          src._readableState.awaitDrain++;
+          src.pause();
+        }
+      }
+      function onerror(er) {
+        debug("onerror", er);
+        unpipe();
+        dest.removeListener("error", onerror);
+        if (EE.listenerCount(dest, "error") === 0)
+          dest.emit("error", er);
+      }
+      if (!dest._events || !dest._events.error)
+        dest.on("error", onerror);
+      else if (isArray(dest._events.error))
+        dest._events.error.unshift(onerror);
+      else
+        dest._events.error = [onerror, dest._events.error];
+      function onclose() {
+        dest.removeListener("finish", onfinish);
+        unpipe();
+      }
+      dest.once("close", onclose);
+      function onfinish() {
+        debug("onfinish");
+        dest.removeListener("close", onclose);
+        unpipe();
+      }
+      dest.once("finish", onfinish);
+      function unpipe() {
+        debug("unpipe");
+        src.unpipe(dest);
+      }
+      dest.emit("pipe", src);
+      if (!state.flowing) {
+        debug("pipe resume");
+        src.resume();
+      }
+      return dest;
+    };
+    function pipeOnDrain(src) {
+      return function() {
+        var state = src._readableState;
+        debug("pipeOnDrain", state.awaitDrain);
+        if (state.awaitDrain)
+          state.awaitDrain--;
+        if (state.awaitDrain === 0 && EE.listenerCount(src, "data")) {
+          state.flowing = true;
+          flow(src);
+        }
+      };
+    }
+    Readable.prototype.unpipe = function(dest) {
+      var state = this._readableState;
+      if (state.pipesCount === 0)
+        return this;
+      if (state.pipesCount === 1) {
+        if (dest && dest !== state.pipes)
+          return this;
+        if (!dest)
+          dest = state.pipes;
+        state.pipes = null;
+        state.pipesCount = 0;
+        state.flowing = false;
+        if (dest)
+          dest.emit("unpipe", this);
+        return this;
+      }
+      if (!dest) {
+        var dests = state.pipes;
+        var len = state.pipesCount;
+        state.pipes = null;
+        state.pipesCount = 0;
+        state.flowing = false;
+        for (var i = 0; i < len; i++)
+          dests[i].emit("unpipe", this);
+        return this;
+      }
+      var i = indexOf(state.pipes, dest);
+      if (i === -1)
+        return this;
+      state.pipes.splice(i, 1);
+      state.pipesCount -= 1;
+      if (state.pipesCount === 1)
+        state.pipes = state.pipes[0];
+      dest.emit("unpipe", this);
+      return this;
+    };
+    Readable.prototype.on = function(ev, fn) {
+      var res = Stream.prototype.on.call(this, ev, fn);
+      if (ev === "data" && false !== this._readableState.flowing) {
+        this.resume();
+      }
+      if (ev === "readable" && this.readable) {
+        var state = this._readableState;
+        if (!state.readableListening) {
+          state.readableListening = true;
+          state.emittedReadable = false;
+          state.needReadable = true;
+          if (!state.reading) {
+            var self2 = this;
+            process.nextTick(function() {
+              debug("readable nexttick read 0");
+              self2.read(0);
+            });
+          } else if (state.length) {
+            emitReadable(this, state);
+          }
+        }
+      }
+      return res;
+    };
+    Readable.prototype.addListener = Readable.prototype.on;
+    Readable.prototype.resume = function() {
+      var state = this._readableState;
+      if (!state.flowing) {
+        debug("resume");
+        state.flowing = true;
+        if (!state.reading) {
+          debug("resume read 0");
+          this.read(0);
+        }
+        resume(this, state);
+      }
+      return this;
+    };
+    function resume(stream, state) {
+      if (!state.resumeScheduled) {
+        state.resumeScheduled = true;
+        process.nextTick(function() {
+          resume_(stream, state);
+        });
+      }
+    }
+    function resume_(stream, state) {
+      state.resumeScheduled = false;
+      stream.emit("resume");
+      flow(stream);
+      if (state.flowing && !state.reading)
+        stream.read(0);
+    }
+    Readable.prototype.pause = function() {
+      debug("call pause flowing=%j", this._readableState.flowing);
+      if (false !== this._readableState.flowing) {
+        debug("pause");
+        this._readableState.flowing = false;
+        this.emit("pause");
+      }
+      return this;
+    };
+    function flow(stream) {
+      var state = stream._readableState;
+      debug("flow", state.flowing);
+      if (state.flowing) {
+        do {
+          var chunk = stream.read();
+        } while (null !== chunk && state.flowing);
+      }
+    }
+    Readable.prototype.wrap = function(stream) {
+      var state = this._readableState;
+      var paused = false;
+      var self2 = this;
+      stream.on("end", function() {
+        debug("wrapped end");
+        if (state.decoder && !state.ended) {
+          var chunk = state.decoder.end();
+          if (chunk && chunk.length)
+            self2.push(chunk);
+        }
+        self2.push(null);
+      });
+      stream.on("data", function(chunk) {
+        debug("wrapped data");
+        if (state.decoder)
+          chunk = state.decoder.write(chunk);
+        if (!chunk || !state.objectMode && !chunk.length)
+          return;
+        var ret = self2.push(chunk);
+        if (!ret) {
+          paused = true;
+          stream.pause();
+        }
+      });
+      for (var i in stream) {
+        if (util.isFunction(stream[i]) && util.isUndefined(this[i])) {
+          this[i] = function(method) {
+            return function() {
+              return stream[method].apply(stream, arguments);
+            };
+          }(i);
+        }
+      }
+      var events = ["error", "close", "destroy", "pause", "resume"];
+      forEach(events, function(ev) {
+        stream.on(ev, self2.emit.bind(self2, ev));
+      });
+      self2._read = function(n) {
+        debug("wrapped _read", n);
+        if (paused) {
+          paused = false;
+          stream.resume();
+        }
+      };
+      return self2;
+    };
+    Readable._fromList = fromList;
+    function fromList(n, state) {
+      var list = state.buffer;
+      var length = state.length;
+      var stringMode = !!state.decoder;
+      var objectMode = !!state.objectMode;
+      var ret;
+      if (list.length === 0)
+        return null;
+      if (length === 0)
+        ret = null;
+      else if (objectMode)
+        ret = list.shift();
+      else if (!n || n >= length) {
+        if (stringMode)
+          ret = list.join("");
+        else
+          ret = Buffer2.concat(list, length);
+        list.length = 0;
+      } else {
+        if (n < list[0].length) {
+          var buf = list[0];
+          ret = buf.slice(0, n);
+          list[0] = buf.slice(n);
+        } else if (n === list[0].length) {
+          ret = list.shift();
+        } else {
+          if (stringMode)
+            ret = "";
+          else
+            ret = new Buffer2(n);
+          var c = 0;
+          for (var i = 0, l = list.length; i < l && c < n; i++) {
+            var buf = list[0];
+            var cpy = Math.min(n - c, buf.length);
+            if (stringMode)
+              ret += buf.slice(0, cpy);
+            else
+              buf.copy(ret, c, 0, cpy);
+            if (cpy < buf.length)
+              list[0] = buf.slice(cpy);
+            else
+              list.shift();
+            c += cpy;
+          }
+        }
+      }
+      return ret;
+    }
+    function endReadable(stream) {
+      var state = stream._readableState;
+      if (state.length > 0)
+        throw new Error("endReadable called on non-empty stream");
+      if (!state.endEmitted) {
+        state.ended = true;
+        process.nextTick(function() {
+          if (!state.endEmitted && state.length === 0) {
+            state.endEmitted = true;
+            stream.readable = false;
+            stream.emit("end");
+          }
+        });
+      }
+    }
+    function forEach(xs, f) {
+      for (var i = 0, l = xs.length; i < l; i++) {
+        f(xs[i], i);
+      }
+    }
+    function indexOf(xs, x) {
+      for (var i = 0, l = xs.length; i < l; i++) {
+        if (xs[i] === x)
+          return i;
+      }
+      return -1;
+    }
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_writable.js
+var require_stream_writable = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_writable.js"(exports, module2) {
+    module2.exports = Writable;
+    var Buffer2 = require("buffer").Buffer;
+    Writable.WritableState = WritableState;
+    var util = require_util();
+    util.inherits = require_inherits();
+    var Stream = require("stream");
+    util.inherits(Writable, Stream);
+    function WriteReq(chunk, encoding, cb) {
+      this.chunk = chunk;
+      this.encoding = encoding;
+      this.callback = cb;
+    }
+    function WritableState(options, stream) {
+      var Duplex = require_stream_duplex();
+      options = options || {};
+      var hwm = options.highWaterMark;
+      var defaultHwm = options.objectMode ? 16 : 16 * 1024;
+      this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+      this.objectMode = !!options.objectMode;
+      if (stream instanceof Duplex)
+        this.objectMode = this.objectMode || !!options.writableObjectMode;
+      this.highWaterMark = ~~this.highWaterMark;
+      this.needDrain = false;
+      this.ending = false;
+      this.ended = false;
+      this.finished = false;
+      var noDecode = options.decodeStrings === false;
+      this.decodeStrings = !noDecode;
+      this.defaultEncoding = options.defaultEncoding || "utf8";
+      this.length = 0;
+      this.writing = false;
+      this.corked = 0;
+      this.sync = true;
+      this.bufferProcessing = false;
+      this.onwrite = function(er) {
+        onwrite(stream, er);
+      };
+      this.writecb = null;
+      this.writelen = 0;
+      this.buffer = [];
+      this.pendingcb = 0;
+      this.prefinished = false;
+      this.errorEmitted = false;
+    }
+    function Writable(options) {
+      var Duplex = require_stream_duplex();
+      if (!(this instanceof Writable) && !(this instanceof Duplex))
+        return new Writable(options);
+      this._writableState = new WritableState(options, this);
+      this.writable = true;
+      Stream.call(this);
+    }
+    Writable.prototype.pipe = function() {
+      this.emit("error", new Error("Cannot pipe. Not readable."));
+    };
+    function writeAfterEnd(stream, state, cb) {
+      var er = new Error("write after end");
+      stream.emit("error", er);
+      process.nextTick(function() {
+        cb(er);
+      });
+    }
+    function validChunk(stream, state, chunk, cb) {
+      var valid = true;
+      if (!util.isBuffer(chunk) && !util.isString(chunk) && !util.isNullOrUndefined(chunk) && !state.objectMode) {
+        var er = new TypeError("Invalid non-string/buffer chunk");
+        stream.emit("error", er);
+        process.nextTick(function() {
+          cb(er);
+        });
+        valid = false;
+      }
+      return valid;
+    }
+    Writable.prototype.write = function(chunk, encoding, cb) {
+      var state = this._writableState;
+      var ret = false;
+      if (util.isFunction(encoding)) {
+        cb = encoding;
+        encoding = null;
+      }
+      if (util.isBuffer(chunk))
+        encoding = "buffer";
+      else if (!encoding)
+        encoding = state.defaultEncoding;
+      if (!util.isFunction(cb))
+        cb = function() {
+        };
+      if (state.ended)
+        writeAfterEnd(this, state, cb);
+      else if (validChunk(this, state, chunk, cb)) {
+        state.pendingcb++;
+        ret = writeOrBuffer(this, state, chunk, encoding, cb);
+      }
+      return ret;
+    };
+    Writable.prototype.cork = function() {
+      var state = this._writableState;
+      state.corked++;
+    };
+    Writable.prototype.uncork = function() {
+      var state = this._writableState;
+      if (state.corked) {
+        state.corked--;
+        if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.buffer.length)
+          clearBuffer(this, state);
+      }
+    };
+    function decodeChunk(state, chunk, encoding) {
+      if (!state.objectMode && state.decodeStrings !== false && util.isString(chunk)) {
+        chunk = new Buffer2(chunk, encoding);
+      }
+      return chunk;
+    }
+    function writeOrBuffer(stream, state, chunk, encoding, cb) {
+      chunk = decodeChunk(state, chunk, encoding);
+      if (util.isBuffer(chunk))
+        encoding = "buffer";
+      var len = state.objectMode ? 1 : chunk.length;
+      state.length += len;
+      var ret = state.length < state.highWaterMark;
+      if (!ret)
+        state.needDrain = true;
+      if (state.writing || state.corked)
+        state.buffer.push(new WriteReq(chunk, encoding, cb));
+      else
+        doWrite(stream, state, false, len, chunk, encoding, cb);
+      return ret;
+    }
+    function doWrite(stream, state, writev, len, chunk, encoding, cb) {
+      state.writelen = len;
+      state.writecb = cb;
+      state.writing = true;
+      state.sync = true;
+      if (writev)
+        stream._writev(chunk, state.onwrite);
+      else
+        stream._write(chunk, encoding, state.onwrite);
+      state.sync = false;
+    }
+    function onwriteError(stream, state, sync, er, cb) {
+      if (sync)
+        process.nextTick(function() {
+          state.pendingcb--;
+          cb(er);
+        });
+      else {
+        state.pendingcb--;
+        cb(er);
+      }
+      stream._writableState.errorEmitted = true;
+      stream.emit("error", er);
+    }
+    function onwriteStateUpdate(state) {
+      state.writing = false;
+      state.writecb = null;
+      state.length -= state.writelen;
+      state.writelen = 0;
+    }
+    function onwrite(stream, er) {
+      var state = stream._writableState;
+      var sync = state.sync;
+      var cb = state.writecb;
+      onwriteStateUpdate(state);
+      if (er)
+        onwriteError(stream, state, sync, er, cb);
+      else {
+        var finished = needFinish(stream, state);
+        if (!finished && !state.corked && !state.bufferProcessing && state.buffer.length) {
+          clearBuffer(stream, state);
+        }
+        if (sync) {
+          process.nextTick(function() {
+            afterWrite(stream, state, finished, cb);
+          });
+        } else {
+          afterWrite(stream, state, finished, cb);
+        }
+      }
+    }
+    function afterWrite(stream, state, finished, cb) {
+      if (!finished)
+        onwriteDrain(stream, state);
+      state.pendingcb--;
+      cb();
+      finishMaybe(stream, state);
+    }
+    function onwriteDrain(stream, state) {
+      if (state.length === 0 && state.needDrain) {
+        state.needDrain = false;
+        stream.emit("drain");
+      }
+    }
+    function clearBuffer(stream, state) {
+      state.bufferProcessing = true;
+      if (stream._writev && state.buffer.length > 1) {
+        var cbs = [];
+        for (var c = 0; c < state.buffer.length; c++)
+          cbs.push(state.buffer[c].callback);
+        state.pendingcb++;
+        doWrite(stream, state, true, state.length, state.buffer, "", function(err) {
+          for (var i = 0; i < cbs.length; i++) {
+            state.pendingcb--;
+            cbs[i](err);
+          }
+        });
+        state.buffer = [];
+      } else {
+        for (var c = 0; c < state.buffer.length; c++) {
+          var entry = state.buffer[c];
+          var chunk = entry.chunk;
+          var encoding = entry.encoding;
+          var cb = entry.callback;
+          var len = state.objectMode ? 1 : chunk.length;
+          doWrite(stream, state, false, len, chunk, encoding, cb);
+          if (state.writing) {
+            c++;
+            break;
+          }
+        }
+        if (c < state.buffer.length)
+          state.buffer = state.buffer.slice(c);
+        else
+          state.buffer.length = 0;
+      }
+      state.bufferProcessing = false;
+    }
+    Writable.prototype._write = function(chunk, encoding, cb) {
+      cb(new Error("not implemented"));
+    };
+    Writable.prototype._writev = null;
+    Writable.prototype.end = function(chunk, encoding, cb) {
+      var state = this._writableState;
+      if (util.isFunction(chunk)) {
+        cb = chunk;
+        chunk = null;
+        encoding = null;
+      } else if (util.isFunction(encoding)) {
+        cb = encoding;
+        encoding = null;
+      }
+      if (!util.isNullOrUndefined(chunk))
+        this.write(chunk, encoding);
+      if (state.corked) {
+        state.corked = 1;
+        this.uncork();
+      }
+      if (!state.ending && !state.finished)
+        endWritable(this, state, cb);
+    };
+    function needFinish(stream, state) {
+      return state.ending && state.length === 0 && !state.finished && !state.writing;
+    }
+    function prefinish(stream, state) {
+      if (!state.prefinished) {
+        state.prefinished = true;
+        stream.emit("prefinish");
+      }
+    }
+    function finishMaybe(stream, state) {
+      var need = needFinish(stream, state);
+      if (need) {
+        if (state.pendingcb === 0) {
+          prefinish(stream, state);
+          state.finished = true;
+          stream.emit("finish");
+        } else
+          prefinish(stream, state);
+      }
+      return need;
+    }
+    function endWritable(stream, state, cb) {
+      state.ending = true;
+      finishMaybe(stream, state);
+      if (cb) {
+        if (state.finished)
+          process.nextTick(cb);
+        else
+          stream.once("finish", cb);
+      }
+      state.ended = true;
+    }
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_duplex.js
+var require_stream_duplex = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_duplex.js"(exports, module2) {
+    module2.exports = Duplex;
+    var objectKeys = Object.keys || function(obj) {
+      var keys = [];
+      for (var key in obj)
+        keys.push(key);
+      return keys;
+    };
+    var util = require_util();
+    util.inherits = require_inherits();
+    var Readable = require_stream_readable();
+    var Writable = require_stream_writable();
+    util.inherits(Duplex, Readable);
+    forEach(objectKeys(Writable.prototype), function(method) {
+      if (!Duplex.prototype[method])
+        Duplex.prototype[method] = Writable.prototype[method];
+    });
+    function Duplex(options) {
+      if (!(this instanceof Duplex))
+        return new Duplex(options);
+      Readable.call(this, options);
+      Writable.call(this, options);
+      if (options && options.readable === false)
+        this.readable = false;
+      if (options && options.writable === false)
+        this.writable = false;
+      this.allowHalfOpen = true;
+      if (options && options.allowHalfOpen === false)
+        this.allowHalfOpen = false;
+      this.once("end", onend);
+    }
+    function onend() {
+      if (this.allowHalfOpen || this._writableState.ended)
+        return;
+      process.nextTick(this.end.bind(this));
+    }
+    function forEach(xs, f) {
+      for (var i = 0, l = xs.length; i < l; i++) {
+        f(xs[i], i);
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/duplex.js
+var require_duplex = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/duplex.js"(exports, module2) {
+    module2.exports = require_stream_duplex();
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/heartbeat.js
+var require_heartbeat = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/heartbeat.js"(exports, module2) {
+    "use strict";
+    var inherits = require("util").inherits;
+    var EventEmitter = require("events").EventEmitter;
+    module2.exports.UNITS_TO_MS = 1e3;
+    function Heart(interval, checkSend, checkRecv) {
+      EventEmitter.call(this);
+      this.interval = interval;
+      var intervalMs = interval * module2.exports.UNITS_TO_MS;
+      var beat = this.emit.bind(this, "beat");
+      var timeout = this.emit.bind(this, "timeout");
+      this.sendTimer = setInterval(
+        this.runHeartbeat.bind(this, checkSend, beat),
+        intervalMs / 2
+      );
+      var recvMissed = 0;
+      function missedTwo() {
+        if (!checkRecv())
+          return ++recvMissed < 2;
+        else {
+          recvMissed = 0;
+          return true;
+        }
+      }
+      this.recvTimer = setInterval(
+        this.runHeartbeat.bind(this, missedTwo, timeout),
+        intervalMs
+      );
+    }
+    inherits(Heart, EventEmitter);
+    module2.exports.Heart = Heart;
+    Heart.prototype.clear = function() {
+      clearInterval(this.sendTimer);
+      clearInterval(this.recvTimer);
+    };
+    Heart.prototype.runHeartbeat = function(check, fail) {
+      if (!check())
+        fail();
+    };
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/format.js
+var require_format = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/format.js"(exports, module2) {
+    "use strict";
+    var defs = require_defs();
+    var format = require("util").format;
+    var inherits = require("util").inherits;
+    var HEARTBEAT = require_frame().HEARTBEAT;
+    module2.exports.closeMessage = function(close) {
+      var code = close.fields.replyCode;
+      return format(
+        '%d (%s) with message "%s"',
+        code,
+        defs.constant_strs[code],
+        close.fields.replyText
+      );
+    };
+    module2.exports.methodName = function(id) {
+      return defs.info(id).name;
+    };
+    module2.exports.inspect = function(frame, showFields) {
+      if (frame === HEARTBEAT) {
+        return "<Heartbeat>";
+      } else if (!frame.id) {
+        return format(
+          "<Content channel:%d size:%d>",
+          frame.channel,
+          frame.size
+        );
+      } else {
+        var info = defs.info(frame.id);
+        return format(
+          "<%s channel:%d%s>",
+          info.name,
+          frame.channel,
+          showFields ? " " + JSON.stringify(frame.fields, void 0, 2) : ""
+        );
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/bitset.js
+var require_bitset = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/bitset.js"(exports, module2) {
+    "use strict";
+    var BitSet = class {
+      constructor(size) {
+        if (size) {
+          const numWords = Math.ceil(size / 32);
+          this.words = new Array(numWords);
+        } else {
+          this.words = [];
+        }
+        this.wordsInUse = 0;
+      }
+      ensureSize(numWords) {
+        const wordsPresent = this.words.length;
+        if (wordsPresent < numWords) {
+          this.words = this.words.concat(new Array(numWords - wordsPresent));
+        }
+      }
+      set(bitIndex) {
+        const w = wordIndex(bitIndex);
+        if (w >= this.wordsInUse) {
+          this.ensureSize(w + 1);
+          this.wordsInUse = w + 1;
+        }
+        const bit = 1 << bitIndex;
+        this.words[w] |= bit;
+      }
+      clear(bitIndex) {
+        const w = wordIndex(bitIndex);
+        if (w >= this.wordsInUse)
+          return;
+        const mask = ~(1 << bitIndex);
+        this.words[w] &= mask;
+      }
+      get(bitIndex) {
+        const w = wordIndex(bitIndex);
+        if (w >= this.wordsInUse)
+          return false;
+        const bit = 1 << bitIndex;
+        return !!(this.words[w] & bit);
+      }
+      nextSetBit(fromIndex) {
+        let w = wordIndex(fromIndex);
+        if (w >= this.wordsInUse)
+          return -1;
+        let word = this.words[w] & 4294967295 << fromIndex;
+        while (true) {
+          if (word)
+            return w * 32 + trailingZeros(word);
+          w++;
+          if (w === this.wordsInUse)
+            return -1;
+          word = this.words[w];
+        }
+      }
+      nextClearBit(fromIndex) {
+        let w = wordIndex(fromIndex);
+        if (w >= this.wordsInUse)
+          return fromIndex;
+        let word = ~this.words[w] & 4294967295 << fromIndex;
+        while (true) {
+          if (word)
+            return w * 32 + trailingZeros(word);
+          w++;
+          if (w == this.wordsInUse)
+            return w * 32;
+          word = ~this.words[w];
+        }
+      }
+    };
+    function wordIndex(bitIndex) {
+      return Math.floor(bitIndex / 32);
+    }
+    function trailingZeros(i) {
+      if (i === 0)
+        return 32;
+      let y, n = 31;
+      y = i << 16;
+      if (y != 0) {
+        n = n - 16;
+        i = y;
+      }
+      y = i << 8;
+      if (y != 0) {
+        n = n - 8;
+        i = y;
+      }
+      y = i << 4;
+      if (y != 0) {
+        n = n - 4;
+        i = y;
+      }
+      y = i << 2;
+      if (y != 0) {
+        n = n - 2;
+        i = y;
+      }
+      return n - (i << 1 >>> 31);
+    }
+    module2.exports.BitSet = BitSet;
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_transform.js
+var require_stream_transform = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_transform.js"(exports, module2) {
+    module2.exports = Transform;
+    var Duplex = require_stream_duplex();
+    var util = require_util();
+    util.inherits = require_inherits();
+    util.inherits(Transform, Duplex);
+    function TransformState(options, stream) {
+      this.afterTransform = function(er, data) {
+        return afterTransform(stream, er, data);
+      };
+      this.needTransform = false;
+      this.transforming = false;
+      this.writecb = null;
+      this.writechunk = null;
+    }
+    function afterTransform(stream, er, data) {
+      var ts = stream._transformState;
+      ts.transforming = false;
+      var cb = ts.writecb;
+      if (!cb)
+        return stream.emit("error", new Error("no writecb in Transform class"));
+      ts.writechunk = null;
+      ts.writecb = null;
+      if (!util.isNullOrUndefined(data))
+        stream.push(data);
+      if (cb)
+        cb(er);
+      var rs = stream._readableState;
+      rs.reading = false;
+      if (rs.needReadable || rs.length < rs.highWaterMark) {
+        stream._read(rs.highWaterMark);
+      }
+    }
+    function Transform(options) {
+      if (!(this instanceof Transform))
+        return new Transform(options);
+      Duplex.call(this, options);
+      this._transformState = new TransformState(options, this);
+      var stream = this;
+      this._readableState.needReadable = true;
+      this._readableState.sync = false;
+      this.once("prefinish", function() {
+        if (util.isFunction(this._flush))
+          this._flush(function(er) {
+            done(stream, er);
+          });
+        else
+          done(stream);
+      });
+    }
+    Transform.prototype.push = function(chunk, encoding) {
+      this._transformState.needTransform = false;
+      return Duplex.prototype.push.call(this, chunk, encoding);
+    };
+    Transform.prototype._transform = function(chunk, encoding, cb) {
+      throw new Error("not implemented");
+    };
+    Transform.prototype._write = function(chunk, encoding, cb) {
+      var ts = this._transformState;
+      ts.writecb = cb;
+      ts.writechunk = chunk;
+      ts.writeencoding = encoding;
+      if (!ts.transforming) {
+        var rs = this._readableState;
+        if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark)
+          this._read(rs.highWaterMark);
+      }
+    };
+    Transform.prototype._read = function(n) {
+      var ts = this._transformState;
+      if (!util.isNull(ts.writechunk) && ts.writecb && !ts.transforming) {
+        ts.transforming = true;
+        this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
+      } else {
+        ts.needTransform = true;
+      }
+    };
+    function done(stream, er) {
+      if (er)
+        return stream.emit("error", er);
+      var ws = stream._writableState;
+      var ts = stream._transformState;
+      if (ws.length)
+        throw new Error("calling transform done when ws.length != 0");
+      if (ts.transforming)
+        throw new Error("calling transform done when still transforming");
+      return stream.push(null);
+    }
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_passthrough.js
+var require_stream_passthrough = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/lib/_stream_passthrough.js"(exports, module2) {
+    module2.exports = PassThrough;
+    var Transform = require_stream_transform();
+    var util = require_util();
+    util.inherits = require_inherits();
+    util.inherits(PassThrough, Transform);
+    function PassThrough(options) {
+      if (!(this instanceof PassThrough))
+        return new PassThrough(options);
+      Transform.call(this, options);
+    }
+    PassThrough.prototype._transform = function(chunk, encoding, cb) {
+      cb(null, chunk);
+    };
+  }
+});
+
+// node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/passthrough.js
+var require_passthrough = __commonJS({
+  "node_modules/.pnpm/readable-stream@1.1.14/node_modules/readable-stream/passthrough.js"(exports, module2) {
+    module2.exports = require_stream_passthrough();
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/error.js
+var require_error = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/error.js"(exports, module2) {
+    var inherits = require("util").inherits;
+    function trimStack(stack, num) {
+      return stack && stack.split("\n").slice(num).join("\n");
+    }
+    function IllegalOperationError(msg, stack) {
+      var tmp = new Error();
+      this.message = msg;
+      this.stack = this.toString() + "\n" + trimStack(tmp.stack, 2);
+      this.stackAtStateChange = stack;
+    }
+    inherits(IllegalOperationError, Error);
+    IllegalOperationError.prototype.name = "IllegalOperationError";
+    function stackCapture(reason) {
+      var e = new Error();
+      return "Stack capture: " + reason + "\n" + trimStack(e.stack, 2);
+    }
+    module2.exports.IllegalOperationError = IllegalOperationError;
+    module2.exports.stackCapture = stackCapture;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/connection.js
+var require_connection = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/connection.js"(exports, module2) {
+    "use strict";
+    var defs = require_defs();
+    var constants = defs.constants;
+    var frame = require_frame();
+    var HEARTBEAT = frame.HEARTBEAT;
+    var Mux = require_mux().Mux;
+    var Duplex = require("stream").Duplex || require_duplex();
+    var EventEmitter = require("events").EventEmitter;
+    var Heart = require_heartbeat().Heart;
+    var methodName = require_format().methodName;
+    var closeMsg = require_format().closeMessage;
+    var inspect = require_format().inspect;
+    var BitSet = require_bitset().BitSet;
+    var inherits = require("util").inherits;
+    var fmt = require("util").format;
+    var PassThrough = require("stream").PassThrough || require_passthrough();
+    var IllegalOperationError = require_error().IllegalOperationError;
+    var stackCapture = require_error().stackCapture;
+    var DEFAULT_WRITE_HWM = 1024;
+    var SINGLE_CHUNK_THRESHOLD = 2048;
+    function Connection(underlying) {
+      EventEmitter.call(this);
+      var stream = this.stream = wrapStream(underlying);
+      this.muxer = new Mux(stream);
+      this.rest = Buffer.alloc(0);
+      this.frameMax = constants.FRAME_MIN_SIZE;
+      this.sentSinceLastCheck = false;
+      this.recvSinceLastCheck = false;
+      this.expectSocketClose = false;
+      this.freeChannels = new BitSet();
+      this.channels = [{
+        channel: { accept: channel0(this) },
+        buffer: underlying
+      }];
+    }
+    inherits(Connection, EventEmitter);
+    var C = Connection.prototype;
+    function mainAccept(frame2) {
+      var rec = this.channels[frame2.channel];
+      if (rec) {
+        return rec.channel.accept(frame2);
+      } else
+        this.closeWithError(
+          fmt("Frame on unknown channel %d", frame2.channel),
+          constants.CHANNEL_ERROR,
+          new Error(fmt(
+            "Frame on unknown channel: %s",
+            inspect(frame2, false)
+          ))
+        );
+    }
+    function channel0(connection) {
+      return function(f) {
+        if (f === HEARTBEAT)
+          ;
+        else if (f.id === defs.ConnectionClose) {
+          connection.sendMethod(0, defs.ConnectionCloseOk, {});
+          var emsg = fmt("Connection closed: %s", closeMsg(f));
+          var s = stackCapture(emsg);
+          var e = new Error(emsg);
+          e.code = f.fields.replyCode;
+          if (isFatalError(e)) {
+            connection.emit("error", e);
+          }
+          connection.toClosed(s, e);
+        } else if (f.id === defs.ConnectionBlocked) {
+          connection.emit("blocked", f.fields.reason);
+        } else if (f.id === defs.ConnectionUnblocked) {
+          connection.emit("unblocked");
+        } else {
+          connection.closeWithError(
+            fmt("Unexpected frame on channel 0"),
+            constants.UNEXPECTED_FRAME,
+            new Error(fmt(
+              "Unexpected frame on channel 0: %s",
+              inspect(f, false)
+            ))
+          );
+        }
+      };
+    }
+    C.sendProtocolHeader = function() {
+      this.sendBytes(frame.PROTOCOL_HEADER);
+    };
+    C.open = function(allFields, openCallback0) {
+      var self2 = this;
+      var openCallback = openCallback0 || function() {
+      };
+      var tunedOptions = Object.create(allFields);
+      function wait(k) {
+        self2.step(function(err, frame2) {
+          if (err !== null)
+            bail(err);
+          else if (frame2.channel !== 0) {
+            bail(new Error(
+              fmt(
+                "Frame on channel != 0 during handshake: %s",
+                inspect(frame2, false)
+              )
+            ));
+          } else
+            k(frame2);
+        });
+      }
+      function expect(Method, k) {
+        wait(function(frame2) {
+          if (frame2.id === Method)
+            k(frame2);
+          else {
+            bail(new Error(
+              fmt(
+                "Expected %s; got %s",
+                methodName(Method),
+                inspect(frame2, false)
+              )
+            ));
+          }
+        });
+      }
+      function bail(err) {
+        openCallback(err);
+      }
+      function send(Method) {
+        self2.sendMethod(0, Method, tunedOptions);
+      }
+      function negotiate(server, desired) {
+        if (server === 0 || desired === 0) {
+          return Math.max(server, desired);
+        } else {
+          return Math.min(server, desired);
+        }
+      }
+      function onStart(start) {
+        var mechanisms = start.fields.mechanisms.toString().split(" ");
+        if (mechanisms.indexOf(allFields.mechanism) < 0) {
+          bail(new Error(fmt(
+            "SASL mechanism %s is not provided by the server",
+            allFields.mechanism
+          )));
+          return;
+        }
+        self2.serverProperties = start.fields.serverProperties;
+        try {
+          send(defs.ConnectionStartOk);
+        } catch (err) {
+          bail(err);
+          return;
+        }
+        wait(afterStartOk);
+      }
+      function afterStartOk(reply) {
+        switch (reply.id) {
+          case defs.ConnectionSecure:
+            bail(new Error(
+              "Wasn't expecting to have to go through secure"
+            ));
+            break;
+          case defs.ConnectionClose:
+            bail(new Error(fmt(
+              "Handshake terminated by server: %s",
+              closeMsg(reply)
+            )));
+            break;
+          case defs.ConnectionTune:
+            var fields = reply.fields;
+            tunedOptions.frameMax = negotiate(fields.frameMax, allFields.frameMax);
+            tunedOptions.channelMax = negotiate(fields.channelMax, allFields.channelMax);
+            tunedOptions.heartbeat = negotiate(fields.heartbeat, allFields.heartbeat);
+            try {
+              send(defs.ConnectionTuneOk);
+              send(defs.ConnectionOpen);
+            } catch (err) {
+              bail(err);
+              return;
+            }
+            expect(defs.ConnectionOpenOk, onOpenOk);
+            break;
+          default:
+            bail(new Error(
+              fmt(
+                "Expected connection.secure, connection.close, or connection.tune during handshake; got %s",
+                inspect(reply, false)
+              )
+            ));
+            break;
+        }
+      }
+      function onOpenOk(openOk) {
+        self2.channelMax = tunedOptions.channelMax || 65535;
+        self2.frameMax = tunedOptions.frameMax || 4294967295;
+        self2.heartbeat = tunedOptions.heartbeat;
+        self2.heartbeater = self2.startHeartbeater();
+        self2.accept = mainAccept;
+        succeed(openOk);
+      }
+      function endWhileOpening(err) {
+        bail(err || new Error("Socket closed abruptly during opening handshake"));
+      }
+      this.stream.on("end", endWhileOpening);
+      this.stream.on("error", endWhileOpening);
+      function succeed(ok) {
+        self2.stream.removeListener("end", endWhileOpening);
+        self2.stream.removeListener("error", endWhileOpening);
+        self2.stream.on("error", self2.onSocketError.bind(self2));
+        self2.stream.on("end", self2.onSocketError.bind(
+          self2,
+          new Error("Unexpected close")
+        ));
+        self2.on("frameError", self2.onSocketError.bind(self2));
+        self2.acceptLoop();
+        openCallback(null, ok);
+      }
+      this.sendProtocolHeader();
+      expect(defs.ConnectionStart, onStart);
+    };
+    C.close = function(closeCallback) {
+      var k = closeCallback && function() {
+        closeCallback(null);
+      };
+      this.closeBecause("Cheers, thanks", constants.REPLY_SUCCESS, k);
+    };
+    C.closeBecause = function(reason, code, k) {
+      this.sendMethod(0, defs.ConnectionClose, {
+        replyText: reason,
+        replyCode: code,
+        methodId: 0,
+        classId: 0
+      });
+      var s = stackCapture("closeBecause called: " + reason);
+      this.toClosing(s, k);
+    };
+    C.closeWithError = function(reason, code, error) {
+      this.emit("error", error);
+      this.closeBecause(reason, code);
+    };
+    C.onSocketError = function(err) {
+      if (!this.expectSocketClose) {
+        this.expectSocketClose = true;
+        this.emit("error", err);
+        var s = stackCapture("Socket error");
+        this.toClosed(s, err);
+      }
+    };
+    function invalidOp(msg, stack) {
+      return function() {
+        throw new IllegalOperationError(msg, stack);
+      };
+    }
+    function invalidateSend(conn, msg, stack) {
+      conn.sendMethod = conn.sendContent = conn.sendMessage = invalidOp(msg, stack);
+    }
+    C.toClosing = function(capturedStack, k) {
+      var send = this.sendMethod.bind(this);
+      this.accept = function(f) {
+        if (f.id === defs.ConnectionCloseOk) {
+          if (k)
+            k();
+          var s = stackCapture("ConnectionCloseOk received");
+          this.toClosed(s, void 0);
+        } else if (f.id === defs.ConnectionClose) {
+          send(0, defs.ConnectionCloseOk, {});
+        }
+      };
+      invalidateSend(this, "Connection closing", capturedStack);
+    };
+    C._closeChannels = function(capturedStack) {
+      for (var i = 1; i < this.channels.length; i++) {
+        var ch = this.channels[i];
+        if (ch !== null) {
+          ch.channel.toClosed(capturedStack);
+        }
+      }
+    };
+    C.toClosed = function(capturedStack, maybeErr) {
+      this._closeChannels(capturedStack);
+      var info = fmt(
+        "Connection closed (%s)",
+        maybeErr ? maybeErr.toString() : "by client"
+      );
+      invalidateSend(this, info, capturedStack);
+      this.accept = invalidOp(info, capturedStack);
+      this.close = function(cb) {
+        cb && cb(new IllegalOperationError(info, capturedStack));
+      };
+      if (this.heartbeater)
+        this.heartbeater.clear();
+      this.expectSocketClose = true;
+      this.stream.end();
+      this.emit("close", maybeErr);
+    };
+    C.startHeartbeater = function() {
+      if (this.heartbeat === 0)
+        return null;
+      else {
+        var self2 = this;
+        var hb = new Heart(
+          this.heartbeat,
+          this.checkSend.bind(this),
+          this.checkRecv.bind(this)
+        );
+        hb.on("timeout", function() {
+          var hberr = new Error("Heartbeat timeout");
+          self2.emit("error", hberr);
+          var s = stackCapture("Heartbeat timeout");
+          self2.toClosed(s, hberr);
+        });
+        hb.on("beat", function() {
+          self2.sendHeartbeat();
+        });
+        return hb;
+      }
+    };
+    C.freshChannel = function(channel, options) {
+      var next = this.freeChannels.nextClearBit(1);
+      if (next < 0 || next > this.channelMax)
+        throw new Error("No channels left to allocate");
+      this.freeChannels.set(next);
+      var hwm = options && options.highWaterMark || DEFAULT_WRITE_HWM;
+      var writeBuffer = new PassThrough({
+        objectMode: true,
+        highWaterMark: hwm
+      });
+      this.channels[next] = { channel, buffer: writeBuffer };
+      writeBuffer.on("drain", function() {
+        channel.onBufferDrain();
+      });
+      this.muxer.pipeFrom(writeBuffer);
+      return next;
+    };
+    C.releaseChannel = function(channel) {
+      this.freeChannels.clear(channel);
+      var buffer = this.channels[channel].buffer;
+      buffer.end();
+      this.channels[channel] = null;
+    };
+    C.acceptLoop = function() {
+      var self2 = this;
+      function go() {
+        try {
+          var f;
+          while (f = self2.recvFrame())
+            self2.accept(f);
+        } catch (e) {
+          self2.emit("frameError", e);
+        }
+      }
+      self2.stream.on("readable", go);
+      go();
+    };
+    C.step = function(cb) {
+      var self2 = this;
+      function recv() {
+        var f;
+        try {
+          f = self2.recvFrame();
+        } catch (e) {
+          cb(e, null);
+          return;
+        }
+        if (f)
+          cb(null, f);
+        else
+          self2.stream.once("readable", recv);
+      }
+      recv();
+    };
+    C.checkSend = function() {
+      var check = this.sentSinceLastCheck;
+      this.sentSinceLastCheck = false;
+      return check;
+    };
+    C.checkRecv = function() {
+      var check = this.recvSinceLastCheck;
+      this.recvSinceLastCheck = false;
+      return check;
+    };
+    C.sendBytes = function(bytes) {
+      this.sentSinceLastCheck = true;
+      this.stream.write(bytes);
+    };
+    C.sendHeartbeat = function() {
+      return this.sendBytes(frame.HEARTBEAT_BUF);
+    };
+    var encodeMethod = defs.encodeMethod;
+    var encodeProperties = defs.encodeProperties;
+    C.sendMethod = function(channel, Method, fields) {
+      var frame2 = encodeMethod(Method, channel, fields);
+      this.sentSinceLastCheck = true;
+      var buffer = this.channels[channel].buffer;
+      return buffer.write(frame2);
+    };
+    C.sendMessage = function(channel, Method, fields, Properties, props, content) {
+      if (!Buffer.isBuffer(content))
+        throw new TypeError("content is not a buffer");
+      var mframe = encodeMethod(Method, channel, fields);
+      var pframe = encodeProperties(
+        Properties,
+        channel,
+        content.length,
+        props
+      );
+      var buffer = this.channels[channel].buffer;
+      this.sentSinceLastCheck = true;
+      var methodHeaderLen = mframe.length + pframe.length;
+      var bodyLen = content.length > 0 ? content.length + FRAME_OVERHEAD : 0;
+      var allLen = methodHeaderLen + bodyLen;
+      if (allLen < SINGLE_CHUNK_THRESHOLD) {
+        var all = Buffer.allocUnsafe(allLen);
+        var offset = mframe.copy(all, 0);
+        offset += pframe.copy(all, offset);
+        if (bodyLen > 0)
+          makeBodyFrame(channel, content).copy(all, offset);
+        return buffer.write(all);
+      } else {
+        if (methodHeaderLen < SINGLE_CHUNK_THRESHOLD) {
+          var both = Buffer.allocUnsafe(methodHeaderLen);
+          var offset = mframe.copy(both, 0);
+          pframe.copy(both, offset);
+          buffer.write(both);
+        } else {
+          buffer.write(mframe);
+          buffer.write(pframe);
+        }
+        return this.sendContent(channel, content);
+      }
+    };
+    var FRAME_OVERHEAD = defs.FRAME_OVERHEAD;
+    var makeBodyFrame = frame.makeBodyFrame;
+    C.sendContent = function(channel, body) {
+      if (!Buffer.isBuffer(body)) {
+        throw new TypeError(fmt("Expected buffer; got %s", body));
+      }
+      var writeResult = true;
+      var buffer = this.channels[channel].buffer;
+      var maxBody = this.frameMax - FRAME_OVERHEAD;
+      for (var offset = 0; offset < body.length; offset += maxBody) {
+        var end = offset + maxBody;
+        var slice = end > body.length ? body.slice(offset) : body.slice(offset, end);
+        var bodyFrame = makeBodyFrame(channel, slice);
+        writeResult = buffer.write(bodyFrame);
+      }
+      this.sentSinceLastCheck = true;
+      return writeResult;
+    };
+    var parseFrame = frame.parseFrame;
+    var decodeFrame = frame.decodeFrame;
+    C.recvFrame = function() {
+      var frame2 = parseFrame(this.rest, this.frameMax);
+      if (!frame2) {
+        var incoming = this.stream.read();
+        if (incoming === null) {
+          return false;
+        } else {
+          this.recvSinceLastCheck = true;
+          this.rest = Buffer.concat([this.rest, incoming]);
+          return this.recvFrame();
+        }
+      } else {
+        this.rest = frame2.rest;
+        return decodeFrame(frame2);
+      }
+    };
+    function wrapStream(s) {
+      if (s instanceof Duplex)
+        return s;
+      else {
+        var ws = new Duplex();
+        ws.wrap(s);
+        ws._write = function(chunk, encoding, callback) {
+          return s.write(chunk, encoding, callback);
+        };
+        return ws;
+      }
+    }
+    function isFatalError(error) {
+      switch (error && error.code) {
+        case defs.constants.CONNECTION_FORCED:
+        case defs.constants.REPLY_SUCCESS:
+          return false;
+        default:
+          return true;
+      }
+    }
+    module2.exports.Connection = Connection;
+    module2.exports.isFatalError = isFatalError;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/credentials.js
+var require_credentials = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/credentials.js"(exports, module2) {
+    var codec = require_codec();
+    module2.exports.plain = function(user, passwd) {
+      return {
+        mechanism: "PLAIN",
+        response: function() {
+          return Buffer.from(["", user, passwd].join(String.fromCharCode(0)));
+        },
+        username: user,
+        password: passwd
+      };
+    };
+    module2.exports.amqplain = function(user, passwd) {
+      return {
+        mechanism: "AMQPLAIN",
+        response: function() {
+          const buffer = Buffer.alloc(16384);
+          const size = codec.encodeTable(buffer, { LOGIN: user, PASSWORD: passwd }, 0);
+          return buffer.slice(4, size);
+        },
+        username: user,
+        password: passwd
+      };
+    };
+    module2.exports.external = function() {
+      return {
+        mechanism: "EXTERNAL",
+        response: function() {
+          return Buffer.from("");
+        }
+      };
+    };
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/package.json
+var require_package = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/package.json"(exports, module2) {
+    module2.exports = {
+      name: "amqplib",
+      homepage: "http://amqp-node.github.io/amqplib/",
+      main: "./channel_api.js",
+      version: "0.10.2",
+      description: "An AMQP 0-9-1 (e.g., RabbitMQ) library and client.",
+      repository: {
+        type: "git",
+        url: "https://github.com/amqp-node/amqplib.git"
+      },
+      engines: {
+        node: ">=10"
+      },
+      dependencies: {
+        bitsyntax: "~0.1.0",
+        "buffer-more-ints": "~1.0.0",
+        "readable-stream": "1.x >=1.1.9",
+        "url-parse": "~1.5.10"
+      },
+      devDependencies: {
+        claire: "0.4.1",
+        mocha: "^9.2.2",
+        nyc: "^15.1.0",
+        "uglify-js": "2.8.x"
+      },
+      scripts: {
+        test: "make test",
+        prepare: "make"
+      },
+      keywords: [
+        "AMQP",
+        "AMQP 0-9-1",
+        "RabbitMQ"
+      ],
+      author: "Michael Bridgen <mikeb@squaremobius.net>",
+      license: "MIT"
+    };
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/connect.js
+var require_connect = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/connect.js"(exports, module2) {
+    "use strict";
+    var URL2 = require_url_parse();
+    var QS = require("querystring");
+    var Connection = require_connection().Connection;
+    var fmt = require("util").format;
+    var credentials = require_credentials();
+    function copyInto(obj, target) {
+      var keys = Object.keys(obj);
+      var i = keys.length;
+      while (i--) {
+        var k = keys[i];
+        target[k] = obj[k];
+      }
+      return target;
+    }
+    function clone(obj) {
+      return copyInto(obj, {});
+    }
+    var CLIENT_PROPERTIES = {
+      "product": "amqplib",
+      "version": require_package().version,
+      "platform": fmt("Node.JS %s", process.version),
+      "information": "http://squaremo.github.io/amqp.node",
+      "capabilities": {
+        "publisher_confirms": true,
+        "exchange_exchange_bindings": true,
+        "basic.nack": true,
+        "consumer_cancel_notify": true,
+        "connection.blocked": true,
+        "authentication_failure_close": true
+      }
+    };
+    function openFrames(vhost, query, credentials2, extraClientProperties) {
+      if (!vhost)
+        vhost = "/";
+      else
+        vhost = QS.unescape(vhost);
+      var query = query || {};
+      function intOrDefault(val, def) {
+        return val === void 0 ? def : parseInt(val);
+      }
+      var clientProperties = Object.create(CLIENT_PROPERTIES);
+      return {
+        "clientProperties": copyInto(extraClientProperties, clientProperties),
+        "mechanism": credentials2.mechanism,
+        "response": credentials2.response(),
+        "locale": query.locale || "en_US",
+        "channelMax": intOrDefault(query.channelMax, 0),
+        "frameMax": intOrDefault(query.frameMax, 4096),
+        "heartbeat": intOrDefault(query.heartbeat, 0),
+        "virtualHost": vhost,
+        "capabilities": "",
+        "insist": 0
+      };
+    }
+    function credentialsFromUrl(parts) {
+      var user = "guest", passwd = "guest";
+      if (parts.username != "" || parts.password != "") {
+        user = parts.username ? unescape(parts.username) : "";
+        passwd = parts.password ? unescape(parts.password) : "";
+      }
+      return credentials.plain(user, passwd);
+    }
+    function connect(url, socketOptions, openCallback) {
+      var sockopts = clone(socketOptions || {});
+      url = url || "amqp://localhost";
+      var noDelay = !!sockopts.noDelay;
+      var timeout = sockopts.timeout;
+      var keepAlive = !!sockopts.keepAlive;
+      var keepAliveDelay = sockopts.keepAliveDelay || 0;
+      var extraClientProperties = sockopts.clientProperties || {};
+      var protocol, fields;
+      if (typeof url === "object") {
+        protocol = (url.protocol || "amqp") + ":";
+        sockopts.host = url.hostname;
+        sockopts.servername = sockopts.servername || url.hostname;
+        sockopts.port = url.port || (protocol === "amqp:" ? 5672 : 5671);
+        var user, pass;
+        if (url.username == void 0 && url.password == void 0) {
+          user = "guest";
+          pass = "guest";
+        } else {
+          user = url.username || "";
+          pass = url.password || "";
+        }
+        var config = {
+          locale: url.locale,
+          channelMax: url.channelMax,
+          frameMax: url.frameMax,
+          heartbeat: url.heartbeat
+        };
+        fields = openFrames(url.vhost, config, sockopts.credentials || credentials.plain(user, pass), extraClientProperties);
+      } else {
+        var parts = URL2(url, true);
+        protocol = parts.protocol;
+        sockopts.host = parts.hostname;
+        sockopts.servername = sockopts.servername || parts.hostname;
+        sockopts.port = parseInt(parts.port) || (protocol === "amqp:" ? 5672 : 5671);
+        var vhost = parts.pathname ? parts.pathname.substr(1) : null;
+        fields = openFrames(vhost, parts.query, sockopts.credentials || credentialsFromUrl(parts), extraClientProperties);
+      }
+      var sockok = false;
+      var sock;
+      function onConnect() {
+        sockok = true;
+        sock.setNoDelay(noDelay);
+        if (keepAlive)
+          sock.setKeepAlive(keepAlive, keepAliveDelay);
+        var c = new Connection(sock);
+        c.open(fields, function(err, ok) {
+          if (timeout)
+            sock.setTimeout(0);
+          if (err === null) {
+            openCallback(null, c);
+          } else {
+            sock.end();
+            sock.destroy();
+            openCallback(err);
+          }
+        });
+      }
+      if (protocol === "amqp:") {
+        sock = require("net").connect(sockopts, onConnect);
+      } else if (protocol === "amqps:") {
+        sock = require("tls").connect(sockopts, onConnect);
+      } else {
+        throw new Error("Expected amqp: or amqps: as the protocol; got " + protocol);
+      }
+      if (timeout) {
+        sock.setTimeout(timeout, function() {
+          sock.end();
+          sock.destroy();
+          openCallback(new Error("connect ETIMEDOUT"));
+        });
+      }
+      sock.once("error", function(err) {
+        if (!sockok)
+          openCallback(err);
+      });
+    }
+    module2.exports.connect = connect;
+    module2.exports.credentialsFromUrl = credentialsFromUrl;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/channel.js
+var require_channel = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/channel.js"(exports, module2) {
+    "use strict";
+    var defs = require_defs();
+    var closeMsg = require_format().closeMessage;
+    var inspect = require_format().inspect;
+    var methodName = require_format().methodName;
+    var assert = require("assert");
+    var inherits = require("util").inherits;
+    var EventEmitter = require("events").EventEmitter;
+    var fmt = require("util").format;
+    var IllegalOperationError = require_error().IllegalOperationError;
+    var stackCapture = require_error().stackCapture;
+    function Channel(connection) {
+      EventEmitter.call(this);
+      this.connection = connection;
+      this.reply = null;
+      this.pending = [];
+      this.lwm = 1;
+      this.unconfirmed = [];
+      this.on("ack", this.handleConfirm.bind(this, function(cb) {
+        if (cb)
+          cb(null);
+      }));
+      this.on("nack", this.handleConfirm.bind(this, function(cb) {
+        if (cb)
+          cb(new Error("message nacked"));
+      }));
+      this.on("close", function() {
+        var cb;
+        while (cb = this.unconfirmed.shift()) {
+          if (cb)
+            cb(new Error("channel closed"));
+        }
+      });
+      this.handleMessage = acceptDeliveryOrReturn;
+    }
+    inherits(Channel, EventEmitter);
+    module2.exports.Channel = Channel;
+    module2.exports.acceptMessage = acceptMessage;
+    var C = Channel.prototype;
+    C.allocate = function() {
+      this.ch = this.connection.freshChannel(this);
+      return this;
+    };
+    C.sendImmediately = function(method, fields) {
+      return this.connection.sendMethod(this.ch, method, fields);
+    };
+    C.sendOrEnqueue = function(method, fields, reply) {
+      if (!this.reply) {
+        assert(this.pending.length === 0);
+        this.reply = reply;
+        this.sendImmediately(method, fields);
+      } else {
+        this.pending.push({
+          method,
+          fields,
+          reply
+        });
+      }
+    };
+    C.sendMessage = function(fields, properties, content) {
+      return this.connection.sendMessage(
+        this.ch,
+        defs.BasicPublish,
+        fields,
+        defs.BasicProperties,
+        properties,
+        content
+      );
+    };
+    C._rpc = function(method, fields, expect, cb) {
+      var self2 = this;
+      function reply(err, f) {
+        if (err === null) {
+          if (f.id === expect) {
+            return cb(null, f);
+          } else {
+            var expectedName = methodName(expect);
+            var e = new Error(fmt(
+              "Expected %s; got %s",
+              expectedName,
+              inspect(f, false)
+            ));
+            self2.closeWithError(
+              f.id,
+              fmt(
+                "Expected %s; got %s",
+                expectedName,
+                methodName(f.id)
+              ),
+              defs.constants.UNEXPECTED_FRAME,
+              e
+            );
+            return cb(e);
+          }
+        } else if (err instanceof Error)
+          return cb(err);
+        else {
+          var closeReason = (err.fields.classId << 16) + err.fields.methodId;
+          var e = method === closeReason ? fmt(
+            "Operation failed: %s; %s",
+            methodName(method),
+            closeMsg(err)
+          ) : fmt("Channel closed by server: %s", closeMsg(err));
+          var closeFrameError = new Error(e);
+          closeFrameError.code = err.fields.replyCode;
+          closeFrameError.classId = err.fields.classId;
+          closeFrameError.methodId = err.fields.methodId;
+          return cb(closeFrameError);
+        }
+      }
+      this.sendOrEnqueue(method, fields, reply);
+    };
+    function invalidOp(msg, stack) {
+      return function() {
+        throw new IllegalOperationError(msg, stack);
+      };
+    }
+    function invalidateSend(ch, msg, stack) {
+      ch.sendImmediately = ch.sendOrEnqueue = ch.sendMessage = invalidOp(msg, stack);
+    }
+    C.toClosed = function(capturedStack) {
+      this._rejectPending();
+      invalidateSend(this, "Channel closed", capturedStack);
+      this.accept = invalidOp("Channel closed", capturedStack);
+      this.connection.releaseChannel(this.ch);
+      this.emit("close");
+    };
+    C.toClosing = function(capturedStack, k) {
+      var send = this.sendImmediately.bind(this);
+      invalidateSend(this, "Channel closing", capturedStack);
+      this.accept = function(f) {
+        if (f.id === defs.ChannelCloseOk) {
+          if (k)
+            k();
+          var s = stackCapture("ChannelCloseOk frame received");
+          this.toClosed(s);
+        } else if (f.id === defs.ChannelClose) {
+          send(defs.ChannelCloseOk, {});
+        }
+      };
+    };
+    C._rejectPending = function() {
+      function rej(r) {
+        r(new Error("Channel ended, no reply will be forthcoming"));
+      }
+      if (this.reply !== null)
+        rej(this.reply);
+      this.reply = null;
+      var discard;
+      while (discard = this.pending.shift())
+        rej(discard.reply);
+      this.pending = null;
+    };
+    C.closeBecause = function(reason, code, k) {
+      this.sendImmediately(defs.ChannelClose, {
+        replyText: reason,
+        replyCode: code,
+        methodId: 0,
+        classId: 0
+      });
+      var s = stackCapture("closeBecause called: " + reason);
+      this.toClosing(s, k);
+    };
+    C.closeWithError = function(id, reason, code, error) {
+      var self2 = this;
+      this.closeBecause(reason, code, function() {
+        error.code = code;
+        if (id) {
+          error.classId = defs.info(id).classId;
+          error.methodId = defs.info(id).methodId;
+        }
+        self2.emit("error", error);
+      });
+    };
+    C.acceptMessageFrame = function(f) {
+      try {
+        this.handleMessage = this.handleMessage(f);
+      } catch (msg) {
+        if (typeof msg === "string") {
+          this.closeWithError(
+            f.id,
+            msg,
+            defs.constants.UNEXPECTED_FRAME,
+            new Error(msg)
+          );
+        } else if (msg instanceof Error) {
+          this.closeWithError(
+            f.id,
+            "Error while processing message",
+            defs.constants.INTERNAL_ERROR,
+            msg
+          );
+        } else {
+          this.closeWithError(
+            f.id,
+            "Internal error while processing message",
+            defs.constants.INTERNAL_ERROR,
+            new Error(msg.toString())
+          );
+        }
+      }
+    };
+    function acceptDeliveryOrReturn(f) {
+      var event;
+      if (f.id === defs.BasicDeliver)
+        event = "delivery";
+      else if (f.id === defs.BasicReturn)
+        event = "return";
+      else
+        throw fmt(
+          "Expected BasicDeliver or BasicReturn; got %s",
+          inspect(f)
+        );
+      var self2 = this;
+      var fields = f.fields;
+      return acceptMessage(function(message) {
+        message.fields = fields;
+        self2.emit(event, message);
+      });
+    }
+    function acceptMessage(continuation) {
+      var totalSize = 0, remaining = 0;
+      var buffers = null;
+      var message = {
+        fields: null,
+        properties: null,
+        content: null
+      };
+      return headers;
+      function headers(f) {
+        if (f.id === defs.BasicProperties) {
+          message.properties = f.fields;
+          totalSize = remaining = f.size;
+          if (totalSize === 0) {
+            message.content = Buffer.alloc(0);
+            continuation(message);
+            return acceptDeliveryOrReturn;
+          } else {
+            return content;
+          }
+        } else {
+          throw "Expected headers frame after delivery";
+        }
+      }
+      function content(f) {
+        if (f.content) {
+          var size = f.content.length;
+          remaining -= size;
+          if (remaining === 0) {
+            if (buffers !== null) {
+              buffers.push(f.content);
+              message.content = Buffer.concat(buffers);
+            } else {
+              message.content = f.content;
+            }
+            continuation(message);
+            return acceptDeliveryOrReturn;
+          } else if (remaining < 0) {
+            throw fmt(
+              "Too much content sent! Expected %d bytes",
+              totalSize
+            );
+          } else {
+            if (buffers !== null)
+              buffers.push(f.content);
+            else
+              buffers = [f.content];
+            return content;
+          }
+        } else
+          throw "Expected content frame after headers";
+      }
+    }
+    C.handleConfirm = function(handle, f) {
+      var tag = f.deliveryTag;
+      var multi = f.multiple;
+      if (multi) {
+        var confirmed = this.unconfirmed.splice(0, tag - this.lwm + 1);
+        this.lwm = tag + 1;
+        confirmed.forEach(handle);
+      } else {
+        var c;
+        if (tag === this.lwm) {
+          c = this.unconfirmed.shift();
+          this.lwm++;
+          while (this.unconfirmed[0] === null) {
+            this.unconfirmed.shift();
+            this.lwm++;
+          }
+        } else {
+          c = this.unconfirmed[tag - this.lwm];
+          this.unconfirmed[tag - this.lwm] = null;
+        }
+        handle(c);
+      }
+    };
+    C.pushConfirmCallback = function(cb) {
+      this.unconfirmed.push(cb || false);
+    };
+    C.accept = function(f) {
+      switch (f.id) {
+        case void 0:
+        case defs.BasicDeliver:
+        case defs.BasicReturn:
+        case defs.BasicProperties:
+          return this.acceptMessageFrame(f);
+        case defs.BasicAck:
+          return this.emit("ack", f.fields);
+        case defs.BasicNack:
+          return this.emit("nack", f.fields);
+        case defs.BasicCancel:
+          return this.emit("cancel", f.fields);
+        case defs.ChannelClose:
+          if (this.reply) {
+            var reply = this.reply;
+            this.reply = null;
+            reply(f);
+          }
+          var emsg = "Channel closed by server: " + closeMsg(f);
+          this.sendImmediately(defs.ChannelCloseOk, {});
+          var error = new Error(emsg);
+          error.code = f.fields.replyCode;
+          error.classId = f.fields.classId;
+          error.methodId = f.fields.methodId;
+          this.emit("error", error);
+          var s = stackCapture(emsg);
+          this.toClosed(s);
+          return;
+        case defs.BasicFlow:
+          return this.closeWithError(
+            f.id,
+            "Flow not implemented",
+            defs.constants.NOT_IMPLEMENTED,
+            new Error("Flow not implemented")
+          );
+        default:
+          var reply = this.reply;
+          this.reply = null;
+          if (this.pending.length > 0) {
+            var send = this.pending.shift();
+            this.reply = send.reply;
+            this.sendImmediately(send.method, send.fields);
+          }
+          return reply(null, f);
+      }
+    };
+    C.onBufferDrain = function() {
+      this.emit("drain");
+    };
+    function BaseChannel(connection) {
+      Channel.call(this, connection);
+      this.consumers = /* @__PURE__ */ new Map();
+    }
+    inherits(BaseChannel, Channel);
+    module2.exports.BaseChannel = BaseChannel;
+    BaseChannel.prototype.registerConsumer = function(tag, callback) {
+      this.consumers.set(tag, callback);
+    };
+    BaseChannel.prototype.unregisterConsumer = function(tag) {
+      this.consumers.delete(tag);
+    };
+    BaseChannel.prototype.dispatchMessage = function(fields, message) {
+      var consumerTag = fields.consumerTag;
+      var consumer = this.consumers.get(consumerTag);
+      if (consumer) {
+        return consumer(message);
+      } else {
+        throw new Error("Unknown consumer: " + consumerTag);
+      }
+    };
+    BaseChannel.prototype.handleDelivery = function(message) {
+      return this.dispatchMessage(message.fields, message);
+    };
+    BaseChannel.prototype.handleCancel = function(fields) {
+      var result = this.dispatchMessage(fields, null);
+      this.unregisterConsumer(fields.consumerTag);
+      return result;
+    };
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/api_args.js
+var require_api_args = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/api_args.js"(exports, module2) {
+    "use strict";
+    function setIfDefined(obj, prop, value) {
+      if (value != void 0)
+        obj[prop] = value;
+    }
+    var EMPTY_OPTIONS = Object.freeze({});
+    var Args = {};
+    Args.assertQueue = function(queue, options) {
+      queue = queue || "";
+      options = options || EMPTY_OPTIONS;
+      var argt = Object.create(options.arguments || null);
+      setIfDefined(argt, "x-expires", options.expires);
+      setIfDefined(argt, "x-message-ttl", options.messageTtl);
+      setIfDefined(
+        argt,
+        "x-dead-letter-exchange",
+        options.deadLetterExchange
+      );
+      setIfDefined(
+        argt,
+        "x-dead-letter-routing-key",
+        options.deadLetterRoutingKey
+      );
+      setIfDefined(argt, "x-max-length", options.maxLength);
+      setIfDefined(argt, "x-max-priority", options.maxPriority);
+      setIfDefined(argt, "x-overflow", options.overflow);
+      setIfDefined(argt, "x-queue-mode", options.queueMode);
+      return {
+        queue,
+        exclusive: !!options.exclusive,
+        durable: options.durable === void 0 ? true : options.durable,
+        autoDelete: !!options.autoDelete,
+        arguments: argt,
+        passive: false,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.checkQueue = function(queue) {
+      return {
+        queue,
+        passive: true,
+        nowait: false,
+        durable: true,
+        autoDelete: false,
+        exclusive: false,
+        ticket: 0
+      };
+    };
+    Args.deleteQueue = function(queue, options) {
+      options = options || EMPTY_OPTIONS;
+      return {
+        queue,
+        ifUnused: !!options.ifUnused,
+        ifEmpty: !!options.ifEmpty,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.purgeQueue = function(queue) {
+      return {
+        queue,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.bindQueue = function(queue, source, pattern, argt) {
+      return {
+        queue,
+        exchange: source,
+        routingKey: pattern,
+        arguments: argt,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.unbindQueue = function(queue, source, pattern, argt) {
+      return {
+        queue,
+        exchange: source,
+        routingKey: pattern,
+        arguments: argt,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.assertExchange = function(exchange, type, options) {
+      options = options || EMPTY_OPTIONS;
+      var argt = Object.create(options.arguments || null);
+      setIfDefined(argt, "alternate-exchange", options.alternateExchange);
+      return {
+        exchange,
+        ticket: 0,
+        type,
+        passive: false,
+        durable: options.durable === void 0 ? true : options.durable,
+        autoDelete: !!options.autoDelete,
+        internal: !!options.internal,
+        nowait: false,
+        arguments: argt
+      };
+    };
+    Args.checkExchange = function(exchange) {
+      return {
+        exchange,
+        passive: true,
+        nowait: false,
+        durable: true,
+        internal: false,
+        type: "",
+        autoDelete: false,
+        ticket: 0
+      };
+    };
+    Args.deleteExchange = function(exchange, options) {
+      options = options || EMPTY_OPTIONS;
+      return {
+        exchange,
+        ifUnused: !!options.ifUnused,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.bindExchange = function(dest, source, pattern, argt) {
+      return {
+        source,
+        destination: dest,
+        routingKey: pattern,
+        arguments: argt,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.unbindExchange = function(dest, source, pattern, argt) {
+      return {
+        source,
+        destination: dest,
+        routingKey: pattern,
+        arguments: argt,
+        ticket: 0,
+        nowait: false
+      };
+    };
+    Args.publish = function(exchange, routingKey, options) {
+      options = options || EMPTY_OPTIONS;
+      function convertCC(cc) {
+        if (cc === void 0) {
+          return void 0;
+        } else if (Array.isArray(cc)) {
+          return cc.map(String);
+        } else
+          return [String(cc)];
+      }
+      var headers = Object.create(options.headers || null);
+      setIfDefined(headers, "CC", convertCC(options.CC));
+      setIfDefined(headers, "BCC", convertCC(options.BCC));
+      var deliveryMode;
+      if (options.persistent !== void 0)
+        deliveryMode = options.persistent ? 2 : 1;
+      else if (typeof options.deliveryMode === "number")
+        deliveryMode = options.deliveryMode;
+      else if (options.deliveryMode)
+        deliveryMode = 2;
+      var expiration = options.expiration;
+      if (expiration !== void 0)
+        expiration = expiration.toString();
+      return {
+        exchange,
+        routingKey,
+        mandatory: !!options.mandatory,
+        immediate: false,
+        ticket: void 0,
+        contentType: options.contentType,
+        contentEncoding: options.contentEncoding,
+        headers,
+        deliveryMode,
+        priority: options.priority,
+        correlationId: options.correlationId,
+        replyTo: options.replyTo,
+        expiration,
+        messageId: options.messageId,
+        timestamp: options.timestamp,
+        type: options.type,
+        userId: options.userId,
+        appId: options.appId,
+        clusterId: void 0
+      };
+    };
+    Args.consume = function(queue, options) {
+      options = options || EMPTY_OPTIONS;
+      var argt = Object.create(options.arguments || null);
+      setIfDefined(argt, "x-priority", options.priority);
+      return {
+        ticket: 0,
+        queue,
+        consumerTag: options.consumerTag || "",
+        noLocal: !!options.noLocal,
+        noAck: !!options.noAck,
+        exclusive: !!options.exclusive,
+        nowait: false,
+        arguments: argt
+      };
+    };
+    Args.cancel = function(consumerTag) {
+      return {
+        consumerTag,
+        nowait: false
+      };
+    };
+    Args.get = function(queue, options) {
+      options = options || EMPTY_OPTIONS;
+      return {
+        ticket: 0,
+        queue,
+        noAck: !!options.noAck
+      };
+    };
+    Args.ack = function(tag, allUpTo) {
+      return {
+        deliveryTag: tag,
+        multiple: !!allUpTo
+      };
+    };
+    Args.nack = function(tag, allUpTo, requeue) {
+      return {
+        deliveryTag: tag,
+        multiple: !!allUpTo,
+        requeue: requeue === void 0 ? true : requeue
+      };
+    };
+    Args.reject = function(tag, requeue) {
+      return {
+        deliveryTag: tag,
+        requeue: requeue === void 0 ? true : requeue
+      };
+    };
+    Args.prefetch = function(count, global2) {
+      return {
+        prefetchCount: count || 0,
+        prefetchSize: 0,
+        global: !!global2
+      };
+    };
+    Args.recover = function() {
+      return { requeue: true };
+    };
+    module2.exports = Object.freeze(Args);
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/channel_model.js
+var require_channel_model = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/lib/channel_model.js"(exports, module2) {
+    "use strict";
+    var EventEmitter = require("events");
+    var promisify = require("util").promisify;
+    var defs = require_defs();
+    var { BaseChannel } = require_channel();
+    var { acceptMessage } = require_channel();
+    var Args = require_api_args();
+    var { inspect } = require_format();
+    var ChannelModel = class extends EventEmitter {
+      constructor(connection) {
+        super();
+        this.connection = connection;
+        ["error", "close", "blocked", "unblocked"].forEach((ev) => {
+          connection.on(ev, this.emit.bind(this, ev));
+        });
+      }
+      close() {
+        return promisify(this.connection.close.bind(this.connection))();
+      }
+      async createChannel() {
+        const channel = new Channel(this.connection);
+        await channel.open();
+        return channel;
+      }
+      async createConfirmChannel() {
+        const channel = new ConfirmChannel(this.connection);
+        await channel.open();
+        await channel.rpc(defs.ConfirmSelect, { nowait: false }, defs.ConfirmSelectOk);
+        return channel;
+      }
+    };
+    var Channel = class extends BaseChannel {
+      constructor(connection) {
+        super(connection);
+        this.on("delivery", this.handleDelivery.bind(this));
+        this.on("cancel", this.handleCancel.bind(this));
+      }
+      async rpc(method, fields, expect) {
+        const f = await promisify((cb) => {
+          return this._rpc(method, fields, expect, cb);
+        })();
+        return f.fields;
+      }
+      async open() {
+        const ch = await this.allocate.bind(this)();
+        return ch.rpc(
+          defs.ChannelOpen,
+          { outOfBand: "" },
+          defs.ChannelOpenOk
+        );
+      }
+      close() {
+        return promisify((cb) => {
+          return this.closeBecause(
+            "Goodbye",
+            defs.constants.REPLY_SUCCESS,
+            cb
+          );
+        })();
+      }
+      assertQueue(queue, options) {
+        return this.rpc(
+          defs.QueueDeclare,
+          Args.assertQueue(queue, options),
+          defs.QueueDeclareOk
+        );
+      }
+      checkQueue(queue) {
+        return this.rpc(
+          defs.QueueDeclare,
+          Args.checkQueue(queue),
+          defs.QueueDeclareOk
+        );
+      }
+      deleteQueue(queue, options) {
+        return this.rpc(
+          defs.QueueDelete,
+          Args.deleteQueue(queue, options),
+          defs.QueueDeleteOk
+        );
+      }
+      purgeQueue(queue) {
+        return this.rpc(
+          defs.QueuePurge,
+          Args.purgeQueue(queue),
+          defs.QueuePurgeOk
+        );
+      }
+      bindQueue(queue, source, pattern, argt) {
+        return this.rpc(
+          defs.QueueBind,
+          Args.bindQueue(queue, source, pattern, argt),
+          defs.QueueBindOk
+        );
+      }
+      unbindQueue(queue, source, pattern, argt) {
+        return this.rpc(
+          defs.QueueUnbind,
+          Args.unbindQueue(queue, source, pattern, argt),
+          defs.QueueUnbindOk
+        );
+      }
+      assertExchange(exchange, type, options) {
+        return this.rpc(
+          defs.ExchangeDeclare,
+          Args.assertExchange(exchange, type, options),
+          defs.ExchangeDeclareOk
+        ).then((_ok) => {
+          return { exchange };
+        });
+      }
+      checkExchange(exchange) {
+        return this.rpc(
+          defs.ExchangeDeclare,
+          Args.checkExchange(exchange),
+          defs.ExchangeDeclareOk
+        );
+      }
+      deleteExchange(name, options) {
+        return this.rpc(
+          defs.ExchangeDelete,
+          Args.deleteExchange(name, options),
+          defs.ExchangeDeleteOk
+        );
+      }
+      bindExchange(dest, source, pattern, argt) {
+        return this.rpc(
+          defs.ExchangeBind,
+          Args.bindExchange(dest, source, pattern, argt),
+          defs.ExchangeBindOk
+        );
+      }
+      unbindExchange(dest, source, pattern, argt) {
+        return this.rpc(
+          defs.ExchangeUnbind,
+          Args.unbindExchange(dest, source, pattern, argt),
+          defs.ExchangeUnbindOk
+        );
+      }
+      publish(exchange, routingKey, content, options) {
+        const fieldsAndProps = Args.publish(exchange, routingKey, options);
+        return this.sendMessage(fieldsAndProps, fieldsAndProps, content);
+      }
+      sendToQueue(queue, content, options) {
+        return this.publish("", queue, content, options);
+      }
+      consume(queue, callback, options) {
+        const fields = Args.consume(queue, options);
+        return new Promise((resolve, reject) => {
+          this._rpc(defs.BasicConsume, fields, defs.BasicConsumeOk, (err, ok) => {
+            if (err)
+              return reject(err);
+            this.registerConsumer(ok.fields.consumerTag, callback);
+            resolve(ok.fields);
+          });
+        });
+      }
+      async cancel(consumerTag) {
+        const ok = await promisify((cb) => {
+          this._rpc(
+            defs.BasicCancel,
+            Args.cancel(consumerTag),
+            defs.BasicCancelOk,
+            cb
+          );
+        })().then((ok2) => {
+          this.unregisterConsumer(consumerTag);
+          return ok2.fields;
+        });
+      }
+      get(queue, options) {
+        const fields = Args.get(queue, options);
+        return new Promise((resolve, reject) => {
+          this.sendOrEnqueue(defs.BasicGet, fields, (err, f) => {
+            if (err)
+              return reject(err);
+            if (f.id === defs.BasicGetEmpty) {
+              return resolve(false);
+            } else if (f.id === defs.BasicGetOk) {
+              const fields2 = f.fields;
+              this.handleMessage = acceptMessage((m) => {
+                m.fields = fields2;
+                resolve(m);
+              });
+            } else {
+              reject(new Error(`Unexpected response to BasicGet: ${inspect(f)}`));
+            }
+          });
+        });
+      }
+      ack(message, allUpTo) {
+        this.sendImmediately(
+          defs.BasicAck,
+          Args.ack(message.fields.deliveryTag, allUpTo)
+        );
+      }
+      ackAll() {
+        this.sendImmediately(defs.BasicAck, Args.ack(0, true));
+      }
+      nack(message, allUpTo, requeue) {
+        this.sendImmediately(
+          defs.BasicNack,
+          Args.nack(message.fields.deliveryTag, allUpTo, requeue)
+        );
+      }
+      nackAll(requeue) {
+        this.sendImmediately(
+          defs.BasicNack,
+          Args.nack(0, true, requeue)
+        );
+      }
+      reject(message, requeue) {
+        this.sendImmediately(
+          defs.BasicReject,
+          Args.reject(message.fields.deliveryTag, requeue)
+        );
+      }
+      recover() {
+        return this.rpc(
+          defs.BasicRecover,
+          Args.recover(),
+          defs.BasicRecoverOk
+        );
+      }
+      qos(count, global2) {
+        return this.rpc(
+          defs.BasicQos,
+          Args.prefetch(count, global2),
+          defs.BasicQosOk
+        );
+      }
+    };
+    Channel.prototype.prefetch = Channel.prototype.qos;
+    var ConfirmChannel = class extends Channel {
+      publish(exchange, routingKey, content, options, cb) {
+        this.pushConfirmCallback(cb);
+        return Channel.prototype.publish.call(this, exchange, routingKey, content, options);
+      }
+      sendToQueue(queue, content, options, cb) {
+        return this.publish("", queue, content, options, cb);
+      }
+      waitForConfirms() {
+        const awaiting = [];
+        const unconfirmed = this.unconfirmed;
+        unconfirmed.forEach((val, index) => {
+          if (val !== null) {
+            const confirmed = new Promise((resolve, reject) => {
+              unconfirmed[index] = (err) => {
+                if (val)
+                  val(err);
+                if (err === null)
+                  resolve();
+                else
+                  reject(err);
+              };
+            });
+            awaiting.push(confirmed);
+          }
+        });
+        if (!this.pending) {
+          var cb;
+          while (cb = this.unconfirmed.shift()) {
+            if (cb)
+              cb(new Error("channel closed"));
+          }
+        }
+        return Promise.all(awaiting);
+      }
+    };
+    module2.exports.ConfirmChannel = ConfirmChannel;
+    module2.exports.Channel = Channel;
+    module2.exports.ChannelModel = ChannelModel;
+  }
+});
+
+// node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/channel_api.js
+var require_channel_api = __commonJS({
+  "node_modules/.pnpm/amqplib@0.10.2/node_modules/amqplib/channel_api.js"(exports, module2) {
+    var raw_connect = require_connect().connect;
+    var ChannelModel = require_channel_model().ChannelModel;
+    var promisify = require("util").promisify;
+    function connect(url, connOptions) {
+      return promisify(function(cb) {
+        return raw_connect(url, connOptions, cb);
+      })().then(function(conn) {
+        return new ChannelModel(conn);
+      });
+    }
+    module2.exports.connect = connect;
+    module2.exports.credentials = require_credentials();
+    module2.exports.IllegalOperationError = require_error().IllegalOperationError;
+  }
+});
+
+// src/index.ts
+var core = __toESM(require_core());
+var import_amqplib = __toESM(require_channel_api());
+console.log("amqp created.");
+var RABBITMQ_HOST = core.getInput("rabbitmq_host");
+var RABBITMQ_VHOSTNAME = core.getInput("rabbitmq_vhostname");
+var RABBITMQ_USERNAME = core.getInput("rabbitmq_username");
+var RABBITMQ_PASSWORD = core.getInput("rabbitmq_password");
+var RABBITMQ_URL = `amqp://${RABBITMQ_USERNAME}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}/${RABBITMQ_VHOSTNAME}`;
+var APP_ID = core.getInput("app_id");
+var HEADERS = core.getInput("headers");
+var MESSAGE = core.getInput("message");
+var QUEUE_NAME = core.getInput("queue_name");
+async function main() {
+  var _a, _b;
+  let connection = null;
+  let channel = null;
+  try {
+    console.log("amqp connecting...");
+    connection = await import_amqplib.default.connect(RABBITMQ_URL);
+    console.log("creating channel");
+    channel = await connection.createChannel();
+    console.log("asserting channel");
+    await channel.assertQueue(QUEUE_NAME, { durable: true });
+    console.log("sending message");
+    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(MESSAGE)), {
+      appId: APP_ID,
+      contentType: "application/json"
+    });
+    console.log(" [x] Sent %s", MESSAGE);
+  } catch (error) {
+    console.error(error);
+    core.setFailed(error.message);
+  } finally {
+    await ((_a = channel == null ? void 0 : channel.close) == null ? void 0 : _a.call(channel));
+    await ((_b = connection == null ? void 0 : connection.close) == null ? void 0 : _b.call(connection));
+  }
+}
+main();
 /** @preserve This file is generated by the script
  * ../bin/generate-defs.js, which is not in general included in a
  * distribution, but is available in the source repository e.g. at

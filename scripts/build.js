@@ -4,7 +4,6 @@ const { clean } = require("esbuild-plugin-clean");
 esbuild
   .build({
     entryPoints: ["src/index.ts"],
-    minify: true,
     platform: "node",
     target: "node16",
     bundle: true,
