@@ -1,4 +1,4 @@
-import core from "@actions/core";
+import * as core from "@actions/core"
 import amqp from "amqplib";
 
 console.log("amqp created.");
