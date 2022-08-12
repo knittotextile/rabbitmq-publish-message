@@ -1,4 +1,4 @@
-import * as core from "@actions/core"
+import * as core from "@actions/core";
 import amqp from "amqplib";
 
 console.log("amqp created.");
@@ -10,7 +10,6 @@ const RABBITMQ_PASSWORD = core.getInput("rabbitmq_password");
 const RABBITMQ_URL = `amqp://${RABBITMQ_USERNAME}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}/${RABBITMQ_VHOSTNAME}`;
 
 const APP_ID = core.getInput("app_id");
-const HEADERS = core.getInput("headers");
 const MESSAGE = core.getInput("message");
 const QUEUE_NAME = core.getInput("queue_name");
 

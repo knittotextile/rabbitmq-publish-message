@@ -13693,7 +13693,6 @@ var RABBITMQ_USERNAME = core.getInput("rabbitmq_username");
 var RABBITMQ_PASSWORD = core.getInput("rabbitmq_password");
 var RABBITMQ_URL = `amqp://${RABBITMQ_USERNAME}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}/${RABBITMQ_VHOSTNAME}`;
 var APP_ID = core.getInput("app_id");
-var HEADERS = core.getInput("headers");
 var MESSAGE = core.getInput("message");
 var QUEUE_NAME = core.getInput("queue_name");
 async function main() {
