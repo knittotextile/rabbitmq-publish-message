@@ -13695,10 +13695,21 @@ var RABBITMQ_URL = `amqp://${RABBITMQ_USERNAME}:${RABBITMQ_PASSWORD}@${RABBITMQ_
 var APP_ID = core.getInput("app_id");
 var MESSAGE = core.getInput("message");
 var QUEUE_NAME = core.getInput("queue_name");
+function checkMsgIsJSON(msg) {
+  try {
+    JSON.parse(msg);
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
 async function main() {
   var _a, _b;
   let connection = null;
   let channel = null;
+  const msgIsJSON = checkMsgIsJSON(MESSAGE);
+  const msg = msgIsJSON ? JSON.parse(MESSAGE) : MESSAGE;
+  const contentType = msgIsJSON ? "application/json" : void 0;
   try {
     console.log("amqp connecting...");
     connection = await import_amqplib.default.connect(RABBITMQ_URL);
@@ -13707,9 +13718,9 @@ async function main() {
     console.log("asserting channel");
     await channel.assertQueue(QUEUE_NAME, { durable: true });
     console.log("sending message");
-    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(MESSAGE)), {
+    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(msg)), {
       appId: APP_ID,
-      contentType: "application/json"
+      contentType
     });
     console.log(" [x] Sent %s", MESSAGE);
   } catch (error) {

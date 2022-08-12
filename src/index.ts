@@ -13,9 +13,22 @@ const APP_ID = core.getInput("app_id");
 const MESSAGE = core.getInput("message");
 const QUEUE_NAME = core.getInput("queue_name");
 
+function checkMsgIsJSON(msg: string) {
+  try {
+    JSON.parse(msg);
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   let connection: amqp.Connection | null = null;
   let channel: amqp.Channel | null = null;
+
+  const msgIsJSON = checkMsgIsJSON(MESSAGE);
+  const msg = msgIsJSON ? JSON.parse(MESSAGE) : MESSAGE;
+  const contentType = msgIsJSON ? "application/json" : undefined;
 
   try {
     console.log("amqp connecting...");
@@ -28,9 +41,9 @@ async function main() {
     await channel.assertQueue(QUEUE_NAME, { durable: true });
 
     console.log("sending message");
-    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(MESSAGE)), {
+    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(msg)), {
       appId: APP_ID,
-      contentType: "application/json",
+      contentType,
     });
 
     console.log(" [x] Sent %s", MESSAGE);
