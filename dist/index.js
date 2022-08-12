@@ -13727,4 +13727,3 @@ main();
  * distribution, but is available in the source repository e.g. at
  * https://github.com/squaremo/amqp.node/
  */
-//# sourceMappingURL=index.js.map

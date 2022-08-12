@@ -7,7 +7,6 @@ esbuild
     platform: "node",
     target: "node16",
     bundle: true,
-    sourcemap: true,
     outdir: "dist",
     plugins: [clean()],
   })
