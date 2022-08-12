@@ -1,0 +1,33 @@
+name: "Publish RabbitMQ Message"
+description: "Send a RabbitMQ Message via GitHub Actions"
+branding:
+  icon: "message-square"
+  color: "blue"
+inputs:
+  app_id:
+    description: "The application id."
+    required: true
+  message:
+    description: "The message you want to send."
+    required: true
+  queue_name:
+    description: "The name of the queue you are sending to."
+    required: true
+  headers:
+    description: "The message headers. This should be in the following format to represent headers and its values, <headerName1>:<headerVal1>;<headerName2>:<headerVal2>"
+    required: false
+  rabbitmq_host:
+    description: "RabbitMQ host name along with port. eg: rabbithost:5127 or rabbithost"
+    required: true
+  rabbitmq_vhostname:
+    description: "RabbitMQ vhost name."
+    required: false
+  rabbitmq_username:
+    description: "RabbitMQ username."
+    required: true
+  rabbitmq_password:
+    description: "RabbitMQ password."
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
