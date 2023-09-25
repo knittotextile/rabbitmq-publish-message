@@ -1,5 +1,5 @@
 {
-  "name": "rabbitmq-publish-message",
+  "name": "@knitto/rabbitmq-publish-message-action",
   "version": "0.2.4",
   "description": "",
   "exports": {

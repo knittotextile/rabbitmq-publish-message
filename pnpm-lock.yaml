@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   '@types/amqplib':
-    specifier: ^0.10.1
-    version: 0.10.1
+    specifier: ^0.10.2
+    version: 0.10.2
   '@types/node':
     specifier: ^20
     version: 20.6.5
@@ -179,8 +179,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@types/amqplib@0.10.1:
-    resolution: {integrity: sha512-j6ANKT79ncUDnAs/+9r9eDujxbeJoTjoVu33gHHcaPfmLQaMhvfbH2GqSe8KUM444epAp1Vl3peVOQfZk3UIqA==}
+  /@types/amqplib@0.10.2:
+    resolution: {integrity: sha512-K0qC2YR0ZcQWWMOifg4yvCAu5wi/V6wY6MnMS4LSvqx6qwXBAhxno6OBN8D76FIaajLNfgHKOXobZBL/uAwXAQ==}
     dependencies:
       '@types/node': 20.6.5
     dev: true
