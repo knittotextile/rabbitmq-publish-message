@@ -47,7 +47,7 @@ async function main() {
     });
 
     console.log(" [x] Sent %s", MESSAGE);
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     core.setFailed(error.message);
   } finally {
