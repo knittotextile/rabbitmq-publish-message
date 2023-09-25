@@ -1,7 +1,7 @@
 {
   "name": "@knitto/rabbitmq-publish-message-action",
+  "description": "GitHub Action to publish a message to RabbitMQ",
   "version": "0.2.4",
-  "description": "",
   "exports": {
     ".": "./dist/index.js"
   },
